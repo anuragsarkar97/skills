@@ -58,10 +58,7 @@ npx @anuragsarkar97/ai-agent-skills install --agent claude --mode symlink --writ
 Publish flow:
 
 ```bash
-npm test
-npm run skills:catalog
-npm run skills:graph
-npm run skills:package-claude
+npm run skills:package-all
 npm publish --access public
 ```
 
@@ -295,6 +292,7 @@ npm run skills:import -- git@github.com:org/skills.git#skills/the-skill
 npm run skills:import -- ../external-skill-folder --path /tmp/skills
 npm run skills:list
 npm run skills:marketplace-manifest
+npm run skills:package-all
 npm run skills:package-claude
 npm run skills:refresh-knowledge
 npm run skills:verify-sources
@@ -314,6 +312,7 @@ npm run skills:catalog
 - `skills:install` dry-runs installation into an agent skill directory by default; pass `--write` to actually copy or symlink.
 - `skills:list` lists skills from the local catalog source.
 - `skills:marketplace-manifest` writes `dist/claude/marketplace-manifest.json`.
+- `skills:package-all` runs the full local packaging flow: checks, catalog, graph, Claude bundles, and npm pack dry-run.
 - `skills:package-claude` creates Claude-ready ZIP bundles in `dist/claude/`.
 - `skills:refresh-knowledge` writes a review queue for refreshing curated references from sources.
 - `skills:verify-sources` verifies source metadata in shared knowledge references.

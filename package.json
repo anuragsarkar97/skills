@@ -23,6 +23,7 @@
     "skills:intake": "node scripts/intake-skill.mjs",
     "skills:list": "node scripts/list-skills.mjs",
     "skills:marketplace-manifest": "node scripts/generate-marketplace-manifest.mjs",
+    "skills:package-all": "bash scripts/package-all.sh",
     "skills:package-claude": "node scripts/package-claude.mjs",
     "skills:refresh-knowledge": "node scripts/refresh-knowledge.mjs",
     "skills:verify-sources": "node scripts/verify-sources.mjs"

@@ -20,6 +20,7 @@ const commands = {
   install: ["scripts/install-skills.mjs"],
   intake: ["scripts/intake-skill.mjs"],
   list: ["scripts/list-skills.mjs"],
+  "package-all": ["scripts/package-all.sh"],
   "package-claude": ["scripts/package-claude.mjs"],
   "marketplace-manifest": ["scripts/generate-marketplace-manifest.mjs"],
   "refresh-knowledge": ["scripts/refresh-knowledge.mjs"],
@@ -37,6 +38,7 @@ Commands:
   catalog                 Generate skills/catalog.json
   index-project           Generate .skill-context/project-context.json
   graph                   Generate skills/graph.json and skills/graph.mmd
+  package-all             Run the full release packaging flow
   package-claude          Create Claude-ready ZIP bundles in dist/claude
   marketplace-manifest    Generate dist/claude/marketplace-manifest.json
   refresh-knowledge       Create a curated knowledge refresh review plan
@@ -51,6 +53,7 @@ Commands:
 Examples:
   ai-agent-skills install --agent codex --write
   ai-agent-skills install --agent claude --mode symlink --write
+  ai-agent-skills package-all
   ai-agent-skills package-claude
   ai-agent-skills index-project --path .
   ai-agent-skills check
@@ -90,6 +93,11 @@ if (command === "check") {
   }
 } else if (command === "duplicates") {
   result = spawnSync("python3", [path.join(packageRoot, "scripts/skill_duplicate_audit.py"), ...args], {
+    cwd: packageRoot,
+    stdio: "inherit",
+  });
+} else if (command === "package-all") {
+  result = spawnSync("bash", [path.join(packageRoot, "scripts/package-all.sh"), ...args], {
     cwd: packageRoot,
     stdio: "inherit",
   });
