@@ -10,3 +10,5 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Put detailed procedures in the Markdown body.
 - Put large supporting material in `references/`.
 - Use `agents/claude.md` inside a skill only when Claude needs agent-specific notes that should not affect other agents.
+- Use `agent-skill-router` as the default selection guide when a user asks for engineering work without naming a skill.
+- Prefer narrow specialized skills and combine them when a change crosses API, schema, test, documentation, naming, or design boundaries.

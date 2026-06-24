@@ -1,0 +1,7 @@
+interface:
+  display_name: "Change Grill Review"
+  short_description: "Stress-review code changes harshly"
+  default_prompt: "Use $change-grill-review to stress-review this change for hidden risks."
+
+policy:
+  allow_implicit_invocation: true

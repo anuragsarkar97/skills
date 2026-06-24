@@ -1,4 +1,5 @@
 .DS_Store
+.air/
 node_modules/
 dist/
 coverage/

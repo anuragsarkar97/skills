@@ -1,3 +1,7 @@
-display_name: Code Review
-short_description: Review diffs and worktrees for bugs, regressions, and missing tests.
-default_prompt: Use the code-review skill to review this change and lead with findings.
+interface:
+  display_name: "Code Review"
+  short_description: "Review code for bugs and regressions"
+  default_prompt: "Use $code-review to review this change and lead with findings."
+
+policy:
+  allow_implicit_invocation: true

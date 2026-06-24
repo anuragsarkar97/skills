@@ -1,0 +1,7 @@
+interface:
+  display_name: "Commit PR Writer"
+  short_description: "Write commit messages and PR text"
+  default_prompt: "Use $commit-pr-writer to create commit messages and PR descriptions from changes."
+
+policy:
+  allow_implicit_invocation: true

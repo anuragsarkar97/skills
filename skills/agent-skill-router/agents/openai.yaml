@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agent Skill Router"
+  short_description: "Select the right skill proactively"
+  default_prompt: "Use $agent-skill-router to choose the best skills for the current engineering task."
+
+policy:
+  allow_implicit_invocation: true

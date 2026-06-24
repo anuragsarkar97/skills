@@ -40,6 +40,22 @@ Optional resources:
 - `scripts/` for repeatable commands or deterministic transformations.
 - `assets/` for templates, images, fixtures, or other reusable materials.
 
+For proactive agent selection, set `policy.allow_implicit_invocation: true` in `agents/openai.yaml` and keep the `description` trigger precise.
+
+## Skill Catalog
+
+- `agent-skill-router`: choose and combine skills proactively.
+- `api-review`: review API contracts and compatibility.
+- `change-grill-review`: adversarial review for hidden production risks.
+- `code-documentation`: create and review practical code docs.
+- `code-review`: general code review focused on bugs and regressions.
+- `commit-pr-writer`: write commit messages and PR text.
+- `database-schema-design`: design and review entities, tables, migrations, indexes, and constraints.
+- `design-principles-review`: check SOLID, YAGNI, abstractions, and boundaries.
+- `implementation-plan`: plan scoped software changes and validation.
+- `naming-review`: improve identifiers and domain terminology.
+- `test-design-review`: design and stress-review tests.
+
 ## Validate
 
 ```bash

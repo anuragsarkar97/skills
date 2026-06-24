@@ -1,0 +1,7 @@
+interface:
+  display_name: "Database Schema Design"
+  short_description: "Design and review database schemas"
+  default_prompt: "Use $database-schema-design to design or review database tables and entities."
+
+policy:
+  allow_implicit_invocation: true

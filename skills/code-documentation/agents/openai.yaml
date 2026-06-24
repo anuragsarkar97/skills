@@ -1,0 +1,7 @@
+interface:
+  display_name: "Code Documentation"
+  short_description: "Create and review code documentation"
+  default_prompt: "Use $code-documentation to create or review useful code documentation."
+
+policy:
+  allow_implicit_invocation: true

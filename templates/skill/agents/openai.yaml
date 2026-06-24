@@ -1,4 +1,8 @@
-display_name: Skill Name
-short_description: A short human-facing summary of what this skill does.
-# Replace <skill-name> with the exact skill name so agents know which skill to invoke.
-default_prompt: Use the <skill-name> skill to complete the requested task.
+interface:
+  display_name: "Skill Name"
+  short_description: "Short human-facing summary"
+  # Replace $skill-name with the exact skill name so agents know which skill to invoke.
+  default_prompt: "Use $skill-name to complete the requested task."
+
+policy:
+  allow_implicit_invocation: true

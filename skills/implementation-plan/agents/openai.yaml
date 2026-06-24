@@ -1,3 +1,7 @@
-display_name: Implementation Plan
-short_description: Build scoped coding plans with risks, validation, and incremental steps.
-default_prompt: Use the implementation-plan skill to inspect the project and create a practical implementation plan.
+interface:
+  display_name: "Implementation Plan"
+  short_description: "Plan software changes and validation"
+  default_prompt: "Use $implementation-plan to inspect the project and create a practical implementation plan."
+
+policy:
+  allow_implicit_invocation: true

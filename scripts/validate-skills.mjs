@@ -45,6 +45,12 @@ async function exists(filePath) {
   }
 }
 
+function hasYamlField(metadata, field) {
+  return metadata
+    .split("\n")
+    .some((line) => new RegExp(`^\\s*${field}:`).test(line));
+}
+
 async function validateSkill(skillName) {
   const skillPath = path.join(skillsDir, skillName);
   const skillStat = await stat(skillPath);
@@ -80,15 +86,23 @@ async function validateSkill(skillName) {
         `${skillName}: description must be at least ${MIN_DESC_LENGTH} characters and clearly explain what the skill does and when to use it`,
       );
     }
+
+    if (frontmatter.description?.trimStart().startsWith("[TODO:")) {
+      errors.push(`${skillName}: description still contains TODO placeholder`);
+    }
   } catch (error) {
     errors.push(error.message);
+  }
+
+  if (content.includes("Structuring This Skill")) {
+    errors.push(`${skillName}: SKILL.md still contains generated template guidance`);
   }
 
   const openAiFile = path.join(skillPath, "agents", "openai.yaml");
   if (await exists(openAiFile)) {
     const metadata = await readFile(openAiFile, "utf8");
     for (const field of requiredOpenAiFields) {
-      if (!new RegExp(`^${field}:`, "m").test(metadata)) {
+      if (!hasYamlField(metadata, field)) {
         errors.push(`${skillName}: agents/openai.yaml missing ${field}:`);
       }
     }

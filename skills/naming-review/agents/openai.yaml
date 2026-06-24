@@ -1,0 +1,7 @@
+interface:
+  display_name: "Naming Review"
+  short_description: "Review names for clarity and domain fit"
+  default_prompt: "Use $naming-review to review names for clarity, consistency, and domain fit."
+
+policy:
+  allow_implicit_invocation: true

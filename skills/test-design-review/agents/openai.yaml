@@ -1,0 +1,7 @@
+interface:
+  display_name: "Test Design Review"
+  short_description: "Design and stress-review tests"
+  default_prompt: "Use $test-design-review to design tests or review test quality and coverage."
+
+policy:
+  allow_implicit_invocation: true
