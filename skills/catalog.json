@@ -1,5 +1,5 @@
 {
-  "count": 22,
+  "count": 24,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -11,7 +11,7 @@
     },
     {
       "name": "api-review",
-      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent creates, changes, or evaluates endpoints, request and response shapes, status codes, auth, errors, pagination, compatibility, or versioning.",
+      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).",
       "displayName": "API Review",
       "shortDescription": "Review API contracts and behavior",
       "defaultPrompt": "Use $api-review to review API contracts, behavior, and compatibility.",
@@ -19,7 +19,7 @@
     },
     {
       "name": "api-writer",
-      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when an AI agent implements or changes an API surface and needs code that matches an existing contract.",
+      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).",
       "displayName": "API Writer",
       "shortDescription": "Implement API handlers and contracts",
       "defaultPrompt": "Use $api-writer to implement API handlers and contracts.",
@@ -90,6 +90,14 @@
       "allowImplicitInvocation": true
     },
     {
+      "name": "incident-response",
+      "description": "Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.",
+      "displayName": "Incident Response",
+      "shortDescription": "Triage and resolve production incidents",
+      "defaultPrompt": "Use $incident-response to triage this production incident.",
+      "allowImplicitInvocation": true
+    },
+    {
       "name": "micro-agent-orchestrator",
       "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
       "displayName": "Micro Agent Orchestrator",
@@ -103,6 +111,14 @@
       "displayName": "Naming Review",
       "shortDescription": "Review names for clarity and domain fit",
       "defaultPrompt": "Use $naming-review to review names for clarity, consistency, and domain fit.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "observability-design",
+      "description": "Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds telemetry to a service, reviews instrumentation coverage, defines metric naming conventions, designs dashboards, or sets alert thresholds.",
+      "displayName": "Observability Design",
+      "shortDescription": "Design logs, metrics, traces, and alerts",
+      "defaultPrompt": "Use $observability-design to design telemetry for this service.",
       "allowImplicitInvocation": true
     },
     {

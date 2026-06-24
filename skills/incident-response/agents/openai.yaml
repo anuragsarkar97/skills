@@ -1,0 +1,7 @@
+interface:
+  display_name: "Incident Response"
+  short_description: "Triage and resolve production incidents"
+  default_prompt: "Use $incident-response to triage this production incident."
+
+policy:
+  allow_implicit_invocation: true

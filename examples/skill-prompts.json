@@ -57,6 +57,17 @@
     "implicit": true
   },
   {
+    "expectedSkill": "incident-response",
+    "prompt": "Production checkout is returning 500s since the last deploy; triage the logs, form hypotheses, and decide whether to rollback or hotfix.",
+    "companionSkills": ["product-communication"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "observability-design",
+    "prompt": "Design structured logs, metrics, and alerts for this payment service so we can debug failures and page on error rate spikes.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "micro-agent-orchestrator",
     "prompt": "Split this feature into service, API, utility, and test implementation passes.",
     "companionSkills": ["service-writer", "api-writer", "test-writer"],

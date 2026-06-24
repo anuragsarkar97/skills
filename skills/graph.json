@@ -1,5 +1,5 @@
 {
-  "count": 22,
+  "count": 24,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -10,13 +10,13 @@
     {
       "id": "api-review",
       "displayName": "API Review",
-      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent creates, changes, or evaluates endpoints, request and response shapes, status codes, auth, errors, pagination, compatibility, or versioning.",
+      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).",
       "allowImplicitInvocation": true
     },
     {
       "id": "api-writer",
       "displayName": "API Writer",
-      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when an AI agent implements or changes an API surface and needs code that matches an existing contract.",
+      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).",
       "allowImplicitInvocation": true
     },
     {
@@ -68,6 +68,12 @@
       "allowImplicitInvocation": true
     },
     {
+      "id": "incident-response",
+      "displayName": "Incident Response",
+      "description": "Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.",
+      "allowImplicitInvocation": true
+    },
+    {
       "id": "micro-agent-orchestrator",
       "displayName": "Micro Agent Orchestrator",
       "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
@@ -77,6 +83,12 @@
       "id": "naming-review",
       "displayName": "Naming Review",
       "description": "Review and improve naming for variables, functions, classes, files, modules, database objects, API fields, events, tests, and domain concepts. Use when an AI agent creates or reviews identifiers, public contracts, terminology, or ambiguous code.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "observability-design",
+      "displayName": "Observability Design",
+      "description": "Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds telemetry to a service, reviews instrumentation coverage, defines metric naming conventions, designs dashboards, or sets alert thresholds.",
       "allowImplicitInvocation": true
     },
     {
@@ -187,12 +199,22 @@
     },
     {
       "from": "agent-skill-router",
+      "to": "incident-response",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
       "to": "micro-agent-orchestrator",
       "reason": "mentions"
     },
     {
       "from": "agent-skill-router",
       "to": "naming-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "observability-design",
       "reason": "mentions"
     },
     {
@@ -241,6 +263,11 @@
       "reason": "mentions"
     },
     {
+      "from": "api-review",
+      "to": "api-writer",
+      "reason": "mentions"
+    },
+    {
       "from": "api-writer",
       "to": "api-review",
       "reason": "mentions"
@@ -253,6 +280,11 @@
     {
       "from": "api-writer",
       "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "change-grill-review",
+      "to": "code-review",
       "reason": "mentions"
     },
     {
@@ -333,6 +365,11 @@
     {
       "from": "micro-agent-orchestrator",
       "to": "utility-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "observability-design",
+      "to": "incident-response",
       "reason": "mentions"
     },
     {

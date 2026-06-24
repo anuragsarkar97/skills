@@ -21,6 +21,8 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `utility-writer` for pure helpers, parsers, formatters, validators, mappers, adapters, and small reusable transformations.
 - Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, API errors, and endpoint wiring.
 - Use `test-writer` to implement focused tests for changed behavior, bug regressions, APIs, services, and utilities.
+- Use `incident-response` when production is degraded, error rates spike, a deploy causes regressions, or the user is in active on-call triage.
+- Use `observability-design` when adding telemetry to a service, reviewing instrumentation gaps, defining metric naming, or designing alerts.
 - Use `code-review` for general review of diffs, pull requests, and worktrees.
 - Use `change-grill-review` when the user asks to be grilled, the change is risky, or a normal review would be too gentle.
 - Use `database-schema-design` for tables, entities, migrations, indexes, data retention, and persistence models.
@@ -56,6 +58,9 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, `micro-agent-orchestrator` for implementation, then `test-design-review` and `code-review`.
 - Service plus API implementation: use `micro-agent-orchestrator`, then `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
 - Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
+- Production incident: use `incident-response` to triage; add `product-communication` for status updates to stakeholders; use `implementation-plan` for the follow-up fix.
+- New service implementation: use `micro-agent-orchestrator` with `observability-design` to ensure telemetry is built in from the start alongside `service-writer` and `test-writer`.
+- Post-incident hardening: use `observability-design` to fill the telemetry gaps revealed by the incident, then `change-grill-review` before the fix ships.
 - Risky production changes: use `change-grill-review` with the relevant domain skill.
 - Security-sensitive schema changes (auth tables, PII columns, tenant isolation fields): use `database-schema-design` and `api-review`; load `../_knowledge/security/security-review.md` and use `change-grill-review` before merging.
 - Renaming PRs (identifier renames, domain term changes, API field renames): use `naming-review` first to validate the new names, then `commit-pr-writer` to capture the rename rationale in the PR description.
