@@ -1,0 +1,3 @@
+display_name: Implementation Plan
+short_description: Build scoped coding plans with risks, validation, and incremental steps.
+default_prompt: Use the implementation-plan skill to inspect the project and create a practical implementation plan.

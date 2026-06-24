@@ -1,0 +1,13 @@
+{
+  "name": "ai-agent-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portable skills repository for AI coding agents such as Codex and Claude.",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/validate-skills.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

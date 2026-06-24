@@ -1,0 +1,3 @@
+display_name: Code Review
+short_description: Review diffs and worktrees for bugs, regressions, and missing tests.
+default_prompt: Use the code-review skill to review this change and lead with findings.
