@@ -17,6 +17,7 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `implementation-plan` for plans and validation strategy.
 - `critical-thinking` before agreeing to risky, overbuilt, incoherent, or anti-patterned designs.
 - `product-competitive-thinking` before product-facing work, MVP scope, UX, onboarding, pricing, or competitor-driven requests.
+- `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
 - `smriti-shruti` for context triage and token reduction.
 - `oppenheimer-simplifier` for simplifying complex problems before solving.
 - `micro-agent-orchestrator` for splitting implementation across writer skills.
@@ -37,3 +38,5 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 It is acceptable to say no to the user when the requested design is an anti-pattern. Be direct, give evidence, and propose the smallest safer alternative.
 
 For startup product decisions, also evaluate user pain, product bet, competitive alternatives, differentiation, and MVP scope before recommending implementation.
+
+When writing product communication, be respectful but firm. Do not agree automatically; acknowledge the goal, state the concern, and offer the next useful step.

@@ -59,6 +59,7 @@ For proactive agent selection, set `policy.allow_implicit_invocation: true` in `
 - `naming-review`: improve identifiers and domain terminology.
 - `oppenheimer-simplifier`: simplify complex engineering problems before solving.
 - `product-competitive-thinking`: apply product manager and competitor lenses before building.
+- `product-communication`: write respectful but firm product and stakeholder messages.
 - `service-writer`: implement service-layer business workflows.
 - `smriti-shruti`: triage context and reduce token load.
 - `test-design-review`: design and stress-review tests.

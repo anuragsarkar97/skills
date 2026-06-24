@@ -1,0 +1,7 @@
+interface:
+  display_name: "Product Communication"
+  short_description: "Write firm kind product messages"
+  default_prompt: "Use $product-communication to draft or send respectful, firm product communication."
+
+policy:
+  allow_implicit_invocation: true

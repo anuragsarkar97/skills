@@ -20,6 +20,8 @@ Use `critical-thinking` before agreeing to a design that looks unsafe, speculati
 
 Use `product-competitive-thinking` before product-facing work. Evaluate the target user, product bet, competitor alternatives, differentiation, MVP scope, and learning metric before implementing.
 
+Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages. Be respectful but firm: acknowledge the goal, state disagreement clearly when needed, and propose the next useful step.
+
 ## Metadata
 
 Use `agents/openai.yaml` for:
