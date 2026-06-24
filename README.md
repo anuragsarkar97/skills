@@ -12,6 +12,14 @@ cd skills
 npm test
 ```
 
+Run without cloning after the package is published:
+
+```bash
+npx @anuragsarkar/ai-agent-skills list
+npx @anuragsarkar/ai-agent-skills install --agent codex --write
+npx @anuragsarkar/ai-agent-skills install --agent claude --write
+```
+
 Install every skill into Codex:
 
 ```bash
@@ -25,6 +33,38 @@ npm run skills:install -- --agent claude --write
 ```
 
 By default, install commands copy skills into the agent skill directory. Use `--mode symlink` if you want installed skills to track this repository directly.
+
+## NPM Package
+
+This repository is prepared as an npm CLI package.
+
+Local CLI usage:
+
+```bash
+node bin/ai-agent-skills.mjs list
+node bin/ai-agent-skills.mjs check
+node bin/ai-agent-skills.mjs install --agent codex --write
+```
+
+Published package usage:
+
+```bash
+npx @anuragsarkar/ai-agent-skills list
+npx @anuragsarkar/ai-agent-skills check
+npx @anuragsarkar/ai-agent-skills install --agent codex --write
+npx @anuragsarkar/ai-agent-skills install --agent claude --mode symlink --write
+```
+
+Publish flow:
+
+```bash
+npm test
+npm run skills:catalog
+npm run skills:graph
+npm publish --access public
+```
+
+The package allowlist ships `skills/`, `scripts/`, `examples/`, `templates/`, `agents/`, root agent instructions, and the CLI in `bin/`.
 
 ## Repository Layout
 
@@ -156,6 +196,38 @@ npm run skills:install -- --target /path/to/agent/skills --write
 
 Use `--force` to replace existing installed skill folders. Use `--remove-stale` only for directories managed by this repository.
 
+## Claude Packages
+
+Create Claude-ready ZIP bundles and a marketplace-style manifest:
+
+```bash
+npm run skills:package-claude
+```
+
+Output:
+
+```text
+dist/claude/
+├── agent-skill-router.zip
+├── critical-thinking.zip
+├── ...
+└── marketplace-manifest.json
+```
+
+Package only selected skills:
+
+```bash
+npm run skills:package-claude -- --skills agent-skill-router,critical-thinking
+```
+
+Generate only the manifest:
+
+```bash
+npm run skills:marketplace-manifest
+```
+
+The ZIP files contain one skill folder each, with `SKILL.md`, `agents/`, and any optional `references/`, `scripts/`, or `assets/` included. Treat `dist/claude/marketplace-manifest.json` as a marketplace-readiness artifact; actual Claude marketplace submission requirements may vary by Claude surface.
+
 ## Validate
 
 ```bash
@@ -185,6 +257,9 @@ npm run skills:intake -- git@github.com:org/skills.git#skills/the-skill
 npm run skills:install -- --target /tmp/agent-skills --all
 npm run skills:import -- git@github.com:org/skills.git#skills/the-skill
 npm run skills:import -- ../external-skill-folder --path /tmp/skills
+npm run skills:list
+npm run skills:marketplace-manifest
+npm run skills:package-claude
 npm run skills:catalog
 ```
 
@@ -197,6 +272,9 @@ npm run skills:catalog
 - `skills:import` imports a single skill from a local path or Git URL plus optional `#subdir`.
 - `skills:intake` copies an external skill into `.skill-intake/`, validates it there, and can accept it after review.
 - `skills:install` dry-runs installation into an agent skill directory by default; pass `--write` to actually copy or symlink.
+- `skills:list` lists skills from the local catalog source.
+- `skills:marketplace-manifest` writes `dist/claude/marketplace-manifest.json`.
+- `skills:package-claude` creates Claude-ready ZIP bundles in `dist/claude/`.
 - `skills:catalog` writes `skills/catalog.json` for agent discovery, audits, and external tooling.
 
 ## Create A Skill

@@ -1,9 +1,12 @@
 {
-  "name": "ai-agent-skills",
+  "name": "@anuragsarkar/ai-agent-skills",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "Portable skills repository for AI coding agents such as Codex and Claude.",
   "type": "module",
+  "bin": {
+    "ai-agent-skills": "./bin/ai-agent-skills.mjs"
+  },
   "scripts": {
     "test": "npm run skills:check",
     "skills:audit": "node scripts/audit-skills.mjs",
@@ -15,7 +18,33 @@
     "skills:graph": "node scripts/generate-graph.mjs",
     "skills:import": "node scripts/import-skill.mjs",
     "skills:install": "node scripts/install-skills.mjs",
-    "skills:intake": "node scripts/intake-skill.mjs"
+    "skills:intake": "node scripts/intake-skill.mjs",
+    "skills:list": "node scripts/list-skills.mjs",
+    "skills:marketplace-manifest": "node scripts/generate-marketplace-manifest.mjs",
+    "skills:package-claude": "node scripts/package-claude.mjs"
+  },
+  "files": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "agents/",
+    "bin/",
+    "examples/",
+    "scripts/",
+    "skills/",
+    "templates/"
+  ],
+  "keywords": [
+    "ai",
+    "agents",
+    "codex",
+    "claude",
+    "skills"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/anuragsarkar97/skills.git"
   },
   "engines": {
     "node": ">=18"
