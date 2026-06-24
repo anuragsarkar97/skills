@@ -1,124 +1,60 @@
 # AI Agent Skills
 
-A portable skills repository for AI coding agents such as Codex and Claude.
+Portable, installable skills for AI coding agents such as Codex and Claude.
 
-Skills live under `skills/<skill-name>/` and use a `SKILL.md` file as the canonical instruction source. Agent-specific files can sit beside it under `agents/` when an agent needs metadata or install notes.
+This repository gives agents reusable operating modes for review, planning, implementation, testing, product thinking, communication, reliability, observability, and stack-specific engineering judgment. Skills are intentionally small. Deeper guidance lives in curated knowledge packs that agents load only when needed.
 
-## Quick Start
+## Install
 
-```bash
-git clone git@github.com:anuragsarkar97/skills.git
-cd skills
-npm test
-```
-
-Run without cloning after the package is published:
+Install everything into Codex:
 
 ```bash
-npx @anuragsarkar97/ai-agent-skills list
-npx @anuragsarkar97/ai-agent-skills install --agent codex --write
-npx @anuragsarkar97/ai-agent-skills install --agent claude --write
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --write --force
 ```
 
-Install every skill into Codex:
+Install everything into Claude:
 
 ```bash
-npm run skills:install -- --agent codex --write
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent claude --write --force
 ```
 
-Install every skill into Claude:
+That single command copies all skills plus shared `_knowledge/` into the agent skill directory.
 
-```bash
-npm run skills:install -- --agent claude --write
-```
+## Use
 
-By default, install commands copy skills into the agent skill directory. Use `--mode symlink` if you want installed skills to track this repository directly.
+After installing, ask the agent normally. The router skill helps the agent select the right skill without you naming it every time.
 
-## NPM Package
-
-This repository is prepared as an npm CLI package.
-
-Local CLI usage:
-
-```bash
-node bin/ai-agent-skills.mjs list
-node bin/ai-agent-skills.mjs check
-node bin/ai-agent-skills.mjs install --agent codex --write
-```
-
-Published package usage:
-
-```bash
-npx @anuragsarkar97/ai-agent-skills list
-npx @anuragsarkar97/ai-agent-skills check
-npx @anuragsarkar97/ai-agent-skills install --agent codex --write
-npx @anuragsarkar97/ai-agent-skills install --agent claude --mode symlink --write
-```
-
-Publish flow:
-
-```bash
-npm run skills:package-all
-npm publish --access public
-```
-
-The package allowlist ships `skills/`, `knowledge/`, `scripts/`, `examples/`, `templates/`, `agents/`, root agent instructions, and the CLI in `bin/`.
-
-## Repository Layout
+Examples:
 
 ```text
-.
-├── agents/                 # Agent-specific usage notes
-├── AGENTS.md               # Root instructions for Codex-style agents
-├── CLAUDE.md               # Root instructions for Claude-style agents
-├── scripts/                # Local maintenance and validation scripts
-├── knowledge/              # Shared curated references loaded only when needed
-├── skills/                 # Reusable skills
-│   └── <skill-name>/
-│       ├── SKILL.md        # Required skill instructions
-│       ├── agents/         # Optional agent metadata
-│       ├── references/     # Optional docs loaded only when needed
-│       ├── scripts/        # Optional deterministic helpers
-│       └── assets/         # Optional reusable output assets
-└── templates/              # Templates for new skills
+Review this API design for production readiness.
 ```
 
-## Skill Contract
+```text
+Grill this migration before I merge it.
+```
 
-Every skill must include:
+```text
+Draft a firm but respectful Slack message explaining why we should narrow this scope.
+```
 
-- A directory name using lowercase letters, numbers, and hyphens.
-- A `SKILL.md` file.
-- YAML frontmatter with only `name` and `description`.
-- A `name` value that exactly matches the directory name.
-- A description that says what the skill does and when an agent should use it.
+```text
+Design the tables, indexes, constraints, and migration plan for organization invitations.
+```
 
-Optional resources:
+```text
+Production checkout is returning 500s after the last deploy. Triage whether we should rollback or hotfix.
+```
 
-- `agents/openai.yaml` for Codex/OpenAI-facing metadata.
-- `agents/claude.md` for Claude-facing notes when needed.
-- `references/` for detailed documentation.
-- `scripts/` for repeatable commands or deterministic transformations.
-- `assets/` for templates, images, fixtures, or other reusable materials.
+For explicit testing, name a skill:
 
-Shared curated knowledge lives in `knowledge/`. Installers copy it beside installed skills as `_knowledge/`, so skills can load deeper references without bloating every `SKILL.md`.
+```text
+Use the critical-thinking skill to challenge this design before we implement it.
+```
 
-For proactive agent selection, set `policy.allow_implicit_invocation: true` in `agents/openai.yaml` and keep the `description` trigger precise.
+## What You Get
 
-## What Each Skill Contains
-
-Each skill folder can contain:
-
-- `SKILL.md`: the canonical trigger description and agent instructions.
-- `agents/openai.yaml`: OpenAI/Codex-facing metadata, default prompt, and implicit invocation policy.
-- `agents/claude.md`: Claude-specific usage notes.
-- `references/`: optional deeper docs loaded only when needed.
-- `scripts/`: optional deterministic helper scripts.
-- `assets/`: optional templates, fixtures, or reusable output assets.
-
-## Skill Catalog
-
-| Category | Skills |
+| Area | Skills |
 |---|---|
 | Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
 | Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
@@ -127,203 +63,201 @@ Each skill folder can contain:
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
 | Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
-| Context and skill maintenance | `smriti-shruti`, `self-amending-skill` |
+| Context and maintenance | `smriti-shruti`, `self-amending-skill` |
 
-The generated machine-readable catalog is in `skills/catalog.json`, and the generated skill relationship graph is in `skills/graph.json` plus `skills/graph.mmd`.
+## Skill Highlights
 
-## Shared Knowledge
+- `agent-skill-router`: chooses and combines skills proactively.
+- `critical-thinking`: challenges weak designs and says no to anti-patterns.
+- `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
+- `product-communication`: writes respectful but firm Slack, email, issue, PR, and stakeholder messages.
+- `database-schema-design`: designs tables, entities, migrations, indexes, constraints, and retention.
+- `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
+- `change-grill-review`: performs adversarial review for risky production changes.
+- `incident-response`: triages outages, rollback/hotfix decisions, severity, handoff, and post-mortems.
+- `observability-design`: designs logs, metrics, traces, SLOs, dashboards, and alerts.
+- `service-writer`, `api-writer`, `utility-writer`, `test-writer`: keep implementation work split by responsibility.
+- `smriti-shruti`: reduces noisy context while preserving the facts needed for the current task.
+- `self-amending-skill`: improves the skill system safely from real usage evidence.
 
-The repository includes curated references that agents load only when useful:
+## Knowledge Packs
 
-- `architecture/principles.md` for SOLID, YAGNI, dependency direction, and boundaries.
-- `api/api-review.md` for contracts, auth behavior, pagination, idempotency, and errors.
-- `database/schema-design.md` for entities, migrations, constraints, indexes, and retention.
-- `communication/product-communication.md` for firm but kind Slack, email, feedback, conflict, escalation, and decision messages.
-- `incident-response/incident-response.md` for severity, roles, rollback/hotfix decisions, live incident docs, handoff, and post-mortems.
-- `observability/observability-design.md` for golden signals, USE/RED, SLI/SLOs, metrics, logs, traces, and alerting.
-- `golang/go-engineering.md` for Go services, APIs, utilities, concurrency, contexts, errors, and tests.
-- `react/react-engineering.md` for React components, state, effects, frontend UX states, accessibility, and tests.
-- `python/python-scripting.md` for Python automation, CLIs, filesystem work, subprocesses, logging, and script tests.
-- `kubernetes/kubernetes-operations.md` for workloads, probes, resources, rollouts, RBAC, secrets, and cluster operations.
-- `cloud/aws-azure-architecture.md` for AWS/Azure managed services, identity, networking, EKS/AKS, reliability, and cloud observability.
-- `product/startup-pm.md` for startup product, competitor, and MVP decisions.
-- `security/security-review.md` for auth, permissions, secrets, PII, webhooks, uploads, and tenant isolation.
-- `testing/testing-strategy.md` for test level selection, coverage, and false-confidence checks.
+Installed skills include shared `_knowledge/` references. Agents load these only when the task calls for them, which keeps the active context lean.
 
-Installed skills reference these files through `_knowledge/`. Keep shared references concise, sourced, and reviewable. Do not paste large internet content directly into skills.
+| Knowledge Pack | Use For |
+|---|---|
+| `architecture/principles.md` | SOLID, YAGNI, dependency direction, service boundaries |
+| `api/api-review.md` | API contracts, auth, pagination, idempotency, errors |
+| `database/schema-design.md` | entities, constraints, indexes, migrations, retention |
+| `communication/product-communication.md` | Slack, email, feedback, conflict, decision messages |
+| `incident-response/incident-response.md` | severity, incident roles, rollback/hotfix, post-mortems |
+| `observability/observability-design.md` | golden signals, USE/RED, SLOs, logs, metrics, traces, alerts |
+| `golang/go-engineering.md` | Go services, APIs, contexts, errors, concurrency, tests |
+| `react/react-engineering.md` | React components, hooks, state, effects, accessibility, tests |
+| `python/python-scripting.md` | Python CLIs, filesystem work, subprocesses, logging, script tests |
+| `kubernetes/kubernetes-operations.md` | workloads, probes, resources, rollouts, RBAC, secrets |
+| `cloud/aws-azure-architecture.md` | AWS, Azure, EKS, AKS, managed services, identity, networking |
+| `product/startup-pm.md` | MVP scope, startup product bets, competitors, learning metrics |
+| `security/security-review.md` | auth, permissions, secrets, PII, tenant isolation, webhooks |
+| `testing/testing-strategy.md` | test levels, contract tests, regression coverage, false confidence |
 
-## Skill List
+## Common Commands
 
-- `agent-skill-router`: choose and combine skills proactively.
-- `api-review`: review API contracts and compatibility.
-- `api-writer`: implement API handlers, validation, response shaping, and endpoint wiring.
-- `change-grill-review`: adversarial review for hidden production risks.
-- `code-documentation`: create and review practical code docs.
-- `code-review`: general code review focused on bugs and regressions.
-- `commit-pr-writer`: write commit messages and PR text.
-- `critical-thinking`: challenge weak designs before agreeing and say no to anti-patterns.
-- `database-schema-design`: design and review entities, tables, migrations, indexes, and constraints.
-- `design-principles-review`: check SOLID, YAGNI, abstractions, and boundaries.
-- `implementation-plan`: plan scoped software changes and validation.
-- `incident-response`: triage outages, production regressions, rollback/hotfix choices, and post-mortems.
-- `micro-agent-orchestrator`: split implementation work across focused writer skills.
-- `naming-review`: improve identifiers and domain terminology.
-- `observability-design`: design logs, metrics, traces, SLOs, dashboards, and alerts.
-- `oppenheimer-simplifier`: simplify complex engineering problems before solving.
-- `product-communication`: write respectful but firm product and stakeholder messages.
-- `product-competitive-thinking`: apply product manager and competitor lenses before building.
-- `self-amending-skill`: safely improve skills and routing from real usage evidence.
-- `service-writer`: implement service-layer business workflows.
-- `smriti-shruti`: triage context and reduce token load.
-- `test-design-review`: design and stress-review tests.
-- `test-writer`: implement targeted tests for behavior changes.
-- `utility-writer`: implement small reusable utility code.
-
-## Install Skills
-
-Install commands dry-run unless `--write` is passed.
-
-Dry-run install all skills into Codex:
+List available skills:
 
 ```bash
-npm run skills:install -- --agent codex
+npx -y @anuragsarkar97/ai-agent-skills@latest list
 ```
 
-Install all skills into Codex:
+Run package validation:
 
 ```bash
-npm run skills:install -- --agent codex --write
-```
-
-Install all skills into Claude:
-
-```bash
-npm run skills:install -- --agent claude --write
+npx -y @anuragsarkar97/ai-agent-skills@latest check
 ```
 
 Install selected skills:
 
 ```bash
-npm run skills:install -- --agent codex --skills agent-skill-router,critical-thinking --write
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --skills agent-skill-router,critical-thinking --write --force
 ```
 
-Install as symlinks instead of copies:
+Install as symlinks from a local clone:
 
 ```bash
-npm run skills:install -- --agent codex --skills agent-skill-router --mode symlink --write
+npm run skills:install -- --agent codex --mode symlink --write --force
 ```
 
-Install into a custom directory:
+Install into a custom target:
 
 ```bash
-npm run skills:install -- --target /path/to/agent/skills --write
+npx -y @anuragsarkar97/ai-agent-skills@latest install --target /path/to/agent/skills --write --force
 ```
 
-Use `--force` to replace existing installed skill folders. Use `--remove-stale` only for directories managed by this repository.
+## How It Works
 
-Install commands also copy shared knowledge into `_knowledge/` beside the installed skills.
-
-## Claude Packages
-
-Create Claude-ready ZIP bundles and a marketplace-style manifest:
-
-```bash
-npm run skills:package-claude
-```
-
-Output:
+Each skill is a folder under `skills/<skill-name>/` with a canonical `SKILL.md`.
 
 ```text
-dist/claude/
-├── agent-skill-router.zip
-├── critical-thinking.zip
-├── ...
-└── marketplace-manifest.json
+skills/<skill-name>/
+├── SKILL.md
+├── agents/
+│   ├── openai.yaml
+│   └── claude.md
+├── references/
+├── scripts/
+└── assets/
 ```
 
-Package only selected skills:
+The `SKILL.md` file defines the trigger, workflow, checks, and output shape. Agent-specific metadata lives under `agents/`. Detailed reusable guidance lives in shared `knowledge/` and is installed as `_knowledge/` beside the skills.
+
+## Local Development
+
+Clone and validate:
 
 ```bash
-npm run skills:package-claude -- --skills agent-skill-router,critical-thinking
-```
-
-Generate only the manifest:
-
-```bash
-npm run skills:marketplace-manifest
-```
-
-The ZIP files contain one skill folder each, with `SKILL.md`, `agents/`, and any optional `references/`, `scripts/`, or `assets/` included. Treat `dist/claude/marketplace-manifest.json` as a marketplace-readiness artifact; actual Claude marketplace submission requirements may vary by Claude surface.
-
-## Validate
-
-```bash
+git clone git@github.com:anuragsarkar97/skills.git
+cd skills
 npm test
-npm run skills:check
-npm run skills:audit
-npm run skills:examples
-npm run skills:evaluate
-npm run skills:verify-sources
 ```
 
-The validator checks required frontmatter, naming rules, and basic agent metadata shape without external dependencies.
-The audit checks routing, metadata quality, implicit invocation, stale catalogs, and broad skill hygiene.
-The example harness checks that every skill has at least one implicit prompt example.
-The evaluation script checks examples and shared knowledge hooks for high-impact skills.
-The source verifier checks that curated knowledge files have source notes and source URLs. Use `-- --online` for live URL checks when network is available.
-`skills:check` runs validation, audit, and prompt examples as the standard workflow gate.
-
-## Workflow Scripts
-
-```bash
-npm test
-npm run skills:audit
-npm run skills:create -- my-skill --description "Use when..."
-npm run skills:duplicates
-npm run skills:examples
-npm run skills:evaluate
-npm run skills:graph
-npm run skills:import -- ../external-skill-folder
-npm run skills:index-project
-npm run skills:intake -- ../external-skill-folder
-npm run skills:intake -- git@github.com:org/skills.git#skills/the-skill
-npm run skills:install -- --target /tmp/agent-skills --all
-npm run skills:import -- git@github.com:org/skills.git#skills/the-skill
-npm run skills:import -- ../external-skill-folder --path /tmp/skills
-npm run skills:list
-npm run skills:marketplace-manifest
-npm run skills:package-all
-npm run skills:package-claude
-npm run skills:refresh-knowledge
-npm run skills:verify-sources
-npm run skills:catalog
-```
-
-- `skills:audit` checks metadata quality, router coverage, catalog freshness, and common skill quality issues.
-- `skills:check` runs the default validation, audit, and prompt-example gate.
-- `skills:create` creates a local skill scaffold with OpenAI and Claude metadata.
-- `skills:duplicates` runs a Python overlap audit for likely duplicate skills.
-- `skills:examples` validates implicit prompt examples in `examples/skill-prompts.json`.
-- `skills:evaluate` checks prompt coverage and shared knowledge hooks.
-- `skills:graph` writes `skills/graph.json` and `skills/graph.mmd` from skill references.
-- `skills:import` imports a single skill from a local path or Git URL plus optional `#subdir`.
-- `skills:index-project` writes a compact project context summary into `.skill-context/project-context.json`.
-- `skills:intake` copies an external skill into `.skill-intake/`, validates it there, and can accept it after review.
-- `skills:install` dry-runs installation into an agent skill directory by default; pass `--write` to actually copy or symlink.
-- `skills:list` lists skills from the local catalog source.
-- `skills:marketplace-manifest` writes `dist/claude/marketplace-manifest.json`.
-- `skills:package-all` runs the full local packaging flow: checks, catalog, graph, Claude bundles, and npm pack dry-run.
-- `skills:package-claude` creates Claude-ready ZIP bundles in `dist/claude/`.
-- `skills:refresh-knowledge` writes a review queue for refreshing curated references from sources.
-- `skills:verify-sources` verifies source metadata in shared knowledge references.
-- `skills:catalog` writes `skills/catalog.json` for agent discovery, audits, and external tooling.
-
-## Create A Skill
+Create a skill:
 
 ```bash
 npm run skills:create -- my-new-skill --description "Use when an AI agent needs to..."
 ```
 
-Then edit `skills/my-new-skill/SKILL.md` with the concrete workflow, checks, and output shape.
+Then edit `skills/my-new-skill/SKILL.md` with concrete triggers, workflow, checks, and output shape.
 
-Keep `SKILL.md` concise. Move bulky examples, schemas, policies, and framework-specific details into `references/` and mention when to read them.
+## Build And Package
+
+One command runs the full local packaging flow:
+
+```bash
+npm run skills:package-all
+```
+
+It runs validation, regenerates the catalog and graph, packages Claude bundles, and performs an npm pack dry run.
+
+Create Claude-ready ZIP bundles:
+
+```bash
+npm run skills:package-claude
+```
+
+Create selected Claude bundles:
+
+```bash
+npm run skills:package-claude -- --skills agent-skill-router,critical-thinking
+```
+
+Create an npm tarball locally:
+
+```bash
+npm run skills:package-all -- --pack-tarball
+```
+
+Publish:
+
+```bash
+npm run skills:package-all
+npm publish --access public
+```
+
+## Maintenance Scripts
+
+```bash
+npm run skills:audit
+npm run skills:catalog
+npm run skills:check
+npm run skills:duplicates
+npm run skills:evaluate
+npm run skills:examples
+npm run skills:graph
+npm run skills:index-project
+npm run skills:marketplace-manifest
+npm run skills:refresh-knowledge
+npm run skills:verify-sources
+```
+
+- `skills:check` runs validation, audit, prompt examples, evaluation hooks, and source checks.
+- `skills:catalog` writes `skills/catalog.json`.
+- `skills:graph` writes `skills/graph.json` and `skills/graph.mmd`.
+- `skills:evaluate` checks prompt coverage and shared knowledge hooks.
+- `skills:verify-sources` verifies source metadata in knowledge references.
+- `skills:refresh-knowledge` writes a review queue for source refresh work.
+- `skills:index-project` writes `.skill-context/project-context.json`.
+
+## Skill Contract
+
+Every skill must include:
+
+- A lowercase hyphenated directory name.
+- A `SKILL.md` file.
+- YAML frontmatter with only `name` and `description`.
+- A `name` value that matches the directory.
+- A description that clearly says what the skill does and when an agent should use it.
+
+Keep `SKILL.md` concise. Move bulky examples, schemas, policies, framework-specific details, and source-backed guidance into shared knowledge references.
+
+## Repository Layout
+
+```text
+.
+├── agents/                 # Agent-specific usage notes
+├── AGENTS.md               # Root instructions for Codex-style agents
+├── CLAUDE.md               # Root instructions for Claude-style agents
+├── bin/                    # npm CLI entrypoint
+├── examples/               # Prompt examples for validation
+├── knowledge/              # Shared curated references
+├── scripts/                # Maintenance, packaging, and validation scripts
+├── skills/                 # Reusable skills
+└── templates/              # Skill templates
+```
+
+## Contribution Notes
+
+- Prefer small, focused skills over broad instruction dumps.
+- Add or update prompt examples when adding a skill.
+- Add source notes to every shared knowledge reference.
+- Run `npm run skills:package-all` before publishing or opening a large skill-system change.
+- Regenerate catalog and graph artifacts when inventory, metadata, or routing changes.
