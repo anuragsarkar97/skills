@@ -20,5 +20,6 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.
 - Use `incident-response` for production degradation, outages, rollback/hotfix decisions, on-call triage, and post-mortems.
 - Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
+- For Go, React, Python scripting, Kubernetes, AWS, and Azure work, use the matching shared knowledge reference when the stack affects the task.
 - Use `self-amending-skill` when real usage shows that skills, routing, validation, or supporting scripts should be improved.
 - For skill-system changes, prefer `npm run skills:check`; regenerate catalog and graph artifacts when inventory, metadata, or references change.

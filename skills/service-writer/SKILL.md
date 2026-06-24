@@ -7,6 +7,8 @@ description: Write focused service-layer and application-layer code for business
 
 Use this skill for code that owns application behavior. Service code should express business workflow and coordinate collaborators without becoming a dumping ground.
 
+For Go services, read `../_knowledge/golang/go-engineering.md` when installed or `../../knowledge/golang/go-engineering.md` in this repository. For services deployed on AWS, Azure, or Kubernetes, also read the relevant cloud or Kubernetes shared reference when deployment behavior affects the implementation.
+
 ## Workflow
 
 1. Inspect existing service patterns, dependency injection, transaction handling, error style, and naming.

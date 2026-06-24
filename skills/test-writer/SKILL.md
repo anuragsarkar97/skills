@@ -7,6 +7,8 @@ description: Write targeted tests for changed behavior across unit, integration,
 
 Use this skill to add tests that protect real behavior. Tests should be scoped, deterministic, and capable of failing for the defect they are meant to catch.
 
+For Go tests, read `../_knowledge/golang/go-engineering.md`. For React tests, read `../_knowledge/react/react-engineering.md`. For Python script tests, read `../_knowledge/python/python-scripting.md`. In this repository, use the equivalent `../../knowledge/` paths.
+
 ## Workflow
 
 1. Identify the behavior, bug, contract, or invariant the test must protect.

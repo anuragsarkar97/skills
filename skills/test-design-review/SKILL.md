@@ -9,6 +9,8 @@ Use this skill whenever behavior changes need protection or existing tests need 
 
 For deeper test-level selection and coverage guidance, read `../_knowledge/testing/testing-strategy.md` when installed or `../../knowledge/testing/testing-strategy.md` in this repository.
 
+For Go, React, or Python script tests, also read the matching shared stack reference from `../_knowledge/` so test strategy follows local ecosystem conventions.
+
 ## Workflow
 
 1. Identify the behavior, invariant, or contract under test.

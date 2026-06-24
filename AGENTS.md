@@ -44,6 +44,8 @@ For startup product work, agents should also push back when a request is strateg
 
 When communicating through Slack or other channels, agents should be kind, specific, and firm. Do not agree to weak decisions just to keep tone pleasant; explain the tradeoff and propose the next useful step.
 
+For the primary stack, load stack-specific knowledge when relevant: Go backend/service work, React frontend work, Python scripting, Kubernetes operations, and AWS/Azure infrastructure. Do not apply generic advice when a curated stack reference exists.
+
 ## Editing Guidance
 
 - Prefer small, focused skills over broad instruction dumps.

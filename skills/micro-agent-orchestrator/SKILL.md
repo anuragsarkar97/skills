@@ -7,6 +7,8 @@ description: Coordinate focused implementation skills for writing service code, 
 
 Use this skill when implementation work spans multiple layers or would benefit from focused passes. Select the smallest useful writer skill instead of letting one broad pass touch everything.
 
+For Go, React, Python scripting, Kubernetes, AWS, or Azure work, load the matching shared knowledge reference before splitting the work so the selected writer and review skills inherit stack-specific constraints.
+
 ## Routing
 
 - Use `service-writer` for business logic, application services, orchestration, transactions, and domain workflows.

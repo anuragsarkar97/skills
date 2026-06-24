@@ -7,7 +7,7 @@ description: Create pragmatic implementation plans for software changes, refacto
 
 Create a plan only after inspecting available project context. Keep the plan tied to files, systems, and validation commands that actually exist.
 
-For architecture-level changes, read `../_knowledge/architecture/principles.md`. For changes touching auth, data migrations, or production data paths, also read `../_knowledge/security/security-review.md`.
+For architecture-level changes, read `../_knowledge/architecture/principles.md`. For changes touching auth, data migrations, or production data paths, also read `../_knowledge/security/security-review.md`. For Go, React, Python scripting, Kubernetes, AWS, or Azure changes, load the matching stack reference before proposing implementation and validation steps.
 
 ## Workflow
 

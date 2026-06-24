@@ -7,6 +7,8 @@ description: Write API boundary code for route handlers, controllers, request va
 
 Use this skill for transport and contract boundary code. API code should translate between the outside world and application services without hiding business workflows.
 
+For Go API handlers or clients, read `../_knowledge/golang/go-engineering.md` when installed or `../../knowledge/golang/go-engineering.md` in this repository. For frontend-facing React API integration, read `../_knowledge/react/react-engineering.md` when response state, loading, errors, or accessibility are part of the task.
+
 ## Workflow
 
 1. Inspect existing route/controller style, validation libraries, auth middleware, error mapping, and response conventions.

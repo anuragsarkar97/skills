@@ -7,6 +7,8 @@ description: Write small reusable utility code such as pure helpers, parsers, fo
 
 Use this skill for focused helper code. Utilities should be boring, testable, and hard to misuse.
 
+For Go helpers, read `../_knowledge/golang/go-engineering.md`. For Python scripts or automation helpers, read `../_knowledge/python/python-scripting.md`. In this repository, use `../../knowledge/golang/go-engineering.md` or `../../knowledge/python/python-scripting.md`.
+
 ## Workflow
 
 1. Inspect existing helper modules before creating a new utility.

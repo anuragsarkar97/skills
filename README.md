@@ -144,6 +144,11 @@ The repository includes curated references that agents load only when useful:
 - `communication/product-communication.md` for firm but kind Slack, email, feedback, conflict, escalation, and decision messages.
 - `incident-response/incident-response.md` for severity, roles, rollback/hotfix decisions, live incident docs, handoff, and post-mortems.
 - `observability/observability-design.md` for golden signals, USE/RED, SLI/SLOs, metrics, logs, traces, and alerting.
+- `golang/go-engineering.md` for Go services, APIs, utilities, concurrency, contexts, errors, and tests.
+- `react/react-engineering.md` for React components, state, effects, frontend UX states, accessibility, and tests.
+- `python/python-scripting.md` for Python automation, CLIs, filesystem work, subprocesses, logging, and script tests.
+- `kubernetes/kubernetes-operations.md` for workloads, probes, resources, rollouts, RBAC, secrets, and cluster operations.
+- `cloud/aws-azure-architecture.md` for AWS/Azure managed services, identity, networking, EKS/AKS, reliability, and cloud observability.
 - `product/startup-pm.md` for startup product, competitor, and MVP decisions.
 - `security/security-review.md` for auth, permissions, secrets, PII, webhooks, uploads, and tenant isolation.
 - `testing/testing-strategy.md` for test level selection, coverage, and false-confidence checks.

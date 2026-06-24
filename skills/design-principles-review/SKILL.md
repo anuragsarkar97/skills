@@ -9,6 +9,8 @@ Use this skill when design choices matter more than line-level correctness. Appl
 
 For deeper architecture, SOLID, YAGNI, and boundary guidance, read `../_knowledge/architecture/principles.md` when installed or `../../knowledge/architecture/principles.md` in this repository.
 
+For Go, React, Python scripting, Kubernetes, AWS, or Azure design choices, also load the matching shared stack reference from `../_knowledge/` before judging whether the design fits the stack.
+
 ## Workflow
 
 1. Identify the current force: feature pressure, change frequency, domain uncertainty, performance, team ownership, or production risk.

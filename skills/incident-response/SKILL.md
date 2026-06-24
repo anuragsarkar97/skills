@@ -9,6 +9,8 @@ Use this skill when production is broken and time is short. The goal is to reduc
 
 For deeper incident response guidance, read `../_knowledge/incident-response/incident-response.md` when installed or `../../knowledge/incident-response/incident-response.md` in this repository. For auth or permissions incidents, read `../_knowledge/security/security-review.md`. For stakeholder and customer status communication, read `../_knowledge/communication/product-communication.md`.
 
+For Kubernetes incidents, read `../_knowledge/kubernetes/kubernetes-operations.md`. For AWS or Azure incidents, read `../_knowledge/cloud/aws-azure-architecture.md`. For Go service incidents, read `../_knowledge/golang/go-engineering.md` when context cancellation, goroutines, HTTP clients, or error handling may be involved.
+
 ## Workflow
 
 1. **Establish current state.** What is broken, since when, which users or tenants are affected, and what changed recently (deploy, config, dependency, traffic spike).

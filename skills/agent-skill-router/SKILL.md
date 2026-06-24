@@ -46,6 +46,11 @@ When a task needs deeper context, load only the relevant shared reference. In in
 - Firm but kind Slack, email, feedback, conflict, escalation, or decision communication: read `../_knowledge/communication/product-communication.md`.
 - Production outage, rollback/hotfix choice, severity, post-mortem, or on-call handoff: read `../_knowledge/incident-response/incident-response.md`.
 - Logs, metrics, traces, SLOs, alert thresholds, or telemetry gaps: read `../_knowledge/observability/observability-design.md`.
+- Go services, APIs, workers, utilities, tests, goroutines, or context handling: read `../_knowledge/golang/go-engineering.md`.
+- React components, hooks, state, effects, accessibility, frontend API integration, or frontend tests: read `../_knowledge/react/react-engineering.md`.
+- Python automation, repo tooling, data transforms, CLIs, subprocesses, or maintenance scripts: read `../_knowledge/python/python-scripting.md`.
+- Kubernetes workloads, probes, resources, rollouts, RBAC, secrets, or cluster operations: read `../_knowledge/kubernetes/kubernetes-operations.md`.
+- AWS or Azure architecture, managed services, identity, networking, EKS, AKS, reliability, or cloud observability: read `../_knowledge/cloud/aws-azure-architecture.md`.
 
 Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
 
@@ -62,6 +67,10 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
 - Production incident: use `incident-response` to triage; add `product-communication` for status updates to stakeholders; use `implementation-plan` for the follow-up fix.
 - New service implementation: use `micro-agent-orchestrator` with `observability-design` to ensure telemetry is built in from the start alongside `service-writer` and `test-writer`.
+- Go backend implementation: use `service-writer`, `api-writer`, or `utility-writer` with `../_knowledge/golang/go-engineering.md`; add `test-writer` for table-driven and boundary tests.
+- React frontend implementation: use `implementation-plan` or `code-review` with `../_knowledge/react/react-engineering.md`; add `test-design-review` for user-visible behavior tests.
+- Python automation: use `utility-writer` with `../_knowledge/python/python-scripting.md`; add `test-writer` for parsing, filesystem, and subprocess boundaries.
+- AWS, Azure, or Kubernetes infrastructure: use `implementation-plan`, `observability-design`, and `incident-response` as appropriate; load the cloud and Kubernetes knowledge references before proposing rollout or recovery steps.
 - Post-incident hardening: use `observability-design` to fill the telemetry gaps revealed by the incident, then `change-grill-review` before the fix ships.
 - Risky production changes: use `change-grill-review` with the relevant domain skill.
 - Security-sensitive schema changes (auth tables, PII columns, tenant isolation fields): use `database-schema-design` and `api-review`; load `../_knowledge/security/security-review.md` and use `change-grill-review` before merging.

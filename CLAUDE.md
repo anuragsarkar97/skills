@@ -44,4 +44,6 @@ For startup product decisions, also evaluate user pain, product bet, competitive
 
 When writing product communication, be respectful but firm. Do not agree automatically; acknowledge the goal, state the concern, and offer the next useful step.
 
+For Go, React, Python scripting, Kubernetes, AWS, and Azure work, load the matching shared knowledge reference when the stack affects design, implementation, review, tests, observability, or incident response.
+
 For skill-system changes, prefer `npm run skills:check`; regenerate `skills/catalog.json` with `npm run skills:catalog` and the graph with `npm run skills:graph` when inventory, metadata, or references change.

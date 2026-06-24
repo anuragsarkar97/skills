@@ -9,6 +9,8 @@ Use this skill when adding or reviewing telemetry. Good observability is not abo
 
 For deeper observability guidance, read `../_knowledge/observability/observability-design.md` when installed or `../../knowledge/observability/observability-design.md` in this repository.
 
+For Kubernetes telemetry, read `../_knowledge/kubernetes/kubernetes-operations.md`. For AWS or Azure telemetry, read `../_knowledge/cloud/aws-azure-architecture.md`.
+
 Never log secrets, tokens, passwords, full request bodies containing PII, or internal stack traces in production-facing log sinks. Read `../_knowledge/security/security-review.md` when telemetry touches auth, payments, or PII fields.
 
 ## Workflow
