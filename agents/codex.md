@@ -22,6 +22,8 @@ Use `product-competitive-thinking` before product-facing work. Evaluate the targ
 
 Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages. Be respectful but firm: acknowledge the goal, state disagreement clearly when needed, and propose the next useful step.
 
+Use `incident-response` for active production degradation, outage triage, rollback/hotfix decisions, and post-mortems. Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
+
 Use `self-amending-skill` when actual work reveals the skill system should change. Keep amendments small, validate with `npm test`, and regenerate `skills/catalog.json` with `npm run skills:catalog` when metadata or inventory changes.
 
 For skill-system changes, prefer `npm run skills:check`; run `npm run skills:graph` when routing or skill references change.

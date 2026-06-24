@@ -7,6 +7,8 @@ description: Design and implement structured logs, metrics, distributed traces, 
 
 Use this skill when adding or reviewing telemetry. Good observability is not about logging everything — it is about being able to answer "what broke, when, for whom, and why" without a second deploy.
 
+For deeper observability guidance, read `../_knowledge/observability/observability-design.md` when installed or `../../knowledge/observability/observability-design.md` in this repository.
+
 Never log secrets, tokens, passwords, full request bodies containing PII, or internal stack traces in production-facing log sinks. Read `../_knowledge/security/security-review.md` when telemetry touches auth, payments, or PII fields.
 
 ## Workflow

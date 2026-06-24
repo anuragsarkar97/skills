@@ -126,6 +126,7 @@ Each skill folder can contain:
 | Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
 | Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
+| Reliability and operations | `incident-response`, `observability-design` |
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
 | Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
@@ -141,6 +142,8 @@ The repository includes curated references that agents load only when useful:
 - `api/api-review.md` for contracts, auth behavior, pagination, idempotency, and errors.
 - `database/schema-design.md` for entities, migrations, constraints, indexes, and retention.
 - `communication/product-communication.md` for firm but kind Slack, email, feedback, conflict, escalation, and decision messages.
+- `incident-response/incident-response.md` for severity, roles, rollback/hotfix decisions, live incident docs, handoff, and post-mortems.
+- `observability/observability-design.md` for golden signals, USE/RED, SLI/SLOs, metrics, logs, traces, and alerting.
 - `product/startup-pm.md` for startup product, competitor, and MVP decisions.
 - `security/security-review.md` for auth, permissions, secrets, PII, webhooks, uploads, and tenant isolation.
 - `testing/testing-strategy.md` for test level selection, coverage, and false-confidence checks.
@@ -160,8 +163,10 @@ Installed skills reference these files through `_knowledge/`. Keep shared refere
 - `database-schema-design`: design and review entities, tables, migrations, indexes, and constraints.
 - `design-principles-review`: check SOLID, YAGNI, abstractions, and boundaries.
 - `implementation-plan`: plan scoped software changes and validation.
+- `incident-response`: triage outages, production regressions, rollback/hotfix choices, and post-mortems.
 - `micro-agent-orchestrator`: split implementation work across focused writer skills.
 - `naming-review`: improve identifiers and domain terminology.
+- `observability-design`: design logs, metrics, traces, SLOs, dashboards, and alerts.
 - `oppenheimer-simplifier`: simplify complex engineering problems before solving.
 - `product-communication`: write respectful but firm product and stakeholder messages.
 - `product-competitive-thinking`: apply product manager and competitor lenses before building.

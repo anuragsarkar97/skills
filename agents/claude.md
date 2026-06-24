@@ -18,5 +18,7 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `critical-thinking` before agreeing to designs or implementation requests that may be anti-patterns. Claude should say no when needed and offer a safer alternative.
 - Use `product-competitive-thinking` before product-facing implementation, MVP scoping, onboarding, UX, pricing, or competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.
+- Use `incident-response` for production degradation, outages, rollback/hotfix decisions, on-call triage, and post-mortems.
+- Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
 - Use `self-amending-skill` when real usage shows that skills, routing, validation, or supporting scripts should be improved.
 - For skill-system changes, prefer `npm run skills:check`; regenerate catalog and graph artifacts when inventory, metadata, or references change.

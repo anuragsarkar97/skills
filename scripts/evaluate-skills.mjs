@@ -39,6 +39,8 @@ for (const required of [
   "knowledge/api/api-review.md",
   "knowledge/database/schema-design.md",
   "knowledge/communication/product-communication.md",
+  "knowledge/incident-response/incident-response.md",
+  "knowledge/observability/observability-design.md",
   "knowledge/product/startup-pm.md",
   "knowledge/security/security-review.md",
   "knowledge/testing/testing-strategy.md",

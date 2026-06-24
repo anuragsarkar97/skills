@@ -7,7 +7,7 @@ description: Triage and resolve production incidents by reading logs, forming hy
 
 Use this skill when production is broken and time is short. The goal is to reduce mean time to resolution: establish facts fast, form hypotheses in order of likelihood, and act decisively. Do not skip steps to save time — skipping triage is how you spend four hours on the wrong fix.
 
-For auth or permissions incidents, read `../_knowledge/security/security-review.md`. For stakeholder and customer status communication, read `../_knowledge/communication/product-communication.md`.
+For deeper incident response guidance, read `../_knowledge/incident-response/incident-response.md` when installed or `../../knowledge/incident-response/incident-response.md` in this repository. For auth or permissions incidents, read `../_knowledge/security/security-review.md`. For stakeholder and customer status communication, read `../_knowledge/communication/product-communication.md`.
 
 ## Workflow
 

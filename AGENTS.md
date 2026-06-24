@@ -26,6 +26,8 @@ This repository stores reusable AI agent skills.
 - Use `utility-writer` for helpers, parsers, formatters, validators, mappers, adapters, and reusable transformations.
 - Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, and endpoint wiring.
 - Use `test-writer` to implement targeted tests for changed behavior.
+- Use `incident-response` for production degradation, outages, rollback or hotfix decisions, on-call triage, and post-mortems.
+- Use `observability-design` for structured logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
 - Use `code-review` for general diff, PR, and worktree reviews.
 - Use `change-grill-review` for risky changes, production paths, migrations, auth, or hard adversarial review.
 - Use `database-schema-design` for entities, tables, ORM models, migrations, indexes, constraints, and data lifecycle.

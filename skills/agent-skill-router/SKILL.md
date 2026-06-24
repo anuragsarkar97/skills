@@ -44,6 +44,8 @@ When a task needs deeper context, load only the relevant shared reference. In in
 - Auth, permissions, secrets, PII, uploads, webhooks, or tenant isolation: read `../_knowledge/security/security-review.md`.
 - Test strategy, coverage, flakiness, or level selection: read `../_knowledge/testing/testing-strategy.md`.
 - Firm but kind Slack, email, feedback, conflict, escalation, or decision communication: read `../_knowledge/communication/product-communication.md`.
+- Production outage, rollback/hotfix choice, severity, post-mortem, or on-call handoff: read `../_knowledge/incident-response/incident-response.md`.
+- Logs, metrics, traces, SLOs, alert thresholds, or telemetry gaps: read `../_knowledge/observability/observability-design.md`.
 
 Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
 

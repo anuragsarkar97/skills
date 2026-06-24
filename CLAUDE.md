@@ -26,6 +26,8 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `utility-writer` for focused helper code.
 - `api-writer` for API boundary implementation.
 - `test-writer` for targeted test implementation.
+- `incident-response` for production outages, regressions, rollback or hotfix decisions, and post-mortems.
+- `observability-design` for logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
 - `code-review` for normal code review.
 - `change-grill-review` for adversarial review.
 - `database-schema-design` for persistence and migrations.
