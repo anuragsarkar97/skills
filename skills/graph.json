@@ -1,0 +1,374 @@
+{
+  "count": 22,
+  "nodes": [
+    {
+      "id": "agent-skill-router",
+      "displayName": "Agent Skill Router",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "api-review",
+      "displayName": "API Review",
+      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent creates, changes, or evaluates endpoints, request and response shapes, status codes, auth, errors, pagination, compatibility, or versioning.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "api-writer",
+      "displayName": "API Writer",
+      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when an AI agent implements or changes an API surface and needs code that matches an existing contract.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "change-grill-review",
+      "displayName": "Change Grill Review",
+      "description": "Perform an adversarial, high-pressure review of code changes, diffs, pull requests, migrations, tests, or implementation plans. Use when an AI agent should challenge assumptions, expose hidden production risks, find edge cases, and push beyond a normal code review.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "code-documentation",
+      "displayName": "Code Documentation",
+      "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "code-review",
+      "displayName": "Code Review",
+      "description": "Perform rigorous code reviews for proposed changes, pull requests, diffs, or local worktrees. Use when an AI agent is asked to review code, identify bugs, assess regressions, evaluate test coverage, or summarize implementation risk.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "commit-pr-writer",
+      "displayName": "Commit PR Writer",
+      "description": "Create high-quality commit messages, pull request titles, pull request descriptions, changelog entries, risk notes, and test summaries from diffs or local changes. Use when an AI agent prepares Git commits, GitHub PR text, release notes, or reviewer-facing summaries.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "critical-thinking",
+      "displayName": "Critical Thinking",
+      "description": "Challenge assumptions, evaluate tradeoffs, and push back before agreeing to engineering requests, designs, plans, or implementation approaches. Use when an AI agent should think deeply, detect anti-patterns, say no to unsafe or incoherent designs, and propose safer alternatives instead of blindly complying.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "database-schema-design",
+      "displayName": "Database Schema Design",
+      "description": "Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "design-principles-review",
+      "displayName": "Design Principles Review",
+      "description": "Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "implementation-plan",
+      "displayName": "Implementation Plan",
+      "description": "Create pragmatic implementation plans for software changes, refactors, migrations, and feature work. Use when an AI agent needs to break a coding task into scoped steps, identify risks, choose validation commands, or coordinate incremental delivery.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "micro-agent-orchestrator",
+      "displayName": "Micro Agent Orchestrator",
+      "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "naming-review",
+      "displayName": "Naming Review",
+      "description": "Review and improve naming for variables, functions, classes, files, modules, database objects, API fields, events, tests, and domain concepts. Use when an AI agent creates or reviews identifiers, public contracts, terminology, or ambiguous code.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "oppenheimer-simplifier",
+      "displayName": "Oppenheimer Simplifier",
+      "description": "Simplify complex engineering problems into smaller first-principles pieces before solving. Use when an AI agent faces ambiguous bugs, tangled architecture, multi-system failures, unclear requirements, high cognitive load, or issues where direct implementation would likely thrash.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "product-communication",
+      "displayName": "Product Communication",
+      "description": "Draft, review, and send respectful but firm product communication for Slack, Teams, email, Linear, Jira, GitHub, release notes, customer updates, stakeholder updates, and internal decision threads. Use when an AI agent needs to answer kindly without blindly agreeing, push back on weak product or engineering decisions, align teams, or communicate tradeoffs and next steps.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "product-competitive-thinking",
+      "displayName": "Product Competitive Thinking",
+      "description": "Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "self-amending-skill",
+      "displayName": "Self-Amending Skill",
+      "description": "Improve this skills repository when real usage reveals missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflows. Use when an AI agent notices a skill should be updated, split, merged, tightened, or connected to scripts based on concrete task evidence.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "service-writer",
+      "displayName": "Service Writer",
+      "description": "Write focused service-layer and application-layer code for business workflows, orchestration, domain operations, transactions, permissions, and data access coordination. Use when an AI agent implements behavior that should live behind API handlers and above low-level utilities or repositories.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "smriti-shruti",
+      "displayName": "Smriti Shruti",
+      "description": "Triage context, memory, and conversation history to reduce token load while preserving facts needed for the current task. Use when an AI agent has too much context, repeated logs, stale discussion, large diffs, broad file reads, or distracting information that should be summarized, ignored, or deferred.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "test-design-review",
+      "displayName": "Test Design Review",
+      "description": "Design tests and stress-review test suites for correctness, coverage, reliability, and signal quality. Use when an AI agent creates tests, reviews test changes, diagnoses flaky tests, evaluates mocks, or checks whether behavior is actually protected.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "test-writer",
+      "displayName": "Test Writer",
+      "description": "Write targeted tests for changed behavior across unit, integration, API, service, utility, contract, migration, and regression scenarios. Use when an AI agent implements tests, adds missing coverage, encodes a bug reproduction, or verifies service, utility, and API writer changes.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "utility-writer",
+      "displayName": "Utility Writer",
+      "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
+      "allowImplicitInvocation": true
+    }
+  ],
+  "edges": [
+    {
+      "from": "agent-skill-router",
+      "to": "api-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "api-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "change-grill-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "code-documentation",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "code-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "commit-pr-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "critical-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "database-schema-design",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "design-principles-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "implementation-plan",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "micro-agent-orchestrator",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "naming-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "oppenheimer-simplifier",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "product-communication",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "product-competitive-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "self-amending-skill",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "service-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "smriti-shruti",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "utility-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "api-writer",
+      "to": "api-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "api-writer",
+      "to": "service-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "api-writer",
+      "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "api-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "change-grill-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "database-schema-design",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "design-principles-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "oppenheimer-simplifier",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
+      "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "api-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "change-grill-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "code-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "oppenheimer-simplifier",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "service-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "smriti-shruti",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "micro-agent-orchestrator",
+      "to": "utility-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "product-communication",
+      "to": "critical-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "product-communication",
+      "to": "product-competitive-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "product-competitive-thinking",
+      "to": "critical-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "self-amending-skill",
+      "to": "agent-skill-router",
+      "reason": "mentions"
+    },
+    {
+      "from": "service-writer",
+      "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "service-writer",
+      "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "test-writer",
+      "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "utility-writer",
+      "to": "test-writer",
+      "reason": "mentions"
+    }
+  ]
+}

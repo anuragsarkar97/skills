@@ -1,0 +1,181 @@
+{
+  "count": 22,
+  "skills": [
+    {
+      "name": "agent-skill-router",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "displayName": "Agent Skill Router",
+      "shortDescription": "Select the right skill proactively",
+      "defaultPrompt": "Use $agent-skill-router to choose the best skills for the current engineering task.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "api-review",
+      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent creates, changes, or evaluates endpoints, request and response shapes, status codes, auth, errors, pagination, compatibility, or versioning.",
+      "displayName": "API Review",
+      "shortDescription": "Review API contracts and behavior",
+      "defaultPrompt": "Use $api-review to review API contracts, behavior, and compatibility.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "api-writer",
+      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when an AI agent implements or changes an API surface and needs code that matches an existing contract.",
+      "displayName": "API Writer",
+      "shortDescription": "Implement API handlers and contracts",
+      "defaultPrompt": "Use $api-writer to implement API handlers and contracts.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "change-grill-review",
+      "description": "Perform an adversarial, high-pressure review of code changes, diffs, pull requests, migrations, tests, or implementation plans. Use when an AI agent should challenge assumptions, expose hidden production risks, find edge cases, and push beyond a normal code review.",
+      "displayName": "Change Grill Review",
+      "shortDescription": "Stress-review code changes harshly",
+      "defaultPrompt": "Use $change-grill-review to stress-review this change for hidden risks.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "code-documentation",
+      "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
+      "displayName": "Code Documentation",
+      "shortDescription": "Create and review code documentation",
+      "defaultPrompt": "Use $code-documentation to create or review useful code documentation.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "code-review",
+      "description": "Perform rigorous code reviews for proposed changes, pull requests, diffs, or local worktrees. Use when an AI agent is asked to review code, identify bugs, assess regressions, evaluate test coverage, or summarize implementation risk.",
+      "displayName": "Code Review",
+      "shortDescription": "Review code for bugs and regressions",
+      "defaultPrompt": "Use $code-review to review this change and lead with findings.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "commit-pr-writer",
+      "description": "Create high-quality commit messages, pull request titles, pull request descriptions, changelog entries, risk notes, and test summaries from diffs or local changes. Use when an AI agent prepares Git commits, GitHub PR text, release notes, or reviewer-facing summaries.",
+      "displayName": "Commit PR Writer",
+      "shortDescription": "Write commit messages and PR text",
+      "defaultPrompt": "Use $commit-pr-writer to create commit messages and PR descriptions from changes.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "critical-thinking",
+      "description": "Challenge assumptions, evaluate tradeoffs, and push back before agreeing to engineering requests, designs, plans, or implementation approaches. Use when an AI agent should think deeply, detect anti-patterns, say no to unsafe or incoherent designs, and propose safer alternatives instead of blindly complying.",
+      "displayName": "Critical Thinking",
+      "shortDescription": "Challenge weak designs before agreeing",
+      "defaultPrompt": "Use $critical-thinking to challenge assumptions and reject anti-pattern designs when needed.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "database-schema-design",
+      "description": "Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.",
+      "displayName": "Database Schema Design",
+      "shortDescription": "Design and review database schemas",
+      "defaultPrompt": "Use $database-schema-design to design or review database tables and entities.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "design-principles-review",
+      "description": "Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.",
+      "displayName": "Design Principles Review",
+      "shortDescription": "Check SOLID YAGNI and design risks",
+      "defaultPrompt": "Use $design-principles-review to review design principles, abstractions, and maintainability.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "implementation-plan",
+      "description": "Create pragmatic implementation plans for software changes, refactors, migrations, and feature work. Use when an AI agent needs to break a coding task into scoped steps, identify risks, choose validation commands, or coordinate incremental delivery.",
+      "displayName": "Implementation Plan",
+      "shortDescription": "Plan software changes and validation",
+      "defaultPrompt": "Use $implementation-plan to inspect the project and create a practical implementation plan.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "micro-agent-orchestrator",
+      "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
+      "displayName": "Micro Agent Orchestrator",
+      "shortDescription": "Coordinate focused code-writing agents",
+      "defaultPrompt": "Use $micro-agent-orchestrator to split implementation work across focused writer skills.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "naming-review",
+      "description": "Review and improve naming for variables, functions, classes, files, modules, database objects, API fields, events, tests, and domain concepts. Use when an AI agent creates or reviews identifiers, public contracts, terminology, or ambiguous code.",
+      "displayName": "Naming Review",
+      "shortDescription": "Review names for clarity and domain fit",
+      "defaultPrompt": "Use $naming-review to review names for clarity, consistency, and domain fit.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "oppenheimer-simplifier",
+      "description": "Simplify complex engineering problems into smaller first-principles pieces before solving. Use when an AI agent faces ambiguous bugs, tangled architecture, multi-system failures, unclear requirements, high cognitive load, or issues where direct implementation would likely thrash.",
+      "displayName": "Oppenheimer Simplifier",
+      "shortDescription": "Simplify hard problems before solving",
+      "defaultPrompt": "Use $oppenheimer-simplifier to reduce a complex issue to simpler solvable parts.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "product-communication",
+      "description": "Draft, review, and send respectful but firm product communication for Slack, Teams, email, Linear, Jira, GitHub, release notes, customer updates, stakeholder updates, and internal decision threads. Use when an AI agent needs to answer kindly without blindly agreeing, push back on weak product or engineering decisions, align teams, or communicate tradeoffs and next steps.",
+      "displayName": "Product Communication",
+      "shortDescription": "Write firm kind product messages",
+      "defaultPrompt": "Use $product-communication to draft or send respectful, firm product communication.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "product-competitive-thinking",
+      "description": "Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.",
+      "displayName": "Product Competitive Thinking",
+      "shortDescription": "Apply PM and competitor lenses",
+      "defaultPrompt": "Use $product-competitive-thinking to evaluate product decisions from PM and competitor viewpoints.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "self-amending-skill",
+      "description": "Improve this skills repository when real usage reveals missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflows. Use when an AI agent notices a skill should be updated, split, merged, tightened, or connected to scripts based on concrete task evidence.",
+      "displayName": "Self-Amending Skill",
+      "shortDescription": "Safely improve the skill system",
+      "defaultPrompt": "Use $self-amending-skill to update skills based on concrete usage evidence.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "service-writer",
+      "description": "Write focused service-layer and application-layer code for business workflows, orchestration, domain operations, transactions, permissions, and data access coordination. Use when an AI agent implements behavior that should live behind API handlers and above low-level utilities or repositories.",
+      "displayName": "Service Writer",
+      "shortDescription": "Write focused service-layer code",
+      "defaultPrompt": "Use $service-writer to implement focused service-layer behavior.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "smriti-shruti",
+      "description": "Triage context, memory, and conversation history to reduce token load while preserving facts needed for the current task. Use when an AI agent has too much context, repeated logs, stale discussion, large diffs, broad file reads, or distracting information that should be summarized, ignored, or deferred.",
+      "displayName": "Smriti Shruti",
+      "shortDescription": "Triage context and reduce token load",
+      "defaultPrompt": "Use $smriti-shruti to keep only relevant context and reduce token load.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "test-design-review",
+      "description": "Design tests and stress-review test suites for correctness, coverage, reliability, and signal quality. Use when an AI agent creates tests, reviews test changes, diagnoses flaky tests, evaluates mocks, or checks whether behavior is actually protected.",
+      "displayName": "Test Design Review",
+      "shortDescription": "Design and stress-review tests",
+      "defaultPrompt": "Use $test-design-review to design tests or review test quality and coverage.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "test-writer",
+      "description": "Write targeted tests for changed behavior across unit, integration, API, service, utility, contract, migration, and regression scenarios. Use when an AI agent implements tests, adds missing coverage, encodes a bug reproduction, or verifies service, utility, and API writer changes.",
+      "displayName": "Test Writer",
+      "shortDescription": "Write targeted tests for behavior",
+      "defaultPrompt": "Use $test-writer to implement focused tests for changed behavior.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "utility-writer",
+      "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
+      "displayName": "Utility Writer",
+      "shortDescription": "Write small reusable utility code",
+      "defaultPrompt": "Use $utility-writer to implement small reusable utilities.",
+      "allowImplicitInvocation": true
+    }
+  ]
+}

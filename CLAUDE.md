@@ -15,6 +15,7 @@ This repository contains portable skills for AI agents. Use `skills/<skill-name>
 Start with `agent-skill-router` when the user asks for engineering work but does not name a skill. Then select the smallest relevant set:
 
 - `implementation-plan` for plans and validation strategy.
+- `self-amending-skill` for evidence-based improvements to skills, routing, validation, or tooling.
 - `critical-thinking` before agreeing to risky, overbuilt, incoherent, or anti-patterned designs.
 - `product-competitive-thinking` before product-facing work, MVP scope, UX, onboarding, pricing, or competitor-driven requests.
 - `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
@@ -40,3 +41,5 @@ It is acceptable to say no to the user when the requested design is an anti-patt
 For startup product decisions, also evaluate user pain, product bet, competitive alternatives, differentiation, and MVP scope before recommending implementation.
 
 When writing product communication, be respectful but firm. Do not agree automatically; acknowledge the goal, state the concern, and offer the next useful step.
+
+For skill-system changes, prefer `npm run skills:check`; regenerate `skills/catalog.json` with `npm run skills:catalog` and the graph with `npm run skills:graph` when inventory, metadata, or references change.

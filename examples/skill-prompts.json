@@ -1,0 +1,117 @@
+[
+  {
+    "expectedSkill": "agent-skill-router",
+    "prompt": "I need help deciding which engineering skill should handle a mixed API, service, and test change.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "api-review",
+    "prompt": "Review this new endpoint contract for pagination, error shape, status codes, and backwards compatibility.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "api-writer",
+    "prompt": "Implement the route handler, request validation, response body, and error mapping for a new users endpoint.",
+    "companionSkills": ["api-review", "test-writer"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "change-grill-review",
+    "prompt": "Grill this migration and service change like it is about to ship to production.",
+    "companionSkills": ["critical-thinking"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "code-documentation",
+    "prompt": "Add useful documentation for this public helper and update the README with the setup command.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "code-review",
+    "prompt": "Review this pull request for bugs, regressions, missing tests, and risky behavior changes.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "commit-pr-writer",
+    "prompt": "Write a commit message and PR description from the staged changes, including tests and risk.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "critical-thinking",
+    "prompt": "Before we build this abstraction layer, challenge whether this design is actually necessary.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "database-schema-design",
+    "prompt": "Design the tables, indexes, constraints, and migration plan for storing organization invitations.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "design-principles-review",
+    "prompt": "Review this refactor for SOLID, YAGNI, dependency direction, coupling, and abstraction quality.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "implementation-plan",
+    "prompt": "Create a scoped implementation plan with validation steps for this billing migration.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "micro-agent-orchestrator",
+    "prompt": "Split this feature into service, API, utility, and test implementation passes.",
+    "companionSkills": ["service-writer", "api-writer", "test-writer"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "naming-review",
+    "prompt": "Review these variable, API field, event, and table names for clarity and domain consistency.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "oppenheimer-simplifier",
+    "prompt": "This production issue spans three systems and the symptoms conflict; simplify it before solving.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "product-communication",
+    "prompt": "Draft a respectful but firm Slack reply explaining why we should narrow this feature before committing.",
+    "companionSkills": ["critical-thinking", "product-competitive-thinking"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "product-competitive-thinking",
+    "prompt": "Evaluate this roadmap request from a startup PM and competitor point of view before we build it.",
+    "companionSkills": ["critical-thinking"],
+    "implicit": true
+  },
+  {
+    "expectedSkill": "self-amending-skill",
+    "prompt": "The router missed a recurring skill trigger during real usage; update the skill system safely.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "service-writer",
+    "prompt": "Implement the service-layer workflow, transaction boundary, permissions, and domain errors for invites.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "smriti-shruti",
+    "prompt": "The thread has repeated logs, stale plans, and too much context; keep only what matters for the next edit.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "test-design-review",
+    "prompt": "Review these tests for false confidence, weak mocks, flaky behavior, and missing edge cases.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "test-writer",
+    "prompt": "Add focused regression and API tests for this bug fix and report the command you ran.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "utility-writer",
+    "prompt": "Write a small parser utility with clear edge-case behavior and table-driven tests.",
+    "implicit": true
+  }
+]

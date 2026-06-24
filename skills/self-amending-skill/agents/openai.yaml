@@ -1,0 +1,7 @@
+interface:
+  display_name: "Self-Amending Skill"
+  short_description: "Safely improve the skill system"
+  default_prompt: "Use $self-amending-skill to update skills based on concrete usage evidence."
+
+policy:
+  allow_implicit_invocation: true

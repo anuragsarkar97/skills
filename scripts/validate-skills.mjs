@@ -2,7 +2,14 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 
 const root = process.cwd();
-const skillsDir = path.join(root, "skills");
+const pathArgIndex = process.argv.indexOf("--path");
+if (pathArgIndex !== -1 && !process.argv[pathArgIndex + 1]) {
+  console.error("Usage: node scripts/validate-skills.mjs [--path <skills-directory>]");
+  process.exit(1);
+}
+const skillsDir = path.resolve(
+  pathArgIndex === -1 ? path.join(root, "skills") : process.argv[pathArgIndex + 1],
+);
 const namePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const MIN_DESC_LENGTH = 40;
 const requiredOpenAiFields = ["display_name", "short_description", "default_prompt"];
@@ -112,6 +119,12 @@ async function validateSkill(skillName) {
 }
 
 async function main() {
+  if (!(await exists(skillsDir))) {
+    console.error(`Skills directory not found: ${skillsDir}`);
+    process.exitCode = 1;
+    return;
+  }
+
   const entries = await readdir(skillsDir);
   const allErrors = [];
   let validatedCount = 0;

@@ -61,6 +61,7 @@ For proactive agent selection, set `policy.allow_implicit_invocation: true` in `
 - `product-competitive-thinking`: apply product manager and competitor lenses before building.
 - `product-communication`: write respectful but firm product and stakeholder messages.
 - `service-writer`: implement service-layer business workflows.
+- `self-amending-skill`: safely improve skills and routing from real usage evidence.
 - `smriti-shruti`: triage context and reduce token load.
 - `test-design-review`: design and stress-review tests.
 - `test-writer`: implement targeted tests for behavior changes.
@@ -70,16 +71,71 @@ For proactive agent selection, set `policy.allow_implicit_invocation: true` in `
 
 ```bash
 npm test
+npm run skills:check
+npm run skills:audit
+npm run skills:examples
 ```
 
 The validator checks required frontmatter, naming rules, and basic agent metadata shape without external dependencies.
+The audit checks routing, metadata quality, implicit invocation, stale catalogs, and broad skill hygiene.
+The example harness checks that every skill has at least one implicit prompt example.
+`skills:check` runs validation, audit, and prompt examples as the standard workflow gate.
+
+## Workflow Scripts
+
+```bash
+npm test
+npm run skills:audit
+npm run skills:create -- my-skill --description "Use when..."
+npm run skills:duplicates
+npm run skills:examples
+npm run skills:graph
+npm run skills:import -- ../external-skill-folder
+npm run skills:intake -- ../external-skill-folder
+npm run skills:intake -- git@github.com:org/skills.git#skills/the-skill
+npm run skills:install -- --target /tmp/agent-skills --all
+npm run skills:import -- git@github.com:org/skills.git#skills/the-skill
+npm run skills:import -- ../external-skill-folder --path /tmp/skills
+npm run skills:catalog
+```
+
+- `skills:audit` checks metadata quality, router coverage, catalog freshness, and common skill quality issues.
+- `skills:check` runs the default validation, audit, and prompt-example gate.
+- `skills:create` creates a local skill scaffold with OpenAI and Claude metadata.
+- `skills:duplicates` runs a Python overlap audit for likely duplicate skills.
+- `skills:examples` validates implicit prompt examples in `examples/skill-prompts.json`.
+- `skills:graph` writes `skills/graph.json` and `skills/graph.mmd` from skill references.
+- `skills:import` imports a single skill from a local path or Git URL plus optional `#subdir`.
+- `skills:intake` copies an external skill into `.skill-intake/`, validates it there, and can accept it after review.
+- `skills:install` dry-runs installation into an agent skill directory by default; pass `--write` to actually copy or symlink.
+- `skills:catalog` writes `skills/catalog.json` for agent discovery, audits, and external tooling.
 
 ## Create A Skill
 
 ```bash
-cp -R templates/skill skills/my-new-skill
+npm run skills:create -- my-new-skill --description "Use when an AI agent needs to..."
 ```
 
-Then edit `skills/my-new-skill/SKILL.md` so the frontmatter `name` is `my-new-skill`.
+Then edit `skills/my-new-skill/SKILL.md` with the concrete workflow, checks, and output shape.
 
 Keep `SKILL.md` concise. Move bulky examples, schemas, policies, and framework-specific details into `references/` and mention when to read them.
+
+## Install Skills
+
+Dry-run install all skills:
+
+```bash
+npm run skills:install -- --target ~/.codex/skills --all
+```
+
+Install selected skills by copy:
+
+```bash
+npm run skills:install -- --target ~/.codex/skills --skills agent-skill-router,critical-thinking --write
+```
+
+Install selected skills as symlinks:
+
+```bash
+npm run skills:install -- --target ~/.codex/skills --skills agent-skill-router --mode symlink --write
+```

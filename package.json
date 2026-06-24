@@ -5,7 +5,17 @@
   "description": "Portable skills repository for AI coding agents such as Codex and Claude.",
   "type": "module",
   "scripts": {
-    "test": "node scripts/validate-skills.mjs"
+    "test": "npm run skills:check",
+    "skills:audit": "node scripts/audit-skills.mjs",
+    "skills:catalog": "node scripts/generate-catalog.mjs",
+    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs",
+    "skills:create": "node scripts/create-skill.mjs",
+    "skills:duplicates": "python3 scripts/skill_duplicate_audit.py",
+    "skills:examples": "node scripts/run-skill-examples.mjs",
+    "skills:graph": "node scripts/generate-graph.mjs",
+    "skills:import": "node scripts/import-skill.mjs",
+    "skills:install": "node scripts/install-skills.mjs",
+    "skills:intake": "node scripts/intake-skill.mjs"
   },
   "engines": {
     "node": ">=18"

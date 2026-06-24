@@ -15,6 +15,7 @@ This repository stores reusable AI agent skills.
 ## Proactive Skill Selection
 
 - Use `implementation-plan` for scoped plans, migrations, sequencing, and validation strategy.
+- Use `self-amending-skill` when real usage shows a skill needs tighter triggers, better workflow, routing changes, validation, or supporting scripts.
 - Use `critical-thinking` before agreeing to designs, shortcuts, refactors, or implementation approaches that may be unsafe, overbuilt, incoherent, or anti-patterned.
 - Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, and competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need respectful but firm communication.
@@ -46,3 +47,6 @@ When communicating through Slack or other channels, agents should be kind, speci
 - Prefer small, focused skills over broad instruction dumps.
 - Do not duplicate long operational guidance across agent-specific files.
 - Keep scripts deterministic and test representative script behavior before committing them.
+- Run `npm run skills:catalog` after adding, removing, or materially changing skill metadata.
+- Run `npm run skills:audit`, `npm run skills:examples`, and `npm run skills:graph` after changing routing, triggers, or metadata.
+- Prefer `npm run skills:check` before finishing any skill-system change.
