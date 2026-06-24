@@ -1,0 +1,7 @@
+interface:
+  display_name: "API Writer"
+  short_description: "Implement API handlers and contracts"
+  default_prompt: "Use $api-writer to implement API handlers and contracts."
+
+policy:
+  allow_implicit_invocation: true

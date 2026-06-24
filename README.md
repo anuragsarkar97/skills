@@ -45,16 +45,25 @@ For proactive agent selection, set `policy.allow_implicit_invocation: true` in `
 ## Skill Catalog
 
 - `agent-skill-router`: choose and combine skills proactively.
+- `api-writer`: implement API handlers, validation, response shaping, and endpoint wiring.
 - `api-review`: review API contracts and compatibility.
 - `change-grill-review`: adversarial review for hidden production risks.
 - `code-documentation`: create and review practical code docs.
 - `code-review`: general code review focused on bugs and regressions.
 - `commit-pr-writer`: write commit messages and PR text.
+- `critical-thinking`: challenge weak designs before agreeing and say no to anti-patterns.
 - `database-schema-design`: design and review entities, tables, migrations, indexes, and constraints.
 - `design-principles-review`: check SOLID, YAGNI, abstractions, and boundaries.
 - `implementation-plan`: plan scoped software changes and validation.
+- `micro-agent-orchestrator`: split implementation work across focused writer skills.
 - `naming-review`: improve identifiers and domain terminology.
+- `oppenheimer-simplifier`: simplify complex engineering problems before solving.
+- `product-competitive-thinking`: apply product manager and competitor lenses before building.
+- `service-writer`: implement service-layer business workflows.
+- `smriti-shruti`: triage context and reduce token load.
 - `test-design-review`: design and stress-review tests.
+- `test-writer`: implement targeted tests for behavior changes.
+- `utility-writer`: implement small reusable utility code.
 
 ## Validate
 

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Test Writer"
+  short_description: "Write targeted tests for behavior"
+  default_prompt: "Use $test-writer to implement focused tests for changed behavior."
+
+policy:
+  allow_implicit_invocation: true

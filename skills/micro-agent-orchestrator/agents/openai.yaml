@@ -1,0 +1,7 @@
+interface:
+  display_name: "Micro Agent Orchestrator"
+  short_description: "Coordinate focused code-writing agents"
+  default_prompt: "Use $micro-agent-orchestrator to split implementation work across focused writer skills."
+
+policy:
+  allow_implicit_invocation: true

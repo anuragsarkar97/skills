@@ -1,0 +1,7 @@
+interface:
+  display_name: "Product Competitive Thinking"
+  short_description: "Apply PM and competitor lenses"
+  default_prompt: "Use $product-competitive-thinking to evaluate product decisions from PM and competitor viewpoints."
+
+policy:
+  allow_implicit_invocation: true

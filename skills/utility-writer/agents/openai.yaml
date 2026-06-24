@@ -1,0 +1,7 @@
+interface:
+  display_name: "Utility Writer"
+  short_description: "Write small reusable utility code"
+  default_prompt: "Use $utility-writer to implement small reusable utilities."
+
+policy:
+  allow_implicit_invocation: true

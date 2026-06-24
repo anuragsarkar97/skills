@@ -15,6 +15,15 @@ This repository stores reusable AI agent skills.
 ## Proactive Skill Selection
 
 - Use `implementation-plan` for scoped plans, migrations, sequencing, and validation strategy.
+- Use `critical-thinking` before agreeing to designs, shortcuts, refactors, or implementation approaches that may be unsafe, overbuilt, incoherent, or anti-patterned.
+- Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, and competitor-driven feature requests.
+- Use `smriti-shruti` for context triage, token reduction, stale context, repeated logs, and noisy large inputs.
+- Use `oppenheimer-simplifier` for complex, ambiguous, tangled, or high-cognitive-load problems.
+- Use `micro-agent-orchestrator` when implementation should be split across focused writer skills.
+- Use `service-writer` for service-layer workflows, orchestration, transactions, permissions, and domain behavior.
+- Use `utility-writer` for helpers, parsers, formatters, validators, mappers, adapters, and reusable transformations.
+- Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, and endpoint wiring.
+- Use `test-writer` to implement targeted tests for changed behavior.
 - Use `code-review` for general diff, PR, and worktree reviews.
 - Use `change-grill-review` for risky changes, production paths, migrations, auth, or hard adversarial review.
 - Use `database-schema-design` for entities, tables, ORM models, migrations, indexes, constraints, and data lifecycle.
@@ -24,6 +33,10 @@ This repository stores reusable AI agent skills.
 - Use `code-documentation` for comments, docstrings, README content, API docs, examples, and architecture notes.
 - Use `test-design-review` for test design, test review, coverage gaps, weak mocks, and flaky tests.
 - Use `design-principles-review` for SOLID, YAGNI, abstraction quality, module boundaries, dependency direction, and maintainability.
+
+Agents may say no to the user when the requested design is an anti-pattern or creates avoidable security, data, reliability, or maintenance risk. When saying no, explain the concrete risk and offer the smallest safer alternative.
+
+For startup product work, agents should also push back when a request is strategically weak: commodity feature chasing, unclear target user, no activation or retention path, or implementation cost that does not buy learning or differentiation.
 
 ## Editing Guidance
 

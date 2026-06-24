@@ -1,6 +1,6 @@
 ---
 name: agent-skill-router
-description: Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.
+description: Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for product and competitor thinking, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.
 ---
 
 # Agent Skill Router
@@ -10,6 +10,15 @@ Use this skill as the first pass when the user asks for engineering help but doe
 ## Routing Rules
 
 - Use `implementation-plan` when the task needs sequencing, scoping, migration planning, or validation strategy.
+- Use `critical-thinking` before agreeing to designs, plans, shortcuts, refactors, or implementation requests that may be incoherent, overbuilt, unsafe, or anti-patterned.
+- Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, or competitor-driven feature requests.
+- Use `smriti-shruti` when context is large, stale, repetitive, or distracting and should be summarized, ignored, or deferred.
+- Use `oppenheimer-simplifier` when the problem is complex, ambiguous, tangled, or likely to cause implementation thrash.
+- Use `micro-agent-orchestrator` when implementation spans service, utility, API, and test layers.
+- Use `service-writer` for service-layer business logic, orchestration, transactions, permissions, and domain workflows.
+- Use `utility-writer` for pure helpers, parsers, formatters, validators, mappers, adapters, and small reusable transformations.
+- Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, API errors, and endpoint wiring.
+- Use `test-writer` to implement focused tests for changed behavior, bug regressions, APIs, services, and utilities.
 - Use `code-review` for general review of diffs, pull requests, and worktrees.
 - Use `change-grill-review` when the user asks to be grilled, the change is risky, or a normal review would be too gentle.
 - Use `database-schema-design` for tables, entities, migrations, indexes, data retention, and persistence models.
@@ -23,9 +32,14 @@ Use this skill as the first pass when the user asks for engineering help but doe
 ## Combination Rules
 
 - Schema plus endpoint changes: use `database-schema-design` and `api-review`; add `test-design-review` for contract and migration coverage.
-- Large feature changes: use `implementation-plan`, then `test-design-review`, then `code-review`.
+- Suspicious design request: use `critical-thinking` first; if the request is valid but complex, continue with `oppenheimer-simplifier` or `implementation-plan`.
+- Product feature request: use `critical-thinking` and `product-competitive-thinking` before implementation; if the bet is sound, continue with `implementation-plan` and `micro-agent-orchestrator`.
+- Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, `micro-agent-orchestrator` for implementation, then `test-design-review` and `code-review`.
+- Service plus API implementation: use `micro-agent-orchestrator`, then `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
+- Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
 - Risky production changes: use `change-grill-review` with the relevant domain skill.
 - Refactors: use `design-principles-review`, `naming-review`, and `test-design-review`.
+- Anti-pattern risk: use `critical-thinking`, then `design-principles-review`; say no clearly when the safer answer is not to implement the requested design.
 - Finalization: use `commit-pr-writer` after implementation and validation.
 
 ## Behavior

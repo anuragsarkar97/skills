@@ -1,0 +1,7 @@
+interface:
+  display_name: "Critical Thinking"
+  short_description: "Challenge weak designs before agreeing"
+  default_prompt: "Use $critical-thinking to challenge assumptions and reject anti-pattern designs when needed."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Oppenheimer Simplifier"
+  short_description: "Simplify hard problems before solving"
+  default_prompt: "Use $oppenheimer-simplifier to reduce a complex issue to simpler solvable parts."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Service Writer"
+  short_description: "Write focused service-layer code"
+  default_prompt: "Use $service-writer to implement focused service-layer behavior."
+
+policy:
+  allow_implicit_invocation: true

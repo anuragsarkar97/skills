@@ -1,0 +1,7 @@
+interface:
+  display_name: "Smriti Shruti"
+  short_description: "Triage context and reduce token load"
+  default_prompt: "Use $smriti-shruti to keep only relevant context and reduce token load."
+
+policy:
+  allow_implicit_invocation: true
