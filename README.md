@@ -4,6 +4,28 @@ A portable skills repository for AI coding agents such as Codex and Claude.
 
 Skills live under `skills/<skill-name>/` and use a `SKILL.md` file as the canonical instruction source. Agent-specific files can sit beside it under `agents/` when an agent needs metadata or install notes.
 
+## Quick Start
+
+```bash
+git clone git@github.com:anuragsarkar97/skills.git
+cd skills
+npm test
+```
+
+Install every skill into Codex:
+
+```bash
+npm run skills:install -- --agent codex --write
+```
+
+Install every skill into Claude:
+
+```bash
+npm run skills:install -- --agent claude --write
+```
+
+By default, install commands copy skills into the agent skill directory. Use `--mode symlink` if you want installed skills to track this repository directly.
+
 ## Repository Layout
 
 ```text
@@ -42,11 +64,36 @@ Optional resources:
 
 For proactive agent selection, set `policy.allow_implicit_invocation: true` in `agents/openai.yaml` and keep the `description` trigger precise.
 
+## What Each Skill Contains
+
+Each skill folder can contain:
+
+- `SKILL.md`: the canonical trigger description and agent instructions.
+- `agents/openai.yaml`: OpenAI/Codex-facing metadata, default prompt, and implicit invocation policy.
+- `agents/claude.md`: Claude-specific usage notes.
+- `references/`: optional deeper docs loaded only when needed.
+- `scripts/`: optional deterministic helper scripts.
+- `assets/`: optional templates, fixtures, or reusable output assets.
+
 ## Skill Catalog
 
+| Category | Skills |
+|---|---|
+| Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
+| Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
+| Product and communication | `product-competitive-thinking`, `product-communication` |
+| Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
+| Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
+| Documentation and delivery | `code-documentation`, `commit-pr-writer` |
+| Context and skill maintenance | `smriti-shruti`, `self-amending-skill` |
+
+The generated machine-readable catalog is in `skills/catalog.json`, and the generated skill relationship graph is in `skills/graph.json` plus `skills/graph.mmd`.
+
+## Skill List
+
 - `agent-skill-router`: choose and combine skills proactively.
-- `api-writer`: implement API handlers, validation, response shaping, and endpoint wiring.
 - `api-review`: review API contracts and compatibility.
+- `api-writer`: implement API handlers, validation, response shaping, and endpoint wiring.
 - `change-grill-review`: adversarial review for hidden production risks.
 - `code-documentation`: create and review practical code docs.
 - `code-review`: general code review focused on bugs and regressions.
@@ -58,14 +105,56 @@ For proactive agent selection, set `policy.allow_implicit_invocation: true` in `
 - `micro-agent-orchestrator`: split implementation work across focused writer skills.
 - `naming-review`: improve identifiers and domain terminology.
 - `oppenheimer-simplifier`: simplify complex engineering problems before solving.
-- `product-competitive-thinking`: apply product manager and competitor lenses before building.
 - `product-communication`: write respectful but firm product and stakeholder messages.
-- `service-writer`: implement service-layer business workflows.
+- `product-competitive-thinking`: apply product manager and competitor lenses before building.
 - `self-amending-skill`: safely improve skills and routing from real usage evidence.
+- `service-writer`: implement service-layer business workflows.
 - `smriti-shruti`: triage context and reduce token load.
 - `test-design-review`: design and stress-review tests.
 - `test-writer`: implement targeted tests for behavior changes.
 - `utility-writer`: implement small reusable utility code.
+
+## Install Skills
+
+Install commands dry-run unless `--write` is passed.
+
+Dry-run install all skills into Codex:
+
+```bash
+npm run skills:install -- --agent codex
+```
+
+Install all skills into Codex:
+
+```bash
+npm run skills:install -- --agent codex --write
+```
+
+Install all skills into Claude:
+
+```bash
+npm run skills:install -- --agent claude --write
+```
+
+Install selected skills:
+
+```bash
+npm run skills:install -- --agent codex --skills agent-skill-router,critical-thinking --write
+```
+
+Install as symlinks instead of copies:
+
+```bash
+npm run skills:install -- --agent codex --skills agent-skill-router --mode symlink --write
+```
+
+Install into a custom directory:
+
+```bash
+npm run skills:install -- --target /path/to/agent/skills --write
+```
+
+Use `--force` to replace existing installed skill folders. Use `--remove-stale` only for directories managed by this repository.
 
 ## Validate
 
@@ -119,23 +208,3 @@ npm run skills:create -- my-new-skill --description "Use when an AI agent needs 
 Then edit `skills/my-new-skill/SKILL.md` with the concrete workflow, checks, and output shape.
 
 Keep `SKILL.md` concise. Move bulky examples, schemas, policies, and framework-specific details into `references/` and mention when to read them.
-
-## Install Skills
-
-Dry-run install all skills:
-
-```bash
-npm run skills:install -- --target ~/.codex/skills --all
-```
-
-Install selected skills by copy:
-
-```bash
-npm run skills:install -- --target ~/.codex/skills --skills agent-skill-router,critical-thinking --write
-```
-
-Install selected skills as symlinks:
-
-```bash
-npm run skills:install -- --target ~/.codex/skills --skills agent-skill-router --mode symlink --write
-```
