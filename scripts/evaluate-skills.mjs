@@ -13,7 +13,7 @@ for (const skill of skills) {
   }
 
   const hasKnowledgeReference = /\.\.\/_knowledge|knowledge\//.test(skill.skillContent);
-  if (["agent-skill-router", "critical-thinking", "product-competitive-thinking", "api-review", "database-schema-design", "test-design-review", "design-principles-review"].includes(skill.name) && !hasKnowledgeReference) {
+  if (["agent-skill-router", "critical-thinking", "product-competitive-thinking", "product-communication", "api-review", "database-schema-design", "test-design-review", "design-principles-review"].includes(skill.name) && !hasKnowledgeReference) {
     issues.push(`${skill.name}: expected reference to shared knowledge`);
   }
 }
@@ -22,6 +22,7 @@ for (const required of [
   "knowledge/architecture/principles.md",
   "knowledge/api/api-review.md",
   "knowledge/database/schema-design.md",
+  "knowledge/communication/product-communication.md",
   "knowledge/product/startup-pm.md",
   "knowledge/security/security-review.md",
   "knowledge/testing/testing-strategy.md",

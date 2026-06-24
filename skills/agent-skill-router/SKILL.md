@@ -41,6 +41,7 @@ When a task needs deeper context, load only the relevant shared reference. In in
 - Startup roadmap, MVP, competitor, pricing, onboarding, or UX tradeoffs: read `../_knowledge/product/startup-pm.md`.
 - Auth, permissions, secrets, PII, uploads, webhooks, or tenant isolation: read `../_knowledge/security/security-review.md`.
 - Test strategy, coverage, flakiness, or level selection: read `../_knowledge/testing/testing-strategy.md`.
+- Firm but kind Slack, email, feedback, conflict, escalation, or decision communication: read `../_knowledge/communication/product-communication.md`.
 
 Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
 

@@ -7,6 +7,8 @@ description: Draft, review, and send respectful but firm product communication f
 
 Use this skill when communicating product or engineering decisions to humans. The voice should be kind, clear, and firm. Do not agree just to be pleasant; explain the tradeoff and propose the next useful move.
 
+For deeper communication patterns, read `../_knowledge/communication/product-communication.md` when installed or `../../knowledge/communication/product-communication.md` in this repository. Use it especially for pushback, feedback, conflict, stakeholder alignment, decision ownership, or sensitive Slack and email messages.
+
 ## Core Tone
 
 - Be respectful, concise, and specific.

@@ -140,6 +140,7 @@ The repository includes curated references that agents load only when useful:
 - `architecture/principles.md` for SOLID, YAGNI, dependency direction, and boundaries.
 - `api/api-review.md` for contracts, auth behavior, pagination, idempotency, and errors.
 - `database/schema-design.md` for entities, migrations, constraints, indexes, and retention.
+- `communication/product-communication.md` for firm but kind Slack, email, feedback, conflict, escalation, and decision messages.
 - `product/startup-pm.md` for startup product, competitor, and MVP decisions.
 - `security/security-review.md` for auth, permissions, secrets, PII, webhooks, uploads, and tenant isolation.
 - `testing/testing-strategy.md` for test level selection, coverage, and false-confidence checks.
