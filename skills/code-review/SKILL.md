@@ -16,11 +16,29 @@ When a review touches a specialized risk area, load only the matching shared ref
 3. Verify test coverage for the changed behavior. Treat missing tests as a finding when risk is meaningful.
 4. Keep summaries secondary to findings.
 
+## Severity Tiers
+
+Label each finding with one of these tiers:
+
+- **Blocking**: must be fixed before merging — correctness bugs, security issues, broken contracts, data loss risks.
+- **Significant**: should be addressed soon — meaningful regressions, missing test coverage on risky paths, performance cliffs.
+- **Minor**: optional improvements — style divergence, naming inconsistency, defensive code that adds noise.
+
+Omit the label when a finding is clearly blocking (default assumption is blocking unless labeled otherwise).
+
+## What Not to Flag
+
+Avoid flagging:
+- Style choices already consistent with the surrounding codebase.
+- Hypothetical future requirements not present in the diff.
+- Defensive error handling for scenarios the framework or type system already prevents.
+- Code the author clearly intends to refactor separately (unless it creates an immediate risk).
+
 ## Output
 
 Use this order:
 
-1. Findings with file and line references.
+1. Findings with file and line references and severity tier.
 2. Open questions or assumptions.
 3. Brief change summary only after findings.
 4. Tests reviewed or still missing.

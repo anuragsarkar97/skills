@@ -1,6 +1,6 @@
 ---
 name: api-writer
-description: Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when an AI agent implements or changes an API surface and needs code that matches an existing contract.
+description: Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).
 ---
 
 # API Writer

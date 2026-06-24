@@ -57,6 +57,8 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Service plus API implementation: use `micro-agent-orchestrator`, then `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
 - Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
 - Risky production changes: use `change-grill-review` with the relevant domain skill.
+- Security-sensitive schema changes (auth tables, PII columns, tenant isolation fields): use `database-schema-design` and `api-review`; load `../_knowledge/security/security-review.md` and use `change-grill-review` before merging.
+- Renaming PRs (identifier renames, domain term changes, API field renames): use `naming-review` first to validate the new names, then `commit-pr-writer` to capture the rename rationale in the PR description.
 - Refactors: use `design-principles-review`, `naming-review`, and `test-design-review`.
 - Anti-pattern risk: use `critical-thinking`, then `design-principles-review`; say no clearly when the safer answer is not to implement the requested design.
 - Finalization: use `commit-pr-writer` after implementation and validation.

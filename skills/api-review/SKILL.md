@@ -1,11 +1,11 @@
 ---
 name: api-review
-description: Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent creates, changes, or evaluates endpoints, request and response shapes, status codes, auth, errors, pagination, compatibility, or versioning.
+description: Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).
 ---
 
 # API Review
 
-Use this skill when an interface between clients, services, or teams changes. Review the contract, not just the handler implementation.
+Use this skill when evaluating an existing or proposed API contract: compatibility, correctness, security, and consistency. Use `api-writer` when the task is implementing code that satisfies an already-established contract.
 
 For deeper contract guidance, read `../_knowledge/api/api-review.md` when installed or `../../knowledge/api/api-review.md` in this repository. If the API touches auth, permissions, secrets, PII, webhooks, uploads, or tenant isolation, also read `../_knowledge/security/security-review.md`.
 

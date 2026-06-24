@@ -5,7 +5,7 @@ description: Perform an adversarial, high-pressure review of code changes, diffs
 
 # Change Grill Review
 
-Use this skill when a normal review is not enough. Be direct, specific, and evidence-based. The goal is to find what will fail, not to be agreeable.
+Use this skill when a normal code review would be too lenient — high-stakes production changes, irreversible migrations, security boundaries, or any change where the cost of failure is asymmetric. If `code-review` is sufficient, use that instead. Be direct, specific, and evidence-based. The goal is to find what will fail, not to be agreeable.
 
 When the risk area is clear, load the matching shared reference from `../_knowledge/`: architecture, API, database, product, security, or testing. In this repository, use `../../knowledge/` instead.
 

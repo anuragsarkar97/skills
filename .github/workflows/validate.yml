@@ -1,0 +1,42 @@
+name: Validate Skills
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  validate:
+    name: Run skill validation suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci --ignore-scripts
+      - run: npm test
+
+  catalog-drift:
+    name: Check catalog and graph are up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci --ignore-scripts
+      - name: Regenerate catalog and graph
+        run: |
+          npm run skills:catalog
+          npm run skills:graph
+      - name: Fail on drift
+        run: |
+          if ! git diff --quiet skills/catalog.json skills/graph.mmd; then
+            echo "catalog.json or graph.mmd is out of date. Run npm run skills:catalog && npm run skills:graph and commit the result."
+            git diff skills/catalog.json skills/graph.mmd
+            exit 1
+          fi
