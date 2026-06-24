@@ -7,6 +7,8 @@ description: Evaluate engineering and product decisions through product manager,
 
 Use this skill before building product-facing work, especially in startups where shipping the wrong thing is more expensive than shipping slowly. Pair it with `critical-thinking`: first ask whether the idea is coherent, then ask whether it wins for users and against competitors.
 
+When the task needs deeper product judgment, read `../_knowledge/product/startup-pm.md` when installed or `../../knowledge/product/startup-pm.md` in this repository. If current competitor facts matter, verify them instead of relying on memory.
+
 ## Product Manager Lens
 
 1. Identify the target user, job to be done, pain level, and current workaround.

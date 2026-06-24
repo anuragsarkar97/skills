@@ -7,6 +7,8 @@ description: Review software design against SOLID, YAGNI, cohesion, coupling, de
 
 Use this skill when design choices matter more than line-level correctness. Apply principles as tools for reasoning, not as slogans.
 
+For deeper architecture, SOLID, YAGNI, and boundary guidance, read `../_knowledge/architecture/principles.md` when installed or `../../knowledge/architecture/principles.md` in this repository.
+
 ## Workflow
 
 1. Identify the current force: feature pressure, change frequency, domain uncertainty, performance, team ownership, or production risk.

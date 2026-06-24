@@ -11,6 +11,8 @@ Use this skill to keep the working context lean. It cannot erase system context,
 
 Preserve task-critical facts. Drop or defer everything that does not affect the next decision, edit, or verification step.
 
+Shared knowledge references are optional context, not mandatory memory. Load a specific file from `../_knowledge/` only when the active task needs it, summarize the useful rule, then drop the rest.
+
 ## Workflow
 
 1. Identify the active user goal and the next concrete action.

@@ -7,6 +7,8 @@ description: Review API contracts and behavior for REST, RPC, GraphQL, webhooks,
 
 Use this skill when an interface between clients, services, or teams changes. Review the contract, not just the handler implementation.
 
+For deeper contract guidance, read `../_knowledge/api/api-review.md` when installed or `../../knowledge/api/api-review.md` in this repository. If the API touches auth, permissions, secrets, PII, webhooks, uploads, or tenant isolation, also read `../_knowledge/security/security-review.md`.
+
 ## Workflow
 
 1. Identify consumers, producers, versioning expectations, and compatibility constraints.

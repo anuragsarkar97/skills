@@ -15,9 +15,9 @@ npm test
 Run without cloning after the package is published:
 
 ```bash
-npx @anuragsarkar/ai-agent-skills list
-npx @anuragsarkar/ai-agent-skills install --agent codex --write
-npx @anuragsarkar/ai-agent-skills install --agent claude --write
+npx @anuragsarkar97/ai-agent-skills list
+npx @anuragsarkar97/ai-agent-skills install --agent codex --write
+npx @anuragsarkar97/ai-agent-skills install --agent claude --write
 ```
 
 Install every skill into Codex:
@@ -49,10 +49,10 @@ node bin/ai-agent-skills.mjs install --agent codex --write
 Published package usage:
 
 ```bash
-npx @anuragsarkar/ai-agent-skills list
-npx @anuragsarkar/ai-agent-skills check
-npx @anuragsarkar/ai-agent-skills install --agent codex --write
-npx @anuragsarkar/ai-agent-skills install --agent claude --mode symlink --write
+npx @anuragsarkar97/ai-agent-skills list
+npx @anuragsarkar97/ai-agent-skills check
+npx @anuragsarkar97/ai-agent-skills install --agent codex --write
+npx @anuragsarkar97/ai-agent-skills install --agent claude --mode symlink --write
 ```
 
 Publish flow:
@@ -61,10 +61,11 @@ Publish flow:
 npm test
 npm run skills:catalog
 npm run skills:graph
+npm run skills:package-claude
 npm publish --access public
 ```
 
-The package allowlist ships `skills/`, `scripts/`, `examples/`, `templates/`, `agents/`, root agent instructions, and the CLI in `bin/`.
+The package allowlist ships `skills/`, `knowledge/`, `scripts/`, `examples/`, `templates/`, `agents/`, root agent instructions, and the CLI in `bin/`.
 
 ## Repository Layout
 
@@ -74,6 +75,7 @@ The package allowlist ships `skills/`, `scripts/`, `examples/`, `templates/`, `a
 ├── AGENTS.md               # Root instructions for Codex-style agents
 ├── CLAUDE.md               # Root instructions for Claude-style agents
 ├── scripts/                # Local maintenance and validation scripts
+├── knowledge/              # Shared curated references loaded only when needed
 ├── skills/                 # Reusable skills
 │   └── <skill-name>/
 │       ├── SKILL.md        # Required skill instructions
@@ -102,6 +104,8 @@ Optional resources:
 - `scripts/` for repeatable commands or deterministic transformations.
 - `assets/` for templates, images, fixtures, or other reusable materials.
 
+Shared curated knowledge lives in `knowledge/`. Installers copy it beside installed skills as `_knowledge/`, so skills can load deeper references without bloating every `SKILL.md`.
+
 For proactive agent selection, set `policy.allow_implicit_invocation: true` in `agents/openai.yaml` and keep the `description` trigger precise.
 
 ## What Each Skill Contains
@@ -128,6 +132,19 @@ Each skill folder can contain:
 | Context and skill maintenance | `smriti-shruti`, `self-amending-skill` |
 
 The generated machine-readable catalog is in `skills/catalog.json`, and the generated skill relationship graph is in `skills/graph.json` plus `skills/graph.mmd`.
+
+## Shared Knowledge
+
+The repository includes curated references that agents load only when useful:
+
+- `architecture/principles.md` for SOLID, YAGNI, dependency direction, and boundaries.
+- `api/api-review.md` for contracts, auth behavior, pagination, idempotency, and errors.
+- `database/schema-design.md` for entities, migrations, constraints, indexes, and retention.
+- `product/startup-pm.md` for startup product, competitor, and MVP decisions.
+- `security/security-review.md` for auth, permissions, secrets, PII, webhooks, uploads, and tenant isolation.
+- `testing/testing-strategy.md` for test level selection, coverage, and false-confidence checks.
+
+Installed skills reference these files through `_knowledge/`. Keep shared references concise, sourced, and reviewable. Do not paste large internet content directly into skills.
 
 ## Skill List
 
@@ -196,6 +213,8 @@ npm run skills:install -- --target /path/to/agent/skills --write
 
 Use `--force` to replace existing installed skill folders. Use `--remove-stale` only for directories managed by this repository.
 
+Install commands also copy shared knowledge into `_knowledge/` beside the installed skills.
+
 ## Claude Packages
 
 Create Claude-ready ZIP bundles and a marketplace-style manifest:
@@ -235,11 +254,15 @@ npm test
 npm run skills:check
 npm run skills:audit
 npm run skills:examples
+npm run skills:evaluate
+npm run skills:verify-sources
 ```
 
 The validator checks required frontmatter, naming rules, and basic agent metadata shape without external dependencies.
 The audit checks routing, metadata quality, implicit invocation, stale catalogs, and broad skill hygiene.
 The example harness checks that every skill has at least one implicit prompt example.
+The evaluation script checks examples and shared knowledge hooks for high-impact skills.
+The source verifier checks that curated knowledge files have source notes and source URLs. Use `-- --online` for live URL checks when network is available.
 `skills:check` runs validation, audit, and prompt examples as the standard workflow gate.
 
 ## Workflow Scripts
@@ -250,8 +273,10 @@ npm run skills:audit
 npm run skills:create -- my-skill --description "Use when..."
 npm run skills:duplicates
 npm run skills:examples
+npm run skills:evaluate
 npm run skills:graph
 npm run skills:import -- ../external-skill-folder
+npm run skills:index-project
 npm run skills:intake -- ../external-skill-folder
 npm run skills:intake -- git@github.com:org/skills.git#skills/the-skill
 npm run skills:install -- --target /tmp/agent-skills --all
@@ -260,6 +285,8 @@ npm run skills:import -- ../external-skill-folder --path /tmp/skills
 npm run skills:list
 npm run skills:marketplace-manifest
 npm run skills:package-claude
+npm run skills:refresh-knowledge
+npm run skills:verify-sources
 npm run skills:catalog
 ```
 
@@ -268,13 +295,17 @@ npm run skills:catalog
 - `skills:create` creates a local skill scaffold with OpenAI and Claude metadata.
 - `skills:duplicates` runs a Python overlap audit for likely duplicate skills.
 - `skills:examples` validates implicit prompt examples in `examples/skill-prompts.json`.
+- `skills:evaluate` checks prompt coverage and shared knowledge hooks.
 - `skills:graph` writes `skills/graph.json` and `skills/graph.mmd` from skill references.
 - `skills:import` imports a single skill from a local path or Git URL plus optional `#subdir`.
+- `skills:index-project` writes a compact project context summary into `.skill-context/project-context.json`.
 - `skills:intake` copies an external skill into `.skill-intake/`, validates it there, and can accept it after review.
 - `skills:install` dry-runs installation into an agent skill directory by default; pass `--write` to actually copy or symlink.
 - `skills:list` lists skills from the local catalog source.
 - `skills:marketplace-manifest` writes `dist/claude/marketplace-manifest.json`.
 - `skills:package-claude` creates Claude-ready ZIP bundles in `dist/claude/`.
+- `skills:refresh-knowledge` writes a review queue for refreshing curated references from sources.
+- `skills:verify-sources` verifies source metadata in shared knowledge references.
 - `skills:catalog` writes `skills/catalog.json` for agent discovery, audits, and external tooling.
 
 ## Create A Skill

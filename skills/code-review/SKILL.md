@@ -7,6 +7,8 @@ description: Perform rigorous code reviews for proposed changes, pull requests, 
 
 Lead with findings ordered by severity. Focus on concrete bugs, regressions, security issues, broken assumptions, missing tests, and maintainability risks that affect behavior.
 
+When a review touches a specialized risk area, load only the matching shared reference from `../_knowledge/`: architecture, API, database, security, product, or testing. In this repository, use `../../knowledge/` instead.
+
 ## Workflow
 
 1. Inspect the changed files and nearby code before forming conclusions.

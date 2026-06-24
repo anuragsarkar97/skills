@@ -1,5 +1,5 @@
 {
-  "name": "@anuragsarkar/ai-agent-skills",
+  "name": "@anuragsarkar97/ai-agent-skills",
   "version": "0.1.0",
   "private": false,
   "description": "Portable skills repository for AI coding agents such as Codex and Claude.",
@@ -11,17 +11,21 @@
     "test": "npm run skills:check",
     "skills:audit": "node scripts/audit-skills.mjs",
     "skills:catalog": "node scripts/generate-catalog.mjs",
-    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs",
+    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs && node scripts/evaluate-skills.mjs && node scripts/verify-sources.mjs",
     "skills:create": "node scripts/create-skill.mjs",
     "skills:duplicates": "python3 scripts/skill_duplicate_audit.py",
     "skills:examples": "node scripts/run-skill-examples.mjs",
+    "skills:evaluate": "node scripts/evaluate-skills.mjs",
     "skills:graph": "node scripts/generate-graph.mjs",
     "skills:import": "node scripts/import-skill.mjs",
+    "skills:index-project": "node scripts/index-project.mjs",
     "skills:install": "node scripts/install-skills.mjs",
     "skills:intake": "node scripts/intake-skill.mjs",
     "skills:list": "node scripts/list-skills.mjs",
     "skills:marketplace-manifest": "node scripts/generate-marketplace-manifest.mjs",
-    "skills:package-claude": "node scripts/package-claude.mjs"
+    "skills:package-claude": "node scripts/package-claude.mjs",
+    "skills:refresh-knowledge": "node scripts/refresh-knowledge.mjs",
+    "skills:verify-sources": "node scripts/verify-sources.mjs"
   },
   "files": [
     "AGENTS.md",
@@ -30,6 +34,7 @@
     "agents/",
     "bin/",
     "examples/",
+    "knowledge/",
     "scripts/",
     "skills/",
     "templates/"

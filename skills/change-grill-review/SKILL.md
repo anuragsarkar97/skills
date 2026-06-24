@@ -7,6 +7,8 @@ description: Perform an adversarial, high-pressure review of code changes, diffs
 
 Use this skill when a normal review is not enough. Be direct, specific, and evidence-based. The goal is to find what will fail, not to be agreeable.
 
+When the risk area is clear, load the matching shared reference from `../_knowledge/`: architecture, API, database, product, security, or testing. In this repository, use `../../knowledge/` instead.
+
 ## Workflow
 
 1. Reconstruct the intended behavior from the diff, issue, or plan.

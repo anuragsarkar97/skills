@@ -7,6 +7,8 @@ description: Design and review database entities, tables, relationships, migrati
 
 Use this skill when a change introduces or modifies durable data shape: SQL tables, NoSQL documents, ORM entities, migrations, indexes, constraints, seed data, retention, or data access boundaries.
 
+For deeper schema guidance, read `../_knowledge/database/schema-design.md` when installed or `../../knowledge/database/schema-design.md` in this repository. If the schema stores sensitive data or crosses tenants, also read `../_knowledge/security/security-review.md`.
+
 ## Workflow
 
 1. Identify the domain concept and its lifecycle before naming tables or fields.

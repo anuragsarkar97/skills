@@ -7,6 +7,8 @@ description: Design tests and stress-review test suites for correctness, coverag
 
 Use this skill whenever behavior changes need protection or existing tests need a hard look. A good test should fail for the right reason when the behavior breaks.
 
+For deeper test-level selection and coverage guidance, read `../_knowledge/testing/testing-strategy.md` when installed or `../../knowledge/testing/testing-strategy.md` in this repository.
+
 ## Workflow
 
 1. Identify the behavior, invariant, or contract under test.

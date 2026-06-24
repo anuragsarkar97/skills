@@ -282,6 +282,11 @@
     },
     {
       "from": "critical-thinking",
+      "to": "product-competitive-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "critical-thinking",
       "to": "test-design-review",
       "reason": "mentions"
     },

@@ -9,6 +9,8 @@ const write = Boolean(args.write);
 const force = Boolean(args.force);
 const removeStale = Boolean(args["remove-stale"]);
 const sourceRoot = path.resolve(args.path || "skills");
+const repositoryRoot = path.dirname(sourceRoot);
+const knowledgeRoot = path.join(repositoryRoot, "knowledge");
 
 if (!["copy", "symlink"].includes(mode)) {
   console.error("--mode must be copy or symlink");
@@ -45,6 +47,16 @@ const operations = [];
 
 if (write) {
   await mkdir(targetRoot, { recursive: true });
+}
+
+if (await pathExists(knowledgeRoot)) {
+  const knowledgeTarget = path.join(targetRoot, "_knowledge");
+  operations.push(`${await pathExists(knowledgeTarget) ? "replace" : "install"} shared knowledge as copy`);
+  if (write) {
+    await rm(knowledgeTarget, { recursive: true, force: true });
+    await cp(knowledgeRoot, knowledgeTarget, { recursive: true });
+    await writeFile(path.join(knowledgeTarget, markerName), `source=${knowledgeRoot}\n`);
+  }
 }
 
 for (const skill of selectedSkills) {

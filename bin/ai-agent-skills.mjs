@@ -9,17 +9,21 @@ const [, , command, ...args] = process.argv;
 const commands = {
   audit: ["scripts/audit-skills.mjs"],
   catalog: ["scripts/generate-catalog.mjs"],
-  check: ["scripts/validate-skills.mjs", "&&", "scripts/audit-skills.mjs", "&&", "scripts/run-skill-examples.mjs"],
+  check: ["scripts/validate-skills.mjs", "&&", "scripts/audit-skills.mjs", "&&", "scripts/run-skill-examples.mjs", "&&", "scripts/evaluate-skills.mjs", "&&", "scripts/verify-sources.mjs"],
   create: ["scripts/create-skill.mjs"],
   duplicates: ["scripts/skill_duplicate_audit.py"],
   examples: ["scripts/run-skill-examples.mjs"],
+  evaluate: ["scripts/evaluate-skills.mjs"],
   graph: ["scripts/generate-graph.mjs"],
   import: ["scripts/import-skill.mjs"],
+  "index-project": ["scripts/index-project.mjs"],
   install: ["scripts/install-skills.mjs"],
   intake: ["scripts/intake-skill.mjs"],
   list: ["scripts/list-skills.mjs"],
   "package-claude": ["scripts/package-claude.mjs"],
   "marketplace-manifest": ["scripts/generate-marketplace-manifest.mjs"],
+  "refresh-knowledge": ["scripts/refresh-knowledge.mjs"],
+  "verify-sources": ["scripts/verify-sources.mjs"],
 };
 
 function printHelp() {
@@ -31,9 +35,13 @@ Commands:
   check                   Run validation, audit, and prompt examples
   audit                   Audit metadata, routing, and catalog quality
   catalog                 Generate skills/catalog.json
+  index-project           Generate .skill-context/project-context.json
   graph                   Generate skills/graph.json and skills/graph.mmd
   package-claude          Create Claude-ready ZIP bundles in dist/claude
   marketplace-manifest    Generate dist/claude/marketplace-manifest.json
+  refresh-knowledge       Create a curated knowledge refresh review plan
+  verify-sources          Verify curated knowledge source metadata
+  evaluate                Evaluate skill examples and knowledge references
   create                  Create a new local skill scaffold
   import                  Import a skill from a local path or Git URL
   intake                  Quarantine and review an external skill
@@ -44,6 +52,7 @@ Examples:
   ai-agent-skills install --agent codex --write
   ai-agent-skills install --agent claude --mode symlink --write
   ai-agent-skills package-claude
+  ai-agent-skills index-project --path .
   ai-agent-skills check
 `);
 }
@@ -69,7 +78,13 @@ function runNodeScript(scriptPath, scriptArgs = []) {
 
 let result;
 if (command === "check") {
-  for (const scriptPath of ["scripts/validate-skills.mjs", "scripts/audit-skills.mjs", "scripts/run-skill-examples.mjs"]) {
+  for (const scriptPath of [
+    "scripts/validate-skills.mjs",
+    "scripts/audit-skills.mjs",
+    "scripts/run-skill-examples.mjs",
+    "scripts/evaluate-skills.mjs",
+    "scripts/verify-sources.mjs",
+  ]) {
     result = runNodeScript(scriptPath, args);
     if (result.status !== 0) break;
   }

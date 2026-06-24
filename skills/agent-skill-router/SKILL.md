@@ -31,6 +31,19 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `test-design-review` when creating tests, reviewing tests, checking coverage, or investigating flaky or weak tests.
 - Use `design-principles-review` for SOLID, YAGNI, abstraction quality, module boundaries, dependency direction, and maintainability.
 
+## Knowledge Routing
+
+When a task needs deeper context, load only the relevant shared reference. In installed agents, shared references live next to the skills at `../_knowledge/`. In this source repository, the same files live at `../../knowledge/` from each skill folder.
+
+- Architecture, SOLID, YAGNI, or boundaries: read `../_knowledge/architecture/principles.md`.
+- API contracts, auth, pagination, idempotency, or errors: read `../_knowledge/api/api-review.md`.
+- Schema, migrations, constraints, indexes, or retention: read `../_knowledge/database/schema-design.md`.
+- Startup roadmap, MVP, competitor, pricing, onboarding, or UX tradeoffs: read `../_knowledge/product/startup-pm.md`.
+- Auth, permissions, secrets, PII, uploads, webhooks, or tenant isolation: read `../_knowledge/security/security-review.md`.
+- Test strategy, coverage, flakiness, or level selection: read `../_knowledge/testing/testing-strategy.md`.
+
+Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
+
 ## Combination Rules
 
 - Schema plus endpoint changes: use `database-schema-design` and `api-review`; add `test-design-review` for contract and migration coverage.

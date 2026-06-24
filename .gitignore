@@ -1,5 +1,6 @@
 .DS_Store
 .air/
+.skill-context/
 .skill-intake/
 node_modules/
 dist/

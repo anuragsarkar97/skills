@@ -6,6 +6,8 @@ import { listSkills, parseArgs } from "./skill-utils.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const skillsDir = args.path || "skills";
+const repositoryRoot = path.dirname(path.resolve(skillsDir));
+const knowledgeRoot = path.join(repositoryRoot, "knowledge");
 const outputDir = path.resolve(args.out || "dist/claude");
 const selected = args.skills
   ? new Set(String(args.skills).split(",").map((skill) => skill.trim()).filter(Boolean))
@@ -33,10 +35,14 @@ for (const skill of skills) {
     recursive: true,
     filter: (filePath) => !filePath.includes(`${path.sep}.git${path.sep}`),
   });
+  await cp(knowledgeRoot, path.join(stageRoot, "_knowledge"), {
+    recursive: true,
+    force: true,
+  }).catch(() => {});
 
   const zipPath = path.join(outputDir, `${skill.name}.zip`);
   await rm(zipPath, { force: true });
-  const result = spawnSync("zip", ["-qr", zipPath, skill.name], {
+  const result = spawnSync("zip", ["-qr", zipPath, skill.name, "_knowledge"], {
     cwd: stageRoot,
     stdio: "inherit",
   });

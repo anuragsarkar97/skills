@@ -15,6 +15,12 @@ Use this skill before agreeing to a design or implementation direction that may 
 4. Classify the request as `agree`, `agree with constraints`, `push back`, or `say no`.
 5. When pushing back, give concrete evidence and a better path.
 
+## Load Extra Context When Needed
+
+- For architecture, boundaries, SOLID, or YAGNI decisions, read `../_knowledge/architecture/principles.md` when installed or `../../knowledge/architecture/principles.md` in this repository.
+- For product-facing decisions, use `product-competitive-thinking` and read `../_knowledge/product/startup-pm.md`.
+- For security, privacy, auth, tenant isolation, or secrets, read `../_knowledge/security/security-review.md`.
+
 ## Say No When
 
 - The design violates clear system boundaries or creates circular ownership.
