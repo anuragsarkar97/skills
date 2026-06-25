@@ -178,6 +178,14 @@ npm run skills:package-all
 
 It runs validation, regenerates the catalog and graph, packages Claude bundles, and performs an npm pack dry run.
 
+For a publishable release, bump the version as part of the same flow:
+
+```bash
+npm run skills:package-all -- --patch
+```
+
+Use `--minor`, `--major`, or `--bump 1.2.3` when the release needs a different version change.
+
 Create Claude-ready ZIP bundles:
 
 ```bash
@@ -199,7 +207,7 @@ npm run skills:package-all -- --pack-tarball
 Publish:
 
 ```bash
-npm run skills:package-all
+npm run skills:package-all -- --patch
 npm publish --access public
 ```
 

@@ -8,6 +8,7 @@ OUT_DIR="dist/release"
 CLAUDE_OUT="dist/claude"
 PACK_TARBALL=false
 RUN_ONLINE_SOURCE_CHECK=false
+VERSION_BUMP=""
 
 usage() {
   cat <<'EOF'
@@ -23,6 +24,10 @@ Runs the full local release packaging flow:
 Options:
   --out <dir>               Release output directory for optional tarball copy (default: dist/release)
   --claude-out <dir>        Claude bundle output directory (default: dist/claude)
+  --bump <type|version>     Run npm version before packaging (patch, minor, major, or exact version)
+  --patch                   Shortcut for --bump patch
+  --minor                   Shortcut for --bump minor
+  --major                   Shortcut for --bump major
   --pack-tarball            Also create the npm .tgz package and copy it to --out
   --online-source-check     Verify source URLs with network HEAD requests
   -h, --help                Show this help
@@ -38,6 +43,22 @@ while [[ $# -gt 0 ]]; do
     --claude-out)
       CLAUDE_OUT="$2"
       shift 2
+      ;;
+    --bump)
+      VERSION_BUMP="$2"
+      shift 2
+      ;;
+    --patch)
+      VERSION_BUMP="patch"
+      shift
+      ;;
+    --minor)
+      VERSION_BUMP="minor"
+      shift
+      ;;
+    --major)
+      VERSION_BUMP="major"
+      shift
       ;;
     --pack-tarball)
       PACK_TARBALL=true
@@ -58,6 +79,11 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [[ -n "$VERSION_BUMP" ]]; then
+  echo "==> Bumping package version ($VERSION_BUMP)"
+  npm version "$VERSION_BUMP" --no-git-tag-version
+fi
 
 echo "==> Running skill checks"
 npm run skills:check
