@@ -1,10 +1,10 @@
 {
-  "count": 25,
+  "count": 26,
   "nodes": [
     {
       "id": "agent-skill-router",
       "displayName": "Agent Skill Router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "allowImplicitInvocation": true
     },
     {
@@ -146,6 +146,12 @@
       "allowImplicitInvocation": true
     },
     {
+      "id": "upskilling-research",
+      "displayName": "Upskilling Research",
+      "description": "Research and curate current learning resources for upskilling in a domain. Use when an AI agent is asked to learn, upskill, study, build a learning path, or find recent blogs, papers, documentation, talks, courses, and videos for a topic, including requests like 'I want to upskill in Kubernetes' or 'find me new reads on AI agents'.",
+      "allowImplicitInvocation": true
+    },
+    {
       "id": "utility-writer",
       "displayName": "Utility Writer",
       "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
@@ -266,6 +272,11 @@
     {
       "from": "agent-skill-router",
       "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "upskilling-research",
       "reason": "mentions"
     },
     {

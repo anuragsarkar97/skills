@@ -142,6 +142,11 @@
     "implicit": true
   },
   {
+    "expectedSkill": "upskilling-research",
+    "prompt": "I want to upskill myself in Kubernetes; find recent blogs, papers, docs, and videos and make me a 30-day learning plan.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "utility-writer",
     "prompt": "Write a small parser utility with clear edge-case behavior and table-driven tests.",
     "implicit": true

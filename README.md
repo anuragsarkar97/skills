@@ -55,6 +55,10 @@ Production checkout is returning 500s after the last deploy. Triage whether we s
 ```
 
 ```text
+I want to upskill myself in Kubernetes; find recent blogs, papers, docs, and videos and make me a 30-day plan.
+```
+
+```text
 /remember I need to send email to product manager at 10 pm tonight
 ```
 
@@ -71,6 +75,7 @@ Use the critical-thinking skill to challenge this design before we implement it.
 | Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
 | Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
+| Learning and growth | `upskilling-research` |
 | Reliability and operations | `incident-response`, `observability-design` |
 | Personal productivity | `macos-reminder` |
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
@@ -84,6 +89,7 @@ Use the critical-thinking skill to challenge this design before we implement it.
 - `critical-thinking`: challenges weak designs and says no to anti-patterns.
 - `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
 - `product-communication`: writes respectful but firm Slack, email, issue, PR, and stakeholder messages.
+- `upskilling-research`: finds fresh blogs, papers, docs, talks, courses, and videos and turns them into a learning path.
 - `database-schema-design`: designs tables, entities, migrations, indexes, constraints, and retention.
 - `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
 - `change-grill-review`: performs adversarial review for risky production changes.

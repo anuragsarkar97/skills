@@ -18,6 +18,7 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `critical-thinking` before agreeing to designs or implementation requests that may be anti-patterns. Claude should say no when needed and offer a safer alternative.
 - Use `product-competitive-thinking` before product-facing implementation, MVP scoping, onboarding, UX, pricing, or competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.
+- Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, courses, and videos.
 - Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 - Use `incident-response` for production degradation, outages, rollback/hotfix decisions, on-call triage, and post-mortems.
 - Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.

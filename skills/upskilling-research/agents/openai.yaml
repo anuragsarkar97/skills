@@ -1,0 +1,7 @@
+interface:
+  display_name: "Upskilling Research"
+  short_description: "Curate fresh learning resources"
+  default_prompt: "Use $upskilling-research to research fresh learning resources and create a focused upskilling plan."
+
+policy:
+  allow_implicit_invocation: true

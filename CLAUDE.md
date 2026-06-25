@@ -19,6 +19,7 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `critical-thinking` before agreeing to risky, overbuilt, incoherent, or anti-patterned designs.
 - `product-competitive-thinking` before product-facing work, MVP scope, UX, onboarding, pricing, or competitor-driven requests.
 - `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
+- `upskilling-research` for learning plans and fresh resource curation from blogs, papers, docs, talks, courses, and videos.
 - `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 - `smriti-shruti` for context triage and token reduction.
 - `oppenheimer-simplifier` for simplifying complex problems before solving.

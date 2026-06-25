@@ -1,9 +1,9 @@
 {
-  "count": 25,
+  "count": 26,
   "skills": [
     {
       "name": "agent-skill-router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "displayName": "Agent Skill Router",
       "shortDescription": "Select the right skill proactively",
       "defaultPrompt": "Use $agent-skill-router to choose the best skills for the current engineering task.",
@@ -191,6 +191,14 @@
       "displayName": "Test Writer",
       "shortDescription": "Write targeted tests for behavior",
       "defaultPrompt": "Use $test-writer to implement focused tests for changed behavior.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "upskilling-research",
+      "description": "Research and curate current learning resources for upskilling in a domain. Use when an AI agent is asked to learn, upskill, study, build a learning path, or find recent blogs, papers, documentation, talks, courses, and videos for a topic, including requests like 'I want to upskill in Kubernetes' or 'find me new reads on AI agents'.",
+      "displayName": "Upskilling Research",
+      "shortDescription": "Curate fresh learning resources",
+      "defaultPrompt": "Use $upskilling-research to research fresh learning resources and create a focused upskilling plan.",
       "allowImplicitInvocation": true
     },
     {

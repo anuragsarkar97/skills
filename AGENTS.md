@@ -19,6 +19,7 @@ This repository stores reusable AI agent skills.
 - Use `critical-thinking` before agreeing to designs, shortcuts, refactors, or implementation approaches that may be unsafe, overbuilt, incoherent, or anti-patterned.
 - Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, and competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need respectful but firm communication.
+- Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, and videos.
 - Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 - Use `smriti-shruti` for context triage, token reduction, stale context, repeated logs, and noisy large inputs.
 - Use `oppenheimer-simplifier` for complex, ambiguous, tangled, or high-cognitive-load problems.
