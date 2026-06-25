@@ -115,6 +115,18 @@ Run package validation:
 npx -y @anuragsarkar97/ai-agent-skills@latest check
 ```
 
+Search skills and knowledge:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest search "api auth pagination"
+```
+
+Print bootstrap instructions for an agent:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest bootstrap --agent claude
+```
+
 Install selected skills:
 
 ```bash
@@ -168,6 +180,15 @@ npm run skills:create -- my-new-skill --description "Use when an AI agent needs 
 
 Then edit `skills/my-new-skill/SKILL.md` with concrete triggers, workflow, checks, and output shape.
 
+Create from a stronger template:
+
+```bash
+npm run skills:create -- my-review-skill --template review --description "Use when..."
+npm run skills:create -- my-writer-skill --template writer --description "Use when..."
+npm run skills:create -- my-ops-skill --template ops --description "Use when..."
+npm run skills:create -- my-knowledge-skill --template knowledge-backed --description "Use when..."
+```
+
 ## Build And Package
 
 One command runs the full local packaging flow:
@@ -211,26 +232,42 @@ npm run skills:package-all -- --patch
 npm publish --access public
 ```
 
+Full release automation:
+
+```bash
+npm run skills:release -- --patch
+```
+
+The release script runs package-all with a version bump, writes the changelog, commits the release files, publishes to npm, tags the release, and pushes the branch and tag. Use `--dry-run` to test publish packaging without changing git or npm.
+
 ## Maintenance Scripts
 
 ```bash
 npm run skills:audit
+npm run skills:bootstrap -- --agent claude
 npm run skills:catalog
+npm run skills:changelog
 npm run skills:check
 npm run skills:duplicates
 npm run skills:evaluate
 npm run skills:examples
 npm run skills:graph
 npm run skills:index-project
+npm run skills:knowledge-index
 npm run skills:marketplace-manifest
 npm run skills:refresh-knowledge
+npm run skills:search -- "go service tests"
 npm run skills:verify-sources
 ```
 
 - `skills:check` runs validation, audit, prompt examples, evaluation hooks, and source checks.
+- `skills:bootstrap` prints copy-paste agent instructions for proactive skill routing.
 - `skills:catalog` writes `skills/catalog.json`.
+- `skills:changelog` generates changelog text from commits since the last tag.
 - `skills:graph` writes `skills/graph.json` and `skills/graph.mmd`.
 - `skills:evaluate` checks prompt coverage and shared knowledge hooks.
+- `skills:knowledge-index` writes `knowledge/index.json` from curated references.
+- `skills:search` searches skills and shared knowledge references.
 - `skills:verify-sources` verifies source metadata in knowledge references.
 - `skills:refresh-knowledge` writes a review queue for source refresh work.
 - `skills:index-project` writes `.skill-context/project-context.json`.

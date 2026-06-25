@@ -1,0 +1,287 @@
+{
+  "version": 1,
+  "referenceCount": 14,
+  "references": [
+    {
+      "path": "api/api-review.md",
+      "title": "API Review Knowledge",
+      "summary": "Use this reference for endpoint design, request and response contracts, compatibility, auth behavior, pagination, idempotency, and API error semantics.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "api-review"
+      ],
+      "sources": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://jsonapi.org/format/",
+        "https://docs.stripe.com/api/idempotent_requests"
+      ]
+    },
+    {
+      "path": "architecture/principles.md",
+      "title": "Architecture Principles",
+      "summary": "Use this reference when reviewing service boundaries, abstractions, dependency direction, SOLID, YAGNI, or maintainability tradeoffs.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "critical-thinking",
+        "design-principles-review",
+        "implementation-plan"
+      ],
+      "sources": [
+        "https://12factor.net/",
+        "https://web.archive.org/web/20210224171401/http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod",
+        "https://martinfowler.com/bliki/Yagni.html",
+        "https://martinfowler.com/architecture/"
+      ]
+    },
+    {
+      "path": "cloud/aws-azure-architecture.md",
+      "title": "AWS And Azure Architecture Knowledge",
+      "summary": "Use this reference when planning, reviewing, or operating infrastructure on AWS or Azure, especially with Kubernetes, managed databases, queues, storage, identity, networking, observability, and reliability tradeoffs.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "incident-response",
+        "observability-design"
+      ],
+      "sources": [
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html",
+        "https://aws.github.io/aws-eks-best-practices/",
+        "https://learn.microsoft.com/azure/well-architected/",
+        "https://learn.microsoft.com/azure/aks/best-practices"
+      ]
+    },
+    {
+      "path": "communication/product-communication.md",
+      "title": "Product Communication Knowledge",
+      "summary": "Use this reference when drafting or reviewing Slack, Teams, email, ticket, PR, customer, stakeholder, escalation, feedback, or decision messages that must be respectful, firm, and clear.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "incident-response",
+        "product-communication"
+      ],
+      "sources": [
+        "https://www.radicalcandor.com/our-approach/",
+        "https://www.ccl.org/articles/leading-effectively-articles/closing-the-gap-between-intent-vs-impact-sbii/",
+        "https://www.atlassian.com/team-playbook/plays/daci",
+        "https://www.cnvc.org/learn-nvc/what-is-nvc"
+      ]
+    },
+    {
+      "path": "database/schema-design.md",
+      "title": "Database Schema Design Knowledge",
+      "summary": "Use this reference for entities, tables, migrations, indexes, retention, constraints, and multi-tenant persistence design.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "database-schema-design"
+      ],
+      "sources": [
+        "https://www.postgresql.org/docs/current/ddl-constraints.html",
+        "https://www.postgresql.org/docs/current/indexes.html",
+        "https://owasp.org/www-project-top-10-privacy-risks/",
+        "https://use-the-index-luke.com/",
+        "https://martinfowler.com/bliki/ParallelChange.html"
+      ]
+    },
+    {
+      "path": "golang/go-engineering.md",
+      "title": "Go Engineering Knowledge",
+      "summary": "Use this reference when writing or reviewing Go services, APIs, CLIs, workers, libraries, tests, and utilities.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "api-writer",
+        "incident-response",
+        "service-writer",
+        "test-writer",
+        "utility-writer"
+      ],
+      "sources": [
+        "https://go.dev/doc/effective_go",
+        "https://go.dev/wiki/CodeReviewComments",
+        "https://go.dev/blog/context",
+        "https://pkg.go.dev/testing"
+      ]
+    },
+    {
+      "path": "incident-response/incident-response.md",
+      "title": "Incident Response Knowledge",
+      "summary": "Use this reference when triaging a production incident, managing a live outage, or writing a post-mortem.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "incident-response"
+      ],
+      "sources": [
+        "https://sre.google/sre-book/managing-incidents/",
+        "https://response.pagerduty.com/",
+        "https://www.etsy.com/codeascraft/blameless-postmortems/"
+      ]
+    },
+    {
+      "path": "kubernetes/kubernetes-operations.md",
+      "title": "Kubernetes Operations Knowledge",
+      "summary": "Use this reference when designing, reviewing, or troubleshooting Kubernetes deployments, services, probes, resources, autoscaling, networking, secrets, and rollout behavior.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "incident-response",
+        "observability-design"
+      ],
+      "sources": [
+        "https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/",
+        "https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+        "https://kubernetes.io/docs/concepts/security/security-checklist/",
+        "https://kubernetes.io/docs/concepts/workloads/"
+      ]
+    },
+    {
+      "path": "observability/observability-design.md",
+      "title": "Observability Design Knowledge",
+      "summary": "Use this reference when designing structured logs, metrics, distributed traces, alert thresholds, or SLI/SLO definitions for a service.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "observability-design"
+      ],
+      "sources": [
+        "https://sre.google/sre-book/monitoring-distributed-systems/",
+        "https://sre.google/sre-book/service-level-objectives/",
+        "https://www.brendangregg.com/usemethod.html",
+        "https://grafana.com/blog/2018/08/02/the-red-method-how-to-instrument-your-services/",
+        "https://opentelemetry.io/docs/concepts/semantic-conventions/"
+      ]
+    },
+    {
+      "path": "product/startup-pm.md",
+      "title": "Startup Product And Competitor Thinking",
+      "summary": "Use this reference when a change affects roadmap, customer value, UX, activation, monetization, positioning, or competitive advantage.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "critical-thinking",
+        "product-competitive-thinking"
+      ],
+      "sources": [
+        "https://hbr.org/2016/09/know-your-customers-jobs-to-be-done",
+        "http://theleanstartup.com/principles",
+        "https://www.producttalk.org/"
+      ]
+    },
+    {
+      "path": "python/python-scripting.md",
+      "title": "Python Scripting Knowledge",
+      "summary": "Use this reference when writing or reviewing Python scripts for automation, maintenance tasks, data transforms, repo tooling, CLI utilities, and one-off operational helpers.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "test-writer",
+        "utility-writer"
+      ],
+      "sources": [
+        "https://docs.python.org/3/library/argparse.html",
+        "https://docs.python.org/3/library/pathlib.html",
+        "https://docs.python.org/3/library/subprocess.html",
+        "https://docs.python.org/3/library/logging.html"
+      ]
+    },
+    {
+      "path": "react/react-engineering.md",
+      "title": "React Engineering Knowledge",
+      "summary": "Use this reference when writing or reviewing React components, hooks, state management, rendering behavior, forms, frontend tests, and API integration.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "api-writer",
+        "test-writer"
+      ],
+      "sources": [
+        "https://react.dev/learn/thinking-in-react",
+        "https://react.dev/learn/choosing-the-state-structure",
+        "https://react.dev/learn/synchronizing-with-effects",
+        "https://react.dev/learn/escape-hatches"
+      ]
+    },
+    {
+      "path": "security/security-review.md",
+      "title": "Security And Privacy Review Knowledge",
+      "summary": "Use this reference when a change touches auth, permissions, secrets, user data, uploads, webhooks, third-party integrations, or operational access.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "api-review",
+        "critical-thinking",
+        "database-schema-design",
+        "implementation-plan",
+        "incident-response",
+        "observability-design"
+      ],
+      "sources": [
+        "https://owasp.org/API-Security/editions/2023/en/0x00-header/",
+        "https://owasp.org/www-project-application-security-verification-standard/",
+        "https://pages.nist.gov/800-63-3/"
+      ]
+    },
+    {
+      "path": "testing/testing-strategy.md",
+      "title": "Testing Strategy Knowledge",
+      "summary": "Use this reference when designing or reviewing tests, deciding coverage depth, or checking whether a change has enough validation.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router",
+        "test-design-review"
+      ],
+      "sources": [
+        "https://martinfowler.com/bliki/TestPyramid.html",
+        "https://testing.googleblog.com/",
+        "https://playwright.dev/docs/intro",
+        "https://docs.pact.io/"
+      ]
+    }
+  ]
+}

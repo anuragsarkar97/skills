@@ -18,8 +18,9 @@ Runs the full local release packaging flow:
   1. Validate skills, examples, evaluation hooks, and source metadata
   2. Generate skills/catalog.json
   3. Generate skills/graph.json and skills/graph.mmd
-  4. Package Claude ZIP bundles and marketplace manifest
-  5. Run npm pack --dry-run
+  4. Generate knowledge/index.json
+  5. Package Claude ZIP bundles and marketplace manifest
+  6. Run npm pack --dry-run
 
 Options:
   --out <dir>               Release output directory for optional tarball copy (default: dist/release)
@@ -98,6 +99,9 @@ npm run skills:catalog
 
 echo "==> Generating graph"
 npm run skills:graph
+
+echo "==> Generating knowledge index"
+npm run skills:knowledge-index
 
 echo "==> Packaging Claude bundles"
 npm run skills:package-claude -- --out "$CLAUDE_OUT"

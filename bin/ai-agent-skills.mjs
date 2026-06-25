@@ -8,7 +8,9 @@ const [, , command, ...args] = process.argv;
 
 const commands = {
   audit: ["scripts/audit-skills.mjs"],
+  bootstrap: ["scripts/bootstrap-agent.mjs"],
   catalog: ["scripts/generate-catalog.mjs"],
+  changelog: ["scripts/generate-changelog.mjs"],
   check: ["scripts/validate-skills.mjs", "&&", "scripts/audit-skills.mjs", "&&", "scripts/run-skill-examples.mjs", "&&", "scripts/evaluate-skills.mjs", "&&", "scripts/verify-sources.mjs"],
   create: ["scripts/create-skill.mjs"],
   duplicates: ["scripts/skill_duplicate_audit.py"],
@@ -19,11 +21,14 @@ const commands = {
   "index-project": ["scripts/index-project.mjs"],
   install: ["scripts/install-skills.mjs"],
   intake: ["scripts/intake-skill.mjs"],
+  "knowledge-index": ["scripts/generate-knowledge-index.mjs"],
   list: ["scripts/list-skills.mjs"],
   "package-all": ["scripts/package-all.sh"],
   "package-claude": ["scripts/package-claude.mjs"],
   "marketplace-manifest": ["scripts/generate-marketplace-manifest.mjs"],
   "refresh-knowledge": ["scripts/refresh-knowledge.mjs"],
+  release: ["scripts/release.sh"],
+  search: ["scripts/search-skills.mjs"],
   "verify-sources": ["scripts/verify-sources.mjs"],
 };
 
@@ -34,11 +39,16 @@ Commands:
   install                 Install skills into Codex, Claude, or a custom target
   list                    List available skills
   check                   Run validation, audit, and prompt examples
+  search                  Search skills and knowledge references
+  bootstrap               Print agent bootstrap instructions
   audit                   Audit metadata, routing, and catalog quality
   catalog                 Generate skills/catalog.json
+  knowledge-index         Generate knowledge/index.json
+  changelog               Generate changelog text from git commits
   index-project           Generate .skill-context/project-context.json
   graph                   Generate skills/graph.json and skills/graph.mmd
   package-all             Run the full release packaging flow
+  release                 Bump, package, publish, tag, and push a release
   package-claude          Create Claude-ready ZIP bundles in dist/claude
   marketplace-manifest    Generate dist/claude/marketplace-manifest.json
   refresh-knowledge       Create a curated knowledge refresh review plan
@@ -53,7 +63,10 @@ Commands:
 Examples:
   ai-agent-skills install --agent codex --write
   ai-agent-skills install --agent claude --mode symlink --write
+  ai-agent-skills search "api auth pagination"
+  ai-agent-skills bootstrap --agent claude
   ai-agent-skills package-all
+  ai-agent-skills release --patch
   ai-agent-skills package-claude
   ai-agent-skills index-project --path .
   ai-agent-skills check
@@ -98,6 +111,11 @@ if (command === "check") {
   });
 } else if (command === "package-all") {
   result = spawnSync("bash", [path.join(packageRoot, "scripts/package-all.sh"), ...args], {
+    cwd: packageRoot,
+    stdio: "inherit",
+  });
+} else if (command === "release") {
+  result = spawnSync("bash", [path.join(packageRoot, "scripts/release.sh"), ...args], {
     cwd: packageRoot,
     stdio: "inherit",
   });
