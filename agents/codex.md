@@ -26,6 +26,8 @@ Use `upskilling-research` when the user wants to learn, upskill, study, find rec
 
 Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 
+Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
+
 Use `incident-response` for active production degradation, outage triage, rollback/hotfix decisions, and post-mortems. Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
 
 For the primary stack, use the shared knowledge references for Go, React, Python scripting, Kubernetes, AWS, and Azure whenever those ecosystems affect the answer.

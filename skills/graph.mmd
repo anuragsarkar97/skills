@@ -1,6 +1,7 @@
 graph TD
   agent_skill_router["agent-skill-router"] --> api_review["api-review"]
   agent_skill_router["agent-skill-router"] --> api_writer["api-writer"]
+  agent_skill_router["agent-skill-router"] --> caveman_mode["caveman-mode"]
   agent_skill_router["agent-skill-router"] --> change_grill_review["change-grill-review"]
   agent_skill_router["agent-skill-router"] --> code_documentation["code-documentation"]
   agent_skill_router["agent-skill-router"] --> code_review["code-review"]
@@ -28,6 +29,7 @@ graph TD
   api_writer["api-writer"] --> api_review["api-review"]
   api_writer["api-writer"] --> service_writer["service-writer"]
   api_writer["api-writer"] --> test_writer["test-writer"]
+  caveman_mode["caveman-mode"] --> smriti_shruti["smriti-shruti"]
   change_grill_review["change-grill-review"] --> code_review["code-review"]
   critical_thinking["critical-thinking"] --> api_review["api-review"]
   critical_thinking["critical-thinking"] --> change_grill_review["change-grill-review"]
@@ -52,5 +54,6 @@ graph TD
   self_amending_skill["self-amending-skill"] --> agent_skill_router["agent-skill-router"]
   service_writer["service-writer"] --> test_design_review["test-design-review"]
   service_writer["service-writer"] --> test_writer["test-writer"]
+  smriti_shruti["smriti-shruti"] --> caveman_mode["caveman-mode"]
   test_writer["test-writer"] --> test_design_review["test-design-review"]
   utility_writer["utility-writer"] --> test_writer["test-writer"]

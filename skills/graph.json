@@ -1,10 +1,10 @@
 {
-  "count": 26,
+  "count": 27,
   "nodes": [
     {
       "id": "agent-skill-router",
       "displayName": "Agent Skill Router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "allowImplicitInvocation": true
     },
     {
@@ -17,6 +17,12 @@
       "id": "api-writer",
       "displayName": "API Writer",
       "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "caveman-mode",
+      "displayName": "Caveman Mode",
+      "description": "Minimize response tokens and refuse irrelevant output. Use when an AI agent should answer only the user's directly asked question, avoid unsolicited explanation, skip background, say nothing or ask one clarification when the request is not relevant, and keep replies short unless detail is explicitly requested. Trigger for caveman mode, terse mode, low-token answers, reduce output, stop overexplaining, or do not answer unless asked.",
       "allowImplicitInvocation": true
     },
     {
@@ -171,6 +177,11 @@
     },
     {
       "from": "agent-skill-router",
+      "to": "caveman-mode",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
       "to": "change-grill-review",
       "reason": "mentions"
     },
@@ -305,6 +316,11 @@
       "reason": "mentions"
     },
     {
+      "from": "caveman-mode",
+      "to": "smriti-shruti",
+      "reason": "mentions"
+    },
+    {
       "from": "change-grill-review",
       "to": "code-review",
       "reason": "mentions"
@@ -422,6 +438,11 @@
     {
       "from": "service-writer",
       "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "smriti-shruti",
+      "to": "caveman-mode",
       "reason": "mentions"
     },
     {

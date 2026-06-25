@@ -21,6 +21,7 @@ This repository stores reusable AI agent skills.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need respectful but firm communication.
 - Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, and videos.
 - Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
+- Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
 - Use `smriti-shruti` for context triage, token reduction, stale context, repeated logs, and noisy large inputs.
 - Use `oppenheimer-simplifier` for complex, ambiguous, tangled, or high-cognitive-load problems.
 - Use `micro-agent-orchestrator` when implementation should be split across focused writer skills.

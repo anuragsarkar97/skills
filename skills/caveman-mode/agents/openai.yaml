@@ -1,0 +1,7 @@
+interface:
+  display_name: "Caveman Mode"
+  short_description: "Answer only what was asked"
+  default_prompt: "Use $caveman-mode to keep the response minimal and directly relevant."
+
+policy:
+  allow_implicit_invocation: true

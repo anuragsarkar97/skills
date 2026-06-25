@@ -68,6 +68,10 @@ For explicit testing, name a skill:
 Use the critical-thinking skill to challenge this design before we implement it.
 ```
 
+```text
+Use caveman mode: answer only what I directly ask and stop adding unrelated explanation.
+```
+
 ## What You Get
 
 | Area | Skills |
@@ -81,11 +85,12 @@ Use the critical-thinking skill to challenge this design before we implement it.
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
 | Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
-| Context and maintenance | `smriti-shruti`, `self-amending-skill` |
+| Context and maintenance | `caveman-mode`, `smriti-shruti`, `self-amending-skill` |
 
 ## Skill Highlights
 
 - `agent-skill-router`: chooses and combines skills proactively.
+- `caveman-mode`: keeps answers terse, directly relevant, and silent on unasked tangents.
 - `critical-thinking`: challenges weak designs and says no to anti-patterns.
 - `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
 - `product-communication`: writes respectful but firm Slack, email, issue, PR, and stakeholder messages.

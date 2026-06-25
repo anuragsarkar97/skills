@@ -1,9 +1,9 @@
 {
-  "count": 26,
+  "count": 27,
   "skills": [
     {
       "name": "agent-skill-router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "displayName": "Agent Skill Router",
       "shortDescription": "Select the right skill proactively",
       "defaultPrompt": "Use $agent-skill-router to choose the best skills for the current engineering task.",
@@ -23,6 +23,14 @@
       "displayName": "API Writer",
       "shortDescription": "Implement API handlers and contracts",
       "defaultPrompt": "Use $api-writer to implement API handlers and contracts.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "caveman-mode",
+      "description": "Minimize response tokens and refuse irrelevant output. Use when an AI agent should answer only the user's directly asked question, avoid unsolicited explanation, skip background, say nothing or ask one clarification when the request is not relevant, and keep replies short unless detail is explicitly requested. Trigger for caveman mode, terse mode, low-token answers, reduce output, stop overexplaining, or do not answer unless asked.",
+      "displayName": "Caveman Mode",
+      "shortDescription": "Answer only what was asked",
+      "defaultPrompt": "Use $caveman-mode to keep the response minimal and directly relevant.",
       "allowImplicitInvocation": true
     },
     {

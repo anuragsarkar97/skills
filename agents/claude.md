@@ -20,6 +20,7 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.
 - Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, courses, and videos.
 - Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
+- Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
 - Use `incident-response` for production degradation, outages, rollback/hotfix decisions, on-call triage, and post-mortems.
 - Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
 - For Go, React, Python scripting, Kubernetes, AWS, and Azure work, use the matching shared knowledge reference when the stack affects the task.

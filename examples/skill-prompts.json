@@ -27,6 +27,14 @@
     "implicit": true
   },
   {
+    "expectedSkill": "caveman-mode",
+    "prompt": "Use caveman mode: answer only what I directly ask and stop adding unrelated explanation.",
+    "companionSkills": [
+      "smriti-shruti"
+    ],
+    "implicit": true
+  },
+  {
     "expectedSkill": "code-documentation",
     "prompt": "Add useful documentation for this public helper and update the README with the setup command.",
     "implicit": true

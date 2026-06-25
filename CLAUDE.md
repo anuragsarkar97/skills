@@ -21,6 +21,7 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
 - `upskilling-research` for learning plans and fresh resource curation from blogs, papers, docs, talks, courses, and videos.
 - `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
+- `caveman-mode` for terse, low-token, direct-only answers and "do not answer unless relevant" instructions.
 - `smriti-shruti` for context triage and token reduction.
 - `oppenheimer-simplifier` for simplifying complex problems before solving.
 - `micro-agent-orchestrator` for splitting implementation across writer skills.

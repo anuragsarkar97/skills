@@ -7,6 +7,8 @@ description: Triage context, memory, and conversation history to reduce token lo
 
 Use this skill to keep the working context lean. It cannot erase system context, but it can decide what to carry forward, what to summarize, what to ignore, and what to reload only if needed.
 
+Use `caveman-mode` after this skill when the problem is not only too much context, but also too much output. This skill reduces what the agent carries; `caveman-mode` reduces what the agent says.
+
 ## Core Rule
 
 Preserve task-critical facts. Drop or defer everything that does not affect the next decision, edit, or verification step.
