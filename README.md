@@ -2,6 +2,14 @@
 
 Portable, installable skills for AI coding agents such as Codex and Claude.
 
+[![npm version](https://img.shields.io/npm/v/@anuragsarkar97/ai-agent-skills.svg)](https://www.npmjs.com/package/@anuragsarkar97/ai-agent-skills)
+[![npm downloads](https://img.shields.io/npm/dm/@anuragsarkar97/ai-agent-skills.svg)](https://www.npmjs.com/package/@anuragsarkar97/ai-agent-skills)
+[![license](https://img.shields.io/npm/l/@anuragsarkar97/ai-agent-skills.svg)](https://www.npmjs.com/package/@anuragsarkar97/ai-agent-skills)
+
+| npm package | Install |
+|---|---|
+| [`@anuragsarkar97/ai-agent-skills`](https://www.npmjs.com/package/@anuragsarkar97/ai-agent-skills) | `npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --write --force` |
+
 This repository gives agents reusable operating modes for review, planning, implementation, testing, product thinking, communication, reliability, observability, and stack-specific engineering judgment. Skills are intentionally small. Deeper guidance lives in curated knowledge packs that agents load only when needed.
 
 ## Install
