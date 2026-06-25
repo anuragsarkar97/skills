@@ -1,5 +1,5 @@
 {
-  "count": 24,
+  "count": 25,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -95,6 +95,14 @@
       "displayName": "Incident Response",
       "shortDescription": "Triage and resolve production incidents",
       "defaultPrompt": "Use $incident-response to triage this production incident.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "macos-reminder",
+      "description": "Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.",
+      "displayName": "macOS Reminder",
+      "shortDescription": "Schedule local macOS notifications",
+      "defaultPrompt": "Use $macos-reminder to schedule a local macOS reminder notification.",
       "allowImplicitInvocation": true
     },
     {

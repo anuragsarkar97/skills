@@ -12,13 +12,18 @@
   {
     "expectedSkill": "api-writer",
     "prompt": "Implement the route handler, request validation, response body, and error mapping for a new users endpoint.",
-    "companionSkills": ["api-review", "test-writer"],
+    "companionSkills": [
+      "api-review",
+      "test-writer"
+    ],
     "implicit": true
   },
   {
     "expectedSkill": "change-grill-review",
     "prompt": "Grill this migration and service change like it is about to ship to production.",
-    "companionSkills": ["critical-thinking"],
+    "companionSkills": [
+      "critical-thinking"
+    ],
     "implicit": true
   },
   {
@@ -59,7 +64,9 @@
   {
     "expectedSkill": "incident-response",
     "prompt": "Production checkout is returning 500s since the last deploy; triage the logs, form hypotheses, and decide whether to rollback or hotfix.",
-    "companionSkills": ["product-communication"],
+    "companionSkills": [
+      "product-communication"
+    ],
     "implicit": true
   },
   {
@@ -68,9 +75,18 @@
     "implicit": true
   },
   {
+    "expectedSkill": "macos-reminder",
+    "prompt": "/remember I need to send email to product manager at 10 pm tonight",
+    "implicit": true
+  },
+  {
     "expectedSkill": "micro-agent-orchestrator",
     "prompt": "Split this feature into service, API, utility, and test implementation passes.",
-    "companionSkills": ["service-writer", "api-writer", "test-writer"],
+    "companionSkills": [
+      "service-writer",
+      "api-writer",
+      "test-writer"
+    ],
     "implicit": true
   },
   {
@@ -86,13 +102,18 @@
   {
     "expectedSkill": "product-communication",
     "prompt": "Draft a respectful but firm Slack reply explaining why we should narrow this feature before committing.",
-    "companionSkills": ["critical-thinking", "product-competitive-thinking"],
+    "companionSkills": [
+      "critical-thinking",
+      "product-competitive-thinking"
+    ],
     "implicit": true
   },
   {
     "expectedSkill": "product-competitive-thinking",
     "prompt": "Evaluate this roadmap request from a startup PM and competitor point of view before we build it.",
-    "companionSkills": ["critical-thinking"],
+    "companionSkills": [
+      "critical-thinking"
+    ],
     "implicit": true
   },
   {

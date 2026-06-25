@@ -22,6 +22,8 @@ Use `product-competitive-thinking` before product-facing work. Evaluate the targ
 
 Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages. Be respectful but firm: acknowledge the goal, state disagreement clearly when needed, and propose the next useful step.
 
+Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
+
 Use `incident-response` for active production degradation, outage triage, rollback/hotfix decisions, and post-mortems. Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
 
 For the primary stack, use the shared knowledge references for Go, React, Python scripting, Kubernetes, AWS, and Azure whenever those ecosystems affect the answer.

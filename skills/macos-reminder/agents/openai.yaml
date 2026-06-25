@@ -1,0 +1,7 @@
+interface:
+  display_name: "macOS Reminder"
+  short_description: "Schedule local macOS notifications"
+  default_prompt: "Use $macos-reminder to schedule a local macOS reminder notification."
+
+policy:
+  allow_implicit_invocation: true

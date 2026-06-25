@@ -1,5 +1,5 @@
 {
-  "count": 24,
+  "count": 25,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -71,6 +71,12 @@
       "id": "incident-response",
       "displayName": "Incident Response",
       "description": "Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "macos-reminder",
+      "displayName": "macOS Reminder",
+      "description": "Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.",
       "allowImplicitInvocation": true
     },
     {
@@ -200,6 +206,11 @@
     {
       "from": "agent-skill-router",
       "to": "incident-response",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "macos-reminder",
       "reason": "mentions"
     },
     {

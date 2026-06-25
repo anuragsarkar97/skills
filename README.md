@@ -46,6 +46,10 @@ Design the tables, indexes, constraints, and migration plan for organization inv
 Production checkout is returning 500s after the last deploy. Triage whether we should rollback or hotfix.
 ```
 
+```text
+/remember I need to send email to product manager at 10 pm tonight
+```
+
 For explicit testing, name a skill:
 
 ```text
@@ -60,6 +64,7 @@ Use the critical-thinking skill to challenge this design before we implement it.
 | Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
 | Reliability and operations | `incident-response`, `observability-design` |
+| Personal productivity | `macos-reminder` |
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
 | Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
@@ -75,6 +80,7 @@ Use the critical-thinking skill to challenge this design before we implement it.
 - `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
 - `change-grill-review`: performs adversarial review for risky production changes.
 - `incident-response`: triages outages, rollback/hotfix decisions, severity, handoff, and post-mortems.
+- `macos-reminder`: schedules local macOS notification reminders from `/remember` style prompts.
 - `observability-design`: designs logs, metrics, traces, SLOs, dashboards, and alerts.
 - `service-writer`, `api-writer`, `utility-writer`, `test-writer`: keep implementation work split by responsibility.
 - `smriti-shruti`: reduces noisy context while preserving the facts needed for the current task.
