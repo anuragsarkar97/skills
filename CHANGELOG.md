@@ -1,11 +1,13 @@
 # Changelog
 
-## 0.2.1
+## 0.2.2
 
 Initial changelog generated from git history.
 
 ### feat
 
+- add caveman mode skill
+- add upskilling research skill
 - add macos reminder skill
 - add release and discovery tooling
 - add release version bump option
@@ -17,7 +19,12 @@ Initial changelog generated from git history.
 
 ### docs
 
+- add npm package card
 - make readme usage-first
+
+### chore
+
+- release v0.2.1
 
 ### other
 
