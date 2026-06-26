@@ -1,6 +1,6 @@
 {
   "name": "@anuragsarkar97/ai-agent-skills",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": false,
   "description": "Portable skills repository for AI coding agents such as Codex and Claude.",
   "type": "module",
