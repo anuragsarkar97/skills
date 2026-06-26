@@ -1,9 +1,9 @@
 {
-  "count": 27,
+  "count": 28,
   "skills": [
     {
       "name": "agent-skill-router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, human or AI drift correction, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "displayName": "Agent Skill Router",
       "shortDescription": "Select the right skill proactively",
       "defaultPrompt": "Use $agent-skill-router to choose the best skills for the current engineering task.",
@@ -215,6 +215,14 @@
       "displayName": "Utility Writer",
       "shortDescription": "Write small reusable utility code",
       "defaultPrompt": "Use $utility-writer to implement small reusable utilities.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "wtf-check",
+      "description": "Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.",
+      "displayName": "WTF Check",
+      "shortDescription": "Interrupt drift and reset direction",
+      "defaultPrompt": "Use $wtf-check to challenge drift, thrash, overbuilding, and reset to the smallest useful next move.",
       "allowImplicitInvocation": true
     }
   ]

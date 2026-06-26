@@ -1,10 +1,10 @@
 {
-  "count": 27,
+  "count": 28,
   "nodes": [
     {
       "id": "agent-skill-router",
       "displayName": "Agent Skill Router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, human or AI drift correction, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
       "allowImplicitInvocation": true
     },
     {
@@ -162,6 +162,12 @@
       "displayName": "Utility Writer",
       "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
       "allowImplicitInvocation": true
+    },
+    {
+      "id": "wtf-check",
+      "displayName": "WTF Check",
+      "description": "Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.",
+      "allowImplicitInvocation": true
     }
   ],
   "edges": [
@@ -293,6 +299,11 @@
     {
       "from": "agent-skill-router",
       "to": "utility-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "wtf-check",
       "reason": "mentions"
     },
     {
@@ -453,6 +464,31 @@
     {
       "from": "utility-writer",
       "to": "test-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "wtf-check",
+      "to": "caveman-mode",
+      "reason": "mentions"
+    },
+    {
+      "from": "wtf-check",
+      "to": "critical-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "wtf-check",
+      "to": "implementation-plan",
+      "reason": "mentions"
+    },
+    {
+      "from": "wtf-check",
+      "to": "product-competitive-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "wtf-check",
+      "to": "smriti-shruti",
       "reason": "mentions"
     }
   ]

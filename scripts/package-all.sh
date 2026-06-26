@@ -9,6 +9,7 @@ CLAUDE_OUT="dist/claude"
 PACK_TARBALL=false
 RUN_ONLINE_SOURCE_CHECK=false
 VERSION_BUMP=""
+NPM_PACK_CACHE="${NPM_CONFIG_CACHE:-/private/tmp/ai-agent-skills-npm-cache}"
 
 usage() {
   cat <<'EOF'
@@ -107,12 +108,13 @@ echo "==> Packaging Claude bundles"
 npm run skills:package-claude -- --out "$CLAUDE_OUT"
 
 echo "==> Verifying npm package"
-npm pack --dry-run --silent
+mkdir -p "$NPM_PACK_CACHE"
+env NPM_CONFIG_CACHE="$NPM_PACK_CACHE" npm pack --dry-run --silent
 
 if [[ "$PACK_TARBALL" == true ]]; then
   echo "==> Creating npm tarball"
   mkdir -p "$OUT_DIR"
-  TARBALL="$(npm pack --silent)"
+  TARBALL="$(env NPM_CONFIG_CACHE="$NPM_PACK_CACHE" npm pack --silent)"
   mv "$TARBALL" "$OUT_DIR/"
   echo "Created $OUT_DIR/$TARBALL"
 fi

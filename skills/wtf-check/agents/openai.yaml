@@ -1,0 +1,7 @@
+interface:
+  display_name: "WTF Check"
+  short_description: "Interrupt drift and reset direction"
+  default_prompt: "Use $wtf-check to challenge drift, thrash, overbuilding, and reset to the smallest useful next move."
+
+policy:
+  allow_implicit_invocation: true

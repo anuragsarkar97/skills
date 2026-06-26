@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "description": "Frontend-focused local skills for product, React, UX-adjacent review, tests, docs, and implementation planning.",
+  "skills": [
+    "agent-skill-router",
+    "api-review",
+    "caveman-mode",
+    "code-review",
+    "critical-thinking",
+    "design-principles-review",
+    "implementation-plan",
+    "naming-review",
+    "product-communication",
+    "product-competitive-thinking",
+    "test-design-review",
+    "test-writer",
+    "upskilling-research"
+  ],
+  "external": []
+}

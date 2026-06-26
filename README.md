@@ -77,7 +77,7 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 | Area | Skills |
 |---|---|
 | Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
-| Critical judgment | `critical-thinking`, `oppenheimer-simplifier`, `change-grill-review` |
+| Critical judgment | `critical-thinking`, `wtf-check`, `oppenheimer-simplifier`, `change-grill-review` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
 | Learning and growth | `upskilling-research` |
 | Reliability and operations | `incident-response`, `observability-design` |
@@ -92,6 +92,7 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 - `agent-skill-router`: chooses and combines skills proactively.
 - `caveman-mode`: keeps answers terse, directly relevant, and silent on unasked tangents.
 - `critical-thinking`: challenges weak designs and says no to anti-patterns.
+- `wtf-check`: interrupts human or AI drift, thrash, over-scoping, and context switching with a blunt reset question.
 - `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
 - `product-communication`: writes respectful but firm Slack, email, issue, PR, and stakeholder messages.
 - `upskilling-research`: finds fresh blogs, papers, docs, talks, courses, and videos and turns them into a learning path.
@@ -156,6 +157,24 @@ Install selected skills:
 
 ```bash
 npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --skills agent-skill-router,critical-thinking --write --force
+```
+
+Install the frontend-focused local profile:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent claude --profile frontend --write --force
+```
+
+Install third-party frontend skills from a Git URL:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent claude --external git@github.com:org/agent-skills.git#skills/ux-pro --write --force
+```
+
+Install several additional third-party frontend skills from a manifest:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent claude --profile frontend --external-manifest examples/frontend-external-skills.json --write --force
 ```
 
 Install as symlinks from a local clone:
@@ -319,6 +338,7 @@ Keep `SKILL.md` concise. Move bulky examples, schemas, policies, framework-speci
 ├── bin/                    # npm CLI entrypoint
 ├── examples/               # Prompt examples for validation
 ├── knowledge/              # Shared curated references
+├── profiles/               # Install profiles such as frontend
 ├── scripts/                # Maintenance, packaging, and validation scripts
 ├── skills/                 # Reusable skills
 └── templates/              # Skill templates

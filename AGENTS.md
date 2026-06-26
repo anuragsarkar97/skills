@@ -16,6 +16,7 @@ This repository stores reusable AI agent skills.
 
 - Use `implementation-plan` for scoped plans, migrations, sequencing, and validation strategy.
 - Use `self-amending-skill` when real usage shows a skill needs tighter triggers, better workflow, routing changes, validation, or supporting scripts.
+- Use `wtf-check` when the human or AI is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move.
 - Use `critical-thinking` before agreeing to designs, shortcuts, refactors, or implementation approaches that may be unsafe, overbuilt, incoherent, or anti-patterned.
 - Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, and competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need respectful but firm communication.
@@ -44,6 +45,8 @@ This repository stores reusable AI agent skills.
 Agents may say no to the user when the requested design is an anti-pattern or creates avoidable security, data, reliability, or maintenance risk. When saying no, explain the concrete risk and offer the smallest safer alternative.
 
 For startup product work, agents should also push back when a request is strategically weak: commodity feature chasing, unclear target user, no activation or retention path, or implementation cost that does not buy learning or differentiation.
+
+When the work starts drifting, agents should run a WTF check: name the drift, restate the useful goal, ask the hard question, and recommend the smallest reset move. Be blunt but not insulting.
 
 When communicating through Slack or other channels, agents should be kind, specific, and firm. Do not agree to weak decisions just to keep tone pleasant; explain the tradeoff and propose the next useful step.
 

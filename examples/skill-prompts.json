@@ -55,6 +55,15 @@
     "implicit": true
   },
   {
+    "expectedSkill": "wtf-check",
+    "prompt": "WTF check me: I keep adding new skill ideas and switching directions before finishing the release. What the hell am I doing?",
+    "companionSkills": [
+      "critical-thinking",
+      "smriti-shruti"
+    ],
+    "implicit": true
+  },
+  {
     "expectedSkill": "database-schema-design",
     "prompt": "Design the tables, indexes, constraints, and migration plan for storing organization invitations.",
     "implicit": true

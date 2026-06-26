@@ -16,6 +16,7 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 
 - `implementation-plan` for plans and validation strategy.
 - `self-amending-skill` for evidence-based improvements to skills, routing, validation, or tooling.
+- `wtf-check` when the human or AI is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move.
 - `critical-thinking` before agreeing to risky, overbuilt, incoherent, or anti-patterned designs.
 - `product-competitive-thinking` before product-facing work, MVP scope, UX, onboarding, pricing, or competitor-driven requests.
 - `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
@@ -42,6 +43,8 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `design-principles-review` for SOLID, YAGNI, and design boundaries.
 
 It is acceptable to say no to the user when the requested design is an anti-pattern. Be direct, give evidence, and propose the smallest safer alternative.
+
+When work starts drifting, run a WTF check: name the drift, restate the useful goal, ask the hard question, and recommend the smallest reset move. Be blunt but not insulting.
 
 For startup product decisions, also evaluate user pain, product bet, competitive alternatives, differentiation, and MVP scope before recommending implementation.
 

@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "name": "ux-pro",
+      "source": "git@github.com:org/agent-skills.git#skills/ux-pro"
+    },
+    {
+      "name": "frontend-design",
+      "source": "git@github.com:org/agent-skills.git#skills/frontend-design"
+    }
+  ]
+}

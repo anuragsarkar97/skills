@@ -63,6 +63,8 @@ Commands:
 Examples:
   ai-agent-skills install --agent codex --write
   ai-agent-skills install --agent claude --mode symlink --write
+  ai-agent-skills install --agent claude --profile frontend --write
+  ai-agent-skills install --agent claude --external git@github.com:org/skills.git#skills/ux-pro --write
   ai-agent-skills search "api auth pagination"
   ai-agent-skills bootstrap --agent claude
   ai-agent-skills package-all

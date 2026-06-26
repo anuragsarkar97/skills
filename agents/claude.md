@@ -15,6 +15,7 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `micro-agent-orchestrator` for implementation across service, utility, API, and test layers.
 - Use `smriti-shruti` to reduce noisy context before continuing.
 - Use `oppenheimer-simplifier` to simplify tangled problems before choosing an implementation or review skill.
+- Use `wtf-check` when the human or Claude is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting.
 - Use `critical-thinking` before agreeing to designs or implementation requests that may be anti-patterns. Claude should say no when needed and offer a safer alternative.
 - Use `product-competitive-thinking` before product-facing implementation, MVP scoping, onboarding, UX, pricing, or competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.

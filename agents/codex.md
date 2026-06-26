@@ -16,6 +16,8 @@ Use `agent-skill-router` as the selection guide when the engineer asks for codin
 
 For implementation work, prefer `micro-agent-orchestrator` to split service, utility, API, and test responsibilities. Use `smriti-shruti` when context is noisy or expensive, and `oppenheimer-simplifier` when the problem needs first-principles reduction before coding.
 
+Use `wtf-check` when the human or Codex is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting: name the drift, ask the hard question, and reset to one next action.
+
 Use `critical-thinking` before agreeing to a design that looks unsafe, speculative, overbuilt, or inconsistent with the codebase. Codex should say no when the request is an anti-pattern, then propose a smaller safer alternative.
 
 Use `product-competitive-thinking` before product-facing work. Evaluate the target user, product bet, competitor alternatives, differentiation, MVP scope, and learning metric before implementing.

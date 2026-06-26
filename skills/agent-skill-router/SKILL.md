@@ -1,6 +1,6 @@
 ---
 name: agent-skill-router
-description: Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.
+description: Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, human or AI drift correction, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.
 ---
 
 # Agent Skill Router
@@ -11,6 +11,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 
 - Use `implementation-plan` when the task needs sequencing, scoping, migration planning, or validation strategy.
 - Use `self-amending-skill` when real usage shows a skill has missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflow.
+- Use `wtf-check` when the human or AI is drifting, thrashing, over-scoping, context-switching, contradicting the goal, chasing novelty, or continuing without a clear next useful move.
 - Use `critical-thinking` before agreeing to designs, plans, shortcuts, refactors, or implementation requests that may be incoherent, overbuilt, unsafe, or anti-patterned.
 - Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, or competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, or product decision messages that need kind but firm communication.
@@ -63,6 +64,7 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Suspicious design request: use `critical-thinking` first; if the request is valid but complex, continue with `oppenheimer-simplifier` or `implementation-plan`.
 - Product feature request: use `critical-thinking` and `product-competitive-thinking` before implementation; if the bet is sound, continue with `implementation-plan` and `micro-agent-orchestrator`.
 - Product decision message: use `critical-thinking` and `product-competitive-thinking` for the reasoning, then `product-communication` for the message.
+- Drift or thrash: use `wtf-check` first; then choose `smriti-shruti` for noisy context, `critical-thinking` for flawed design, `product-competitive-thinking` for weak product direction, or `implementation-plan` after the reset is accepted.
 - Learning request: use `upskilling-research`; browse for current high-signal sources and turn them into a focused learning path.
 - Slack or stakeholder update: use `product-communication`; add `commit-pr-writer` only when the message is primarily a PR or release summary.
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
