@@ -1,13 +1,9 @@
 # Changelog
 
-## 0.2.6
+## 0.2.7
 
-Changes since v0.2.4.
-
-### chore
-
-- release v0.2.5
+Changes since v0.2.6.
 
 ### other
 
-- added external skill
+- fixes
