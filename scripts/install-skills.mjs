@@ -2,7 +2,6 @@ import { cp, lstat, mkdir, mkdtemp, readFile, readlink, rm, stat, symlink, write
 import { execFileSync } from "node:child_process";
 import os from "node:os";
 import path from "node:path";
-import { exec } from 'node:child_process';
 import {
   listSkills,
   normalizeSkillName,
@@ -243,28 +242,6 @@ if (removeStale) {
 }
 
 console.log(write ? "Install operations:" : "Dry-run install operations:");
-
-if(write) {
-  // install external useful skills
-  exec("npx skills add https://github.com/anthropics/skills --skill frontend-design", (error, stdout, stderr) => {
-    console.log(`Output:\n${stdout}`);
-  })
-  exec("npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max", (error, stdout, stderr) => {
-    console.log(`Output:\n${stdout}`);
-  })
-  exec("npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices", (error, stdout, stderr) => {
-    console.log(`Output:\n${stdout}`);
-  })
-  exec("npx skills add https://github.com/browser-use/browser-use --skill browser-use", (error, stdout, stderr) => {
-    console.log(`Output:\n${stdout}`);
-  })
-  // npx skills add https://github.com/openclaw/openclaw --skill technical-documentation
-  exec("npx skills add https://github.com/openclaw/openclaw --skill technical-documentation --dangerously-accept-openclaw-risks", (error, stdout, stderr) => {
-    console.log(`Output:\n${stdout}`);
-  })
-}
-
-
 for (const operation of operations) {
   console.log(`- ${operation}`);
 }
