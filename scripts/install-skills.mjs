@@ -259,7 +259,7 @@ if(write) {
     console.log(`Output:\n${stdout}`);
   })
   // npx skills add https://github.com/openclaw/openclaw --skill technical-documentation
-  exec("npx skills add https://github.com/openclaw/openclaw --skill technical-documentation", (error, stdout, stderr) => {
+  exec("npx skills add https://github.com/openclaw/openclaw --skill technical-documentation --dangerously-accept-openclaw-risks", (error, stdout, stderr) => {
     console.log(`Output:\n${stdout}`);
   })
 }
