@@ -1,13 +1,9 @@
 # Changelog
 
-## 0.2.4
+## 0.2.5
 
-Changes since v0.2.2.
+Changes since v0.2.4.
 
-### feat
+### other
 
-- add frontend install profile and wtf check skill
-
-### chore
-
-- release v0.2.3
+- added external skill
