@@ -13,7 +13,7 @@
     "skills:bootstrap": "node scripts/bootstrap-agent.mjs",
     "skills:catalog": "node scripts/generate-catalog.mjs",
     "skills:changelog": "node scripts/generate-changelog.mjs",
-    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs && node scripts/test-repository-map.mjs && node scripts/test-work-impact-tracker.mjs && node scripts/evaluate-skills.mjs && node scripts/verify-sources.mjs",
+    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs && node scripts/test-install-ui.mjs && node scripts/test-repository-map.mjs && node scripts/test-work-impact-tracker.mjs && node scripts/evaluate-skills.mjs && node scripts/verify-sources.mjs",
     "skills:create": "node scripts/create-skill.mjs",
     "skills:duplicates": "python3 scripts/skill_duplicate_audit.py",
     "skills:examples": "node scripts/run-skill-examples.mjs",

@@ -10,6 +10,11 @@ import {
   readSkillFrontmatter,
   skillNamePattern,
 } from "./skill-utils.mjs";
+import {
+  renderInstallHeader,
+  renderInstallResult,
+  shouldUseColor,
+} from "./install-ui.mjs";
 
 
 const args = parseArgs(process.argv.slice(2));
@@ -118,6 +123,16 @@ const externalSpecs = installExternal
       ...(await readExternalManifest(args["external-manifest"])),
     ]
   : [];
+
+const color = shouldUseColor();
+console.log(renderInstallHeader({
+  write,
+  target: targetRoot,
+  mode,
+  skillCount: selectedSkills.length,
+  externalCount: externalSpecs.length,
+  color,
+}));
 
 for (const name of selectedNames) {
   if (!skills.some((skill) => skill.name === name)) {
@@ -241,7 +256,4 @@ if (removeStale) {
   }
 }
 
-console.log(write ? "Install operations:" : "Dry-run install operations:");
-for (const operation of operations) {
-  console.log(`- ${operation}`);
-}
+console.log(renderInstallResult({ operations, write, color }));
