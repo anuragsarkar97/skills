@@ -13,7 +13,7 @@
     "skills:bootstrap": "node scripts/bootstrap-agent.mjs",
     "skills:catalog": "node scripts/generate-catalog.mjs",
     "skills:changelog": "node scripts/generate-changelog.mjs",
-    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs && node scripts/evaluate-skills.mjs && node scripts/verify-sources.mjs",
+    "skills:check": "node scripts/validate-skills.mjs && node scripts/audit-skills.mjs && node scripts/run-skill-examples.mjs && node scripts/test-repository-map.mjs && node scripts/evaluate-skills.mjs && node scripts/verify-sources.mjs",
     "skills:create": "node scripts/create-skill.mjs",
     "skills:duplicates": "python3 scripts/skill_duplicate_audit.py",
     "skills:examples": "node scripts/run-skill-examples.mjs",
@@ -29,6 +29,8 @@
     "skills:package-all": "bash scripts/package-all.sh",
     "skills:package-claude": "node scripts/package-claude.mjs",
     "skills:refresh-knowledge": "node scripts/refresh-knowledge.mjs",
+    "skills:repository-map": "node skills/repository-map/scripts/repository-map.mjs",
+    "skills:repository-map:test": "node scripts/test-repository-map.mjs",
     "skills:release": "bash scripts/release.sh",
     "skills:search": "node scripts/search-skills.mjs",
     "skills:verify-sources": "node scripts/verify-sources.mjs"

@@ -1,5 +1,5 @@
 {
-  "count": 28,
+  "count": 29,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -119,6 +119,12 @@
       "id": "product-competitive-thinking",
       "displayName": "Product Competitive Thinking",
       "description": "Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "repository-map",
+      "displayName": "Repository Map",
+      "description": "Generate and use a compact semantic repository map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase, refreshes project context, or needs file and public-symbol guidance before reading implementation details.",
       "allowImplicitInvocation": true
     },
     {
@@ -264,6 +270,11 @@
     {
       "from": "agent-skill-router",
       "to": "product-competitive-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "repository-map",
       "reason": "mentions"
     },
     {

@@ -134,6 +134,11 @@
     "implicit": true
   },
   {
+    "expectedSkill": "repository-map",
+    "prompt": "Create a compact file and public-symbol map so Codex can explore this unfamiliar repository with smaller searches.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "self-amending-skill",
     "prompt": "The router missed a recurring skill trigger during real usage; update the skill system safely.",
     "implicit": true

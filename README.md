@@ -300,6 +300,7 @@ npm run skills:index-project
 npm run skills:knowledge-index
 npm run skills:marketplace-manifest
 npm run skills:refresh-knowledge
+npm run skills:repository-map -- --path .
 npm run skills:search -- "go service tests"
 npm run skills:verify-sources
 ```
@@ -314,6 +315,7 @@ npm run skills:verify-sources
 - `skills:search` searches skills and shared knowledge references.
 - `skills:verify-sources` verifies source metadata in knowledge references.
 - `skills:refresh-knowledge` writes a review queue for source refresh work.
+- `skills:repository-map` writes `.skill-context/repo-map.md`, using Git changes and content hashes for verified incremental regeneration.
 - `skills:index-project` writes `.skill-context/project-context.json`.
 
 ## Skill Contract

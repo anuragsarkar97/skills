@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const invocationCwd = process.cwd();
 const [, , command, ...args] = process.argv;
 
 const commands = {
@@ -27,6 +28,7 @@ const commands = {
   "package-claude": ["scripts/package-claude.mjs"],
   "marketplace-manifest": ["scripts/generate-marketplace-manifest.mjs"],
   "refresh-knowledge": ["scripts/refresh-knowledge.mjs"],
+  "repository-map": ["skills/repository-map/scripts/repository-map.mjs"],
   release: ["scripts/release.sh"],
   search: ["scripts/search-skills.mjs"],
   "verify-sources": ["scripts/verify-sources.mjs"],
@@ -52,6 +54,7 @@ Commands:
   package-claude          Create Claude-ready ZIP bundles in dist/claude
   marketplace-manifest    Generate dist/claude/marketplace-manifest.json
   refresh-knowledge       Create a curated knowledge refresh review plan
+  repository-map          Generate .skill-context/repo-map.md
   verify-sources          Verify curated knowledge source metadata
   evaluate                Evaluate skill examples and knowledge references
   create                  Create a new local skill scaffold
@@ -71,6 +74,7 @@ Examples:
   ai-agent-skills release --patch
   ai-agent-skills package-claude
   ai-agent-skills index-project --path .
+  ai-agent-skills repository-map --path .
   ai-agent-skills check
 `);
 }
@@ -119,6 +123,11 @@ if (command === "check") {
 } else if (command === "release") {
   result = spawnSync("bash", [path.join(packageRoot, "scripts/release.sh"), ...args], {
     cwd: packageRoot,
+    stdio: "inherit",
+  });
+} else if (command === "repository-map") {
+  result = spawnSync(process.execPath, [path.join(packageRoot, script[0]), ...args], {
+    cwd: invocationCwd,
     stdio: "inherit",
   });
 } else {

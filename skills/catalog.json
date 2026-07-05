@@ -1,5 +1,5 @@
 {
-  "count": 28,
+  "count": 29,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -159,6 +159,14 @@
       "displayName": "Product Competitive Thinking",
       "shortDescription": "Apply PM and competitor lenses",
       "defaultPrompt": "Use $product-competitive-thinking to evaluate product decisions from PM and competitor viewpoints.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "repository-map",
+      "description": "Generate and use a compact semantic repository map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase, refreshes project context, or needs file and public-symbol guidance before reading implementation details.",
+      "displayName": "Repository Map",
+      "shortDescription": "Map files and symbols for faster exploration",
+      "defaultPrompt": "Use $repository-map to generate or refresh a compact repository exploration map.",
       "allowImplicitInvocation": true
     },
     {

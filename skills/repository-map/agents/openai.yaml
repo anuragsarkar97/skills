@@ -1,0 +1,7 @@
+interface:
+  display_name: "Repository Map"
+  short_description: "Map files and symbols for faster exploration"
+  default_prompt: "Use $repository-map to generate or refresh a compact repository exploration map."
+
+policy:
+  allow_implicit_invocation: true

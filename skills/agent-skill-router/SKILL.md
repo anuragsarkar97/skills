@@ -19,6 +19,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `macos-reminder` for `/remember`, "remind me", "notify me", "later today", "tonight", or "tomorrow" requests that should become local macOS notifications.
 - Use `caveman-mode` when the user asks for terse output, low-token answers, no overexplaining, direct answers only, or says not to answer unless directly relevant.
 - Use `smriti-shruti` when context is large, stale, repetitive, or distracting and should be summarized, ignored, or deferred.
+- Use `repository-map` when entering an unfamiliar repository, refreshing codebase context, or replacing broad searches with a compact file and symbol map.
 - Use `oppenheimer-simplifier` when the problem is complex, ambiguous, tangled, or likely to cause implementation thrash.
 - Use `micro-agent-orchestrator` when implementation spans service, utility, API, and test layers.
 - Use `service-writer` for service-layer business logic, orchestration, transactions, permissions, and domain workflows.
@@ -70,6 +71,7 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
 - Terse mode request: use `caveman-mode` as an output governor with the relevant task skill; add `smriti-shruti` if the issue is context volume.
 - Skill system improvement: use `self-amending-skill`, then run `npm test`, `npm run skills:audit`, and `npm run skills:catalog` or `npm run skills:graph` if inventory, metadata, or references changed.
+- Unfamiliar repository or expensive cold start: use `repository-map` first, then restrict follow-up searches and file reads to the mapped paths and symbols.
 - Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, `micro-agent-orchestrator` for implementation, then `test-design-review` and `code-review`.
 - Service plus API implementation: use `micro-agent-orchestrator`, then `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
 - Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
