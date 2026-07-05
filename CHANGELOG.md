@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.12
+## 0.2.13
 
-Changes since v0.2.11.
+Changes since v0.2.12.
 
 ### other
 
-- added work tracker
+- installer fix
