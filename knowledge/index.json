@@ -256,7 +256,8 @@
         "database-schema-design",
         "implementation-plan",
         "incident-response",
-        "observability-design"
+        "observability-design",
+        "security-review"
       ],
       "sources": [
         "https://owasp.org/API-Security/editions/2023/en/0x00-header/",

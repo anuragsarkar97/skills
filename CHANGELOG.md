@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.13
+## 0.2.14
 
-Changes since v0.2.12.
+Changes since v0.2.13.
 
 ### other
 
-- installer fix
+- consolidation?
