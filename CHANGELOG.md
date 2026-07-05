@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.8
+## 0.2.9
 
-Changes since v0.2.7.
+Changes since v0.2.8.
 
-### other
+### feat
 
-- fixes
+- add incremental repository map
