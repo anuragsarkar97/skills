@@ -1,13 +1,9 @@
 # Changelog
 
-## 0.2.10
+## 0.2.11
 
-Changes since v0.2.8.
+Changes since v0.2.10.
 
-### feat
+### other
 
-- add incremental repository map
-
-### chore
-
-- release v0.2.9
+- added logs support
