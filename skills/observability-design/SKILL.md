@@ -1,6 +1,6 @@
 ---
 name: observability-design
-description: Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds telemetry to a service, reviews instrumentation coverage, defines metric naming conventions, designs dashboards, or sets alert thresholds.
+description: Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds appropriate logs to existing code, instruments errors or workflows, audits logging coverage or noise, adds service telemetry, defines metric naming conventions, designs dashboards, or sets alert thresholds.
 ---
 
 # Observability Design
@@ -22,13 +22,25 @@ Never log secrets, tokens, passwords, full request bodies containing PII, or int
 5. Define alert thresholds anchored to user impact: error rate, p99 latency, queue depth, not raw infrastructure metrics.
 6. Verify that a hypothetical debug scenario (e.g., "checkout is slow for one tenant") can be answered from the telemetry alone.
 
+## Adding Logs To Existing Code
+
+1. Inspect the repository's logger, middleware, error handling, correlation fields, and nearby event naming before editing.
+2. Map the workflow's meaningful boundaries and failure paths. Add logs only where they answer a concrete operational question.
+3. Reuse the existing structured logger and field conventions. Do not introduce `print`, `console.log`, or a second logging library unless the repository already uses it for the same purpose.
+4. Log an error once at the layer that owns handling or reporting it. Lower layers should return contextual errors instead of producing duplicate events.
+5. Preserve control flow and error semantics. Logging must not swallow failures, expose sensitive data, or turn successful behavior into a failure.
+6. Test important events, levels, stable fields, correlation identifiers, and redaction when the repository has a log-capture pattern. At minimum, run focused tests for the changed paths.
+7. Review the diff for noisy success logs, high-volume loops, unbounded fields, duplicate stack traces, and messages that cannot be queried reliably.
+
 ## Structured Log Design
 
 Each log event should answer: when, what happened, who was affected, and what the outcome was.
 
+- Prefer stable event names or messages plus structured fields over interpolated prose.
 - Use consistent field names across the service: `user_id`, `tenant_id`, `request_id`, `duration_ms`, `error_code`.
 - Log at boundaries: request received, external call made, external call returned, job started, job completed.
 - Use log levels deliberately: ERROR for actionable failures, WARN for degraded but recoverable, INFO for significant state transitions, DEBUG for development only.
+- Include correlation context already available to the workflow, but do not invent identifiers that cannot be propagated consistently.
 - Avoid logging in tight loops or per-row database operations — aggregate instead.
 
 ## Metric Naming
@@ -51,4 +63,4 @@ Each log event should answer: when, what happened, who was affected, and what th
 
 ## Output
 
-Produce instrumented code and a brief coverage summary: what can now be queried, what threshold triggers an alert, and what gap remains.
+Produce instrumented code and a brief coverage summary: events and fields added, operational questions now answerable, validation performed, and any remaining telemetry gap.

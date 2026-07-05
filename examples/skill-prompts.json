@@ -92,6 +92,11 @@
     "implicit": true
   },
   {
+    "expectedSkill": "observability-design",
+    "prompt": "Add appropriate structured logs to this service without changing behavior, leaking sensitive data, or producing duplicate noisy events.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "macos-reminder",
     "prompt": "/remember I need to send email to product manager at 10 pm tonight",
     "implicit": true

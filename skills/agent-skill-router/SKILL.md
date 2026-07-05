@@ -27,7 +27,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, API errors, and endpoint wiring.
 - Use `test-writer` to implement focused tests for changed behavior, bug regressions, APIs, services, and utilities.
 - Use `incident-response` when production is degraded, error rates spike, a deploy causes regressions, or the user is in active on-call triage.
-- Use `observability-design` when adding telemetry to a service, reviewing instrumentation gaps, defining metric naming, or designing alerts.
+- Use `observability-design` when adding appropriate logs to code, reviewing logging noise or instrumentation gaps, adding service telemetry, defining metric naming, or designing alerts.
 - Use `code-review` for general review of diffs, pull requests, and worktrees.
 - Use `change-grill-review` when the user asks to be grilled, the change is risky, or a normal review would be too gentle.
 - Use `database-schema-design` for tables, entities, migrations, indexes, data retention, and persistence models.
