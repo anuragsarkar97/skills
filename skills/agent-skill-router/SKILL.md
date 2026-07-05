@@ -16,6 +16,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, or competitor-driven feature requests.
 - Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, or product decision messages that need kind but firm communication.
 - Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, find blogs, papers, talks, videos, or build a learning path for a domain.
+- Use `work-impact-tracker` when the user wants to record accomplishments, maintain a brag document, review recent work impact, or prepare a performance appraisal.
 - Use `macos-reminder` for `/remember`, "remind me", "notify me", "later today", "tonight", or "tomorrow" requests that should become local macOS notifications.
 - Use `caveman-mode` when the user asks for terse output, low-token answers, no overexplaining, direct answers only, or says not to answer unless directly relevant.
 - Use `smriti-shruti` when context is large, stale, repetitive, or distracting and should be summarized, ignored, or deferred.
@@ -67,6 +68,7 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Product decision message: use `critical-thinking` and `product-competitive-thinking` for the reasoning, then `product-communication` for the message.
 - Drift or thrash: use `wtf-check` first; then choose `smriti-shruti` for noisy context, `critical-thinking` for flawed design, `product-competitive-thinking` for weak product direction, or `implementation-plan` after the reset is accepted.
 - Learning request: use `upskilling-research`; browse for current high-signal sources and turn them into a focused learning path.
+- Work tracking or appraisal request: use `work-impact-tracker`; keep personal records in the configured local worklog and distinguish confirmed impact from inferred activity.
 - Slack or stakeholder update: use `product-communication`; add `commit-pr-writer` only when the message is primarily a PR or release summary.
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
 - Terse mode request: use `caveman-mode` as an output governor with the relevant task skill; add `smriti-shruti` if the issue is context volume.

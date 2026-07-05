@@ -177,5 +177,10 @@
     "expectedSkill": "utility-writer",
     "prompt": "Write a small parser utility with clear edge-case behavior and table-driven tests.",
     "implicit": true
+  },
+  {
+    "expectedSkill": "work-impact-tracker",
+    "prompt": "Record what I accomplished this week and generate an evidence-backed summary I can use in my year-end appraisal.",
+    "implicit": true
   }
 ]

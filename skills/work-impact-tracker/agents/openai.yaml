@@ -1,0 +1,7 @@
+interface:
+  display_name: "Work Impact Tracker"
+  short_description: "Track work and prepare appraisal summaries"
+  default_prompt: "Use $work-impact-tracker to record my work or summarize my impact for an appraisal."
+
+policy:
+  allow_implicit_invocation: true

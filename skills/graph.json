@@ -1,5 +1,5 @@
 {
-  "count": 29,
+  "count": 30,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -170,6 +170,12 @@
       "allowImplicitInvocation": true
     },
     {
+      "id": "work-impact-tracker",
+      "displayName": "Work Impact Tracker",
+      "description": "Capture evidence-backed accomplishments in a private local worklog and generate weekly, quarterly, or year-end appraisal summaries. Use when an AI agent records completed work, reviews recent impact, maintains a brag document, or prepares a performance review.",
+      "allowImplicitInvocation": true
+    },
+    {
       "id": "wtf-check",
       "displayName": "WTF Check",
       "description": "Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.",
@@ -310,6 +316,11 @@
     {
       "from": "agent-skill-router",
       "to": "utility-writer",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "work-impact-tracker",
       "reason": "mentions"
     },
     {
