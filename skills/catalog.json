@@ -34,14 +34,6 @@
       "allowImplicitInvocation": true
     },
     {
-      "name": "change-grill-review",
-      "description": "Perform an adversarial, high-pressure review of code changes, diffs, pull requests, migrations, tests, or implementation plans. Use when an AI agent should challenge assumptions, expose hidden production risks, find edge cases, and push beyond a normal code review.",
-      "displayName": "Change Grill Review",
-      "shortDescription": "Stress-review code changes harshly",
-      "defaultPrompt": "Use $change-grill-review to stress-review this change for hidden risks.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "code-documentation",
       "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
       "displayName": "Code Documentation",
@@ -51,10 +43,10 @@
     },
     {
       "name": "code-review",
-      "description": "Perform rigorous code reviews for proposed changes, pull requests, diffs, or local worktrees. Use when an AI agent is asked to review code, identify bugs, assess regressions, evaluate test coverage, or summarize implementation risk.",
+      "description": "Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.",
       "displayName": "Code Review",
-      "shortDescription": "Review code for bugs and regressions",
-      "defaultPrompt": "Use $code-review to review this change and lead with findings.",
+      "shortDescription": "Review or grill changes for production risk",
+      "defaultPrompt": "Use $code-review to review or adversarially grill these changes and lead with findings.",
       "allowImplicitInvocation": true
     },
     {
@@ -79,6 +71,14 @@
       "displayName": "Database Schema Design",
       "shortDescription": "Design and review database schemas",
       "defaultPrompt": "Use $database-schema-design to design or review database tables and entities.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "decision-memory",
+      "description": "Capture, search, and reuse repository decisions, rejected alternatives, constraints, and supporting evidence. Use when an AI agent records an architecture or engineering decision, checks prior rationale before proposing a change, or identifies a superseded decision.",
+      "displayName": "Decision Memory",
+      "shortDescription": "Record and retrieve engineering decisions",
+      "defaultPrompt": "Use $decision-memory to record or retrieve the relevant engineering decision.",
       "allowImplicitInvocation": true
     },
     {
@@ -111,14 +111,6 @@
       "displayName": "macOS Reminder",
       "shortDescription": "Schedule local macOS notifications",
       "defaultPrompt": "Use $macos-reminder to schedule a local macOS reminder notification.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "micro-agent-orchestrator",
-      "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
-      "displayName": "Micro Agent Orchestrator",
-      "shortDescription": "Coordinate focused code-writing agents",
-      "defaultPrompt": "Use $micro-agent-orchestrator to split implementation work across focused writer skills.",
       "allowImplicitInvocation": true
     },
     {
@@ -163,10 +155,18 @@
     },
     {
       "name": "repository-map",
-      "description": "Generate and use a compact semantic repository map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase, refreshes project context, or needs file and public-symbol guidance before reading implementation details.",
+      "description": "Generate and use compact repository context and a semantic file-symbol map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
       "displayName": "Repository Map",
-      "shortDescription": "Map files and symbols for faster exploration",
-      "defaultPrompt": "Use $repository-map to generate or refresh a compact repository exploration map.",
+      "shortDescription": "Map repository context, files, and symbols",
+      "defaultPrompt": "Use $repository-map to generate compact project context and a semantic navigation map.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "security-review",
+      "description": "Review code, designs, APIs, and infrastructure for exploitable security and privacy risks. Use when an AI agent evaluates authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, dependency trust, or other attacker-controlled boundaries.",
+      "displayName": "Security Review",
+      "shortDescription": "Find exploitable security and privacy risks",
+      "defaultPrompt": "Use $security-review to review this change for concrete security and privacy vulnerabilities.",
       "allowImplicitInvocation": true
     },
     {

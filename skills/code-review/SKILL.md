@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Perform rigorous code reviews for proposed changes, pull requests, diffs, or local worktrees. Use when an AI agent is asked to review code, identify bugs, assess regressions, evaluate test coverage, or summarize implementation risk.
+description: Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.
 ---
 
 # Code Review
@@ -15,6 +15,23 @@ When a review touches a specialized risk area, load only the matching shared ref
 2. Check whether the change preserves public contracts, data migrations, error handling, accessibility, security boundaries, and performance expectations relevant to the touched area.
 3. Verify test coverage for the changed behavior. Treat missing tests as a finding when risk is meaningful.
 4. Keep summaries secondary to findings.
+
+## Adversarial Mode
+
+Use adversarial mode when the user asks to be grilled or the change touches irreversible migrations, production data, security boundaries, concurrency, retries, rollbacks, or costly external dependencies.
+
+1. Reconstruct the intended behavior and identify assumptions the change never proves.
+2. Attack partial success, duplicate execution, stale or malformed data, high volume, privilege escalation, compatibility, and recovery paths.
+3. Challenge tests for false confidence, missing assertions, over-mocking, and ignored failure modes.
+4. Distinguish evidence-backed blockers from hard questions. Be direct without inventing hypothetical findings.
+
+Ask:
+
+- What breaks if this runs twice, runs late, or partially succeeds?
+- Who can access this path, and what prevents privilege escalation?
+- What behavior changed for existing users or consumers?
+- What rollback or recovery path exists?
+- Which test fails if the central assumption is wrong?
 
 ## Severity Tiers
 

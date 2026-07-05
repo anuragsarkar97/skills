@@ -25,15 +25,13 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `caveman-mode` for terse, low-token, direct-only answers and "do not answer unless relevant" instructions.
 - `smriti-shruti` for context triage and token reduction.
 - `oppenheimer-simplifier` for simplifying complex problems before solving.
-- `micro-agent-orchestrator` for splitting implementation across writer skills.
 - `service-writer` for service-layer behavior.
 - `utility-writer` for focused helper code.
 - `api-writer` for API boundary implementation.
 - `test-writer` for targeted test implementation.
 - `incident-response` for production outages, regressions, rollback or hotfix decisions, and post-mortems.
 - `observability-design` for logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
-- `code-review` for normal code review.
-- `change-grill-review` for adversarial review.
+- `code-review` for normal review and adversarial review of risky changes.
 - `database-schema-design` for persistence and migrations.
 - `api-review` for service contracts.
 - `naming-review` for terminology and identifiers.

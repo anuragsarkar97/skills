@@ -14,7 +14,7 @@ For this repository, copy or symlink individual folders from `skills/` into the 
 
 Use `agent-skill-router` as the selection guide when the engineer asks for coding help without naming a skill. Prefer the narrowest applicable skill and combine skills when a change crosses boundaries, such as schema plus API plus tests.
 
-For implementation work, prefer `micro-agent-orchestrator` to split service, utility, API, and test responsibilities. Use `smriti-shruti` when context is noisy or expensive, and `oppenheimer-simplifier` when the problem needs first-principles reduction before coding.
+For implementation work, use `agent-skill-router` to split service, utility, API, and test responsibilities. Use `smriti-shruti` when context is noisy or expensive, and `oppenheimer-simplifier` when the problem needs first-principles reduction before coding.
 
 Use `wtf-check` when the human or Codex is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting: name the drift, ask the hard question, and reset to one next action.
 

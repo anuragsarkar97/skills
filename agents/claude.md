@@ -12,7 +12,7 @@ Recommended install options vary by Claude surface and local setup. Use this rep
 - Use `agents/claude.md` inside a skill only when Claude needs agent-specific notes that should not affect other agents.
 - Use `agent-skill-router` as the default selection guide when a user asks for engineering work without naming a skill.
 - Prefer narrow specialized skills and combine them when a change crosses API, schema, test, documentation, naming, or design boundaries.
-- Use `micro-agent-orchestrator` for implementation across service, utility, API, and test layers.
+- Use `agent-skill-router` to split implementation across service, utility, API, and test layers.
 - Use `smriti-shruti` to reduce noisy context before continuing.
 - Use `oppenheimer-simplifier` to simplify tangled problems before choosing an implementation or review skill.
 - Use `wtf-check` when the human or Claude is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting.

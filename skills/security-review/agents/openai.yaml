@@ -1,0 +1,7 @@
+interface:
+  display_name: "Security Review"
+  short_description: "Find exploitable security and privacy risks"
+  default_prompt: "Use $security-review to review this change for concrete security and privacy vulnerabilities."
+
+policy:
+  allow_implicit_invocation: true

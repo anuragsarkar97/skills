@@ -46,7 +46,7 @@ Avoid vague objections like "this might be bad." Tie every objection to a concre
 
 - Use `oppenheimer-simplifier` first when the problem is too tangled to judge.
 - Use `design-principles-review` when the concern is abstraction, coupling, SOLID, YAGNI, or boundaries.
-- Use `change-grill-review` when a change needs adversarial review after implementation.
+- Use `code-review` in adversarial mode when a change needs a hard review after implementation.
 - Use `api-review`, `database-schema-design`, or `test-design-review` when the objection is domain-specific.
 
 ## Output

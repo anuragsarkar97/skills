@@ -20,17 +20,17 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `macos-reminder` for `/remember`, "remind me", "notify me", "later today", "tonight", or "tomorrow" requests that should become local macOS notifications.
 - Use `caveman-mode` when the user asks for terse output, low-token answers, no overexplaining, direct answers only, or says not to answer unless directly relevant.
 - Use `smriti-shruti` when context is large, stale, repetitive, or distracting and should be summarized, ignored, or deferred.
-- Use `repository-map` when entering an unfamiliar repository, refreshing codebase context, or replacing broad searches with a compact file and symbol map.
+- Use `repository-map` when entering an unfamiliar repository or discovering stack, commands, conventions, files, and symbols.
+- Use `decision-memory` when recording an engineering decision or checking prior rationale and rejected alternatives before a high-impact change.
 - Use `oppenheimer-simplifier` when the problem is complex, ambiguous, tangled, or likely to cause implementation thrash.
-- Use `micro-agent-orchestrator` when implementation spans service, utility, API, and test layers.
 - Use `service-writer` for service-layer business logic, orchestration, transactions, permissions, and domain workflows.
 - Use `utility-writer` for pure helpers, parsers, formatters, validators, mappers, adapters, and small reusable transformations.
 - Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, API errors, and endpoint wiring.
 - Use `test-writer` to implement focused tests for changed behavior, bug regressions, APIs, services, and utilities.
 - Use `incident-response` when production is degraded, error rates spike, a deploy causes regressions, or the user is in active on-call triage.
 - Use `observability-design` when adding appropriate logs to code, reviewing logging noise or instrumentation gaps, adding service telemetry, defining metric naming, or designing alerts.
-- Use `code-review` for general review of diffs, pull requests, and worktrees.
-- Use `change-grill-review` when the user asks to be grilled, the change is risky, or a normal review would be too gentle.
+- Use `security-review` when reviewing authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, or dependency trust.
+- Use `code-review` for normal reviews and adversarial grills of risky changes, diffs, pull requests, migrations, plans, tests, and worktrees.
 - Use `database-schema-design` for tables, entities, migrations, indexes, data retention, and persistence models.
 - Use `api-review` for endpoints, request or response contracts, SDK methods, webhooks, auth behavior, pagination, and compatibility.
 - Use `naming-review` when identifiers, domain terms, API fields, table names, or test names are central to the change.
@@ -60,11 +60,22 @@ When a task needs deeper context, load only the relevant shared reference. In in
 
 Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
 
+## Implementation Orchestration
+
+When work crosses layers, split it by ownership and invoke only the relevant writers:
+
+- `service-writer` owns workflows, permissions, transactions, and domain behavior.
+- `api-writer` owns transport validation, status codes, responses, and endpoint wiring.
+- `utility-writer` owns pure parsers, validators, mappers, and adapters.
+- `test-writer` protects the changed behavior at the lowest meaningful level.
+
+Keep API rules out of utilities, business rules out of handlers, and implementation details out of behavioral tests. After implementation, use `test-design-review` for coverage quality and `code-review` for risk.
+
 ## Combination Rules
 
 - Schema plus endpoint changes: use `database-schema-design` and `api-review`; add `test-design-review` for contract and migration coverage.
 - Suspicious design request: use `critical-thinking` first; if the request is valid but complex, continue with `oppenheimer-simplifier` or `implementation-plan`.
-- Product feature request: use `critical-thinking` and `product-competitive-thinking` before implementation; if the bet is sound, continue with `implementation-plan` and `micro-agent-orchestrator`.
+- Product feature request: use `critical-thinking` and `product-competitive-thinking` before implementation; if the bet is sound, continue with `implementation-plan` and the relevant writer skills.
 - Product decision message: use `critical-thinking` and `product-competitive-thinking` for the reasoning, then `product-communication` for the message.
 - Drift or thrash: use `wtf-check` first; then choose `smriti-shruti` for noisy context, `critical-thinking` for flawed design, `product-competitive-thinking` for weak product direction, or `implementation-plan` after the reset is accepted.
 - Learning request: use `upskilling-research`; browse for current high-signal sources and turn them into a focused learning path.
@@ -73,19 +84,20 @@ Do not load all references by default. Use `smriti-shruti` when reference materi
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
 - Terse mode request: use `caveman-mode` as an output governor with the relevant task skill; add `smriti-shruti` if the issue is context volume.
 - Skill system improvement: use `self-amending-skill`, then run `npm test`, `npm run skills:audit`, and `npm run skills:catalog` or `npm run skills:graph` if inventory, metadata, or references changed.
-- Unfamiliar repository or expensive cold start: use `repository-map` first, then restrict follow-up searches and file reads to the mapped paths and symbols.
-- Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, `micro-agent-orchestrator` for implementation, then `test-design-review` and `code-review`.
-- Service plus API implementation: use `micro-agent-orchestrator`, then `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
+- Unfamiliar repository or expensive cold start: use `repository-map` for project conventions, files, and symbols; restrict follow-up searches to the discovered paths.
+- Architecture or high-impact engineering decision: use `decision-memory` to check prior rationale before proposing a change; record only decisions established by the user or repository evidence.
+- Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, the relevant writer skills for implementation, then `test-design-review` and `code-review`.
+- Service plus API implementation: split work across `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
 - Utility extraction: use `utility-writer`, `naming-review`, and `test-writer`; add `design-principles-review` if abstraction pressure is unclear.
 - Production incident: use `incident-response` to triage; add `product-communication` for status updates to stakeholders; use `implementation-plan` for the follow-up fix.
-- New service implementation: use `micro-agent-orchestrator` with `observability-design` to ensure telemetry is built in from the start alongside `service-writer` and `test-writer`.
+- New service implementation: use `service-writer`, `api-writer`, `test-writer`, and `observability-design` so telemetry is built in from the start.
 - Go backend implementation: use `service-writer`, `api-writer`, or `utility-writer` with `../_knowledge/golang/go-engineering.md`; add `test-writer` for table-driven and boundary tests.
 - React frontend implementation: use `implementation-plan` or `code-review` with `../_knowledge/react/react-engineering.md`; add `test-design-review` for user-visible behavior tests.
 - Python automation: use `utility-writer` with `../_knowledge/python/python-scripting.md`; add `test-writer` for parsing, filesystem, and subprocess boundaries.
 - AWS, Azure, or Kubernetes infrastructure: use `implementation-plan`, `observability-design`, and `incident-response` as appropriate; load the cloud and Kubernetes knowledge references before proposing rollout or recovery steps.
-- Post-incident hardening: use `observability-design` to fill the telemetry gaps revealed by the incident, then `change-grill-review` before the fix ships.
-- Risky production changes: use `change-grill-review` with the relevant domain skill.
-- Security-sensitive schema changes (auth tables, PII columns, tenant isolation fields): use `database-schema-design` and `api-review`; load `../_knowledge/security/security-review.md` and use `change-grill-review` before merging.
+- Post-incident hardening: use `observability-design` to fill telemetry gaps, then use `code-review` in adversarial mode before the fix ships.
+- Risky production changes: use `code-review` in adversarial mode with the relevant domain skill.
+- Security-sensitive changes: use `security-review` with the relevant domain skill. For auth tables, PII columns, or tenant isolation fields, also use `database-schema-design`, `api-review`, and adversarial `code-review`.
 - Renaming PRs (identifier renames, domain term changes, API field renames): use `naming-review` first to validate the new names, then `commit-pr-writer` to capture the rename rationale in the PR description.
 - Refactors: use `design-principles-review`, `naming-review`, and `test-design-review`.
 - Anti-pattern risk: use `critical-thinking`, then `design-principles-review`; say no clearly when the safer answer is not to implement the requested design.

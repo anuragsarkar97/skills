@@ -24,16 +24,17 @@ This repository stores reusable AI agent skills.
 - Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 - Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
 - Use `smriti-shruti` for context triage, token reduction, stale context, repeated logs, and noisy large inputs.
+- Use `repository-map` to discover repository stack, commands, entry points, CI, deployment, migrations, ownership, files, and symbols.
+- Use `decision-memory` to record engineering decisions and check prior rationale or rejected alternatives before high-impact changes.
 - Use `oppenheimer-simplifier` for complex, ambiguous, tangled, or high-cognitive-load problems.
-- Use `micro-agent-orchestrator` when implementation should be split across focused writer skills.
 - Use `service-writer` for service-layer workflows, orchestration, transactions, permissions, and domain behavior.
 - Use `utility-writer` for helpers, parsers, formatters, validators, mappers, adapters, and reusable transformations.
 - Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, and endpoint wiring.
 - Use `test-writer` to implement targeted tests for changed behavior.
 - Use `incident-response` for production degradation, outages, rollback or hotfix decisions, on-call triage, and post-mortems.
 - Use `observability-design` for structured logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
-- Use `code-review` for general diff, PR, and worktree reviews.
-- Use `change-grill-review` for risky changes, production paths, migrations, auth, or hard adversarial review.
+- Use `security-review` for authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, and dependency trust.
+- Use `code-review` for normal reviews and adversarial grills of risky changes, production paths, migrations, auth, diffs, PRs, and worktrees.
 - Use `database-schema-design` for entities, tables, ORM models, migrations, indexes, constraints, and data lifecycle.
 - Use `api-review` for endpoints, request or response contracts, SDK methods, webhooks, auth behavior, pagination, and compatibility.
 - Use `naming-review` for identifiers, domain terminology, API fields, table names, events, files, and test names.

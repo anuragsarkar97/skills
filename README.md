@@ -62,6 +62,14 @@ I want to upskill myself in Kubernetes; find recent blogs, papers, docs, and vid
 /remember I need to send email to product manager at 10 pm tonight
 ```
 
+```text
+Search our prior decisions before changing payment retry behavior.
+```
+
+```text
+Review this webhook endpoint for authorization, replay, and secret-exposure risks.
+```
+
 For explicit testing, name a skill:
 
 ```text
@@ -76,16 +84,16 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 
 | Area | Skills |
 |---|---|
-| Routing and workflow | `agent-skill-router`, `implementation-plan`, `micro-agent-orchestrator` |
-| Critical judgment | `critical-thinking`, `wtf-check`, `oppenheimer-simplifier`, `change-grill-review` |
+| Routing and workflow | `agent-skill-router`, `repository-map`, `implementation-plan` |
+| Critical judgment | `critical-thinking`, `wtf-check`, `oppenheimer-simplifier` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
 | Learning and growth | `upskilling-research` |
-| Reliability and operations | `incident-response`, `observability-design` |
+| Reliability and operations | `incident-response`, `observability-design`, `security-review` |
 | Personal productivity | `macos-reminder` |
 | Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
 | Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
-| Context and maintenance | `caveman-mode`, `smriti-shruti`, `self-amending-skill` |
+| Context and maintenance | `decision-memory`, `caveman-mode`, `smriti-shruti`, `self-amending-skill` |
 
 ## Skill Highlights
 
@@ -98,8 +106,11 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 - `upskilling-research`: finds fresh blogs, papers, docs, talks, courses, and videos and turns them into a learning path.
 - `database-schema-design`: designs tables, entities, migrations, indexes, constraints, and retention.
 - `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
-- `change-grill-review`: performs adversarial review for risky production changes.
+- `code-review`: performs normal reviews and adversarial grills for risky production changes.
 - `incident-response`: triages outages, rollback/hotfix decisions, severity, handoff, and post-mortems.
+- `repository-map`: discovers repository stack, commands, entry points, operational files, file structure, and public symbols.
+- `decision-memory`: records and retrieves engineering decisions, rationale, rejected alternatives, and evidence.
+- `security-review`: finds exploitable security and privacy risks with concrete attack paths and fixes.
 - `macos-reminder`: schedules local macOS notification reminders from `/remember` style prompts.
 - `observability-design`: designs logs, metrics, traces, SLOs, dashboards, and alerts.
 - `service-writer`, `api-writer`, `utility-writer`, `test-writer`: keep implementation work split by responsibility.
@@ -151,6 +162,23 @@ Print bootstrap instructions for an agent:
 
 ```bash
 npx -y @anuragsarkar97/ai-agent-skills@latest bootstrap --agent claude
+```
+
+Generate repository-specific context:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest index-project --path .
+```
+
+Record or search an engineering decision:
+
+```bash
+npx -y @anuragsarkar97/ai-agent-skills@latest decision-memory add --path . \
+  --title "Do not retry payment creation" \
+  --decision "Payment creation is never retried automatically" \
+  --rationale "Retries can create duplicate charges"
+
+npx -y @anuragsarkar97/ai-agent-skills@latest decision-memory search --path . --query "payment retry"
 ```
 
 Install selected skills:

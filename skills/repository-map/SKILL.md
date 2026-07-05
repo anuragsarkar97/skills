@@ -1,19 +1,23 @@
 ---
 name: repository-map
-description: Generate and use a compact semantic repository map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase, refreshes project context, or needs file and public-symbol guidance before reading implementation details.
+description: Generate and use compact repository context and a semantic file-symbol map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.
 ---
 
 # Repository Map
 
-Use this skill to create a disposable navigation aid, not a replacement for reading source code. The map identifies likely entry points, important files, and public or key symbols so subsequent searches can stay narrow.
+Use this skill to create disposable discovery aids, not replacements for reading source code:
+
+- `project-context.json` identifies stack, commands, entry points, CI, deployment, migrations, ownership, and important files.
+- `repo-map.md` identifies the file tree and public or key symbols.
 
 ## Workflow
 
-1. Look for `.skill-context/repo-map.md`.
-2. Run the bundled generator with `--check`. If the map is missing or stale, regenerate it.
-3. Read the map before opening broad directory trees or running repository-wide symbol searches.
-4. Use paths and symbol names from the map to make targeted `rg` searches and focused file reads.
-5. Verify behavior against source code before editing; descriptions come only from source comments and may be absent.
+1. Generate or refresh `.skill-context/project-context.json`.
+2. Look for `.skill-context/repo-map.md`.
+3. Run the map generator with `--check`. If the map is missing or stale, regenerate it.
+4. Read both artifacts before broad directory trees or repository-wide symbol searches.
+5. Use discovered commands, paths, and symbols for targeted searches and focused reads.
+6. Verify behavior against source code before editing; all detection is heuristic.
 
 ## Commands
 
@@ -23,9 +27,10 @@ Resolve this skill's directory, then run:
 node <skill-dir>/scripts/repository-map.mjs --path <repository>
 node <skill-dir>/scripts/repository-map.mjs --path <repository> --check
 node <skill-dir>/scripts/repository-map.mjs --path <repository> --full
+node <skill-dir>/scripts/project-context.mjs --path <repository>
 ```
 
-The default output is `<repository>/.skill-context/repo-map.md`. Use `--out`, `--max-files`, or `--max-symbols` when the repository needs different bounds.
+The default outputs are `<repository>/.skill-context/repo-map.md` and `<repository>/.skill-context/project-context.json`. Use `--out` and the relevant file or symbol bounds for large repositories.
 
 ## Regeneration Rules
 
@@ -37,4 +42,4 @@ The default output is `<repository>/.skill-context/repo-map.md`. Use `--out`, `-
 
 ## Output
 
-Produce `.skill-context/repo-map.md` and then use it to guide exploration. Report whether the map was fresh, incrementally regenerated, or fully rebuilt, plus any truncation or language-coverage warnings printed by the generator.
+Produce both discovery artifacts and use them to guide exploration. Report detected stack, commands, entry points, operational files, map freshness, and any truncation or language-coverage warnings.

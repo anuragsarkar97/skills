@@ -5,7 +5,7 @@ const agent = args.agent || "generic";
 
 const base = `Use installed skills proactively. Start substantial engineering, product, review, testing, reliability, documentation, or communication work by selecting the smallest relevant skill set with agent-skill-router. Do not wait for me to name a skill when the task clearly matches an installed skill.
 
-Load shared _knowledge references only when they are relevant to the current task. Prefer critical-thinking before agreeing to risky designs, product-competitive-thinking before product-facing work, product-communication for firm stakeholder messages, incident-response for production issues, and observability-design for telemetry or alerting work.
+Load shared _knowledge references only when they are relevant to the current task. Use repository-map for project conventions, files, and symbols; decision-memory before revisiting high-impact decisions; and security-review for attacker-controlled or sensitive boundaries. Prefer critical-thinking before agreeing to risky designs, product-competitive-thinking before product-facing work, product-communication for firm stakeholder messages, incident-response for production issues, and observability-design for telemetry or alerting work.
 
 For my primary stack, use the Go, React, Python scripting, Kubernetes, and AWS/Azure knowledge references when those technologies affect design, implementation, review, tests, or operations.
 

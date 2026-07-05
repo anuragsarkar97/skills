@@ -1,7 +1,7 @@
 interface:
   display_name: "Code Review"
-  short_description: "Review code for bugs and regressions"
-  default_prompt: "Use $code-review to review this change and lead with findings."
+  short_description: "Review or grill changes for production risk"
+  default_prompt: "Use $code-review to review or adversarially grill these changes and lead with findings."
 
 policy:
   allow_implicit_invocation: true

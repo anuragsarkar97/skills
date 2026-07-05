@@ -14,6 +14,7 @@ const commands = {
   changelog: ["scripts/generate-changelog.mjs"],
   check: ["scripts/validate-skills.mjs", "&&", "scripts/audit-skills.mjs", "&&", "scripts/run-skill-examples.mjs", "&&", "scripts/evaluate-skills.mjs", "&&", "scripts/verify-sources.mjs"],
   create: ["scripts/create-skill.mjs"],
+  "decision-memory": ["skills/decision-memory/scripts/decision-memory.mjs"],
   duplicates: ["scripts/skill_duplicate_audit.py"],
   examples: ["scripts/run-skill-examples.mjs"],
   evaluate: ["scripts/evaluate-skills.mjs"],
@@ -58,6 +59,7 @@ Commands:
   verify-sources          Verify curated knowledge source metadata
   evaluate                Evaluate skill examples and knowledge references
   create                  Create a new local skill scaffold
+  decision-memory         Record or search repository engineering decisions
   import                  Import a skill from a local path or Git URL
   intake                  Quarantine and review an external skill
   examples                Validate implicit prompt examples
@@ -74,6 +76,7 @@ Examples:
   ai-agent-skills release --patch
   ai-agent-skills package-claude
   ai-agent-skills index-project --path .
+  ai-agent-skills decision-memory search --path . --query "payment retry"
   ai-agent-skills repository-map --path .
   ai-agent-skills check
 `);
@@ -104,6 +107,11 @@ if (command === "check") {
     "scripts/validate-skills.mjs",
     "scripts/audit-skills.mjs",
     "scripts/run-skill-examples.mjs",
+    "scripts/test-decision-memory.mjs",
+    "scripts/test-index-project.mjs",
+    "scripts/test-install-ui.mjs",
+    "scripts/test-repository-map.mjs",
+    "scripts/test-work-impact-tracker.mjs",
     "scripts/evaluate-skills.mjs",
     "scripts/verify-sources.mjs",
   ]) {
@@ -125,7 +133,7 @@ if (command === "check") {
     cwd: packageRoot,
     stdio: "inherit",
   });
-} else if (command === "repository-map") {
+} else if (["decision-memory", "index-project", "repository-map"].includes(command)) {
   result = spawnSync(process.execPath, [path.join(packageRoot, script[0]), ...args], {
     cwd: invocationCwd,
     stdio: "inherit",

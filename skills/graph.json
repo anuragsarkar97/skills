@@ -26,12 +26,6 @@
       "allowImplicitInvocation": true
     },
     {
-      "id": "change-grill-review",
-      "displayName": "Change Grill Review",
-      "description": "Perform an adversarial, high-pressure review of code changes, diffs, pull requests, migrations, tests, or implementation plans. Use when an AI agent should challenge assumptions, expose hidden production risks, find edge cases, and push beyond a normal code review.",
-      "allowImplicitInvocation": true
-    },
-    {
       "id": "code-documentation",
       "displayName": "Code Documentation",
       "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
@@ -40,7 +34,7 @@
     {
       "id": "code-review",
       "displayName": "Code Review",
-      "description": "Perform rigorous code reviews for proposed changes, pull requests, diffs, or local worktrees. Use when an AI agent is asked to review code, identify bugs, assess regressions, evaluate test coverage, or summarize implementation risk.",
+      "description": "Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.",
       "allowImplicitInvocation": true
     },
     {
@@ -59,6 +53,12 @@
       "id": "database-schema-design",
       "displayName": "Database Schema Design",
       "description": "Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "decision-memory",
+      "displayName": "Decision Memory",
+      "description": "Capture, search, and reuse repository decisions, rejected alternatives, constraints, and supporting evidence. Use when an AI agent records an architecture or engineering decision, checks prior rationale before proposing a change, or identifies a superseded decision.",
       "allowImplicitInvocation": true
     },
     {
@@ -83,12 +83,6 @@
       "id": "macos-reminder",
       "displayName": "macOS Reminder",
       "description": "Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "micro-agent-orchestrator",
-      "displayName": "Micro Agent Orchestrator",
-      "description": "Coordinate focused implementation skills for writing service code, utility code, API handlers, and tests. Use when an AI agent needs to split implementation work into small specialized passes, choose the right writer skill, or keep code changes scoped across layers.",
       "allowImplicitInvocation": true
     },
     {
@@ -124,7 +118,13 @@
     {
       "id": "repository-map",
       "displayName": "Repository Map",
-      "description": "Generate and use a compact semantic repository map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase, refreshes project context, or needs file and public-symbol guidance before reading implementation details.",
+      "description": "Generate and use compact repository context and a semantic file-symbol map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "security-review",
+      "displayName": "Security Review",
+      "description": "Review code, designs, APIs, and infrastructure for exploitable security and privacy risks. Use when an AI agent evaluates authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, dependency trust, or other attacker-controlled boundaries.",
       "allowImplicitInvocation": true
     },
     {
@@ -200,11 +200,6 @@
     },
     {
       "from": "agent-skill-router",
-      "to": "change-grill-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "code-documentation",
       "reason": "mentions"
     },
@@ -230,6 +225,11 @@
     },
     {
       "from": "agent-skill-router",
+      "to": "decision-memory",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
       "to": "design-principles-review",
       "reason": "mentions"
     },
@@ -246,11 +246,6 @@
     {
       "from": "agent-skill-router",
       "to": "macos-reminder",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "micro-agent-orchestrator",
       "reason": "mentions"
     },
     {
@@ -281,6 +276,11 @@
     {
       "from": "agent-skill-router",
       "to": "repository-map",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "security-review",
       "reason": "mentions"
     },
     {
@@ -354,18 +354,13 @@
       "reason": "mentions"
     },
     {
-      "from": "change-grill-review",
-      "to": "code-review",
-      "reason": "mentions"
-    },
-    {
       "from": "critical-thinking",
       "to": "api-review",
       "reason": "mentions"
     },
     {
       "from": "critical-thinking",
-      "to": "change-grill-review",
+      "to": "code-review",
       "reason": "mentions"
     },
     {
@@ -394,51 +389,6 @@
       "reason": "mentions"
     },
     {
-      "from": "micro-agent-orchestrator",
-      "to": "api-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "change-grill-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "code-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "oppenheimer-simplifier",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "service-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "smriti-shruti",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "test-design-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "test-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "micro-agent-orchestrator",
-      "to": "utility-writer",
-      "reason": "mentions"
-    },
-    {
       "from": "observability-design",
       "to": "incident-response",
       "reason": "mentions"
@@ -456,6 +406,16 @@
     {
       "from": "product-competitive-thinking",
       "to": "critical-thinking",
+      "reason": "mentions"
+    },
+    {
+      "from": "security-review",
+      "to": "api-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "security-review",
+      "to": "code-review",
       "reason": "mentions"
     },
     {

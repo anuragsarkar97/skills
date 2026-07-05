@@ -19,7 +19,7 @@
     "implicit": true
   },
   {
-    "expectedSkill": "change-grill-review",
+    "expectedSkill": "code-review",
     "prompt": "Grill this migration and service change like it is about to ship to production.",
     "companionSkills": [
       "critical-thinking"
@@ -69,6 +69,11 @@
     "implicit": true
   },
   {
+    "expectedSkill": "decision-memory",
+    "prompt": "Before changing payment retries, search our prior engineering decisions and record the accepted rationale and rejected alternatives.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "design-principles-review",
     "prompt": "Review this refactor for SOLID, YAGNI, dependency direction, coupling, and abstraction quality.",
     "implicit": true
@@ -102,7 +107,7 @@
     "implicit": true
   },
   {
-    "expectedSkill": "micro-agent-orchestrator",
+    "expectedSkill": "agent-skill-router",
     "prompt": "Split this feature into service, API, utility, and test implementation passes.",
     "companionSkills": [
       "service-writer",
@@ -140,12 +145,25 @@
   },
   {
     "expectedSkill": "repository-map",
+    "prompt": "Discover this repository's stack, commands, entry points, CI, deployment files, migrations, and ownership conventions.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "repository-map",
     "prompt": "Create a compact file and public-symbol map so Codex can explore this unfamiliar repository with smaller searches.",
     "implicit": true
   },
   {
     "expectedSkill": "self-amending-skill",
     "prompt": "The router missed a recurring skill trigger during real usage; update the skill system safely.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "security-review",
+    "prompt": "Review this multi-tenant webhook endpoint for authorization bypasses, signature replay, secret exposure, and attacker-controlled inputs.",
+    "companionSkills": [
+      "api-review"
+    ],
     "implicit": true
   },
   {
