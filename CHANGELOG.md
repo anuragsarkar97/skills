@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.16
+## 0.2.17
 
-Changes since v0.2.15.
+Changes since v0.2.16.
 
-### test
+### other
 
-- enforce skill completion checks
+- added doc
