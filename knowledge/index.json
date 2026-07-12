@@ -1,7 +1,25 @@
 {
   "version": 1,
-  "referenceCount": 14,
+  "referenceCount": 15,
   "references": [
+    {
+      "path": "agent-behavior/operating-principles.md",
+      "title": "Agent Operating Principles",
+      "summary": "Use these principles as compact cross-cutting guidance for agents that load this skills repository. They are deliberately platform-neutral: do not copy vendor product claims, model names, private tool names, or environment-specific file paths into reusable skills.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": null,
+      "relatedSkills": [
+        "agent-skill-router"
+      ],
+      "sources": [
+        "https://platform.openai.com/docs/guides/prompt-engineering",
+        "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+        "https://www.nist.gov/itl/ai-risk-management-framework",
+        "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+      ]
+    },
     {
       "path": "api/api-review.md",
       "title": "API Review Knowledge",

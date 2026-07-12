@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.14
+## 0.2.15
 
-Changes since v0.2.13.
+Changes since v0.2.14.
 
-### other
+### docs
 
-- consolidation?
+- add portable agent operating principles
