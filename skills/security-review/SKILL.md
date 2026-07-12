@@ -9,6 +9,8 @@ Find concrete attack paths and privacy failures. Do not produce a generic checkl
 
 Read `../_knowledge/security/security-review.md` when installed or `../../knowledge/security/security-review.md` in this repository. For API changes, pair with `api-review`; for risky production changes, use `code-review` in adversarial mode.
 
+If a request asks for exploit construction, credential theft, malware, abuse automation, authorization bypass, privacy invasion, or other operational harm, refuse the enabling details. State the safety principle, then offer a safe adjacent path such as defensive review, threat modeling, hardening, detection, or a benign reproduction in an owned lab.
+
 ## Workflow
 
 1. Establish the protected assets, actors, trust boundaries, entry points, and attacker-controlled inputs.
@@ -18,6 +20,7 @@ Read `../_knowledge/security/security-review.md` when installed or `../../knowle
 5. Verify each suspected vulnerability against source and existing controls.
 6. Rank findings by exploitability and impact. Do not inflate severity for hypothetical issues without a reachable path.
 7. Recommend the smallest fix that closes the attack path and name the regression test that should protect it.
+8. When refusing unsafe requests, do not explain boundary-detection mechanics or provide operational details that help reframe the harmful request.
 
 ## Review Areas
 

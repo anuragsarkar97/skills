@@ -4,6 +4,8 @@ Claude-oriented skills should keep `SKILL.md` as the canonical instruction file 
 
 Recommended install options vary by Claude surface and local setup. Use this repository as the source, then copy or symlink the needed skill folders into the Claude skills location configured for that environment.
 
+For shared behavior that should transfer across models and surfaces, use `knowledge/agent-behavior/operating-principles.md`. Keep Claude-only product metadata, private tool names, and artifact-specific rules out of canonical skill instructions unless they are isolated in Claude-specific notes.
+
 ## Compatibility Notes
 
 - Keep frontmatter minimal: `name` and `description`.

@@ -9,6 +9,8 @@ Use this skill when the user wants to learn a new domain, refresh an existing sk
 
 This skill requires internet research unless the user explicitly asks not to browse. Prefer recent and primary sources, but include durable fundamentals when the domain requires them.
 
+Use current sources for fast-moving domains even when the topic sounds familiar. Do not rely on model memory for model names, library behavior, product features, laws, prices, schedules, standards, security guidance, or active ecosystem recommendations.
+
 ## Workflow
 
 1. Clarify the target only if needed: domain, current level, goal, time budget, preferred formats, and deadline.
@@ -31,6 +33,7 @@ This skill requires internet research unless the user explicitly asks not to bro
 - For papers, include title, year, venue or preprint source when available, and why it matters.
 - For videos, include the speaker/channel, approximate duration when available, and whether it is conceptual or hands-on.
 - Do not pretend to have read paywalled material. Label access limitations clearly.
+- If sources disagree or freshness is unclear, say what was verified, what remains uncertain, and which source should be treated as authoritative.
 
 ## Output Shape
 

@@ -43,6 +43,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 
 When a task needs deeper context, load only the relevant shared reference. In installed agents, shared references live next to the skills at `../_knowledge/`. In this source repository, the same files live at `../../knowledge/` from each skill folder.
 
+- Cross-cutting agent behavior, tool routing, context discipline, freshness, safety boundaries, and output discipline: read `../_knowledge/agent-behavior/operating-principles.md`.
 - Architecture, SOLID, YAGNI, or boundaries: read `../_knowledge/architecture/principles.md`.
 - API contracts, auth, pagination, idempotency, or errors: read `../_knowledge/api/api-review.md`.
 - Schema, migrations, constraints, indexes, or retention: read `../_knowledge/database/schema-design.md`.
@@ -59,6 +60,8 @@ When a task needs deeper context, load only the relevant shared reference. In in
 - AWS or Azure architecture, managed services, identity, networking, EKS, AKS, reliability, or cloud observability: read `../_knowledge/cloud/aws-azure-architecture.md`.
 
 Do not load all references by default. Use `smriti-shruti` when reference material or project context becomes noisy.
+
+Load the agent behavior reference when the task involves adapting broad model instructions into reusable skills, improving how smaller models follow workflows, or resolving conflicts between user preferences, memory, tools, safety, and concise output.
 
 ## Implementation Orchestration
 
@@ -79,6 +82,7 @@ Keep API rules out of utilities, business rules out of handlers, and implementat
 - Product decision message: use `critical-thinking` and `product-competitive-thinking` for the reasoning, then `product-communication` for the message.
 - Drift or thrash: use `wtf-check` first; then choose `smriti-shruti` for noisy context, `critical-thinking` for flawed design, `product-competitive-thinking` for weak product direction, or `implementation-plan` after the reset is accepted.
 - Learning request: use `upskilling-research`; browse for current high-signal sources and turn them into a focused learning path.
+- Current or unstable factual request: verify with current sources before answering; use `upskilling-research` for learning-resource curation and the relevant domain skill for technical interpretation.
 - Work tracking or appraisal request: use `work-impact-tracker`; keep personal records in the configured local worklog and distinguish confirmed impact from inferred activity.
 - Slack or stakeholder update: use `product-communication`; add `commit-pr-writer` only when the message is primarily a PR or release summary.
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
@@ -101,6 +105,7 @@ Keep API rules out of utilities, business rules out of handlers, and implementat
 - Renaming PRs (identifier renames, domain term changes, API field renames): use `naming-review` first to validate the new names, then `commit-pr-writer` to capture the rename rationale in the PR description.
 - Refactors: use `design-principles-review`, `naming-review`, and `test-design-review`.
 - Anti-pattern risk: use `critical-thinking`, then `design-principles-review`; say no clearly when the safer answer is not to implement the requested design.
+- Broad model-prompt import or agent behavior tuning: use `self-amending-skill` and the agent behavior reference; extract portable rules and reject vendor-specific product claims, unavailable tool names, and platform-only artifact APIs.
 - Finalization: use `commit-pr-writer` after implementation and validation.
 
 ## Behavior

@@ -9,6 +9,7 @@ This repository contains portable skills for AI agents. Use `skills/<skill-name>
 - Use `agents/claude.md` inside a skill only for Claude-specific notes.
 - Do not add bulky documentation to `SKILL.md`; place it in `references/` and mention when it should be read.
 - Preserve compatibility with Codex/OpenAI metadata by keeping `agents/openai.yaml` concise.
+- For cross-cutting agent behavior, use `knowledge/agent-behavior/operating-principles.md` instead of duplicating broad system-prompt guidance across skills.
 
 ## Proactive Skill Use
 

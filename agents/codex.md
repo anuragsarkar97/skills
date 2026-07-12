@@ -10,6 +10,8 @@ Recommended install location:
 
 For this repository, copy or symlink individual folders from `skills/` into the Codex skills directory. Keep `SKILL.md` as the source of truth and use `agents/openai.yaml` only for UI-facing metadata.
 
+For shared behavior that should help smaller models perform consistently, read `knowledge/agent-behavior/operating-principles.md`. Keep vendor-specific model claims, unavailable tool names, and platform-only artifact rules out of portable skills.
+
 ## Proactive Selection
 
 Use `agent-skill-router` as the selection guide when the engineer asks for coding help without naming a skill. Prefer the narrowest applicable skill and combine skills when a change crosses boundaries, such as schema plus API plus tests.

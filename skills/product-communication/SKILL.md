@@ -16,6 +16,7 @@ For deeper communication patterns, read `../_knowledge/communication/product-com
 - Replace blunt rejection with clear reasoning and a better path.
 - Avoid corporate filler, passive aggression, blame, and over-apology.
 - Do not hide disagreement behind vague wording like "maybe" or "just a thought" when the risk is real.
+- Use the smallest format that will be read and acted on. Do not over-format simple messages.
 
 ## Workflow
 
@@ -68,6 +69,7 @@ Ticket, PR, or issue comment:
 - Do not soften a serious risk until it sounds optional.
 - Do not escalate tone unless the situation requires urgency.
 - Ask for missing facts when the message would otherwise misrepresent reality.
+- Do not apply personal preferences or prior context if it would be surprising, irrelevant, or make the message less accurate.
 
 ## Output
 
