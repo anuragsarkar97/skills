@@ -1,9 +1,9 @@
 # Changelog
 
-## 0.2.15
+## 0.2.16
 
-Changes since v0.2.14.
+Changes since v0.2.15.
 
-### docs
+### test
 
-- add portable agent operating principles
+- enforce skill completion checks
