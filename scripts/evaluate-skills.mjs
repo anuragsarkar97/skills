@@ -6,6 +6,17 @@ const skills = await listSkills("skills");
 const examples = JSON.parse(await readFile("examples/skill-prompts.json", "utf8"));
 const exampleNames = new Set(examples.map((example) => example.expectedSkill));
 const issues = [];
+const completionCheckSkills = new Set([
+  "agent-skill-router",
+  "api-writer",
+  "code-documentation",
+  "code-review",
+  "implementation-plan",
+  "service-writer",
+  "test-design-review",
+  "test-writer",
+  "utility-writer",
+]);
 
 // Extract all _knowledge/ paths referenced in a SKILL.md body.
 function extractKnowledgePaths(content) {
@@ -24,6 +35,10 @@ for (const skill of skills) {
     issues.push(`${skill.name}: missing prompt example`);
   }
 
+  if (completionCheckSkills.has(skill.name) && !/^## Completion Check$/m.test(skill.skillContent)) {
+    issues.push(`${skill.name}: missing required "## Completion Check" section`);
+  }
+
   // Dynamically verify that every _knowledge/ path referenced in a SKILL.md exists on disk.
   const referencedPaths = extractKnowledgePaths(skill.skillContent);
   for (const ref of referencedPaths) {
@@ -35,6 +50,7 @@ for (const skill of skills) {
 }
 
 for (const required of [
+  "knowledge/agent-behavior/operating-principles.md",
   "knowledge/architecture/principles.md",
   "knowledge/api/api-review.md",
   "knowledge/database/schema-design.md",

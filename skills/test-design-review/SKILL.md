@@ -28,6 +28,10 @@ For Go, React, or Python script tests, also read the matching shared stack refer
 - Could the test pass when the feature is broken?
 - Could the test fail intermittently for unrelated reasons?
 
+## Completion Check
+
+Before finishing, verify the recommendation ties each test case to a behavior or risk, distinguishes blocking coverage gaps from nice-to-have cases, identifies flaky or false-confidence patterns, and names the validation command or test level that should prove the fix.
+
 ## Output
 
 For test design, list the exact cases to add and why each matters. For review, lead with false confidence and missing coverage before naming style.

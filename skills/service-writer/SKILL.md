@@ -26,6 +26,10 @@ For Go services, read `../_knowledge/golang/go-engineering.md` when installed or
 - Errors preserve enough context for callers without leaking sensitive data.
 - The implementation follows existing project style before introducing new abstractions.
 
+## Completion Check
+
+Before finishing, verify the service behavior matches the requested workflow, callers receive domain-level results or errors, transaction and permission boundaries are covered where relevant, focused tests were added or a gap is named, and the validation command result is reported.
+
 ## Output
 
 Implement the smallest service behavior that satisfies the current use case. Call out any API, schema, or test follow-up that should be handled by a sibling skill.

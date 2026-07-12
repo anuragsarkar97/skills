@@ -51,6 +51,10 @@ Avoid flagging:
 - Defensive error handling for scenarios the framework or type system already prevents.
 - Code the author clearly intends to refactor separately (unless it creates an immediate risk).
 
+## Completion Check
+
+Before finishing, verify every finding has a concrete failure path and file reference, severity reflects impact, tests were considered, and no summary appears before findings. If no findings remain, say that directly and name residual risk or untested areas.
+
 ## Output
 
 Use this order:

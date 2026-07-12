@@ -47,3 +47,7 @@ Prefer short ordered steps. Each step should state:
 - How to verify it.
 
 Keep alternatives brief and include the tradeoff that matters for the current codebase.
+
+## Completion Check
+
+Before finishing, verify the plan names the concrete outcome, affected files or systems, validation commands, unresolved decisions, and any risk flags. If any of those are unknown, state the assumption or ask one blocking question instead of presenting a complete plan.

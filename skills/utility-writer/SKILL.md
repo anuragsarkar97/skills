@@ -25,6 +25,10 @@ For Go helpers, read `../_knowledge/golang/go-engineering.md`. For Python script
 - Error handling is predictable: return value, thrown error, or typed result, matching local style.
 - Inputs and outputs make data shape and units obvious.
 
+## Completion Check
+
+Before finishing, verify the helper has a real caller or clear intended boundary, edge cases are handled or explicitly assigned to callers, focused tests cover branches and failure behavior, and the result follows local naming and module conventions.
+
 ## Output
 
 Provide the utility, representative call-site integration when needed, and focused tests for edge behavior.

@@ -45,6 +45,14 @@
     "implicit": true
   },
   {
+    "expectedSkill": "code-review",
+    "prompt": "Before I merge, check whether this implementation is actually complete, validated, and free of blocking behavior regressions.",
+    "companionSkills": [
+      "test-design-review"
+    ],
+    "implicit": true
+  },
+  {
     "expectedSkill": "commit-pr-writer",
     "prompt": "Write a commit message and PR description from the staged changes, including tests and risk.",
     "implicit": true
@@ -159,6 +167,14 @@
     "implicit": true
   },
   {
+    "expectedSkill": "self-amending-skill",
+    "prompt": "Tighten the existing skills so they have precise completion checks and deterministic validation without adding a new judge skill.",
+    "companionSkills": [
+      "test-writer"
+    ],
+    "implicit": true
+  },
+  {
     "expectedSkill": "security-review",
     "prompt": "Review this multi-tenant webhook endpoint for authorization bypasses, signature replay, secret exposure, and attacker-controlled inputs.",
     "companionSkills": [
@@ -179,6 +195,11 @@
   {
     "expectedSkill": "test-design-review",
     "prompt": "Review these tests for false confidence, weak mocks, flaky behavior, and missing edge cases.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "test-design-review",
+    "prompt": "Check whether these tests actually prove the work is done or only exercise the happy path.",
     "implicit": true
   },
   {

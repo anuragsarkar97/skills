@@ -26,6 +26,10 @@ For Go API handlers or clients, read `../_knowledge/golang/go-engineering.md` wh
 - Breaking changes are avoided or clearly versioned.
 - Observability includes enough context to debug failed requests.
 
+## Completion Check
+
+Before finishing, verify request validation, auth behavior, response shape, status codes, error mapping, and API tests match the established contract. If the contract changed, confirm `api-review` was applied or name the remaining review gap.
+
 ## Output
 
 Implement the boundary code and state any service, schema, documentation, or contract-test follow-up needed for a complete API change.

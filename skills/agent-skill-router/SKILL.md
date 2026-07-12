@@ -111,3 +111,7 @@ Keep API rules out of utilities, business rules out of handlers, and implementat
 ## Behavior
 
 Do not announce every skill selection unless it helps the user. Apply the relevant checklist silently, then explain the findings or output in normal engineering language.
+
+## Completion Check
+
+Before finishing routed work, verify the chosen skills cover the user's actual goal, no broad all-purpose skill was used where a narrower one fits, required validation was run or explicitly skipped, and any unfinished sibling work is named instead of implied complete.

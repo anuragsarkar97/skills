@@ -23,6 +23,10 @@ Use this skill when documentation should help a future engineer use, change, ope
 - Architecture notes include context, decision, alternatives rejected, and consequences.
 - Documentation does not promise behavior the tests or code do not support.
 
+## Completion Check
+
+Before finishing, verify the documentation matches current code, names the intended audience, includes verification or usage steps when relevant, removes stale claims, and avoids documenting behavior that is not implemented or tested.
+
 ## Output
 
 Prefer small, concrete documentation patches. When reviewing docs, identify stale claims, missing operational facts, and places where a code change would be clearer than a comment.

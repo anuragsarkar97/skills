@@ -32,6 +32,10 @@ For Go tests, read `../_knowledge/golang/go-engineering.md`. For React tests, re
 - Time, randomness, ordering, network, and shared state are controlled.
 - Assertions are specific enough to catch the intended failure.
 
+## Completion Check
+
+Before finishing, verify each added test maps to a changed behavior, bug, contract, or invariant; at least one meaningful failure path is covered when risk warrants it; the narrowest useful test command was run; and any untested risk is stated.
+
 ## Output
 
 Add the smallest useful test set and state any remaining coverage gaps. Use `test-design-review` when test adequacy is uncertain.
