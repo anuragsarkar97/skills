@@ -1,5 +1,5 @@
 {
-  "count": 30,
+  "count": 31,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -87,6 +87,14 @@
       "displayName": "Design Principles Review",
       "shortDescription": "Check SOLID YAGNI and design risks",
       "defaultPrompt": "Use $design-principles-review to review design principles, abstractions, and maintainability.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "doc-template-writer",
+      "description": "Create Markdown templates for product documents, PRDs, specs, RFCs, and engineering design docs. Use when the user asks to create a template for a product doc, engineering design doc, technical design, RFC, project brief, or planning document for a named topic so they can fill it in quickly.",
+      "displayName": "Doc Template Writer",
+      "shortDescription": "Create product and engineering doc templates",
+      "defaultPrompt": "Use $doc-template-writer to create a focused Markdown document template.",
       "allowImplicitInvocation": true
     },
     {

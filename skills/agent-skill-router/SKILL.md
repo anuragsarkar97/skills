@@ -36,6 +36,7 @@ Use this skill as the first pass when the user asks for engineering help but doe
 - Use `naming-review` when identifiers, domain terms, API fields, table names, or test names are central to the change.
 - Use `commit-pr-writer` when preparing commit messages, PR descriptions, changelog text, or reviewer notes.
 - Use `code-documentation` when adding or reviewing docs, comments, examples, README content, or architecture notes.
+- Use `doc-template-writer` when creating Markdown templates for product docs, PRDs, RFCs, project briefs, engineering design docs, technical designs, or architecture proposals.
 - Use `test-design-review` when creating tests, reviewing tests, checking coverage, or investigating flaky or weak tests.
 - Use `design-principles-review` for SOLID, YAGNI, abstraction quality, module boundaries, dependency direction, and maintainability.
 
@@ -103,6 +104,7 @@ Keep API rules out of utilities, business rules out of handlers, and implementat
 - Risky production changes: use `code-review` in adversarial mode with the relevant domain skill.
 - Security-sensitive changes: use `security-review` with the relevant domain skill. For auth tables, PII columns, or tenant isolation fields, also use `database-schema-design`, `api-review`, and adversarial `code-review`.
 - Renaming PRs (identifier renames, domain term changes, API field renames): use `naming-review` first to validate the new names, then `commit-pr-writer` to capture the rename rationale in the PR description.
+- Product or engineering doc template request: use `doc-template-writer`; add `product-competitive-thinking` only if the user asks for product strategy, and add `implementation-plan` only if they ask for the actual execution plan.
 - Refactors: use `design-principles-review`, `naming-review`, and `test-design-review`.
 - Anti-pattern risk: use `critical-thinking`, then `design-principles-review`; say no clearly when the safer answer is not to implement the requested design.
 - Broad model-prompt import or agent behavior tuning: use `self-amending-skill` and the agent behavior reference; extract portable rules and reject vendor-specific product claims, unavailable tool names, and platform-only artifact APIs.

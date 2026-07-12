@@ -1,5 +1,5 @@
 {
-  "count": 30,
+  "count": 31,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -65,6 +65,12 @@
       "id": "design-principles-review",
       "displayName": "Design Principles Review",
       "description": "Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "doc-template-writer",
+      "displayName": "Doc Template Writer",
+      "description": "Create Markdown templates for product documents, PRDs, specs, RFCs, and engineering design docs. Use when the user asks to create a template for a product doc, engineering design doc, technical design, RFC, project brief, or planning document for a named topic so they can fill it in quickly.",
       "allowImplicitInvocation": true
     },
     {
@@ -231,6 +237,11 @@
     {
       "from": "agent-skill-router",
       "to": "design-principles-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "doc-template-writer",
       "reason": "mentions"
     },
     {

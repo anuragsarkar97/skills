@@ -11,6 +11,7 @@ const completionCheckSkills = new Set([
   "api-writer",
   "code-documentation",
   "code-review",
+  "doc-template-writer",
   "implementation-plan",
   "service-writer",
   "test-design-review",

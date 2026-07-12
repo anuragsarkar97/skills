@@ -38,6 +38,7 @@ Start with `agent-skill-router` when the user asks for engineering work but does
 - `naming-review` for terminology and identifiers.
 - `commit-pr-writer` for commit and PR text.
 - `code-documentation` for docs and examples.
+- `doc-template-writer` for Markdown product doc, PRD, RFC, project brief, and engineering design doc templates.
 - `test-design-review` for tests and coverage.
 - `design-principles-review` for SOLID, YAGNI, and design boundaries.
 

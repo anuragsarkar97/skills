@@ -82,6 +82,16 @@
     "implicit": true
   },
   {
+    "expectedSkill": "doc-template-writer",
+    "prompt": "Create a Markdown product doc template for improving team onboarding so I can fill it in quickly.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "doc-template-writer",
+    "prompt": "Create an engineering design doc template for the new payment retry system.",
+    "implicit": true
+  },
+  {
     "expectedSkill": "design-principles-review",
     "prompt": "Review this refactor for SOLID, YAGNI, dependency direction, coupling, and abstraction quality.",
     "implicit": true

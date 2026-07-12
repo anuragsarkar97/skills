@@ -1,0 +1,7 @@
+interface:
+  display_name: "Doc Template Writer"
+  short_description: "Create product and engineering doc templates"
+  default_prompt: "Use $doc-template-writer to create a focused Markdown document template."
+
+policy:
+  allow_implicit_invocation: true

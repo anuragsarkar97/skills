@@ -28,6 +28,8 @@ Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakehol
 
 Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, courses, and videos.
 
+Use `doc-template-writer` when the user asks for a Markdown product doc, PRD, RFC, project brief, engineering design doc, technical design, or architecture proposal template for a named topic.
+
 Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
 
 Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
