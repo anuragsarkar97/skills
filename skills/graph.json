@@ -124,7 +124,7 @@
     {
       "id": "repository-map",
       "displayName": "Repository Map",
-      "description": "Generate and use compact repository context and a semantic file-symbol map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
+      "description": "Generate and use compact repository context and a per-file CSV map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
       "allowImplicitInvocation": true
     },
     {

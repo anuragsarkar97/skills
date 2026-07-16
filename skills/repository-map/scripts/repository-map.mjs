@@ -2,36 +2,64 @@
 
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, rename, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { IGNORED_DIRS, shouldSkipPath } from "./ignore-rules.mjs";
+import {
+  SCHEMA_VERSION,
+  EXTRACTOR_VERSION,
+  FILE_COLUMNS,
+  SYMBOL_COLUMNS,
+  artifactPaths,
+  initialEnrichmentStatus,
+  loadMapArtifacts,
+  parseCsv,
+  resolveOutDir,
+  serializeCsv,
+  writeAtomically,
+} from "./map-artifacts.mjs";
 
-const SCHEMA_VERSION = 1;
-const EXTRACTOR_VERSION = 1;
 const DEFAULT_MAX_FILES = 2000;
 const DEFAULT_MAX_SYMBOLS = 5000;
-const DEFAULT_IGNORES = new Set([
-  ".git",
-  ".hg",
-  ".svn",
-  ".skill-context",
-  ".skill-intake",
-  ".next",
-  ".turbo",
-  ".venv",
-  "__pycache__",
-  "build",
-  "coverage",
-  "dist",
-  "node_modules",
-  "target",
-  "vendor",
-]);
+const MAX_EXPORTS = 12;
+const MAX_IMPORTS = 8;
+const MAX_PURPOSE_LENGTH = 240;
+
 const BUILTIN_EXTENSIONS = new Set([".go", ".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx", ".py"]);
 const CTAGS_EXTENSIONS = new Set([
   ".c", ".cc", ".cpp", ".cs", ".ex", ".exs", ".h", ".hpp", ".java", ".kt", ".kts",
   ".lua", ".php", ".rb", ".rs", ".scala", ".swift", ".vue",
 ]);
+const LANGUAGE_BY_EXTENSION = {
+  ".go": "go",
+  ".js": "javascript",
+  ".jsx": "javascript",
+  ".mjs": "javascript",
+  ".cjs": "javascript",
+  ".ts": "typescript",
+  ".tsx": "typescript",
+  ".py": "python",
+  ".rs": "rust",
+  ".java": "java",
+  ".kt": "kotlin",
+  ".kts": "kotlin",
+  ".rb": "ruby",
+  ".php": "php",
+  ".swift": "swift",
+  ".vue": "vue",
+  ".c": "c",
+  ".cc": "cpp",
+  ".cpp": "cpp",
+  ".h": "c",
+  ".hpp": "cpp",
+  ".cs": "csharp",
+  ".lua": "lua",
+  ".scala": "scala",
+  ".ex": "elixir",
+  ".exs": "elixir",
+};
+
 const NOTABLE_FILE_PATTERN =
   /^(AGENTS|CLAUDE|CONTRIBUTING|Dockerfile|Makefile|README|go\.mod|package\.json|pyproject\.toml|Cargo\.toml|pom\.xml|build\.gradle|tsconfig.*\.json|vite\.config|next\.config)/i;
 
@@ -134,7 +162,7 @@ async function filesystemFiles(root) {
     const entries = await readdir(directory, { withFileTypes: true }).catch(() => []);
     entries.sort((left, right) => left.name.localeCompare(right.name));
     for (const entry of entries) {
-      if (entry.isDirectory() && DEFAULT_IGNORES.has(entry.name)) continue;
+      if (entry.isDirectory() && IGNORED_DIRS.has(entry.name)) continue;
       const absolute = path.join(directory, entry.name);
       if (entry.isDirectory()) {
         await walk(absolute);
@@ -159,30 +187,32 @@ function shortHash(value) {
   return sha256(value).slice(0, 16);
 }
 
-function escapeMarkdown(value) {
+function cleanText(value) {
   return String(value || "")
     .replace(/\s+/g, " ")
-    .replaceAll("\\", "\\\\")
-    .replaceAll("|", "\\|")
-    .replaceAll("`", "\\`")
     .trim();
 }
 
 function cleanComment(lines) {
-  return escapeMarkdown(
+  return cleanText(
     lines
       .map((line) =>
         line
           .replace(/^\s*(?:\/\/\/?|#|\/\*\*?|\*|<!--)\s?/, "")
           .replace(/\s*(?:\*\/|-->)\s*$/, ""),
       )
-      .join(" ")
-      .trim(),
+      .join(" "),
   );
 }
 
+function truncateText(value, max = MAX_PURPOSE_LENGTH) {
+  const text = cleanText(value);
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trimEnd()}…`;
+}
+
 function symbol(name, kind, line, description = "") {
-  return { name: escapeMarkdown(name), kind, line, description: escapeMarkdown(description) };
+  return { name: cleanText(name), kind, line, description: cleanText(description) };
 }
 
 function extractGo(content) {
@@ -389,89 +419,180 @@ function parserFor(filePath, universalCtags) {
   return "file-only";
 }
 
-function renderFileSection(file, symbols, parser) {
-  const metadata = JSON.stringify({
-    path: file.path,
-    hash: file.hash,
-    symbols: symbols.length,
-    parser,
-  });
-  const lines = [
-    `<!-- repository-map:file ${metadata} -->`,
-    `### \`${file.path}\``,
-  ];
-  if (!symbols.length) {
-    lines.push(`- _No indexed public symbols${parser === "file-only" ? " (file-level mapping only)" : ""}._`);
-  } else {
-    for (const entry of symbols) {
-      const description = entry.description ? ` — ${entry.description}` : "";
-      lines.push(`- \`${entry.name}\` · ${entry.kind} · L${entry.line}${description}`);
-    }
+function languageFor(filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  if (LANGUAGE_BY_EXTENSION[extension]) return LANGUAGE_BY_EXTENSION[extension];
+  const base = path.basename(filePath).toLowerCase();
+  if (base === "dockerfile" || base.startsWith("dockerfile.")) return "docker";
+  if (base === "makefile") return "make";
+  if ([".json", ".yaml", ".yml", ".toml", ".md", ".mdx"].includes(extension)) {
+    return extension.slice(1);
   }
-  return `${lines.join("\n")}\n`;
+  return extension ? extension.slice(1) : "unknown";
 }
 
-function parseExistingMap(content) {
-  if (!content) return null;
-  const stateMatch = content.match(/<!-- repository-map:state (.+?) -->/);
-  if (!stateMatch) return null;
-  let state;
-  try {
-    state = JSON.parse(stateMatch[1]);
-  } catch {
-    return null;
-  }
-  const sections = new Map();
-  const pattern = /<!-- repository-map:file (.+?) -->\n[\s\S]*?(?=\n<!-- repository-map:file |\n<!-- repository-map:end -->)/g;
-  for (const match of content.matchAll(pattern)) {
-    try {
-      const metadata = JSON.parse(match[1]);
-      sections.set(metadata.path, { metadata, content: `${match[0].trimEnd()}\n` });
-    } catch {
-      return null;
-    }
-  }
-  return { state, sections };
+function isSourceLike(filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  return BUILTIN_EXTENSIONS.has(extension) || CTAGS_EXTENSIONS.has(extension);
 }
 
-function buildTree(filePaths) {
-  const root = {};
-  for (const filePath of filePaths) {
-    let cursor = root;
-    for (const part of filePath.split("/")) {
-      cursor[part] ||= {};
-      cursor = cursor[part];
-    }
-  }
-  const lines = ["."];
-  function visit(node, prefix) {
-    const entries = Object.entries(node).sort(([left], [right]) => left.localeCompare(right));
-    entries.forEach(([name, child], index) => {
-      const last = index === entries.length - 1;
-      lines.push(`${prefix}${last ? "└── " : "├── "}${name}`);
-      if (Object.keys(child).length) visit(child, `${prefix}${last ? "    " : "│   "}`);
-    });
-  }
-  visit(root, "");
-  return lines.join("\n");
+function isNotablePath(filePath) {
+  return NOTABLE_FILE_PATTERN.test(path.basename(filePath));
 }
 
-async function readPackageSignals(root) {
-  try {
-    const packageJson = JSON.parse(await readFile(path.join(root, "package.json"), "utf8"));
-    const signals = [];
-    if (packageJson.name) signals.push(`Package: \`${escapeMarkdown(packageJson.name)}\``);
-    if (packageJson.main) signals.push(`Main: \`${escapeMarkdown(packageJson.main)}\``);
-    if (packageJson.bin) {
-      const binaries = typeof packageJson.bin === "string" ? [packageJson.bin] : Object.keys(packageJson.bin);
-      if (binaries.length) signals.push(`Binaries: ${binaries.map((value) => `\`${escapeMarkdown(value)}\``).join(", ")}`);
-    }
-    const scripts = Object.keys(packageJson.scripts || {}).sort();
-    if (scripts.length) signals.push(`Scripts: ${scripts.map((value) => `\`${escapeMarkdown(value)}\``).join(", ")}`);
-    return signals;
-  } catch {
-    return [];
+function shouldIndexFile(filePath) {
+  if (shouldSkipPath(filePath)) return false;
+  return isSourceLike(filePath) || isNotablePath(filePath);
+}
+
+function classifyRole(filePath) {
+  const normalized = normalizeRelativePath(filePath);
+  const base = path.basename(normalized);
+  if (/\.(test|spec)\./i.test(base) || /(^|\/)(__tests?__|tests?|specs?)(\/|$)/i.test(normalized)) {
+    return "test";
   }
+  if (/(^|\/)(migrations?|db\/migrate|prisma)(\/|$)/i.test(normalized)) return "migration";
+  if (/(^|\/)(routes?|controllers?|handlers?|api)(\/|$)/i.test(normalized)) return "api";
+  if (/(^|\/)(services?|domain)(\/|$)/i.test(normalized)) return "service";
+  if (/(^|\/)(utils?|helpers?|lib)(\/|$)/i.test(normalized)) return "utility";
+  if (/(^|\/)(components?|hooks)(\/|$)/i.test(normalized)) return "ui";
+  if (/(^|\/)(cmd|bin|scripts|tools)(\/|$)/i.test(normalized)) return "tool";
+  if (/(^|\/)(k8s|kubernetes|helm|terraform|infra|\.github\/workflows)(\/|$)/i.test(normalized)) {
+    return "infra";
+  }
+  if (/\.(md|mdx|txt)$/i.test(base) || /^(README|AGENTS|CLAUDE|CONTRIBUTING)/i.test(base)) {
+    return "docs";
+  }
+  if (
+    /^(Dockerfile|Makefile|package\.json|go\.mod|pyproject\.toml|Cargo\.toml|pom\.xml|build\.gradle|tsconfig)/i.test(base)
+    || /\.(json|ya?ml|toml)$/i.test(base)
+  ) {
+    return "config";
+  }
+  if (/(^|\/)(main|index|server|app)\./i.test(base) || /(^|\/)cmd\/[^/]+\/main\./i.test(normalized)) {
+    return "entrypoint";
+  }
+  return "source";
+}
+
+function classifyLayer(role) {
+  switch (role) {
+    case "api":
+      return "api";
+    case "service":
+      return "service";
+    case "utility":
+      return "util";
+    case "ui":
+      return "ui";
+    case "infra":
+    case "migration":
+    case "config":
+    case "tool":
+      return "infra";
+    case "test":
+      return "test";
+    case "docs":
+      return "docs";
+    case "entrypoint":
+      return "entrypoint";
+    default:
+      return "unknown";
+  }
+}
+
+function extractLeadingPurpose(content, filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  const lines = content.split(/\r?\n/);
+
+  if (extension === ".py") {
+    const docstring = content.match(/^\s*(?:[^\n]*\n)?\s*(?:'''|""")([\s\S]*?)(?:'''|""")/);
+    if (docstring?.[1]) return truncateText(docstring[1]);
+  }
+
+  let index = 0;
+  while (index < lines.length && !lines[index].trim()) index += 1;
+  if (extension === ".go" && /^package\s+\w+/.test(lines[index]?.trim() || "")) {
+    index += 1;
+    while (index < lines.length && !lines[index].trim()) index += 1;
+  }
+  if (index >= lines.length) return "";
+
+  const commentLines = [];
+  const first = lines[index].trim();
+  if (first.startsWith("/*") || first.startsWith("/**")) {
+    while (index < lines.length) {
+      commentLines.push(lines[index]);
+      if (lines[index].includes("*/")) break;
+      index += 1;
+    }
+    return truncateText(cleanComment(commentLines));
+  }
+
+  if (first.startsWith("//") || first.startsWith("#")) {
+    const marker = first.startsWith("//") ? "//" : "#";
+    while (index < lines.length) {
+      const trimmed = lines[index].trim();
+      if (!trimmed.startsWith(marker)) break;
+      commentLines.push(lines[index]);
+      index += 1;
+    }
+    return truncateText(cleanComment(commentLines));
+  }
+
+  if (extension === ".md" || extension === ".mdx") {
+    const heading = lines.find((line) => /^#\s+/.test(line.trim()));
+    if (heading) return truncateText(heading.replace(/^#+\s*/, ""));
+  }
+
+  return "";
+}
+
+function extractImports(content, filePath) {
+  const extension = path.extname(filePath).toLowerCase();
+  const imports = [];
+  const seen = new Set();
+
+  function add(value) {
+    const cleaned = cleanText(value);
+    if (!cleaned || seen.has(cleaned) || imports.length >= MAX_IMPORTS) return;
+    seen.add(cleaned);
+    imports.push(cleaned);
+  }
+
+  if ([".js", ".jsx", ".mjs", ".cjs", ".ts", ".tsx"].includes(extension)) {
+    for (const match of content.matchAll(/(?:import|export)\s+(?:[^'"\n]+from\s+)?["']([^"']+)["']/g)) {
+      add(match[1]);
+    }
+    for (const match of content.matchAll(/require\(\s*["']([^"']+)["']\s*\)/g)) {
+      add(match[1]);
+    }
+  } else if (extension === ".go") {
+    const block = content.match(/\bimport\s*\(([\s\S]*?)\)/);
+    if (block) {
+      for (const match of block[1].matchAll(/["']([^"']+)["']/g)) add(match[1]);
+    }
+    for (const match of content.matchAll(/^\s*import\s+(?:\w+\s+)?["']([^"']+)["']/gm)) {
+      add(match[1]);
+    }
+  } else if (extension === ".py") {
+    for (const match of content.matchAll(/^\s*(?:from\s+([\w.]+)\s+import|import\s+([\w.]+))/gm)) {
+      add(match[1] || match[2]);
+    }
+  }
+
+  return imports;
+}
+
+function buildPurpose({ docstring, role, exports, imports }) {
+  if (docstring) return truncateText(docstring);
+  const exportText = exports.slice(0, 5).join(", ");
+  const importText = imports.slice(0, 4).join(", ");
+  const parts = [`Role=${role}.`];
+  if (exportText) parts.push(`Exports ${exportText}.`);
+  if (importText) parts.push(`Depends on ${importText}.`);
+  if (parts.length === 1) parts.push("No docstring or public exports detected.");
+  return truncateText(parts.join(" "));
 }
 
 function overallFingerprint(files, options) {
@@ -486,7 +607,8 @@ function overallFingerprint(files, options) {
 }
 
 async function collectFiles(root, maxFiles, isGit) {
-  const candidates = isGit ? gitFiles(root) : await filesystemFiles(root);
+  const candidates = (isGit ? gitFiles(root) : await filesystemFiles(root))
+    .filter((filePath) => shouldIndexFile(filePath));
   const unique = [...new Set(candidates)].sort();
   const files = [];
   let truncated = false;
@@ -509,13 +631,61 @@ async function collectFiles(root, maxFiles, isGit) {
   return { files, truncated, totalCandidates: unique.length };
 }
 
+function analyzeFile(file, root, universalCtags, remainingSymbols) {
+  const role = classifyRole(file.path);
+  const layer = classifyLayer(role);
+  const language = languageFor(file.path);
+  const parser = parserFor(file.path, universalCtags);
+  const docstring = extractLeadingPurpose(file.content, file.path);
+  const imports = extractImports(file.content, file.path);
+  let symbols = [];
+  if (isSourceLike(file.path)) {
+    symbols = extractSymbols(file.path, file.content, root, universalCtags)
+      .sort((left, right) => left.line - right.line || left.name.localeCompare(right.name));
+  }
+  let truncated = false;
+  if (symbols.length > remainingSymbols) {
+    symbols = symbols.slice(0, remainingSymbols);
+    truncated = true;
+  }
+  const exports = symbols
+    .filter((entry) => entry.kind !== "route")
+    .map((entry) => entry.name)
+    .slice(0, MAX_EXPORTS);
+  const purpose = buildPurpose({ docstring, role, exports, imports });
+  const fileRow = {
+    path: file.path,
+    hash: file.hash,
+    language,
+    role,
+    layer,
+    purpose,
+    exports: exports.join("; "),
+    imports: imports.join("; "),
+    symbol_count: String(symbols.length),
+    parser,
+    notable: isNotablePath(file.path) ? "true" : "false",
+    enrichment_status: initialEnrichmentStatus(docstring),
+    enriched_at: "",
+    tags: "",
+  };
+  const symbolRows = symbols.map((entry) => ({
+    path: file.path,
+    name: entry.name,
+    kind: entry.kind,
+    line: String(entry.line),
+    description: entry.description,
+  }));
+  return { fileRow, symbolRows, truncated, parser };
+}
+
 async function generate(options) {
   const isGit = gitAvailable(options.root);
   const collected = await collectFiles(options.root, options.maxFiles, isGit);
   const files = collected.files;
   const fingerprint = overallFingerprint(files, options);
-  const existingContent = await readFile(options.out, "utf8").catch(() => "");
-  const existing = parseExistingMap(existingContent);
+  const existing = await loadMapArtifacts(options.outDir);
+  const artifacts = artifactPaths(options.outDir);
 
   if (options.check) {
     const fresh =
@@ -525,10 +695,10 @@ async function generate(options) {
       existing.state.maxFiles === options.maxFiles &&
       existing.state.maxSymbols === options.maxSymbols;
     if (fresh) {
-      console.log(`Repository map is fresh: ${path.relative(process.cwd(), options.out)}`);
+      console.log(`Repository map is fresh: ${path.relative(process.cwd(), options.outDir)}`);
       return 0;
     }
-    console.error(`Repository map is missing or stale: ${path.relative(process.cwd(), options.out)}`);
+    console.error(`Repository map is missing or stale: ${path.relative(process.cwd(), options.outDir)}`);
     return 1;
   }
 
@@ -544,120 +714,95 @@ async function generate(options) {
   if (compatible && isGit) {
     changed = gitChangedFiles(options.root);
     for (const file of files) {
-      const prior = existing.sections.get(file.path);
-      if (!prior || prior.metadata.hash !== file.hash) {
+      const prior = existing.fileRows.get(file.path);
+      if (!prior || prior.hash !== file.hash) {
         changed.add(file.path);
       } else {
-        // The map may already include a worktree change that still differs from HEAD.
         changed.delete(file.path);
       }
     }
-    for (const oldPath of existing.sections.keys()) {
+    for (const oldPath of existing.fileRows.keys()) {
       if (!files.some((file) => file.path === oldPath)) changed.add(oldPath);
     }
     mode = "incremental";
   }
 
-  const sections = [];
+  const fileRows = [];
+  const symbolRows = [];
   let symbolCount = 0;
   let symbolsTruncated = false;
   const coverageWarnings = new Set();
+
   for (const file of files) {
-    const extension = path.extname(file.path).toLowerCase();
-    const sourceLike = BUILTIN_EXTENSIONS.has(extension) || CTAGS_EXTENSIONS.has(extension);
-    if (!sourceLike) continue;
     const parser = parserFor(file.path, universalCtags);
-    if (parser === "file-only") coverageWarnings.add(extension || "[no extension]");
-    const prior = existing?.sections.get(file.path);
+    if (isSourceLike(file.path) && parser === "file-only") {
+      coverageWarnings.add(path.extname(file.path).toLowerCase() || "[no extension]");
+    }
+    const priorFile = existing?.fileRows.get(file.path);
+    const priorSymbols = existing?.symbolRows.get(file.path) || [];
     const canReuse =
       compatible &&
       !changed.has(file.path) &&
-      prior?.metadata?.hash === file.hash &&
-      prior.metadata.parser === parser &&
-      symbolCount + Number(prior.metadata.symbols || 0) <= options.maxSymbols;
+      priorFile?.hash === file.hash &&
+      priorFile.parser === parser &&
+      symbolCount + Number(priorFile.symbol_count || 0) <= options.maxSymbols;
     if (canReuse) {
-      sections.push(prior.content);
-      symbolCount += Number(prior.metadata.symbols || 0);
+      fileRows.push(priorFile);
+      symbolRows.push(...priorSymbols);
+      symbolCount += Number(priorFile.symbol_count || 0);
       continue;
     }
-    let symbols = extractSymbols(file.path, file.content, options.root, universalCtags)
-      .sort((left, right) => left.line - right.line || left.name.localeCompare(right.name));
     const remaining = Math.max(0, options.maxSymbols - symbolCount);
-    if (symbols.length > remaining) {
-      symbols = symbols.slice(0, remaining);
-      symbolsTruncated = true;
-    }
-    symbolCount += symbols.length;
-    sections.push(renderFileSection(file, symbols, parser));
+    const analyzed = analyzeFile(file, options.root, universalCtags, remaining);
+    if (analyzed.truncated) symbolsTruncated = true;
+    symbolCount += analyzed.symbolRows.length;
+    fileRows.push(analyzed.fileRow);
+    symbolRows.push(...analyzed.symbolRows);
   }
 
-  const notableFiles = files
-    .map((file) => file.path)
-    .filter((filePath) => !filePath.includes("/") && NOTABLE_FILE_PATTERN.test(path.basename(filePath)))
-    .sort();
-  const packageSignals = await readPackageSignals(options.root);
   const warnings = [];
-  if (collected.truncated) warnings.push(`File scan truncated at ${options.maxFiles} of ${collected.totalCandidates} candidate files.`);
+  if (collected.truncated) {
+    warnings.push(`File scan truncated at ${options.maxFiles} of ${collected.totalCandidates} candidate files.`);
+  }
   if (symbolsTruncated) warnings.push(`Symbol scan truncated at ${options.maxSymbols} symbols.`);
   if (coverageWarnings.size) {
-    warnings.push(`File-level mapping only for: ${[...coverageWarnings].sort().join(", ")}${universalCtags ? "" : " (Universal Ctags not available)"}.`);
+    warnings.push(
+      `File-level mapping only for: ${[...coverageWarnings].sort().join(", ")}${universalCtags ? "" : " (Universal Ctags not available)"}.`,
+    );
   }
+
   const state = {
     schema: SCHEMA_VERSION,
     extractor: EXTRACTOR_VERSION,
     fingerprint,
     maxFiles: options.maxFiles,
     maxSymbols: options.maxSymbols,
-    files: files.length,
+    files: fileRows.length,
     symbols: symbolCount,
+    warnings,
   };
-  const output = [
-    "# Repository Map",
-    "",
-    `<!-- repository-map:state ${JSON.stringify(state)} -->`,
-    "",
-    "> Generated cache for navigation. Verify behavior in source before editing.",
-    "",
-    "## Project Signals",
-    "",
-    `- Files indexed: ${files.length}`,
-    `- Public/key symbols indexed: ${symbolCount}`,
-    `- Source fingerprint: \`${fingerprint.slice(0, 16)}\``,
-    ...packageSignals.map((signal) => `- ${signal}`),
-    ...(notableFiles.length ? [`- Notable files: ${notableFiles.map((value) => `\`${escapeMarkdown(value)}\``).join(", ")}`] : []),
-    "",
-    "## File Tree",
-    "",
-    "```text",
-    buildTree(files.map((file) => file.path)),
-    "```",
-    "",
-    "## Symbols",
-    "",
-    ...sections.map((section) => section.trimEnd()),
-    "<!-- repository-map:end -->",
-    "",
-    ...(warnings.length ? ["## Warnings", "", ...warnings.map((warning) => `- ${warning}`), ""] : []),
-  ].join("\n");
 
-  await mkdir(path.dirname(options.out), { recursive: true });
-  await writeFile(options.out, output);
+  await mkdir(options.outDir, { recursive: true });
+  await writeAtomically(artifacts.filesCsv, serializeCsv(FILE_COLUMNS, fileRows));
+  await writeAtomically(artifacts.symbolsCsv, serializeCsv(SYMBOL_COLUMNS, symbolRows));
+  await writeAtomically(artifacts.stateJson, `${JSON.stringify(state, null, 2)}\n`);
 
-  const verification = parseExistingMap(output);
-  const sectionPaths = new Set(verification?.sections.keys() || []);
-  const expectedSourcePaths = files
-    .filter((file) => BUILTIN_EXTENSIONS.has(path.extname(file.path).toLowerCase()) || CTAGS_EXTENSIONS.has(path.extname(file.path).toLowerCase()))
-    .map((file) => file.path);
+  const verification = await loadMapArtifacts(options.outDir);
+  const verifiedPaths = new Set(verification?.fileRows.keys() || []);
+  const expectedPaths = files.map((file) => file.path);
   const verified =
     verification?.state?.fingerprint === fingerprint &&
-    expectedSourcePaths.every((filePath) => sectionPaths.has(filePath)) &&
-    sectionPaths.size === expectedSourcePaths.length;
+    expectedPaths.every((filePath) => verifiedPaths.has(filePath)) &&
+    verifiedPaths.size === expectedPaths.length &&
+    Number(verification.state.symbols) === symbolCount;
   if (!verified && mode === "incremental") {
     return generate({ ...options, full: true });
   }
   if (!verified) throw new Error("generated repository map failed verification");
 
-  console.log(`${mode === "incremental" ? "Incrementally regenerated" : "Fully regenerated"} ${path.relative(process.cwd(), options.out)}`);
+  console.log(
+    `${mode === "incremental" ? "Incrementally regenerated" : "Fully regenerated"} ${path.relative(process.cwd(), options.outDir)}`,
+  );
   for (const warning of warnings) console.warn(`Warning: ${warning}`);
   return 0;
 }
@@ -670,7 +815,7 @@ async function main(argv = process.argv.slice(2)) {
     if (!info?.isDirectory()) throw new Error(`repository path is not a directory: ${root}`);
     const options = {
       root,
-      out: path.resolve(root, String(args.out || ".skill-context/repo-map.md")),
+      outDir: resolveOutDir(root, args.out),
       maxFiles: positiveInteger(args["max-files"], DEFAULT_MAX_FILES, "--max-files"),
       maxSymbols: positiveInteger(args["max-symbols"], DEFAULT_MAX_SYMBOLS, "--max-symbols"),
       check: Boolean(args.check),
@@ -689,12 +834,18 @@ if (isMain) {
 }
 
 export {
+  classifyLayer,
+  classifyRole,
   detectUniversalCtags,
   extractGo,
+  extractImports,
   extractJavaScript,
+  extractLeadingPurpose,
   extractPython,
   isUniversalCtagsVersion,
   main,
   parseCtagsOutput,
   parseNameStatus,
+  shouldIndexFile,
+  shouldSkipPath,
 };

@@ -30,6 +30,7 @@ const commands = {
   "marketplace-manifest": ["scripts/generate-marketplace-manifest.mjs"],
   "refresh-knowledge": ["scripts/refresh-knowledge.mjs"],
   "repository-map": ["skills/repository-map/scripts/repository-map.mjs"],
+  "repository-map-enrich": ["skills/repository-map/scripts/repository-map-enrich.mjs"],
   release: ["scripts/release.sh"],
   search: ["scripts/search-skills.mjs"],
   "verify-sources": ["scripts/verify-sources.mjs"],
@@ -55,7 +56,8 @@ Commands:
   package-claude          Create Claude-ready ZIP bundles in dist/claude
   marketplace-manifest    Generate dist/claude/marketplace-manifest.json
   refresh-knowledge       Create a curated knowledge refresh review plan
-  repository-map          Generate .skill-context/repo-map.md
+  repository-map          Generate .skill-context CSV repo map (files + symbols)
+  repository-map-enrich   AI-enrich pending repo-files.csv rows (use --mock without API key)
   verify-sources          Verify curated knowledge source metadata
   evaluate                Evaluate skill examples and knowledge references
   create                  Create a new local skill scaffold
@@ -78,6 +80,7 @@ Examples:
   ai-agent-skills index-project --path .
   ai-agent-skills decision-memory search --path . --query "payment retry"
   ai-agent-skills repository-map --path .
+  ai-agent-skills repository-map-enrich --path . --mock
   ai-agent-skills check
 `);
 }
@@ -133,7 +136,7 @@ if (command === "check") {
     cwd: packageRoot,
     stdio: "inherit",
   });
-} else if (["decision-memory", "index-project", "repository-map"].includes(command)) {
+} else if (["decision-memory", "index-project", "repository-map", "repository-map-enrich"].includes(command)) {
   result = spawnSync(process.execPath, [path.join(packageRoot, script[0]), ...args], {
     cwd: invocationCwd,
     stdio: "inherit",

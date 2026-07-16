@@ -30,6 +30,7 @@
     "skills:package-claude": "node scripts/package-claude.mjs",
     "skills:refresh-knowledge": "node scripts/refresh-knowledge.mjs",
     "skills:repository-map": "node skills/repository-map/scripts/repository-map.mjs",
+    "skills:repository-map:enrich": "node skills/repository-map/scripts/repository-map-enrich.mjs",
     "skills:repository-map:test": "node scripts/test-repository-map.mjs",
     "skills:release": "bash scripts/release.sh",
     "skills:search": "node scripts/search-skills.mjs",

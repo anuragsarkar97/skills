@@ -108,7 +108,7 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 - `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
 - `code-review`: performs normal reviews and adversarial grills for risky production changes.
 - `incident-response`: triages outages, rollback/hotfix decisions, severity, handoff, and post-mortems.
-- `repository-map`: discovers repository stack, commands, entry points, operational files, file structure, and public symbols.
+- `repository-map`: discovers repository stack, commands, entry points, operational files, and a per-file CSV map (purpose/role plus optional symbols).
 - `decision-memory`: records and retrieves engineering decisions, rationale, rejected alternatives, and evidence.
 - `security-review`: finds exploitable security and privacy risks with concrete attack paths and fixes.
 - `macos-reminder`: schedules local macOS notification reminders from `/remember` style prompts.
@@ -343,7 +343,8 @@ npm run skills:verify-sources
 - `skills:search` searches skills and shared knowledge references.
 - `skills:verify-sources` verifies source metadata in knowledge references.
 - `skills:refresh-knowledge` writes a review queue for source refresh work.
-- `skills:repository-map` writes `.skill-context/repo-map.md`, using Git changes and content hashes for verified incremental regeneration.
+- `skills:repository-map` writes `.skill-context/repo-files.csv`, `repo-symbols.csv`, and `repo-map.state.json`, using Git changes and content hashes for verified incremental regeneration.
+- `skills:repository-map:enrich` upgrades pending `repo-files.csv` rows with AI summaries (`--mock` for offline/tests; `CURSOR_API_KEY` + `@cursor/sdk` for live enrichment).
 - `skills:index-project` writes `.skill-context/project-context.json`.
 
 ## Skill Contract

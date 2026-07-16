@@ -163,10 +163,10 @@
     },
     {
       "name": "repository-map",
-      "description": "Generate and use compact repository context and a semantic file-symbol map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
+      "description": "Generate and use compact repository context and a per-file CSV map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
       "displayName": "Repository Map",
-      "shortDescription": "Map repository context, files, and symbols",
-      "defaultPrompt": "Use $repository-map to generate compact project context and a semantic navigation map.",
+      "shortDescription": "Map repository context and per-file CSV navigation with optional AI enrichment",
+      "defaultPrompt": "Use $repository-map to generate compact project context, a per-file CSV map, and enrich pending rows for faster cold starts.",
       "allowImplicitInvocation": true
     },
     {

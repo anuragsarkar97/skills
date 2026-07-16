@@ -1,6 +1,7 @@
 import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { IGNORED_DIRS, shouldSkipPath } from "./ignore-rules.mjs";
 
 function parseArgs(argv) {
   const args = {};
@@ -20,18 +21,6 @@ function parseArgs(argv) {
 async function pathExists(filePath) {
   return Boolean(await stat(filePath).catch(() => null));
 }
-
-const ignoredDirs = new Set([
-  ".git",
-  ".hg",
-  ".svn",
-  ".air",
-  ".skill-context",
-  ".skill-intake",
-  "coverage",
-  "dist",
-  "node_modules",
-]);
 
 const entryPointPattern = /^(src\/)?(main|index|server|app|cmd\/[^/]+\/main)\.(js|jsx|mjs|cjs|ts|tsx|py|go|rs)$/i;
 const notablePattern = /^(README|AGENTS|CLAUDE|CODEOWNERS|package|pnpm-lock|yarn\.lock|tsconfig|vite\.config|next\.config|Dockerfile)/i;
@@ -147,7 +136,7 @@ export async function buildProjectContext(root, {
         state.truncated = true;
         return;
       }
-      if (entry.isDirectory() && ignoredDirs.has(entry.name)) continue;
+      if (entry.isDirectory() && IGNORED_DIRS.has(entry.name)) continue;
 
       const fullPath = path.join(directory, entry.name);
       const relativePath = path.relative(root, fullPath).split(path.sep).join("/");
@@ -161,6 +150,7 @@ export async function buildProjectContext(root, {
       }
 
       if (!entry.isFile()) continue;
+      if (shouldSkipPath(relativePath)) continue;
       state.seen += 1;
       const extension = extensionOf(fullPath);
       summary.fileCountsByExtension[extension] = (summary.fileCountsByExtension[extension] || 0) + 1;

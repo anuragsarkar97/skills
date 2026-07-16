@@ -89,7 +89,7 @@ Keep API rules out of utilities, business rules out of handlers, and implementat
 - Local reminder request: use `macos-reminder`; clarify the message or time if ambiguous before scheduling.
 - Terse mode request: use `caveman-mode` as an output governor with the relevant task skill; add `smriti-shruti` if the issue is context volume.
 - Skill system improvement: use `self-amending-skill`, then run `npm test`, `npm run skills:audit`, and `npm run skills:catalog` or `npm run skills:graph` if inventory, metadata, or references changed.
-- Unfamiliar repository or expensive cold start: use `repository-map` for project conventions, files, and symbols; restrict follow-up searches to the discovered paths.
+- Unfamiliar repository or expensive cold start: use `repository-map` for project conventions and filtered `repo-files.csv` rows; restrict follow-up searches to the discovered paths.
 - Architecture or high-impact engineering decision: use `decision-memory` to check prior rationale before proposing a change; record only decisions established by the user or repository evidence.
 - Large feature changes: use `smriti-shruti` if context is noisy, `oppenheimer-simplifier` if the problem is unclear, `implementation-plan` for sequencing, the relevant writer skills for implementation, then `test-design-review` and `code-review`.
 - Service plus API implementation: split work across `service-writer`, `api-writer`, and `test-writer`; add `api-review` when contracts change.
