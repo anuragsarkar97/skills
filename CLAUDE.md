@@ -11,45 +11,14 @@ This repository contains portable skills for AI agents. Use `skills/<skill-name>
 - Preserve compatibility with Codex/OpenAI metadata by keeping `agents/openai.yaml` concise.
 - For cross-cutting agent behavior, use `knowledge/agent-behavior/operating-principles.md` instead of duplicating broad system-prompt guidance across skills.
 
-## Proactive Skill Use
+## Skill Selection
 
-Start with `agent-skill-router` when the user asks for engineering work but does not name a skill. Then select the smallest relevant set:
+Use `skills/agent-skill-router/SKILL.md` to select a specialized workflow when it adds value. It is a selector, not a mandatory chain of skills. Straightforward implementation can proceed without another skill.
 
-- `implementation-plan` for plans and validation strategy.
-- `self-amending-skill` for evidence-based improvements to skills, routing, validation, or tooling.
-- `wtf-check` when the human or AI is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move.
-- `critical-thinking` before agreeing to risky, overbuilt, incoherent, or anti-patterned designs.
-- `product-competitive-thinking` before product-facing work, MVP scope, UX, onboarding, pricing, or competitor-driven requests.
-- `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages.
-- `upskilling-research` for learning plans and fresh resource curation from blogs, papers, docs, talks, courses, and videos.
-- `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
-- `caveman-mode` for terse, low-token, direct-only answers and "do not answer unless relevant" instructions.
-- `smriti-shruti` for context triage and token reduction.
-- `oppenheimer-simplifier` for simplifying complex problems before solving.
-- `service-writer` for service-layer behavior.
-- `utility-writer` for focused helper code.
-- `api-writer` for API boundary implementation.
-- `test-writer` for targeted test implementation.
-- `incident-response` for production outages, regressions, rollback or hotfix decisions, and post-mortems.
-- `observability-design` for logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
-- `code-review` for normal review and adversarial review of risky changes.
-- `database-schema-design` for persistence and migrations.
-- `api-review` for service contracts.
-- `naming-review` for terminology and identifiers.
-- `commit-pr-writer` for commit and PR text.
-- `code-documentation` for docs and examples.
-- `doc-template-writer` for Markdown product doc, PRD, RFC, project brief, and engineering design doc templates.
-- `test-design-review` for tests and coverage.
-- `design-principles-review` for SOLID, YAGNI, and design boundaries.
+Use the matching shared stack reference only when Go, React, Python, Kubernetes, AWS, or Azure details affect the task. Load deeper domain guidance for a concrete question; do not pre-read the catalog or generate a repository map for every edit.
 
-It is acceptable to say no to the user when the requested design is an anti-pattern. Be direct, give evidence, and propose the smallest safer alternative.
+Follow existing user authorization through the complete requested workflow. Ask when required information or an action boundary is unresolved, not because a skill describes the next step. Do not send messages, publish, deploy, or modify production data without authorization.
 
-When work starts drifting, run a WTF check: name the drift, restate the useful goal, ask the hard question, and recommend the smallest reset move. Be blunt but not insulting.
+## Verification
 
-For startup product decisions, also evaluate user pain, product bet, competitive alternatives, differentiation, and MVP scope before recommending implementation.
-
-When writing product communication, be respectful but firm. Do not agree automatically; acknowledge the goal, state the concern, and offer the next useful step.
-
-For Go, React, Python scripting, Kubernetes, AWS, and Azure work, load the matching shared knowledge reference when the stack affects design, implementation, review, tests, observability, or incident response.
-
-For skill-system changes, prefer `npm run skills:check`; regenerate `skills/catalog.json` with `npm run skills:catalog` and the graph with `npm run skills:graph` when inventory, metadata, or references change.
+Run `npm test` after editing skills. Regenerate catalog and graph artifacts when inventory, metadata, or routing changes.

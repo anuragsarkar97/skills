@@ -1,11 +1,11 @@
 ---
 name: implementation-plan
-description: Create pragmatic implementation plans for software changes, refactors, migrations, and feature work. Use when an AI agent needs to break a coding task into scoped steps, identify risks, choose validation commands, or coordinate incremental delivery.
+description: "Plan changes with meaningful sequencing, migration, rollout, or validation dependencies. Use when a plan is requested or execution needs coordination; skip formal plans for straightforward edits."
 ---
 
 # Implementation Plan
 
-Create a plan only after inspecting available project context. Keep the plan tied to files, systems, and validation commands that actually exist.
+Use a formal plan for meaningful dependencies or an explicit planning request. Straightforward edits can proceed directly. Inspect available project context first. Keep the plan tied to files, systems, and validation commands that actually exist.
 
 For architecture-level changes, read `../_knowledge/architecture/principles.md`. For changes touching auth, data migrations, or production data paths, also read `../_knowledge/security/security-review.md`. For Go, React, Python scripting, Kubernetes, AWS, or Azure changes, load the matching stack reference before proposing implementation and validation steps.
 
@@ -16,6 +16,8 @@ For architecture-level changes, read `../_knowledge/architecture/principles.md`.
 3. Split work into steps that can be implemented and verified independently.
 4. Call out decisions that need user input only when research cannot resolve them.
 5. Include validation commands and expected signals.
+
+When implementation is requested, continue from the plan through implementation and validation unless a required decision is unresolved. A planning-only request ends with the plan.
 
 ## When to Split into Phases
 

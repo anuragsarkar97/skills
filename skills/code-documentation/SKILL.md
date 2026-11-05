@@ -1,6 +1,6 @@
 ---
 name: code-documentation
-description: Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.
+description: "Write or review README content, API documentation, architecture notes, or operational instructions. Use when documentation is a requested deliverable or behavior changes make existing docs stale."
 ---
 
 # Code Documentation

@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.
+description: "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change."
 ---
 
 # Code Review
@@ -41,7 +41,9 @@ Label each finding with one of these tiers:
 - **Significant**: should be addressed soon — meaningful regressions, missing test coverage on risky paths, performance cliffs.
 - **Minor**: optional improvements — style divergence, naming inconsistency, defensive code that adds noise.
 
-Omit the label when a finding is clearly blocking (default assumption is blocking unless labeled otherwise).
+Label severity explicitly; uncertainty alone does not make a finding blocking.
+
+Check changed public names for domain consistency, units, and compatibility. Avoid cosmetic renames without a concrete clarity or correctness benefit.
 
 ## What Not to Flag
 

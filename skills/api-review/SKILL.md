@@ -1,6 +1,6 @@
 ---
 name: api-review
-description: Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).
+description: "Review API contracts for compatibility, auth, pagination, idempotency, and error semantics. Use for proposed interfaces or contract changes, rather than handler implementation."
 ---
 
 # API Review

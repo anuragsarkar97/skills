@@ -1,6 +1,6 @@
 ---
 name: design-principles-review
-description: Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.
+description: "Review abstraction quality, dependency direction, and module ownership in an architecture or refactor. Use for disputed boundaries or unnecessary complexity, rather than routine edits."
 ---
 
 # Design Principles Review

@@ -14,6 +14,40 @@ This repository gives agents reusable operating modes for review, planning, impl
 
 ## Install
 
+### Directly from GitHub
+
+No npm publication or `npx` is required. On macOS or Linux, with Bash, curl, tar, and Node.js 18+ installed:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/anuragsarkar97/skills/master/install.sh | bash
+```
+
+This installs copies into Codex and preserves existing skills and shared knowledge. For Claude:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/anuragsarkar97/skills/master/install.sh | bash -s -- --agent claude
+```
+
+Preview a frontend-only install:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/anuragsarkar97/skills/master/install.sh | bash -s -- --profile frontend --dry-run
+```
+
+Use `--force` for a reviewed upgrade, `--skills a,b` for selected skills, or `--target /path/to/skills` for a custom destination. The bootstrap downloads a GitHub archive into a temporary directory and cleans it afterward; it supports copy installs only and does not install third-party skills or remove stale ones.
+
+To inspect before executing:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/anuragsarkar97/skills/master/install.sh -o /tmp/ai-agent-skills-install.sh
+less /tmp/ai-agent-skills-install.sh
+bash /tmp/ai-agent-skills-install.sh --dry-run
+```
+
+`--ref <branch|tag|commit>` selects the downloaded repository revision. To pin the complete bootstrap, replace `master` in the script URL with the same commit and pass `--ref <commit>`; changing only `--ref` still runs the script from the URL's revision. The public URL works once `install.sh` is pushed to GitHub. For a private repository, use an authenticated clone and run `node scripts/install-skills.mjs --agent codex --write` from that checkout instead.
+
+### From the published npm package
+
 Install everything into Codex:
 
 ```bash
@@ -26,11 +60,11 @@ Install everything into Claude:
 npx -y @anuragsarkar97/ai-agent-skills@latest install --agent claude --write --force
 ```
 
-That single command copies all skills plus shared `_knowledge/` into the agent skill directory.
+That single command copies all current skills plus shared `_knowledge/` into the agent skill directory. Without `--force`, existing skill folders and shared knowledge are preserved; a reviewed upgrade needs `--force` to refresh both. It preserves older installed skills by default. The optional `--remove-stale` flag previews removal of managed skills outside the selected set; inspect local customizations first. See the [migration notes](docs/skill-review-2026-11-05.md) for retired names.
 
 ## Use
 
-After installing, ask the agent normally. The router skill helps the agent select the right skill without you naming it every time.
+After installing, ask the agent normally. The router selects a specialized workflow when useful. Routine coding can proceed without loading additional skills.
 
 Examples:
 
@@ -70,6 +104,12 @@ Search our prior decisions before changing payment retry behavior.
 Review this webhook endpoint for authorization, replay, and secret-exposure risks.
 ```
 
+For frontend visual direction:
+
+```text
+Use dribbble-design to suggest three directions for this dashboard. Explain the layout and typography choices; do not implement yet.
+```
+
 For explicit testing, name a skill:
 
 ```text
@@ -77,28 +117,37 @@ Use the critical-thinking skill to challenge this design before we implement it.
 ```
 
 ```text
-Use caveman mode: answer only what I directly ask and stop adding unrelated explanation.
+Keep the answer concise and include only the result, validation, and material risks.
 ```
 
 ## What You Get
 
 | Area | Skills |
 |---|---|
+| Frontend visual direction | `dribbble-design` |
+| Agent systems and graphs | `harness-engineering`, `agentic-engineering`, `graph-engineering` |
 | Routing and workflow | `agent-skill-router`, `repository-map`, `implementation-plan` |
-| Critical judgment | `critical-thinking`, `wtf-check`, `oppenheimer-simplifier` |
+| Critical judgment | `critical-thinking`, `wtf-check` |
 | Product and communication | `product-competitive-thinking`, `product-communication` |
 | Learning and growth | `upskilling-research` |
 | Reliability and operations | `incident-response`, `observability-design`, `security-review` |
 | Personal productivity | `macos-reminder` |
-| Implementation writers | `service-writer`, `api-writer`, `utility-writer`, `test-writer` |
-| Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review`, `naming-review` |
+| Implementation writers | `service-writer`, `api-writer` |
+| Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review` |
 | Documentation and delivery | `code-documentation`, `commit-pr-writer` |
-| Context and maintenance | `decision-memory`, `caveman-mode`, `smriti-shruti`, `self-amending-skill` |
+| Context and maintenance | `decision-memory`, `self-amending-skill` |
+
+The [2026-11-05 review](docs/skill-review-2026-11-05.md) records the cleanup rationale and migration limits. The [agent and graph engineering update](docs/agent-engineering-2026-11-05.md) adds three specialized skills based on current primary sources.
 
 ## Skill Highlights
 
+- `dribbble-design`: researches visual inspiration and translates it into frontend directions, hierarchy, typography, and practical UI changes.
+
+- `harness-engineering`: improves coding-agent environments, feedback loops, and independent completion evaluations.
+- `agentic-engineering`: designs tool-using applications, durable execution graphs, scoped memory, budgets, and recovery.
+- `graph-engineering`: designs grounded knowledge/dependency graphs and GraphRAG with provenance, temporal facts, and baseline evaluation.
+
 - `agent-skill-router`: chooses and combines skills proactively.
-- `caveman-mode`: keeps answers terse, directly relevant, and silent on unasked tangents.
 - `critical-thinking`: challenges weak designs and says no to anti-patterns.
 - `wtf-check`: interrupts human or AI drift, thrash, over-scoping, and context switching with a blunt reset question.
 - `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
@@ -113,8 +162,6 @@ Use caveman mode: answer only what I directly ask and stop adding unrelated expl
 - `security-review`: finds exploitable security and privacy risks with concrete attack paths and fixes.
 - `macos-reminder`: schedules local macOS notification reminders from `/remember` style prompts.
 - `observability-design`: designs logs, metrics, traces, SLOs, dashboards, and alerts.
-- `service-writer`, `api-writer`, `utility-writer`, `test-writer`: keep implementation work split by responsibility.
-- `smriti-shruti`: reduces noisy context while preserving the facts needed for the current task.
 - `self-amending-skill`: improves the skill system safely from real usage evidence.
 
 ## Knowledge Packs
@@ -123,6 +170,10 @@ Installed skills include shared `_knowledge/` references. Agents load these only
 
 | Knowledge Pack | Use For |
 |---|---|
+| `frontend/design-inspiration.md` | visual reference analysis, layout, typography, responsive states, accessibility |
+| `agents/harness-engineering.md` | reproducible environments, graders, failure experiments, agent evaluation |
+| `agents/agentic-engineering.md` | agent architecture, tool discovery, durable state, recovery, context |
+| `graphs/graph-engineering.md` | entity identity, provenance, temporal context, graph retrieval, schema evolution |
 | `architecture/principles.md` | SOLID, YAGNI, dependency direction, service boundaries |
 | `api/api-review.md` | API contracts, auth, pagination, idempotency, errors |
 | `database/schema-design.md` | entities, constraints, indexes, migrations, retention |
@@ -269,7 +320,7 @@ One command runs the full local packaging flow:
 npm run skills:package-all
 ```
 
-It runs validation, regenerates the catalog and graph, packages Claude bundles, and performs an npm pack dry run.
+It runs validation, regenerates the catalog and graph, packages Claude bundles, and tests the actual npm tarball with fresh copy/symlink installs, the frontend profile, shared references, and shipped CLI checks.
 
 For a publishable release, bump the version as part of the same flow:
 
@@ -334,11 +385,12 @@ npm run skills:verify-sources
 ```
 
 - `skills:check` runs validation, audit, prompt examples, evaluation hooks, and source checks.
+- `skills:package:test` builds a temporary npm tarball and verifies its CLI, installs, profiles, references, and script entry points without touching global skills.
 - `skills:bootstrap` prints copy-paste agent instructions for proactive skill routing.
 - `skills:catalog` writes `skills/catalog.json`.
 - `skills:changelog` generates changelog text from commits since the last tag.
 - `skills:graph` writes `skills/graph.json` and `skills/graph.mmd`.
-- `skills:evaluate` checks prompt coverage and shared knowledge hooks.
+- `skills:evaluate` checks prompt fixture coverage and shared knowledge hooks; it does not run model behavior evaluations.
 - `skills:knowledge-index` writes `knowledge/index.json` from curated references.
 - `skills:search` searches skills and shared knowledge references.
 - `skills:verify-sources` verifies source metadata in knowledge references.

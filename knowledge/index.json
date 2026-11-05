@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "referenceCount": 15,
+  "referenceCount": 19,
   "references": [
     {
       "path": "agent-behavior/operating-principles.md",
@@ -9,15 +9,56 @@
       "owner": "maintainers",
       "sourceQuality": "curated",
       "refreshCadenceDays": 90,
-      "lastReviewed": null,
+      "lastReviewed": "2026-11-05",
       "relatedSkills": [
         "agent-skill-router"
       ],
       "sources": [
+        "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra",
+        "https://learn.chatgpt.com/docs/build-skills",
         "https://platform.openai.com/docs/guides/prompt-engineering",
         "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
         "https://www.nist.gov/itl/ai-risk-management-framework",
         "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+      ]
+    },
+    {
+      "path": "agents/agentic-engineering.md",
+      "title": "Agentic Engineering",
+      "summary": "Use for applications whose model selects tools or actions. Reviewed 2026-11-05. Architecture rules here are engineering recommendations; check installed SDK and runtime versions before copying vendor API examples.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 60,
+      "lastReviewed": "2026-11-05",
+      "relatedSkills": [
+        "agent-skill-router",
+        "agentic-engineering"
+      ],
+      "sources": [
+        "https://developers.openai.com/api/docs/guides/agents-api/architecture",
+        "https://developers.openai.com/api/docs/guides/tools-tool-search",
+        "https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling",
+        "https://docs.langchain.com/oss/python/langgraph/persistence",
+        "https://docs.langchain.com/oss/python/langgraph/fault-tolerance"
+      ]
+    },
+    {
+      "path": "agents/harness-engineering.md",
+      "title": "Harness Engineering",
+      "summary": "Use for reproducible coding-agent environments and evidence-based improvements. Reviewed 2026-11-05. The design rules below are repository recommendations; vendor experiments are examples, not universal performance guarantees.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 60,
+      "lastReviewed": "2026-11-05",
+      "relatedSkills": [
+        "agent-skill-router",
+        "harness-engineering"
+      ],
+      "sources": [
+        "https://openai.com/index/harness-engineering/",
+        "https://www.anthropic.com/research/harness-design-long-running-apps",
+        "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+        "https://www.anthropic.com/research/managed-agents"
       ]
     },
     {
@@ -120,6 +161,25 @@
       ]
     },
     {
+      "path": "frontend/design-inspiration.md",
+      "title": "Frontend Design Inspiration",
+      "summary": "Use when a frontend task needs visual direction or critique. Reviewed 2026-11-05. Visual heuristics here are design recommendations; accessibility requirements and browser features are linked separately.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 90,
+      "lastReviewed": "2026-11-05",
+      "relatedSkills": [
+        "agent-skill-router",
+        "dribbble-design"
+      ],
+      "sources": [
+        "https://dribbble.com/tags/saas",
+        "https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html",
+        "https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion"
+      ]
+    },
+    {
       "path": "golang/go-engineering.md",
       "title": "Go Engineering Knowledge",
       "summary": "Use this reference when writing or reviewing Go services, APIs, CLIs, workers, libraries, tests, and utilities.",
@@ -131,15 +191,33 @@
         "agent-skill-router",
         "api-writer",
         "incident-response",
-        "service-writer",
-        "test-writer",
-        "utility-writer"
+        "service-writer"
       ],
       "sources": [
         "https://go.dev/doc/effective_go",
         "https://go.dev/wiki/CodeReviewComments",
         "https://go.dev/blog/context",
         "https://pkg.go.dev/testing"
+      ]
+    },
+    {
+      "path": "graphs/graph-engineering.md",
+      "title": "Graph Engineering",
+      "summary": "Use for knowledge and dependency graphs, temporal context, and GraphRAG. Reviewed 2026-11-05. This reference gives design recommendations, not a guarantee that a graph improves a particular workload.",
+      "owner": "maintainers",
+      "sourceQuality": "curated",
+      "refreshCadenceDays": 60,
+      "lastReviewed": "2026-11-05",
+      "relatedSkills": [
+        "agent-skill-router",
+        "graph-engineering"
+      ],
+      "sources": [
+        "https://microsoft.github.io/graphrag/query/overview/",
+        "https://microsoft.github.io/graphrag/index/overview/",
+        "https://github.com/getzep/graphiti",
+        "https://neo4j.com/docs/cypher-manual/current/schema/constraints/",
+        "https://neo4j.com/docs/cypher-manual/current/schema/graph-types/set-graph-types/"
       ]
     },
     {
@@ -228,9 +306,7 @@
       "refreshCadenceDays": 90,
       "lastReviewed": null,
       "relatedSkills": [
-        "agent-skill-router",
-        "test-writer",
-        "utility-writer"
+        "agent-skill-router"
       ],
       "sources": [
         "https://docs.python.org/3/library/argparse.html",
@@ -249,8 +325,7 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "api-writer",
-        "test-writer"
+        "api-writer"
       ],
       "sources": [
         "https://react.dev/learn/thinking-in-react",

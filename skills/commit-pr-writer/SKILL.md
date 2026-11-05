@@ -1,6 +1,6 @@
 ---
 name: commit-pr-writer
-description: Create high-quality commit messages, pull request titles, pull request descriptions, changelog entries, risk notes, and test summaries from diffs or local changes. Use when an AI agent prepares Git commits, GitHub PR text, release notes, or reviewer-facing summaries.
+description: "Draft commit messages, PR descriptions, or release notes from verified diffs and test results. Use when delivery text is requested; do not commit or publish implicitly."
 ---
 
 # Commit PR Writer
@@ -27,11 +27,6 @@ Use `feat`, `fix`, `docs`, `test`, `refactor`, `chore`, or the local convention.
 
 ## PR Text
 
-Use concise sections:
-
-- Summary
-- Tests
-- Risk and rollout
-- Notes for reviewers
+Match the repository template. For small changes, a short behavior summary and verified test result are enough; add rollout and risk sections when they affect review.
 
 State when tests were not run. Do not claim validation that did not happen.

@@ -1,11 +1,11 @@
 ---
 name: test-design-review
-description: Design tests and stress-review test suites for correctness, coverage, reliability, and signal quality. Use when an AI agent creates tests, reviews test changes, diagnoses flaky tests, evaluates mocks, or checks whether behavior is actually protected.
+description: "Review test adequacy, false confidence, mocks, flakiness, and missing risk coverage. Use when test strategy is uncertain or a test review is requested, rather than every test edit."
 ---
 
 # Test Design Review
 
-Use this skill whenever behavior changes need protection or existing tests need a hard look. A good test should fail for the right reason when the behavior breaks.
+Use this skill when test adequacy needs a dedicated review. A good test should fail for the right reason when the behavior breaks.
 
 For deeper test-level selection and coverage guidance, read `../_knowledge/testing/testing-strategy.md` when installed or `../../knowledge/testing/testing-strategy.md` in this repository.
 

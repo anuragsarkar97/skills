@@ -1,32 +1,19 @@
 # Claude Usage
 
-Claude-oriented skills should keep `SKILL.md` as the canonical instruction file so the same skill can be reused by other agents.
+Keep `SKILL.md` canonical and agent metadata concise. Install using the repository CLI and the target supported by your host; see the README for commands.
 
-Recommended install options vary by Claude surface and local setup. Use this repository as the source, then copy or symlink the needed skill folders into the Claude skills location configured for that environment.
+## Skill Selection
 
-For shared behavior that should transfer across models and surfaces, use `knowledge/agent-behavior/operating-principles.md`. Keep Claude-only product metadata, private tool names, and artifact-specific rules out of canonical skill instructions unless they are isolated in Claude-specific notes.
+Use `agent-skill-router` to select a specialized workflow when it adds value. It is a selector, not a mandatory chain of skills. Straightforward implementation can proceed without another skill.
 
-## Compatibility Notes
+Use the matching shared stack reference only when Go, React, Python, Kubernetes, AWS, or Azure details affect the task. Load deeper domain guidance for a concrete question; do not pre-read the catalog or generate a repository map for every edit.
 
-- Keep frontmatter minimal: `name` and `description`.
-- Put detailed procedures in the Markdown body.
-- Put large supporting material in `references/`.
-- Use `agents/claude.md` inside a skill only when Claude needs agent-specific notes that should not affect other agents.
-- Use `agent-skill-router` as the default selection guide when a user asks for engineering work without naming a skill.
-- Prefer narrow specialized skills and combine them when a change crosses API, schema, test, documentation, naming, or design boundaries.
-- Use `agent-skill-router` to split implementation across service, utility, API, and test layers.
-- Use `smriti-shruti` to reduce noisy context before continuing.
-- Use `oppenheimer-simplifier` to simplify tangled problems before choosing an implementation or review skill.
-- Use `wtf-check` when the human or Claude is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting.
-- Use `critical-thinking` before agreeing to designs or implementation requests that may be anti-patterns. Claude should say no when needed and offer a safer alternative.
-- Use `product-competitive-thinking` before product-facing implementation, MVP scoping, onboarding, UX, pricing, or competitor-driven feature requests.
-- Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need kind but firm wording.
-- Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, courses, and videos.
-- Use `doc-template-writer` when the user asks for a Markdown product doc, PRD, RFC, project brief, engineering design doc, technical design, or architecture proposal template for a named topic.
-- Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
-- Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
-- Use `incident-response` for production degradation, outages, rollback/hotfix decisions, on-call triage, and post-mortems.
-- Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
-- For Go, React, Python scripting, Kubernetes, AWS, and Azure work, use the matching shared knowledge reference when the stack affects the task.
-- Use `self-amending-skill` when real usage shows that skills, routing, validation, or supporting scripts should be improved.
-- For skill-system changes, prefer `npm run skills:check`; regenerate catalog and graph artifacts when inventory, metadata, or references change.
+Follow existing user authorization through the complete requested workflow. Ask when required information or an action boundary is unresolved, not because a skill describes the next step. Do not send messages, publish, deploy, or modify production data without authorization.
+
+## Metadata and Compatibility
+
+- Frontmatter contains only `name` and `description`; the name matches the directory.
+- OpenAI UI metadata and invocation policy live in `agents/openai.yaml`.
+- Claude-specific notes live in `agents/claude.md` within the relevant skill.
+- Shared references install as `_knowledge/` next to skill directories. In this repository they live under `knowledge/`.
+- Do not encode model names, private tools, or host-only APIs in portable workflows.

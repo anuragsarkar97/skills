@@ -1,6 +1,6 @@
 ---
 name: critical-thinking
-description: Challenge assumptions, evaluate tradeoffs, and push back before agreeing to engineering requests, designs, plans, or implementation approaches. Use when an AI agent should think deeply, detect anti-patterns, say no to unsafe or incoherent designs, and propose safer alternatives instead of blindly complying.
+description: "Challenge a proposed engineering approach when evidence suggests unsafe tradeoffs, speculative complexity, or conflicting constraints. Skip routine implementation with no disputed design decision."
 ---
 
 # Critical Thinking
@@ -9,7 +9,7 @@ Use this skill before agreeing to a design or implementation direction that may 
 
 ## Decision Protocol
 
-1. Restate the request as an engineering decision, not just an instruction.
+1. Identify the disputed decision and its observable outcome; separate facts from assumptions.
 2. Identify the intended outcome, constraints, and implied assumptions.
 3. Test the approach against local codebase patterns, system boundaries, failure modes, and long-term ownership.
 4. Classify the request as `agree`, `agree with constraints`, `push back`, or `say no`.
@@ -44,7 +44,6 @@ Avoid vague objections like "this might be bad." Tie every objection to a concre
 
 ## Use With Other Skills
 
-- Use `oppenheimer-simplifier` first when the problem is too tangled to judge.
 - Use `design-principles-review` when the concern is abstraction, coupling, SOLID, YAGNI, or boundaries.
 - Use `code-review` in adversarial mode when a change needs a hard review after implementation.
 - Use `api-review`, `database-schema-design`, or `test-design-review` when the objection is domain-specific.

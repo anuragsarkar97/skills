@@ -1,0 +1,7 @@
+interface:
+  display_name: "Graph Engineering"
+  short_description: "Design grounded graphs and graph retrieval"
+  default_prompt: "Use $graph-engineering to design a grounded graph model and retrieval pipeline with provenance, freshness, and baseline evaluation."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: database-schema-design
-description: Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.
+description: "Design or review schema changes, constraints, indexes, data lifecycle, and migration rollout. Use when durable data shape or migration behavior changes, rather than for every database query."
 ---
 
 # Database Schema Design

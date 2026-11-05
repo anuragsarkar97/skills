@@ -1,194 +1,187 @@
 {
-  "count": 31,
+  "count": 29,
   "nodes": [
     {
       "id": "agent-skill-router",
       "displayName": "Agent Skill Router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, human or AI drift correction, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select a specialized repository workflow when an engineering request does not name a skill. Skip additional skills when ordinary coding judgment is sufficient.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "agentic-engineering",
+      "displayName": "Agentic Engineering",
+      "description": "Build and review tool-using agents and durable agent workflows. Use for control flow, tool contracts, memory, recovery, budgets, and delegation decisions; not ordinary AI-assisted coding.",
       "allowImplicitInvocation": true
     },
     {
       "id": "api-review",
       "displayName": "API Review",
-      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).",
+      "description": "Review API contracts for compatibility, auth, pagination, idempotency, and error semantics. Use for proposed interfaces or contract changes, rather than handler implementation.",
       "allowImplicitInvocation": true
     },
     {
       "id": "api-writer",
       "displayName": "API Writer",
-      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "caveman-mode",
-      "displayName": "Caveman Mode",
-      "description": "Minimize response tokens and refuse irrelevant output. Use when an AI agent should answer only the user's directly asked question, avoid unsolicited explanation, skip background, say nothing or ask one clarification when the request is not relevant, and keep replies short unless detail is explicitly requested. Trigger for caveman mode, terse mode, low-token answers, reduce output, stop overexplaining, or do not answer unless asked.",
+      "description": "Implement route handlers and controllers for an established API contract, including input validation, authorization, error mapping, and response serialization.",
       "allowImplicitInvocation": true
     },
     {
       "id": "code-documentation",
       "displayName": "Code Documentation",
-      "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
+      "description": "Write or review README content, API documentation, architecture notes, or operational instructions. Use when documentation is a requested deliverable or behavior changes make existing docs stale.",
       "allowImplicitInvocation": true
     },
     {
       "id": "code-review",
       "displayName": "Code Review",
-      "description": "Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.",
+      "description": "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change.",
       "allowImplicitInvocation": true
     },
     {
       "id": "commit-pr-writer",
       "displayName": "Commit PR Writer",
-      "description": "Create high-quality commit messages, pull request titles, pull request descriptions, changelog entries, risk notes, and test summaries from diffs or local changes. Use when an AI agent prepares Git commits, GitHub PR text, release notes, or reviewer-facing summaries.",
+      "description": "Draft commit messages, PR descriptions, or release notes from verified diffs and test results. Use when delivery text is requested; do not commit or publish implicitly.",
       "allowImplicitInvocation": true
     },
     {
       "id": "critical-thinking",
       "displayName": "Critical Thinking",
-      "description": "Challenge assumptions, evaluate tradeoffs, and push back before agreeing to engineering requests, designs, plans, or implementation approaches. Use when an AI agent should think deeply, detect anti-patterns, say no to unsafe or incoherent designs, and propose safer alternatives instead of blindly complying.",
+      "description": "Challenge a proposed engineering approach when evidence suggests unsafe tradeoffs, speculative complexity, or conflicting constraints. Skip routine implementation with no disputed design decision.",
       "allowImplicitInvocation": true
     },
     {
       "id": "database-schema-design",
       "displayName": "Database Schema Design",
-      "description": "Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.",
+      "description": "Design or review schema changes, constraints, indexes, data lifecycle, and migration rollout. Use when durable data shape or migration behavior changes, rather than for every database query.",
       "allowImplicitInvocation": true
     },
     {
       "id": "decision-memory",
       "displayName": "Decision Memory",
-      "description": "Capture, search, and reuse repository decisions, rejected alternatives, constraints, and supporting evidence. Use when an AI agent records an architecture or engineering decision, checks prior rationale before proposing a change, or identifies a superseded decision.",
+      "description": "Search or record repository decisions with rationale, evidence, and supersession using the bundled local ledger. Use for explicit decision records or changes that revisit a prior decision.",
       "allowImplicitInvocation": true
     },
     {
       "id": "design-principles-review",
       "displayName": "Design Principles Review",
-      "description": "Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.",
+      "description": "Review abstraction quality, dependency direction, and module ownership in an architecture or refactor. Use for disputed boundaries or unnecessary complexity, rather than routine edits.",
       "allowImplicitInvocation": true
     },
     {
       "id": "doc-template-writer",
       "displayName": "Doc Template Writer",
-      "description": "Create Markdown templates for product documents, PRDs, specs, RFCs, and engineering design docs. Use when the user asks to create a template for a product doc, engineering design doc, technical design, RFC, project brief, or planning document for a named topic so they can fill it in quickly.",
+      "description": "Create a fill-in Markdown PRD, project brief, RFC, or engineering design template from the bundled assets. Use when the user wants a template, rather than a completed strategy.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "dribbble-design",
+      "displayName": "Dribbble Design",
+      "description": "Develop frontend design directions from Dribbble references, screenshots, or existing UI. Use for visual inspiration, moodboards, hierarchy, typography, and design critiques; not mechanical frontend fixes.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "graph-engineering",
+      "displayName": "Graph Engineering",
+      "description": "Design and review knowledge graphs, dependency graphs, and GraphRAG pipelines. Use for entity identity, provenance, temporal facts, traversal, or graph retrieval quality; not workflow orchestration.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "harness-engineering",
+      "displayName": "Harness Engineering",
+      "description": "Design and improve coding-agent environments, feedback loops, and evaluation harnesses. Use for reproducibility, task verification, context handoffs, or measured agent reliability.",
       "allowImplicitInvocation": true
     },
     {
       "id": "implementation-plan",
       "displayName": "Implementation Plan",
-      "description": "Create pragmatic implementation plans for software changes, refactors, migrations, and feature work. Use when an AI agent needs to break a coding task into scoped steps, identify risks, choose validation commands, or coordinate incremental delivery.",
+      "description": "Plan changes with meaningful sequencing, migration, rollout, or validation dependencies. Use when a plan is requested or execution needs coordination; skip formal plans for straightforward edits.",
       "allowImplicitInvocation": true
     },
     {
       "id": "incident-response",
       "displayName": "Incident Response",
-      "description": "Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.",
+      "description": "Triage production degradation and assess mitigation, rollback, or hotfix options. Use during an active incident or when preparing its post-mortem.",
       "allowImplicitInvocation": true
     },
     {
       "id": "macos-reminder",
       "displayName": "macOS Reminder",
-      "description": "Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "naming-review",
-      "displayName": "Naming Review",
-      "description": "Review and improve naming for variables, functions, classes, files, modules, database objects, API fields, events, tests, and domain concepts. Use when an AI agent creates or reviews identifiers, public contracts, terminology, or ambiguous code.",
+      "description": "Schedule local macOS notifications with the bundled launchd script. Use for reminder requests with a message and due time; clarify missing or ambiguous timing.",
       "allowImplicitInvocation": true
     },
     {
       "id": "observability-design",
       "displayName": "Observability Design",
-      "description": "Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds appropriate logs to existing code, instruments errors or workflows, audits logging coverage or noise, adds service telemetry, defines metric naming conventions, designs dashboards, or sets alert thresholds.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "oppenheimer-simplifier",
-      "displayName": "Oppenheimer Simplifier",
-      "description": "Simplify complex engineering problems into smaller first-principles pieces before solving. Use when an AI agent faces ambiguous bugs, tangled architecture, multi-system failures, unclear requirements, high cognitive load, or issues where direct implementation would likely thrash.",
+      "description": "Design or audit service logs, metrics, traces, SLOs, dashboards, and alerts. Use for instrumentation changes, telemetry gaps, logging noise, or actionable paging.",
       "allowImplicitInvocation": true
     },
     {
       "id": "product-communication",
       "displayName": "Product Communication",
-      "description": "Draft, review, and send respectful but firm product communication for Slack, Teams, email, Linear, Jira, GitHub, release notes, customer updates, stakeholder updates, and internal decision threads. Use when an AI agent needs to answer kindly without blindly agreeing, push back on weak product or engineering decisions, align teams, or communicate tradeoffs and next steps.",
+      "description": "Draft stakeholder or customer messages that communicate disagreement, tradeoffs, status, or decisions respectfully and firmly. Use for substantive product communication, rather than every short reply.",
       "allowImplicitInvocation": true
     },
     {
       "id": "product-competitive-thinking",
       "displayName": "Product Competitive Thinking",
-      "description": "Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.",
+      "description": "Evaluate startup product bets, MVP scope, onboarding, pricing, or competitor-driven requests. Use when user value, differentiation, or learning needs a decision, rather than every UI edit.",
       "allowImplicitInvocation": true
     },
     {
       "id": "repository-map",
       "displayName": "Repository Map",
-      "description": "Generate and use compact repository context and a per-file CSV map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
+      "description": "Generate or refresh a repository file and symbol map using bundled scripts. Use for broad discovery in an unfamiliar or large repository; skip mapping when the relevant files are already known.",
       "allowImplicitInvocation": true
     },
     {
       "id": "security-review",
       "displayName": "Security Review",
-      "description": "Review code, designs, APIs, and infrastructure for exploitable security and privacy risks. Use when an AI agent evaluates authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, dependency trust, or other attacker-controlled boundaries.",
+      "description": "Review changed trust boundaries for reachable security and privacy failures: auth, tenant isolation, secrets, uploads, webhooks, injection, and dependency trust.",
       "allowImplicitInvocation": true
     },
     {
       "id": "self-amending-skill",
       "displayName": "Self-Amending Skill",
-      "description": "Improve this skills repository when real usage reveals missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflows. Use when an AI agent notices a skill should be updated, split, merged, tightened, or connected to scripts based on concrete task evidence.",
+      "description": "Maintain skills, triggers, routing, and supporting validation when requested or when usage reveals a concrete failure. Use for evidence-backed skill changes, rather than unrelated feature work.",
       "allowImplicitInvocation": true
     },
     {
       "id": "service-writer",
       "displayName": "Service Writer",
-      "description": "Write focused service-layer and application-layer code for business workflows, orchestration, domain operations, transactions, permissions, and data access coordination. Use when an AI agent implements behavior that should live behind API handlers and above low-level utilities or repositories.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "smriti-shruti",
-      "displayName": "Smriti Shruti",
-      "description": "Triage context, memory, and conversation history to reduce token load while preserving facts needed for the current task. Use when an AI agent has too much context, repeated logs, stale discussion, large diffs, broad file reads, or distracting information that should be summarized, ignored, or deferred.",
+      "description": "Implement business workflows with transaction, permission, retry, and external side-effect boundaries. Use for application orchestration that needs explicit failure handling.",
       "allowImplicitInvocation": true
     },
     {
       "id": "test-design-review",
       "displayName": "Test Design Review",
-      "description": "Design tests and stress-review test suites for correctness, coverage, reliability, and signal quality. Use when an AI agent creates tests, reviews test changes, diagnoses flaky tests, evaluates mocks, or checks whether behavior is actually protected.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "test-writer",
-      "displayName": "Test Writer",
-      "description": "Write targeted tests for changed behavior across unit, integration, API, service, utility, contract, migration, and regression scenarios. Use when an AI agent implements tests, adds missing coverage, encodes a bug reproduction, or verifies service, utility, and API writer changes.",
+      "description": "Review test adequacy, false confidence, mocks, flakiness, and missing risk coverage. Use when test strategy is uncertain or a test review is requested, rather than every test edit.",
       "allowImplicitInvocation": true
     },
     {
       "id": "upskilling-research",
       "displayName": "Upskilling Research",
-      "description": "Research and curate current learning resources for upskilling in a domain. Use when an AI agent is asked to learn, upskill, study, build a learning path, or find recent blogs, papers, documentation, talks, courses, and videos for a topic, including requests like 'I want to upskill in Kubernetes' or 'find me new reads on AI agents'.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "utility-writer",
-      "displayName": "Utility Writer",
-      "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
+      "description": "Curate verified learning resources and a practical learning path. Use when the user asks to study a domain, upskill, or find current technical reading and talks.",
       "allowImplicitInvocation": true
     },
     {
       "id": "work-impact-tracker",
       "displayName": "Work Impact Tracker",
-      "description": "Capture evidence-backed accomplishments in a private local worklog and generate weekly, quarterly, or year-end appraisal summaries. Use when an AI agent records completed work, reviews recent impact, maintains a brag document, or prepares a performance review.",
+      "description": "Record evidence-backed accomplishments or generate appraisal summaries using the bundled private local worklog. Use for brag documents, work-impact capture, and performance reviews.",
       "allowImplicitInvocation": true
     },
     {
       "id": "wtf-check",
       "displayName": "WTF Check",
-      "description": "Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.",
+      "description": "Reset work when there is observable thrash, repeated failure without new evidence, scope drift, or a contradiction with the active goal. Use for a concrete course correction, rather than routine uncertainty.",
       "allowImplicitInvocation": true
     }
   ],
   "edges": [
+    {
+      "from": "agent-skill-router",
+      "to": "agentic-engineering",
+      "reason": "mentions"
+    },
     {
       "from": "agent-skill-router",
       "to": "api-review",
@@ -197,11 +190,6 @@
     {
       "from": "agent-skill-router",
       "to": "api-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "caveman-mode",
       "reason": "mentions"
     },
     {
@@ -246,6 +234,21 @@
     },
     {
       "from": "agent-skill-router",
+      "to": "dribbble-design",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "graph-engineering",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
+      "to": "harness-engineering",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
       "to": "implementation-plan",
       "reason": "mentions"
     },
@@ -261,17 +264,7 @@
     },
     {
       "from": "agent-skill-router",
-      "to": "naming-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "observability-design",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "oppenheimer-simplifier",
       "reason": "mentions"
     },
     {
@@ -306,27 +299,12 @@
     },
     {
       "from": "agent-skill-router",
-      "to": "smriti-shruti",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "test-design-review",
       "reason": "mentions"
     },
     {
       "from": "agent-skill-router",
-      "to": "test-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "upskilling-research",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "utility-writer",
       "reason": "mentions"
     },
     {
@@ -340,6 +318,11 @@
       "reason": "mentions"
     },
     {
+      "from": "agentic-engineering",
+      "to": "harness-engineering",
+      "reason": "mentions"
+    },
+    {
       "from": "api-review",
       "to": "api-writer",
       "reason": "mentions"
@@ -347,21 +330,6 @@
     {
       "from": "api-writer",
       "to": "api-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "api-writer",
-      "to": "service-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "api-writer",
-      "to": "test-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "caveman-mode",
-      "to": "smriti-shruti",
       "reason": "mentions"
     },
     {
@@ -386,17 +354,17 @@
     },
     {
       "from": "critical-thinking",
-      "to": "oppenheimer-simplifier",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
       "to": "product-competitive-thinking",
       "reason": "mentions"
     },
     {
       "from": "critical-thinking",
       "to": "test-design-review",
+      "reason": "mentions"
+    },
+    {
+      "from": "graph-engineering",
+      "to": "agentic-engineering",
       "reason": "mentions"
     },
     {
@@ -440,31 +408,6 @@
       "reason": "mentions"
     },
     {
-      "from": "service-writer",
-      "to": "test-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "smriti-shruti",
-      "to": "caveman-mode",
-      "reason": "mentions"
-    },
-    {
-      "from": "test-writer",
-      "to": "test-design-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "utility-writer",
-      "to": "test-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "wtf-check",
-      "to": "caveman-mode",
-      "reason": "mentions"
-    },
-    {
       "from": "wtf-check",
       "to": "critical-thinking",
       "reason": "mentions"
@@ -477,11 +420,6 @@
     {
       "from": "wtf-check",
       "to": "product-competitive-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "wtf-check",
-      "to": "smriti-shruti",
       "reason": "mentions"
     }
   ]

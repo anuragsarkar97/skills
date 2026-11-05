@@ -1,6 +1,6 @@
 ---
 name: repository-map
-description: Generate and use compact repository context and a per-file CSV map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.
+description: "Generate or refresh a repository file and symbol map using bundled scripts. Use for broad discovery in an unfamiliar or large repository; skip mapping when the relevant files are already known."
 ---
 
 # Repository Map
@@ -16,14 +16,15 @@ Build, dependency, cache, lockfile, binary, minified, and data-dump paths are sk
 
 ## Workflow
 
-1. Generate or refresh `.skill-context/project-context.json`.
-2. Look for `.skill-context/repo-map.state.json` plus the CSV artifacts.
-3. Run the map generator with `--check`. If the map is missing or stale, regenerate it.
-4. Read `project-context.json` first for stack and commands.
-5. Do **not** load entire CSVs into context. Grep or filter `repo-files.csv` by path prefix, `role`, `layer`, `tags`, or keywords in `purpose`.
-6. Open `repo-symbols.csv` only when looking up a known symbol name.
-7. Enrich weak rows (`enrichment_status=pending`) before broad exploration when higher-quality purpose text will save reads.
-8. Read the few matching source files; verify behavior before editing. Heuristic rows are fast; enriched rows are AI-reviewed summaries.
+1. Confirm broad discovery is needed. For known paths or a small local edit, use direct search instead of generating artifacts.
+2. Generate or refresh `.skill-context/project-context.json`.
+3. Look for `.skill-context/repo-map.state.json` plus the CSV artifacts.
+4. Run the map generator with `--check`. If the map is missing or stale, regenerate it.
+5. Read `project-context.json` first for stack and commands.
+6. Do **not** load entire CSVs into context. Grep or filter `repo-files.csv` by path prefix, `role`, `layer`, `tags`, or keywords in `purpose`.
+7. Open `repo-symbols.csv` only when looking up a known symbol name.
+8. Enrich weak rows (`enrichment_status=pending`) before broad exploration when higher-quality purpose text will save reads.
+9. Read the few matching source files; verify behavior before editing. Heuristic rows are fast; enriched rows are AI-reviewed summaries.
 
 ## Commands
 
@@ -48,9 +49,9 @@ Default outputs live under `<repository>/.skill-context/`. `--out` selects the o
 - Without `--mock`, set `CURSOR_API_KEY` and install `@cursor/sdk` for Cursor SDK enrichment.
 - Pass explicit paths after options to enrich only those files: `... --mock src/foo.ts`.
 
-## Multi-Agent Orchestration
+## Optional Multi-Agent Enrichment
 
-When running inside Cursor without the SDK, the parent agent can orchestrate enrichment:
+Only when the user or host authorizes delegation and enrichment is useful, the parent agent can orchestrate enrichment. Skip it for straightforward discovery:
 
 1. Run `repository-map` and `project-context.mjs`.
 2. Filter `repo-files.csv` for `enrichment_status=pending` rows, grouped by top-level directory.

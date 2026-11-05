@@ -1,6 +1,6 @@
 ---
 name: service-writer
-description: Write focused service-layer and application-layer code for business workflows, orchestration, domain operations, transactions, permissions, and data access coordination. Use when an AI agent implements behavior that should live behind API handlers and above low-level utilities or repositories.
+description: "Implement business workflows with transaction, permission, retry, and external side-effect boundaries. Use for application orchestration that needs explicit failure handling."
 ---
 
 # Service Writer
@@ -16,7 +16,7 @@ For Go services, read `../_knowledge/golang/go-engineering.md` when installed or
 3. Make inputs explicit and validate invariants at the right boundary.
 4. Coordinate repositories, external clients, events, and transactions with clear failure behavior.
 5. Return domain-level results or typed errors that API layers can map safely.
-6. Add or update focused tests through `test-writer` and review test strength with `test-design-review`.
+6. Add focused tests for changed behavior and meaningful failures. Use `test-design-review` only when coverage adequacy is uncertain.
 
 ## Checks
 
@@ -32,4 +32,4 @@ Before finishing, verify the service behavior matches the requested workflow, ca
 
 ## Output
 
-Implement the smallest service behavior that satisfies the current use case. Call out any API, schema, or test follow-up that should be handled by a sibling skill.
+Implement the smallest service behavior that satisfies the current use case. Finish affected callers, API wiring, schema changes, and tests within the authorized task. Name any remaining blocker.

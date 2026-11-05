@@ -1,6 +1,6 @@
 ---
 name: doc-template-writer
-description: Create Markdown templates for product documents, PRDs, specs, RFCs, and engineering design docs. Use when the user asks to create a template for a product doc, engineering design doc, technical design, RFC, project brief, or planning document for a named topic so they can fill it in quickly.
+description: "Create a fill-in Markdown PRD, project brief, RFC, or engineering design template from the bundled assets. Use when the user wants a template, rather than a completed strategy."
 ---
 
 # Doc Template Writer

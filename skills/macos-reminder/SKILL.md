@@ -1,6 +1,6 @@
 ---
 name: macos-reminder
-description: Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.
+description: "Schedule local macOS notifications with the bundled launchd script. Use for reminder requests with a message and due time; clarify missing or ambiguous timing."
 ---
 
 # macOS Reminder
@@ -15,7 +15,7 @@ This skill schedules local notifications only. Do not send reminder text to exte
 2. If either the message or due time is ambiguous, ask one short clarification before scheduling.
 3. Convert relative dates carefully using the user's current local date and timezone.
 4. Confirm the exact reminder text and local due time before scheduling when the action is potentially surprising.
-5. Run `scripts/remind_macos.py --message <text> --when <time>` to schedule the notification.
+5. Run `<skill-dir>/scripts/remind_macos.py --message <text> --when <time>` to schedule the notification.
 6. Report the scheduled local time and the reminder id.
 
 ## Time Parsing Guidance
@@ -33,16 +33,18 @@ If the user says `tonight` without a time, ask for the time. If the user gives a
 
 ## Script Usage
 
+Resolve `<skill-dir>` to the directory containing this installed `SKILL.md`; do not assume the target project contains a `skills/` directory.
+
 Dry-run first when interpreting a new phrase:
 
 ```bash
-python3 skills/macos-reminder/scripts/remind_macos.py --message "Send email to product manager" --when "10 pm tonight" --dry-run
+python3 <skill-dir>/scripts/remind_macos.py --message "Send email to product manager" --when "10 pm tonight" --dry-run
 ```
 
-Schedule after confirmation:
+Schedule when the message and time are clear:
 
 ```bash
-python3 skills/macos-reminder/scripts/remind_macos.py --message "Send email to product manager" --when "10 pm tonight"
+python3 <skill-dir>/scripts/remind_macos.py --message "Send email to product manager" --when "10 pm tonight"
 ```
 
 Use `--title` to customize the notification title.

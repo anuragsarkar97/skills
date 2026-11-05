@@ -1,17 +1,25 @@
 {
-  "count": 31,
+  "count": 29,
   "skills": [
     {
       "name": "agent-skill-router",
-      "description": "Select and combine repository skills proactively for software engineering tasks. Use when an AI agent needs to decide which skill to invoke for skill maintenance, product communication, product and competitor thinking, upskilling research, human or AI drift correction, critical thinking, implementation, micro-agent writing, context triage, terse output, problem simplification, code review, API review, schema design, naming, documentation, tests, design principles, commits, PRs, or adversarial change review without the engineer explicitly naming a skill.",
+      "description": "Select a specialized repository workflow when an engineering request does not name a skill. Skip additional skills when ordinary coding judgment is sufficient.",
       "displayName": "Agent Skill Router",
       "shortDescription": "Select the right skill proactively",
       "defaultPrompt": "Use $agent-skill-router to choose the best skills for the current engineering task.",
       "allowImplicitInvocation": true
     },
     {
+      "name": "agentic-engineering",
+      "description": "Build and review tool-using agents and durable agent workflows. Use for control flow, tool contracts, memory, recovery, budgets, and delegation decisions; not ordinary AI-assisted coding.",
+      "displayName": "Agentic Engineering",
+      "shortDescription": "Engineer reliable tool-using agent workflows",
+      "defaultPrompt": "Use $agentic-engineering to design the smallest reliable tool-using workflow with explicit state, permissions, budgets, and recovery.",
+      "allowImplicitInvocation": true
+    },
+    {
       "name": "api-review",
-      "description": "Review API contracts and behavior for REST, RPC, GraphQL, webhooks, SDK methods, and internal service boundaries. Use when an AI agent evaluates an existing contract or proposed interface change — not when writing new handler code (use api-writer for that).",
+      "description": "Review API contracts for compatibility, auth, pagination, idempotency, and error semantics. Use for proposed interfaces or contract changes, rather than handler implementation.",
       "displayName": "API Review",
       "shortDescription": "Review API contracts and behavior",
       "defaultPrompt": "Use $api-review to review API contracts, behavior, and compatibility.",
@@ -19,23 +27,15 @@
     },
     {
       "name": "api-writer",
-      "description": "Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).",
+      "description": "Implement route handlers and controllers for an established API contract, including input validation, authorization, error mapping, and response serialization.",
       "displayName": "API Writer",
       "shortDescription": "Implement API handlers and contracts",
       "defaultPrompt": "Use $api-writer to implement API handlers and contracts.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "caveman-mode",
-      "description": "Minimize response tokens and refuse irrelevant output. Use when an AI agent should answer only the user's directly asked question, avoid unsolicited explanation, skip background, say nothing or ask one clarification when the request is not relevant, and keep replies short unless detail is explicitly requested. Trigger for caveman mode, terse mode, low-token answers, reduce output, stop overexplaining, or do not answer unless asked.",
-      "displayName": "Caveman Mode",
-      "shortDescription": "Answer only what was asked",
-      "defaultPrompt": "Use $caveman-mode to keep the response minimal and directly relevant.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "code-documentation",
-      "description": "Create and review practical code documentation, including docstrings, inline comments, README sections, API docs, architecture notes, examples, migration notes, and operational guidance. Use when an AI agent documents behavior, explains usage, or evaluates whether documentation matches code.",
+      "description": "Write or review README content, API documentation, architecture notes, or operational instructions. Use when documentation is a requested deliverable or behavior changes make existing docs stale.",
       "displayName": "Code Documentation",
       "shortDescription": "Create and review code documentation",
       "defaultPrompt": "Use $code-documentation to create or review useful code documentation.",
@@ -43,7 +43,7 @@
     },
     {
       "name": "code-review",
-      "description": "Perform rigorous or adversarial code reviews for changes, pull requests, diffs, migrations, plans, tests, or local worktrees. Use when an AI agent reviews code, identifies bugs, assesses regressions, evaluates test coverage, summarizes implementation risk, grills a risky change, or stress-tests assumptions before production.",
+      "description": "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change.",
       "displayName": "Code Review",
       "shortDescription": "Review or grill changes for production risk",
       "defaultPrompt": "Use $code-review to review or adversarially grill these changes and lead with findings.",
@@ -51,7 +51,7 @@
     },
     {
       "name": "commit-pr-writer",
-      "description": "Create high-quality commit messages, pull request titles, pull request descriptions, changelog entries, risk notes, and test summaries from diffs or local changes. Use when an AI agent prepares Git commits, GitHub PR text, release notes, or reviewer-facing summaries.",
+      "description": "Draft commit messages, PR descriptions, or release notes from verified diffs and test results. Use when delivery text is requested; do not commit or publish implicitly.",
       "displayName": "Commit PR Writer",
       "shortDescription": "Write commit messages and PR text",
       "defaultPrompt": "Use $commit-pr-writer to create commit messages and PR descriptions from changes.",
@@ -59,7 +59,7 @@
     },
     {
       "name": "critical-thinking",
-      "description": "Challenge assumptions, evaluate tradeoffs, and push back before agreeing to engineering requests, designs, plans, or implementation approaches. Use when an AI agent should think deeply, detect anti-patterns, say no to unsafe or incoherent designs, and propose safer alternatives instead of blindly complying.",
+      "description": "Challenge a proposed engineering approach when evidence suggests unsafe tradeoffs, speculative complexity, or conflicting constraints. Skip routine implementation with no disputed design decision.",
       "displayName": "Critical Thinking",
       "shortDescription": "Challenge weak designs before agreeing",
       "defaultPrompt": "Use $critical-thinking to challenge assumptions and reject anti-pattern designs when needed.",
@@ -67,7 +67,7 @@
     },
     {
       "name": "database-schema-design",
-      "description": "Design and review database entities, tables, relationships, migrations, indexes, constraints, and persistence models. Use when an AI agent creates or changes schemas, ORM models, data contracts, table names, column names, keys, or data lifecycle behavior.",
+      "description": "Design or review schema changes, constraints, indexes, data lifecycle, and migration rollout. Use when durable data shape or migration behavior changes, rather than for every database query.",
       "displayName": "Database Schema Design",
       "shortDescription": "Design and review database schemas",
       "defaultPrompt": "Use $database-schema-design to design or review database tables and entities.",
@@ -75,7 +75,7 @@
     },
     {
       "name": "decision-memory",
-      "description": "Capture, search, and reuse repository decisions, rejected alternatives, constraints, and supporting evidence. Use when an AI agent records an architecture or engineering decision, checks prior rationale before proposing a change, or identifies a superseded decision.",
+      "description": "Search or record repository decisions with rationale, evidence, and supersession using the bundled local ledger. Use for explicit decision records or changes that revisit a prior decision.",
       "displayName": "Decision Memory",
       "shortDescription": "Record and retrieve engineering decisions",
       "defaultPrompt": "Use $decision-memory to record or retrieve the relevant engineering decision.",
@@ -83,7 +83,7 @@
     },
     {
       "name": "design-principles-review",
-      "description": "Review software design against SOLID, YAGNI, cohesion, coupling, dependency direction, abstraction quality, boundaries, and maintainability. Use when an AI agent evaluates architecture, refactors, class or module design, service boundaries, or whether a pattern is justified.",
+      "description": "Review abstraction quality, dependency direction, and module ownership in an architecture or refactor. Use for disputed boundaries or unnecessary complexity, rather than routine edits.",
       "displayName": "Design Principles Review",
       "shortDescription": "Check SOLID YAGNI and design risks",
       "defaultPrompt": "Use $design-principles-review to review design principles, abstractions, and maintainability.",
@@ -91,15 +91,39 @@
     },
     {
       "name": "doc-template-writer",
-      "description": "Create Markdown templates for product documents, PRDs, specs, RFCs, and engineering design docs. Use when the user asks to create a template for a product doc, engineering design doc, technical design, RFC, project brief, or planning document for a named topic so they can fill it in quickly.",
+      "description": "Create a fill-in Markdown PRD, project brief, RFC, or engineering design template from the bundled assets. Use when the user wants a template, rather than a completed strategy.",
       "displayName": "Doc Template Writer",
       "shortDescription": "Create product and engineering doc templates",
       "defaultPrompt": "Use $doc-template-writer to create a focused Markdown document template.",
       "allowImplicitInvocation": true
     },
     {
+      "name": "dribbble-design",
+      "description": "Develop frontend design directions from Dribbble references, screenshots, or existing UI. Use for visual inspiration, moodboards, hierarchy, typography, and design critiques; not mechanical frontend fixes.",
+      "displayName": "Dribbble Design",
+      "shortDescription": "Turn visual inspiration into usable frontend design",
+      "defaultPrompt": "Use $dribbble-design to research visual references and recommend a distinctive, usable frontend direction for this screen.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "graph-engineering",
+      "description": "Design and review knowledge graphs, dependency graphs, and GraphRAG pipelines. Use for entity identity, provenance, temporal facts, traversal, or graph retrieval quality; not workflow orchestration.",
+      "displayName": "Graph Engineering",
+      "shortDescription": "Design grounded graphs and graph retrieval",
+      "defaultPrompt": "Use $graph-engineering to design a grounded graph model and retrieval pipeline with provenance, freshness, and baseline evaluation.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "harness-engineering",
+      "description": "Design and improve coding-agent environments, feedback loops, and evaluation harnesses. Use for reproducibility, task verification, context handoffs, or measured agent reliability.",
+      "displayName": "Harness Engineering",
+      "shortDescription": "Build measurable coding-agent environments",
+      "defaultPrompt": "Use $harness-engineering to improve the agent environment and independently measure task completion against a fixed baseline.",
+      "allowImplicitInvocation": true
+    },
+    {
       "name": "implementation-plan",
-      "description": "Create pragmatic implementation plans for software changes, refactors, migrations, and feature work. Use when an AI agent needs to break a coding task into scoped steps, identify risks, choose validation commands, or coordinate incremental delivery.",
+      "description": "Plan changes with meaningful sequencing, migration, rollout, or validation dependencies. Use when a plan is requested or execution needs coordination; skip formal plans for straightforward edits.",
       "displayName": "Implementation Plan",
       "shortDescription": "Plan software changes and validation",
       "defaultPrompt": "Use $implementation-plan to inspect the project and create a practical implementation plan.",
@@ -107,7 +131,7 @@
     },
     {
       "name": "incident-response",
-      "description": "Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.",
+      "description": "Triage production degradation and assess mitigation, rollback, or hotfix options. Use during an active incident or when preparing its post-mortem.",
       "displayName": "Incident Response",
       "shortDescription": "Triage and resolve production incidents",
       "defaultPrompt": "Use $incident-response to triage this production incident.",
@@ -115,39 +139,23 @@
     },
     {
       "name": "macos-reminder",
-      "description": "Schedule local macOS reminders and notifications from natural-language requests such as /remember, remind me, or notify me later. Use when an AI agent should parse a reminder message, confirm the reminder text and time, and create a local macOS notification using launchd without sending data to external services.",
+      "description": "Schedule local macOS notifications with the bundled launchd script. Use for reminder requests with a message and due time; clarify missing or ambiguous timing.",
       "displayName": "macOS Reminder",
       "shortDescription": "Schedule local macOS notifications",
       "defaultPrompt": "Use $macos-reminder to schedule a local macOS reminder notification.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "naming-review",
-      "description": "Review and improve naming for variables, functions, classes, files, modules, database objects, API fields, events, tests, and domain concepts. Use when an AI agent creates or reviews identifiers, public contracts, terminology, or ambiguous code.",
-      "displayName": "Naming Review",
-      "shortDescription": "Review names for clarity and domain fit",
-      "defaultPrompt": "Use $naming-review to review names for clarity, consistency, and domain fit.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "observability-design",
-      "description": "Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds appropriate logs to existing code, instruments errors or workflows, audits logging coverage or noise, adds service telemetry, defines metric naming conventions, designs dashboards, or sets alert thresholds.",
+      "description": "Design or audit service logs, metrics, traces, SLOs, dashboards, and alerts. Use for instrumentation changes, telemetry gaps, logging noise, or actionable paging.",
       "displayName": "Observability Design",
       "shortDescription": "Design logs, metrics, traces, and alerts",
       "defaultPrompt": "Use $observability-design to add appropriate structured logs and telemetry to this service.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "oppenheimer-simplifier",
-      "description": "Simplify complex engineering problems into smaller first-principles pieces before solving. Use when an AI agent faces ambiguous bugs, tangled architecture, multi-system failures, unclear requirements, high cognitive load, or issues where direct implementation would likely thrash.",
-      "displayName": "Oppenheimer Simplifier",
-      "shortDescription": "Simplify hard problems before solving",
-      "defaultPrompt": "Use $oppenheimer-simplifier to reduce a complex issue to simpler solvable parts.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "product-communication",
-      "description": "Draft, review, and send respectful but firm product communication for Slack, Teams, email, Linear, Jira, GitHub, release notes, customer updates, stakeholder updates, and internal decision threads. Use when an AI agent needs to answer kindly without blindly agreeing, push back on weak product or engineering decisions, align teams, or communicate tradeoffs and next steps.",
+      "description": "Draft stakeholder or customer messages that communicate disagreement, tradeoffs, status, or decisions respectfully and firmly. Use for substantive product communication, rather than every short reply.",
       "displayName": "Product Communication",
       "shortDescription": "Write firm kind product messages",
       "defaultPrompt": "Use $product-communication to draft or send respectful, firm product communication.",
@@ -155,7 +163,7 @@
     },
     {
       "name": "product-competitive-thinking",
-      "description": "Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.",
+      "description": "Evaluate startup product bets, MVP scope, onboarding, pricing, or competitor-driven requests. Use when user value, differentiation, or learning needs a decision, rather than every UI edit.",
       "displayName": "Product Competitive Thinking",
       "shortDescription": "Apply PM and competitor lenses",
       "defaultPrompt": "Use $product-competitive-thinking to evaluate product decisions from PM and competitor viewpoints.",
@@ -163,15 +171,15 @@
     },
     {
       "name": "repository-map",
-      "description": "Generate and use compact repository context and a per-file CSV map for faster cold starts and smaller targeted searches. Use when an AI agent explores an unfamiliar codebase or needs stack, commands, entry points, CI, deployment, migrations, ownership, important files, or public-symbol guidance.",
+      "description": "Generate or refresh a repository file and symbol map using bundled scripts. Use for broad discovery in an unfamiliar or large repository; skip mapping when the relevant files are already known.",
       "displayName": "Repository Map",
-      "shortDescription": "Map repository context and per-file CSV navigation with optional AI enrichment",
-      "defaultPrompt": "Use $repository-map to generate compact project context, a per-file CSV map, and enrich pending rows for faster cold starts.",
+      "shortDescription": "Map repository files and symbols for broad discovery",
+      "defaultPrompt": "Use $repository-map to generate compact project context and a file map when broad discovery is needed; enrich only when useful.",
       "allowImplicitInvocation": true
     },
     {
       "name": "security-review",
-      "description": "Review code, designs, APIs, and infrastructure for exploitable security and privacy risks. Use when an AI agent evaluates authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, dependency trust, or other attacker-controlled boundaries.",
+      "description": "Review changed trust boundaries for reachable security and privacy failures: auth, tenant isolation, secrets, uploads, webhooks, injection, and dependency trust.",
       "displayName": "Security Review",
       "shortDescription": "Find exploitable security and privacy risks",
       "defaultPrompt": "Use $security-review to review this change for concrete security and privacy vulnerabilities.",
@@ -179,7 +187,7 @@
     },
     {
       "name": "self-amending-skill",
-      "description": "Improve this skills repository when real usage reveals missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflows. Use when an AI agent notices a skill should be updated, split, merged, tightened, or connected to scripts based on concrete task evidence.",
+      "description": "Maintain skills, triggers, routing, and supporting validation when requested or when usage reveals a concrete failure. Use for evidence-backed skill changes, rather than unrelated feature work.",
       "displayName": "Self-Amending Skill",
       "shortDescription": "Safely improve the skill system",
       "defaultPrompt": "Use $self-amending-skill to update skills based on concrete usage evidence.",
@@ -187,55 +195,31 @@
     },
     {
       "name": "service-writer",
-      "description": "Write focused service-layer and application-layer code for business workflows, orchestration, domain operations, transactions, permissions, and data access coordination. Use when an AI agent implements behavior that should live behind API handlers and above low-level utilities or repositories.",
+      "description": "Implement business workflows with transaction, permission, retry, and external side-effect boundaries. Use for application orchestration that needs explicit failure handling.",
       "displayName": "Service Writer",
       "shortDescription": "Write focused service-layer code",
       "defaultPrompt": "Use $service-writer to implement focused service-layer behavior.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "smriti-shruti",
-      "description": "Triage context, memory, and conversation history to reduce token load while preserving facts needed for the current task. Use when an AI agent has too much context, repeated logs, stale discussion, large diffs, broad file reads, or distracting information that should be summarized, ignored, or deferred.",
-      "displayName": "Smriti Shruti",
-      "shortDescription": "Triage context and reduce token load",
-      "defaultPrompt": "Use $smriti-shruti to keep only relevant context and reduce token load.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "test-design-review",
-      "description": "Design tests and stress-review test suites for correctness, coverage, reliability, and signal quality. Use when an AI agent creates tests, reviews test changes, diagnoses flaky tests, evaluates mocks, or checks whether behavior is actually protected.",
+      "description": "Review test adequacy, false confidence, mocks, flakiness, and missing risk coverage. Use when test strategy is uncertain or a test review is requested, rather than every test edit.",
       "displayName": "Test Design Review",
       "shortDescription": "Design and stress-review tests",
       "defaultPrompt": "Use $test-design-review to design tests or review test quality and coverage.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "test-writer",
-      "description": "Write targeted tests for changed behavior across unit, integration, API, service, utility, contract, migration, and regression scenarios. Use when an AI agent implements tests, adds missing coverage, encodes a bug reproduction, or verifies service, utility, and API writer changes.",
-      "displayName": "Test Writer",
-      "shortDescription": "Write targeted tests for behavior",
-      "defaultPrompt": "Use $test-writer to implement focused tests for changed behavior.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "upskilling-research",
-      "description": "Research and curate current learning resources for upskilling in a domain. Use when an AI agent is asked to learn, upskill, study, build a learning path, or find recent blogs, papers, documentation, talks, courses, and videos for a topic, including requests like 'I want to upskill in Kubernetes' or 'find me new reads on AI agents'.",
+      "description": "Curate verified learning resources and a practical learning path. Use when the user asks to study a domain, upskill, or find current technical reading and talks.",
       "displayName": "Upskilling Research",
       "shortDescription": "Curate fresh learning resources",
       "defaultPrompt": "Use $upskilling-research to research fresh learning resources and create a focused upskilling plan.",
       "allowImplicitInvocation": true
     },
     {
-      "name": "utility-writer",
-      "description": "Write small reusable utility code such as pure helpers, parsers, formatters, validators, mappers, adapters, and low-level transformations. Use when an AI agent needs shared code that is independent of API transport, service orchestration, and persistent domain workflow.",
-      "displayName": "Utility Writer",
-      "shortDescription": "Write small reusable utility code",
-      "defaultPrompt": "Use $utility-writer to implement small reusable utilities.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "work-impact-tracker",
-      "description": "Capture evidence-backed accomplishments in a private local worklog and generate weekly, quarterly, or year-end appraisal summaries. Use when an AI agent records completed work, reviews recent impact, maintains a brag document, or prepares a performance review.",
+      "description": "Record evidence-backed accomplishments or generate appraisal summaries using the bundled private local worklog. Use for brag documents, work-impact capture, and performance reviews.",
       "displayName": "Work Impact Tracker",
       "shortDescription": "Track work and prepare appraisal summaries",
       "defaultPrompt": "Use $work-impact-tracker to record my work or summarize my impact for an appraisal.",
@@ -243,7 +227,7 @@
     },
     {
       "name": "wtf-check",
-      "description": "Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.",
+      "description": "Reset work when there is observable thrash, repeated failure without new evidence, scope drift, or a contradiction with the active goal. Use for a concrete course correction, rather than routine uncertainty.",
       "displayName": "WTF Check",
       "shortDescription": "Interrupt drift and reset direction",
       "defaultPrompt": "Use $wtf-check to challenge drift, thrash, overbuilding, and reset to the smallest useful next move.",

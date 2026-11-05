@@ -1,6 +1,6 @@
 ---
 name: observability-design
-description: Design and implement structured logs, metrics, distributed traces, and alerts for services. Use when an AI agent adds appropriate logs to existing code, instruments errors or workflows, audits logging coverage or noise, adds service telemetry, defines metric naming conventions, designs dashboards, or sets alert thresholds.
+description: "Design or audit service logs, metrics, traces, SLOs, dashboards, and alerts. Use for instrumentation changes, telemetry gaps, logging noise, or actionable paging."
 ---
 
 # Observability Design

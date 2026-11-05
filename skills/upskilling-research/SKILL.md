@@ -1,6 +1,6 @@
 ---
 name: upskilling-research
-description: Research and curate current learning resources for upskilling in a domain. Use when an AI agent is asked to learn, upskill, study, build a learning path, or find recent blogs, papers, documentation, talks, courses, and videos for a topic, including requests like 'I want to upskill in Kubernetes' or 'find me new reads on AI agents'.
+description: "Curate verified learning resources and a practical learning path. Use when the user asks to study a domain, upskill, or find current technical reading and talks."
 ---
 
 # Upskilling Research
@@ -35,26 +35,6 @@ Use current sources for fast-moving domains even when the topic sounds familiar.
 - Do not pretend to have read paywalled material. Label access limitations clearly.
 - If sources disagree or freshness is unclear, say what was verified, what remains uncertain, and which source should be treated as authoritative.
 
-## Output Shape
+## Output
 
-Use this structure:
-
-1. **Learning Goal**: one sentence restating what the user wants to learn.
-2. **Best Starting Point**: 1-2 resources to begin with.
-3. **Learning Path**:
-   - Fundamentals
-   - Current practice
-   - Deep dives
-   - Hands-on practice
-4. **Resource List**: each item with title, source, date if available, format, link, and why it matters.
-5. **7-Day Plan** or **30-Day Plan** depending on the user's time horizon.
-6. **Avoid For Now**: topics or resources that are likely too advanced, stale, or distracting.
-
-## Follow-Up
-
-When useful, offer to turn the resources into:
-
-- a daily reading plan
-- a project-based learning plan
-- flashcards or interview questions
-- a tracked upskilling checklist
+Match the requested depth. For recent reads, return a short annotated list with verified links and dates. For a learning path, add an ordered sequence and practical exercises suited to the user's stated level and time budget. Do not manufacture a 7-day or 30-day program when the user only asked for a few resources.

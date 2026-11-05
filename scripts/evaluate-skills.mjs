@@ -7,6 +7,10 @@ const examples = JSON.parse(await readFile("examples/skill-prompts.json", "utf8"
 const exampleNames = new Set(examples.map((example) => example.expectedSkill));
 const issues = [];
 const completionCheckSkills = new Set([
+  "dribbble-design",
+  "harness-engineering",
+  "agentic-engineering",
+  "graph-engineering",
   "agent-skill-router",
   "api-writer",
   "code-documentation",
@@ -15,8 +19,6 @@ const completionCheckSkills = new Set([
   "implementation-plan",
   "service-writer",
   "test-design-review",
-  "test-writer",
-  "utility-writer",
 ]);
 
 // Extract all _knowledge/ paths referenced in a SKILL.md body.

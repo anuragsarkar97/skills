@@ -1,6 +1,6 @@
 ---
 name: product-communication
-description: Draft, review, and send respectful but firm product communication for Slack, Teams, email, Linear, Jira, GitHub, release notes, customer updates, stakeholder updates, and internal decision threads. Use when an AI agent needs to answer kindly without blindly agreeing, push back on weak product or engineering decisions, align teams, or communicate tradeoffs and next steps.
+description: "Draft stakeholder or customer messages that communicate disagreement, tradeoffs, status, or decisions respectfully and firmly. Use for substantive product communication, rather than every short reply."
 ---
 
 # Product Communication
@@ -26,7 +26,7 @@ For deeper communication patterns, read `../_knowledge/communication/product-com
 4. Use `critical-thinking` when the request may be wrong, unsafe, or an anti-pattern.
 5. Use `product-competitive-thinking` when the message touches user value, roadmap, MVP scope, or competitor pressure.
 6. Draft the message with decision, reason, tradeoff, and next step.
-7. If a sending tool is available and the user asked to send, send it only after confirmation for external, sensitive, customer-facing, pricing, legal, incident, or executive messages. For low-risk internal updates, follow the user's explicit send instruction.
+7. Send only when explicitly authorized, using the specified recipient, channel, and scope. Do not request duplicate approval for the same authorized message. Resolve material ambiguities and follow host-required approval rules before sending.
 
 ## Firm Pushback Pattern
 

@@ -1,7 +1,7 @@
 interface:
   display_name: "Repository Map"
-  short_description: "Map repository context and per-file CSV navigation with optional AI enrichment"
-  default_prompt: "Use $repository-map to generate compact project context, a per-file CSV map, and enrich pending rows for faster cold starts."
+  short_description: "Map repository files and symbols for broad discovery"
+  default_prompt: "Use $repository-map to generate compact project context and a file map when broad discovery is needed; enrich only when useful."
 
 policy:
   allow_implicit_invocation: true

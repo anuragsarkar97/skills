@@ -1,6 +1,6 @@
 ---
 name: wtf-check
-description: Interrupt drift, thrash, overbuilding, vanity work, and incoherent direction for both the human and the AI. Use when an agent should bluntly ask what the hell we are doing, challenge whether the current path still serves the goal, stop scattered execution, and reset to the smallest useful next move.
+description: "Reset work when there is observable thrash, repeated failure without new evidence, scope drift, or a contradiction with the active goal. Use for a concrete course correction, rather than routine uncertainty."
 ---
 
 # WTF Check
@@ -14,7 +14,7 @@ Trigger it when the conversation or work shows drift:
 - The request contradicts a recent decision, stated goal, or validation result.
 - The work is becoming performative: more tools, more docs, more architecture, more process, but no sharper outcome.
 - The AI is complying too quickly instead of challenging the direction.
-- The human is reacting to anxiety, novelty, frustration, or competitor fear instead of evidence.
+- New scope is displacing the agreed objective without supporting evidence.
 - The next step is unclear but everyone is still moving.
 
 ## Tone
@@ -42,7 +42,7 @@ Pick only the questions that matter:
 - What outcome are we actually trying to create?
 - What did we start but not finish?
 - What evidence says this new direction is worth the context switch?
-- Are we solving a real user or production problem, or feeding anxiety?
+- What user or production problem does the current action resolve?
 - Is this scope buying learning, revenue, reliability, speed, or differentiation?
 - What would we delete, defer, or stop if we were serious?
 - What is the smallest next action that proves progress?
@@ -52,9 +52,7 @@ Pick only the questions that matter:
 
 - Pair with `critical-thinking` when the drift is a bad design, unsafe shortcut, or anti-pattern.
 - Pair with `product-competitive-thinking` when the drift is roadmap, competitor, startup, pricing, UX, or MVP confusion.
-- Pair with `smriti-shruti` when the drift is caused by stale context, repeated logs, or too much conversation history.
-- Pair with `caveman-mode` when the answer itself needs to become shorter and stop adding unasked material.
-- Pair with `implementation-plan` only after the reset question is answered.
+- Use `implementation-plan` if the reset reveals meaningful sequencing dependencies. Continue authorized work when the next step is clear.
 
 ## Output
 

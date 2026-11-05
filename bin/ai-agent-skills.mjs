@@ -113,6 +113,8 @@ if (command === "check") {
     "scripts/test-decision-memory.mjs",
     "scripts/test-index-project.mjs",
     "scripts/test-install-ui.mjs",
+    "scripts/test-install-skills.mjs",
+    "scripts/test-github-install.mjs",
     "scripts/test-repository-map.mjs",
     "scripts/test-work-impact-tracker.mjs",
     "scripts/evaluate-skills.mjs",

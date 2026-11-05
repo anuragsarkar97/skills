@@ -12,46 +12,13 @@ This repository stores reusable AI agent skills.
 - Use `agent-skill-router` proactively when the user asks for engineering work but does not name a skill.
 - Validate changes with `npm test` after editing skills.
 
-## Proactive Skill Selection
+## Skill Selection
 
-- Use `implementation-plan` for scoped plans, migrations, sequencing, and validation strategy.
-- Use `self-amending-skill` when real usage shows a skill needs tighter triggers, better workflow, routing changes, validation, or supporting scripts.
-- Use `wtf-check` when the human or AI is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move.
-- Use `critical-thinking` before agreeing to designs, shortcuts, refactors, or implementation approaches that may be unsafe, overbuilt, incoherent, or anti-patterned.
-- Use `product-competitive-thinking` before product-facing implementation, startup roadmap choices, MVP scope, onboarding, pricing, UX flows, and competitor-driven feature requests.
-- Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages that need respectful but firm communication.
-- Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, and videos.
-- Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
-- Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
-- Use `smriti-shruti` for context triage, token reduction, stale context, repeated logs, and noisy large inputs.
-- Use `repository-map` to discover repository stack, commands, entry points, CI, deployment, migrations, ownership, files, and symbols.
-- Use `decision-memory` to record engineering decisions and check prior rationale or rejected alternatives before high-impact changes.
-- Use `oppenheimer-simplifier` for complex, ambiguous, tangled, or high-cognitive-load problems.
-- Use `service-writer` for service-layer workflows, orchestration, transactions, permissions, and domain behavior.
-- Use `utility-writer` for helpers, parsers, formatters, validators, mappers, adapters, and reusable transformations.
-- Use `api-writer` for route handlers, controllers, request validation, response shaping, status codes, and endpoint wiring.
-- Use `test-writer` to implement targeted tests for changed behavior.
-- Use `incident-response` for production degradation, outages, rollback or hotfix decisions, on-call triage, and post-mortems.
-- Use `observability-design` for structured logs, metrics, traces, SLOs, dashboards, alerts, and telemetry gaps.
-- Use `security-review` for authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, and dependency trust.
-- Use `code-review` for normal reviews and adversarial grills of risky changes, production paths, migrations, auth, diffs, PRs, and worktrees.
-- Use `database-schema-design` for entities, tables, ORM models, migrations, indexes, constraints, and data lifecycle.
-- Use `api-review` for endpoints, request or response contracts, SDK methods, webhooks, auth behavior, pagination, and compatibility.
-- Use `naming-review` for identifiers, domain terminology, API fields, table names, events, files, and test names.
-- Use `commit-pr-writer` for commit messages, PR descriptions, changelog entries, and reviewer notes.
-- Use `code-documentation` for comments, docstrings, README content, API docs, examples, and architecture notes.
-- Use `test-design-review` for test design, test review, coverage gaps, weak mocks, and flaky tests.
-- Use `design-principles-review` for SOLID, YAGNI, abstraction quality, module boundaries, dependency direction, and maintainability.
+Use `skills/agent-skill-router/SKILL.md` to select a specialized workflow when it adds value. It is a selector, not a mandatory chain of skills. Straightforward implementation can proceed without another skill.
 
-Agents may say no to the user when the requested design is an anti-pattern or creates avoidable security, data, reliability, or maintenance risk. When saying no, explain the concrete risk and offer the smallest safer alternative.
+Use the matching shared stack reference only when Go, React, Python, Kubernetes, AWS, or Azure details affect the task. Load deeper domain guidance for a concrete question; do not pre-read the catalog or generate a repository map for every edit.
 
-For startup product work, agents should also push back when a request is strategically weak: commodity feature chasing, unclear target user, no activation or retention path, or implementation cost that does not buy learning or differentiation.
-
-When the work starts drifting, agents should run a WTF check: name the drift, restate the useful goal, ask the hard question, and recommend the smallest reset move. Be blunt but not insulting.
-
-When communicating through Slack or other channels, agents should be kind, specific, and firm. Do not agree to weak decisions just to keep tone pleasant; explain the tradeoff and propose the next useful step.
-
-For the primary stack, load stack-specific knowledge when relevant: Go backend/service work, React frontend work, Python scripting, Kubernetes operations, and AWS/Azure infrastructure. Do not apply generic advice when a curated stack reference exists.
+Follow existing user authorization through the complete requested workflow. Ask when required information or an action boundary is unresolved, not because a skill describes the next step. Do not send messages, publish, deploy, or modify production data without authorization.
 
 ## Editing Guidance
 

@@ -1,6 +1,6 @@
 ---
 name: incident-response
-description: Triage and resolve production incidents by reading logs, forming hypotheses, assessing blast radius, deciding between rollback and hotfix, and coordinating status communication. Use when a production system is degraded, erroring, or down and the agent needs a structured response workflow.
+description: "Triage production degradation and assess mitigation, rollback, or hotfix options. Use during an active incident or when preparing its post-mortem."
 ---
 
 # Incident Response

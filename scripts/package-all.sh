@@ -21,7 +21,7 @@ Runs the full local release packaging flow:
   3. Generate skills/graph.json and skills/graph.mmd
   4. Generate knowledge/index.json
   5. Package Claude ZIP bundles and marketplace manifest
-  6. Run npm pack --dry-run
+  6. Pack and test the actual npm artifact in a temporary directory
 
 Options:
   --out <dir>               Release output directory for optional tarball copy (default: dist/release)
@@ -109,7 +109,7 @@ npm run skills:package-claude -- --out "$CLAUDE_OUT"
 
 echo "==> Verifying npm package"
 mkdir -p "$NPM_PACK_CACHE"
-env NPM_CONFIG_CACHE="$NPM_PACK_CACHE" npm pack --dry-run --silent
+env NPM_CONFIG_CACHE="$NPM_PACK_CACHE" npm run skills:package:test
 
 if [[ "$PACK_TARBALL" == true ]]; then
   echo "==> Creating npm tarball"

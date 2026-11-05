@@ -1,0 +1,7 @@
+interface:
+  display_name: "Harness Engineering"
+  short_description: "Build measurable coding-agent environments"
+  default_prompt: "Use $harness-engineering to improve the agent environment and independently measure task completion against a fixed baseline."
+
+policy:
+  allow_implicit_invocation: true

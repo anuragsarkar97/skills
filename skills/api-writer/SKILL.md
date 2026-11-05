@@ -1,6 +1,6 @@
 ---
 name: api-writer
-description: Write API boundary code for route handlers, controllers, request validation, response shaping, status codes, API errors, authorization hooks, pagination, and endpoint wiring. Use when implementing code for an established API contract — not when evaluating or designing the contract itself (use api-review for that).
+description: "Implement route handlers and controllers for an established API contract, including input validation, authorization, error mapping, and response serialization."
 ---
 
 # API Writer
@@ -12,11 +12,11 @@ For Go API handlers or clients, read `../_knowledge/golang/go-engineering.md` wh
 ## Workflow
 
 1. Inspect existing route/controller style, validation libraries, auth middleware, error mapping, and response conventions.
-2. Confirm the API contract with `api-review` when request or response shape changes.
-3. Keep business logic in `service-writer` territory and call services from the boundary.
+2. Inspect the established contract; use `api-review` when compatibility or contract semantics need review.
+3. Follow existing ownership: keep transport details at the boundary without introducing a new service layer just for this change.
 4. Validate input explicitly and map failures to consistent status codes and error bodies.
 5. Shape responses intentionally, including pagination, filtering, sorting, and empty states.
-6. Add API-level tests through `test-writer` for validation, auth, success, and failure paths.
+6. Test validation, auth, success, and meaningful failure paths using the existing API test harness.
 
 ## Checks
 

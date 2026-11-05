@@ -1,54 +1,19 @@
 # Codex Usage
 
-Codex skills are discovered from skill folders that contain `SKILL.md`.
+Keep `SKILL.md` canonical and agent metadata concise. Install using the repository CLI and the target supported by your host; see the README for commands.
 
-Recommended install location:
+## Skill Selection
 
-```text
-~/.codex/skills/<skill-name>/
-```
+Use `agent-skill-router` to select a specialized workflow when it adds value. It is a selector, not a mandatory chain of skills. Straightforward implementation can proceed without another skill.
 
-For this repository, copy or symlink individual folders from `skills/` into the Codex skills directory. Keep `SKILL.md` as the source of truth and use `agents/openai.yaml` only for UI-facing metadata.
+Use the matching shared stack reference only when Go, React, Python, Kubernetes, AWS, or Azure details affect the task. Load deeper domain guidance for a concrete question; do not pre-read the catalog or generate a repository map for every edit.
 
-For shared behavior that should help smaller models perform consistently, read `knowledge/agent-behavior/operating-principles.md`. Keep vendor-specific model claims, unavailable tool names, and platform-only artifact rules out of portable skills.
+Follow existing user authorization through the complete requested workflow. Ask when required information or an action boundary is unresolved, not because a skill describes the next step. Do not send messages, publish, deploy, or modify production data without authorization.
 
-## Proactive Selection
+## Metadata and Compatibility
 
-Use `agent-skill-router` as the selection guide when the engineer asks for coding help without naming a skill. Prefer the narrowest applicable skill and combine skills when a change crosses boundaries, such as schema plus API plus tests.
-
-For implementation work, use `agent-skill-router` to split service, utility, API, and test responsibilities. Use `smriti-shruti` when context is noisy or expensive, and `oppenheimer-simplifier` when the problem needs first-principles reduction before coding.
-
-Use `wtf-check` when the human or Codex is drifting, thrashing, over-scoping, context-switching, contradicting the goal, or continuing without a clear useful next move. Be blunt but not insulting: name the drift, ask the hard question, and reset to one next action.
-
-Use `critical-thinking` before agreeing to a design that looks unsafe, speculative, overbuilt, or inconsistent with the codebase. Codex should say no when the request is an anti-pattern, then propose a smaller safer alternative.
-
-Use `product-competitive-thinking` before product-facing work. Evaluate the target user, product bet, competitor alternatives, differentiation, MVP scope, and learning metric before implementing.
-
-Use `product-communication` for Slack, Teams, email, ticket, issue, PR, stakeholder, customer, and product decision messages. Be respectful but firm: acknowledge the goal, state disagreement clearly when needed, and propose the next useful step.
-
-Use `upskilling-research` when the user wants to learn, upskill, study, find recent reads, or build a learning path from blogs, papers, docs, talks, courses, and videos.
-
-Use `doc-template-writer` when the user asks for a Markdown product doc, PRD, RFC, project brief, engineering design doc, technical design, or architecture proposal template for a named topic.
-
-Use `macos-reminder` for `/remember`, "remind me", or "notify me" requests that should become local macOS notifications.
-
-Use `caveman-mode` when the user asks for terse, low-token, direct-only answers or says not to answer unless directly relevant.
-
-Use `incident-response` for active production degradation, outage triage, rollback/hotfix decisions, and post-mortems. Use `observability-design` when adding or reviewing logs, metrics, traces, SLOs, dashboards, alerts, or telemetry gaps.
-
-For the primary stack, use the shared knowledge references for Go, React, Python scripting, Kubernetes, AWS, and Azure whenever those ecosystems affect the answer.
-
-Use `self-amending-skill` when actual work reveals the skill system should change. Keep amendments small, validate with `npm test`, and regenerate `skills/catalog.json` with `npm run skills:catalog` when metadata or inventory changes.
-
-For skill-system changes, prefer `npm run skills:check`; run `npm run skills:graph` when routing or skill references change.
-
-## Metadata
-
-Use `agents/openai.yaml` for:
-
-- `display_name`
-- `short_description`
-- `default_prompt`
-- `policy.allow_implicit_invocation`
-
-Do not duplicate long instructions in agent metadata. Put operational guidance in `SKILL.md` or a referenced file.
+- Frontmatter contains only `name` and `description`; the name matches the directory.
+- OpenAI UI metadata and invocation policy live in `agents/openai.yaml`.
+- Claude-specific notes live in `agents/claude.md` within the relevant skill.
+- Shared references install as `_knowledge/` next to skill directories. In this repository they live under `knowledge/`.
+- Do not encode model names, private tools, or host-only APIs in portable workflows.

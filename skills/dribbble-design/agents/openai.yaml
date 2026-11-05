@@ -1,0 +1,7 @@
+interface:
+  display_name: "Dribbble Design"
+  short_description: "Turn visual inspiration into usable frontend design"
+  default_prompt: "Use $dribbble-design to research visual references and recommend a distinctive, usable frontend direction for this screen."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,6 +1,6 @@
 ---
 name: security-review
-description: Review code, designs, APIs, and infrastructure for exploitable security and privacy risks. Use when an AI agent evaluates authentication, authorization, tenant isolation, secrets, PII, uploads, webhooks, injection, dependency trust, or other attacker-controlled boundaries.
+description: "Review changed trust boundaries for reachable security and privacy failures: auth, tenant isolation, secrets, uploads, webhooks, injection, and dependency trust."
 ---
 
 # Security Review

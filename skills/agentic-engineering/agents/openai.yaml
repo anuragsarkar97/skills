@@ -1,0 +1,7 @@
+interface:
+  display_name: "Agentic Engineering"
+  short_description: "Engineer reliable tool-using agent workflows"
+  default_prompt: "Use $agentic-engineering to design the smallest reliable tool-using workflow with explicit state, permissions, budgets, and recovery."
+
+policy:
+  allow_implicit_invocation: true

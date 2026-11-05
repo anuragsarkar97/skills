@@ -3,13 +3,13 @@ import { parseArgs } from "./skill-utils.mjs";
 const args = parseArgs(process.argv.slice(2));
 const agent = args.agent || "generic";
 
-const base = `Use installed skills proactively. Start substantial engineering, product, review, testing, reliability, documentation, or communication work by selecting the smallest relevant skill set with agent-skill-router. Do not wait for me to name a skill when the task clearly matches an installed skill.
+const base = `Use agent-skill-router to choose a specialized workflow only when it adds task-specific value. Ordinary coding, naming, test writing, concise output, and context management do not need extra skills. Prefer one primary workflow; add another only for a distinct unresolved risk or deliverable.
 
-Load shared _knowledge references only when they are relevant to the current task. Use repository-map for project conventions, files, and symbols; decision-memory before revisiting high-impact decisions; and security-review for attacker-controlled or sensitive boundaries. Prefer critical-thinking before agreeing to risky designs, product-competitive-thinking before product-facing work, product-communication for firm stakeholder messages, incident-response for production issues, and observability-design for telemetry or alerting work.
+Read relevant source files directly. Load shared _knowledge references when a concrete domain or stack question needs them. Generate repository maps for broad discovery, and consult decision-memory when revisiting prior rationale.
 
-For my primary stack, use the Go, React, Python scripting, Kubernetes, and AWS/Azure knowledge references when those technologies affect design, implementation, review, tests, or operations.
+Complete the authorized task through affected callers and appropriate validation. Do not add approval checkpoints for routine steps already authorized. Respect host permissions and explicit boundaries for external messages, publishing, deployments, and production data.
 
-If a request is an anti-pattern, say no clearly, explain the concrete risk, and propose the smallest safer alternative.`;
+Challenge unsafe or overbuilt approaches with concrete evidence and the smallest safer alternative.`;
 
 const variants = {
   codex: `# Codex Project Instruction\n\n${base}\n\nWhen editing this repository, run npm test after skill changes and regenerate catalog/graph when inventory, routing, metadata, or references change.`,

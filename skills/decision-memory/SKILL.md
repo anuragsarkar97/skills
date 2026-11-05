@@ -1,13 +1,15 @@
 ---
 name: decision-memory
-description: Capture, search, and reuse repository decisions, rejected alternatives, constraints, and supporting evidence. Use when an AI agent records an architecture or engineering decision, checks prior rationale before proposing a change, or identifies a superseded decision.
+description: "Search or record repository decisions with rationale, evidence, and supersession using the bundled local ledger. Use for explicit decision records or changes that revisit a prior decision."
 ---
 
 # Decision Memory
 
 Preserve why a repository works the way it does. Treat decision records as evidence, not unquestionable policy: verify that a decision still applies to the current code and constraints.
 
-Use `scripts/decision-memory.mjs`. Records default to `.skill-context/decisions.jsonl` in the target repository. Pass `--path <repository>` or `--file <path>` when needed.
+Use `<skill-dir>/scripts/decision-memory.mjs`. Records default to `.skill-context/decisions.jsonl` in the target repository. Pass `--path <repository>` or `--file <path>` when needed.
+
+Resolve `<skill-dir>` to the directory containing this installed `SKILL.md`. Run commands from the target project; script paths do not depend on that working directory.
 
 ## Workflow
 
@@ -21,16 +23,16 @@ Use `scripts/decision-memory.mjs`. Records default to `.skill-context/decisions.
 ## Commands
 
 ```bash
-node scripts/decision-memory.mjs init --path .
-node scripts/decision-memory.mjs add --path . \
+node <skill-dir>/scripts/decision-memory.mjs init --path .
+node <skill-dir>/scripts/decision-memory.mjs add --path . \
   --title "Do not retry payment creation" \
   --decision "Payment creation is never retried automatically" \
   --rationale "Retries can create duplicate charges" \
   --alternative "Generic HTTP retry middleware" \
   --evidence "INC-142" \
   --tag payments
-node scripts/decision-memory.mjs search --path . --query "payment retry"
-node scripts/decision-memory.mjs list --path . --status accepted
+node <skill-dir>/scripts/decision-memory.mjs search --path . --query "payment retry"
+node <skill-dir>/scripts/decision-memory.mjs list --path . --status accepted
 ```
 
 Repeat `--alternative`, `--evidence`, and `--tag` for multiple values.

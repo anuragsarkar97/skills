@@ -1,4 +1,4 @@
-import { cp, lstat, mkdir, mkdtemp, readFile, readlink, rm, stat, symlink, writeFile } from "node:fs/promises";
+import { cp, lstat, mkdir, mkdtemp, readdir, readFile, readlink, realpath, rm, stat, symlink, writeFile } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
 import os from "node:os";
 import path from "node:path";
@@ -92,10 +92,31 @@ async function readExternalManifest(filePath) {
   );
 }
 
-const targetRoot = path.resolve(args.target || defaultTarget(args.agent));
-if (!targetRoot) {
+const target = args.target || defaultTarget(args.agent);
+if (typeof target !== "string" || !target.trim()) {
   console.error("Usage: node scripts/install-skills.mjs --target <dir> [--all|--skills a,b] [--mode copy|symlink] [--write] [--force] [--remove-stale]");
   process.exit(1);
+}
+const targetRoot = path.resolve(target);
+const sourceLocation = await realpath(sourceRoot);
+const targetLocation = await realpath(targetRoot).catch((error) => {
+  if (error.code === "ENOENT") return targetRoot;
+  throw error;
+});
+if (targetRoot === sourceRoot || targetRoot.startsWith(`${sourceRoot}${path.sep}`)
+  || targetLocation === sourceLocation || targetLocation.startsWith(`${sourceLocation}${path.sep}`)) {
+  console.error("Install target must be outside the source skills directory.");
+  process.exit(1);
+}
+
+async function targetExists(filePath) {
+  try {
+    await lstat(filePath);
+    return true;
+  } catch (error) {
+    if (error.code === "ENOENT") return false;
+    throw error;
+  }
 }
 
 const profile = await readProfile(profileName);
@@ -151,8 +172,13 @@ if (write) {
 
 if (await pathExists(knowledgeRoot)) {
   const knowledgeTarget = path.join(targetRoot, "_knowledge");
-  operations.push(`${await pathExists(knowledgeTarget) ? "replace" : "install"} shared knowledge as copy`);
-  if (write) {
+  const exists = await targetExists(knowledgeTarget);
+  if (exists && !force) {
+    operations.push("skip existing shared knowledge");
+  } else {
+    operations.push(`${exists ? "replace" : "install"} shared knowledge as copy`);
+  }
+  if (write && (!exists || force)) {
     await rm(knowledgeTarget, { recursive: true, force: true });
     await cp(knowledgeRoot, knowledgeTarget, { recursive: true });
     await writeFile(path.join(knowledgeTarget, markerName), `source=${knowledgeRoot}\n`);
@@ -161,7 +187,7 @@ if (await pathExists(knowledgeRoot)) {
 
 for (const skill of selectedSkills) {
   const targetDir = path.join(targetRoot, skill.name);
-  const exists = await pathExists(targetDir);
+  const exists = await targetExists(targetDir);
 
   if (exists && !force) {
     operations.push(`skip existing ${skill.name}`);
@@ -203,7 +229,7 @@ for (const external of externalSpecs) {
   selectedExternalNames.add(skillName);
 
   const targetDir = path.join(targetRoot, skillName);
-  const exists = await pathExists(targetDir);
+  const exists = await targetExists(targetDir);
   if (exists && !force) {
     operations.push(`skip existing external ${skillName}`);
     continue;
@@ -223,33 +249,37 @@ for (const external of externalSpecs) {
 }
 
 if (removeStale) {
-  const installed = await listSkills(targetRoot).catch(() => []);
+  const installed = await readdir(targetRoot).catch((error) => {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  });
   const selectedSet = new Set([
     ...selectedSkills.map((skill) => skill.name),
     ...selectedExternalNames,
   ]);
-  for (const installedSkill of installed) {
-    if (selectedSet.has(installedSkill.name)) continue;
+  for (const name of installed) {
+    if (name === "_knowledge" || selectedSet.has(name)) continue;
 
-    const targetDir = path.join(targetRoot, installedSkill.name);
+    const targetDir = path.join(targetRoot, name);
     const markerPath = path.join(targetDir, markerName);
     const stat = await lstat(targetDir);
+    if (!stat.isDirectory() && !stat.isSymbolicLink()) continue;
     let managed = false;
 
     if (stat.isSymbolicLink()) {
       const linkTarget = await readlink(targetDir);
-      managed = path.resolve(targetRoot, linkTarget).startsWith(sourceRoot);
+      managed = path.dirname(path.resolve(targetRoot, linkTarget)) === sourceRoot;
     } else if (await pathExists(markerPath)) {
       const marker = await readFile(markerPath, "utf8");
       managed = marker.includes("ai-agent-skills") || marker.includes("source=");
     }
 
     if (!managed) {
-      operations.push(`preserve unmarked stale ${installedSkill.name}`);
+      operations.push(`preserve unmarked stale ${name}`);
       continue;
     }
 
-    operations.push(`remove stale ${installedSkill.name}`);
+    operations.push(`remove stale ${name}`);
     if (write) {
       await rm(targetDir, { recursive: true, force: true });
     }

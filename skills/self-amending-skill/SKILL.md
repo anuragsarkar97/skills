@@ -1,6 +1,6 @@
 ---
 name: self-amending-skill
-description: Improve this skills repository when real usage reveals missing triggers, stale guidance, weak routing, duplicated instructions, validation gaps, or inefficient workflows. Use when an AI agent notices a skill should be updated, split, merged, tightened, or connected to scripts based on concrete task evidence.
+description: "Maintain skills, triggers, routing, and supporting validation when requested or when usage reveals a concrete failure. Use for evidence-backed skill changes, rather than unrelated feature work."
 ---
 
 # Self-Amending Skill

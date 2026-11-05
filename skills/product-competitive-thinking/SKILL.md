@@ -1,11 +1,11 @@
 ---
 name: product-competitive-thinking
-description: Evaluate engineering and product decisions through product manager, customer, startup, and competitor lenses. Use when an AI agent reviews feature requests, roadmap choices, UX flows, onboarding, pricing, market differentiation, MVP scope, adoption risk, or whether a proposed build creates real product advantage.
+description: "Evaluate startup product bets, MVP scope, onboarding, pricing, or competitor-driven requests. Use when user value, differentiation, or learning needs a decision, rather than every UI edit."
 ---
 
 # Product Competitive Thinking
 
-Use this skill before building product-facing work, especially in startups where shipping the wrong thing is more expensive than shipping slowly. Pair it with `critical-thinking`: first ask whether the idea is coherent, then ask whether it wins for users and against competitors.
+Use this skill for product scope and strategy decisions. Routine UI fixes do not need a product memo. Add `critical-thinking` only when a specific disputed assumption needs challenge.
 
 When the task needs deeper product judgment, read `../_knowledge/product/startup-pm.md` when installed or `../../knowledge/product/startup-pm.md` in this repository. If current competitor facts matter, verify them instead of relying on memory.
 
