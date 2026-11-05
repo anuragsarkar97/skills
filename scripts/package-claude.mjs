@@ -1,8 +1,8 @@
-import { cp, mkdir, rm } from "node:fs/promises";
+import { cp, mkdir, readFile, rm } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import os from "node:os";
 import path from "node:path";
-import { listSkills, parseArgs } from "./skill-utils.mjs";
+import { listSkills, parseArgs, skillNamePattern } from "./skill-utils.mjs";
 
 const args = parseArgs(process.argv.slice(2));
 const skillsDir = args.path || "skills";
@@ -24,6 +24,19 @@ if (selected) {
 }
 
 await mkdir(outputDir, { recursive: true });
+
+if (!selected) {
+  const previous = await readFile(path.join(outputDir, "marketplace-manifest.json"), "utf8").catch((error) => {
+    if (error.code === "ENOENT") return null;
+    throw error;
+  });
+  for (const entry of previous ? JSON.parse(previous).skills || [] : []) {
+    if (typeof entry.name === "string" && skillNamePattern.test(entry.name)
+      && !skills.some((skill) => skill.name === entry.name)) {
+      await rm(path.join(outputDir, `${entry.name}.zip`), { force: true });
+    }
+  }
+}
 
 for (const skill of skills) {
   const stageRoot = path.join(os.tmpdir(), `claude-skill-${skill.name}-${Date.now()}`);

@@ -1,5 +1,5 @@
 {
-  "count": 29,
+  "count": 14,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -14,39 +14,9 @@
       "allowImplicitInvocation": true
     },
     {
-      "id": "api-review",
-      "displayName": "API Review",
-      "description": "Review API contracts for compatibility, auth, pagination, idempotency, and error semantics. Use for proposed interfaces or contract changes, rather than handler implementation.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "api-writer",
-      "displayName": "API Writer",
-      "description": "Implement route handlers and controllers for an established API contract, including input validation, authorization, error mapping, and response serialization.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "code-documentation",
-      "displayName": "Code Documentation",
-      "description": "Write or review README content, API documentation, architecture notes, or operational instructions. Use when documentation is a requested deliverable or behavior changes make existing docs stale.",
-      "allowImplicitInvocation": true
-    },
-    {
       "id": "code-review",
       "displayName": "Code Review",
-      "description": "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "commit-pr-writer",
-      "displayName": "Commit PR Writer",
-      "description": "Draft commit messages, PR descriptions, or release notes from verified diffs and test results. Use when delivery text is requested; do not commit or publish implicitly.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "critical-thinking",
-      "displayName": "Critical Thinking",
-      "description": "Challenge a proposed engineering approach when evidence suggests unsafe tradeoffs, speculative complexity, or conflicting constraints. Skip routine implementation with no disputed design decision.",
+      "description": "Review code, API contracts, and tests for concrete bugs, compatibility failures, and false confidence. Use for diffs, PRs, proposed contracts, or dedicated test reviews.",
       "allowImplicitInvocation": true
     },
     {
@@ -59,18 +29,6 @@
       "id": "decision-memory",
       "displayName": "Decision Memory",
       "description": "Search or record repository decisions with rationale, evidence, and supersession using the bundled local ledger. Use for explicit decision records or changes that revisit a prior decision.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "design-principles-review",
-      "displayName": "Design Principles Review",
-      "description": "Review abstraction quality, dependency direction, and module ownership in an architecture or refactor. Use for disputed boundaries or unnecessary complexity, rather than routine edits.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "doc-template-writer",
-      "displayName": "Doc Template Writer",
-      "description": "Create a fill-in Markdown PRD, project brief, RFC, or engineering design template from the bundled assets. Use when the user wants a template, rather than a completed strategy.",
       "allowImplicitInvocation": true
     },
     {
@@ -104,21 +62,9 @@
       "allowImplicitInvocation": true
     },
     {
-      "id": "macos-reminder",
-      "displayName": "macOS Reminder",
-      "description": "Schedule local macOS notifications with the bundled launchd script. Use for reminder requests with a message and due time; clarify missing or ambiguous timing.",
-      "allowImplicitInvocation": true
-    },
-    {
       "id": "observability-design",
       "displayName": "Observability Design",
       "description": "Design or audit service logs, metrics, traces, SLOs, dashboards, and alerts. Use for instrumentation changes, telemetry gaps, logging noise, or actionable paging.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "product-communication",
-      "displayName": "Product Communication",
-      "description": "Draft stakeholder or customer messages that communicate disagreement, tradeoffs, status, or decisions respectfully and firmly. Use for substantive product communication, rather than every short reply.",
       "allowImplicitInvocation": true
     },
     {
@@ -138,42 +84,6 @@
       "displayName": "Security Review",
       "description": "Review changed trust boundaries for reachable security and privacy failures: auth, tenant isolation, secrets, uploads, webhooks, injection, and dependency trust.",
       "allowImplicitInvocation": true
-    },
-    {
-      "id": "self-amending-skill",
-      "displayName": "Self-Amending Skill",
-      "description": "Maintain skills, triggers, routing, and supporting validation when requested or when usage reveals a concrete failure. Use for evidence-backed skill changes, rather than unrelated feature work.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "service-writer",
-      "displayName": "Service Writer",
-      "description": "Implement business workflows with transaction, permission, retry, and external side-effect boundaries. Use for application orchestration that needs explicit failure handling.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "test-design-review",
-      "displayName": "Test Design Review",
-      "description": "Review test adequacy, false confidence, mocks, flakiness, and missing risk coverage. Use when test strategy is uncertain or a test review is requested, rather than every test edit.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "upskilling-research",
-      "displayName": "Upskilling Research",
-      "description": "Curate verified learning resources and a practical learning path. Use when the user asks to study a domain, upskill, or find current technical reading and talks.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "work-impact-tracker",
-      "displayName": "Work Impact Tracker",
-      "description": "Record evidence-backed accomplishments or generate appraisal summaries using the bundled private local worklog. Use for brag documents, work-impact capture, and performance reviews.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "id": "wtf-check",
-      "displayName": "WTF Check",
-      "description": "Reset work when there is observable thrash, repeated failure without new evidence, scope drift, or a contradiction with the active goal. Use for a concrete course correction, rather than routine uncertainty.",
-      "allowImplicitInvocation": true
     }
   ],
   "edges": [
@@ -184,32 +94,7 @@
     },
     {
       "from": "agent-skill-router",
-      "to": "api-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "api-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "code-documentation",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "code-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "commit-pr-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "critical-thinking",
       "reason": "mentions"
     },
     {
@@ -220,16 +105,6 @@
     {
       "from": "agent-skill-router",
       "to": "decision-memory",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "design-principles-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "doc-template-writer",
       "reason": "mentions"
     },
     {
@@ -259,17 +134,7 @@
     },
     {
       "from": "agent-skill-router",
-      "to": "macos-reminder",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
       "to": "observability-design",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "product-communication",
       "reason": "mentions"
     },
     {
@@ -288,78 +153,8 @@
       "reason": "mentions"
     },
     {
-      "from": "agent-skill-router",
-      "to": "self-amending-skill",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "service-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "test-design-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "upskilling-research",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "work-impact-tracker",
-      "reason": "mentions"
-    },
-    {
-      "from": "agent-skill-router",
-      "to": "wtf-check",
-      "reason": "mentions"
-    },
-    {
       "from": "agentic-engineering",
       "to": "harness-engineering",
-      "reason": "mentions"
-    },
-    {
-      "from": "api-review",
-      "to": "api-writer",
-      "reason": "mentions"
-    },
-    {
-      "from": "api-writer",
-      "to": "api-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "api-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "code-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "database-schema-design",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "design-principles-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "product-competitive-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "critical-thinking",
-      "to": "test-design-review",
       "reason": "mentions"
     },
     {
@@ -373,53 +168,8 @@
       "reason": "mentions"
     },
     {
-      "from": "product-communication",
-      "to": "critical-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "product-communication",
-      "to": "product-competitive-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "product-competitive-thinking",
-      "to": "critical-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "security-review",
-      "to": "api-review",
-      "reason": "mentions"
-    },
-    {
       "from": "security-review",
       "to": "code-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "self-amending-skill",
-      "to": "agent-skill-router",
-      "reason": "mentions"
-    },
-    {
-      "from": "service-writer",
-      "to": "test-design-review",
-      "reason": "mentions"
-    },
-    {
-      "from": "wtf-check",
-      "to": "critical-thinking",
-      "reason": "mentions"
-    },
-    {
-      "from": "wtf-check",
-      "to": "implementation-plan",
-      "reason": "mentions"
-    },
-    {
-      "from": "wtf-check",
-      "to": "product-competitive-thinking",
       "reason": "mentions"
     }
   ]

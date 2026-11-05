@@ -71,7 +71,8 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "api-review"
+        "code-review",
+        "security-review"
       ],
       "sources": [
         "https://www.rfc-editor.org/rfc/rfc9110",
@@ -89,8 +90,6 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "critical-thinking",
-        "design-principles-review",
         "implementation-plan"
       ],
       "sources": [
@@ -130,8 +129,7 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "incident-response",
-        "product-communication"
+        "incident-response"
       ],
       "sources": [
         "https://www.radicalcandor.com/our-approach/",
@@ -189,9 +187,7 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "api-writer",
-        "incident-response",
-        "service-writer"
+        "incident-response"
       ],
       "sources": [
         "https://go.dev/doc/effective_go",
@@ -288,7 +284,6 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "critical-thinking",
         "product-competitive-thinking"
       ],
       "sources": [
@@ -324,8 +319,7 @@
       "refreshCadenceDays": 90,
       "lastReviewed": null,
       "relatedSkills": [
-        "agent-skill-router",
-        "api-writer"
+        "agent-skill-router"
       ],
       "sources": [
         "https://react.dev/learn/thinking-in-react",
@@ -344,8 +338,6 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "api-review",
-        "critical-thinking",
         "database-schema-design",
         "implementation-plan",
         "incident-response",
@@ -368,7 +360,7 @@
       "lastReviewed": null,
       "relatedSkills": [
         "agent-skill-router",
-        "test-design-review"
+        "code-review"
       ],
       "sources": [
         "https://martinfowler.com/bliki/TestPyramid.html",

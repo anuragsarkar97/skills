@@ -12,13 +12,8 @@ const completionCheckSkills = new Set([
   "agentic-engineering",
   "graph-engineering",
   "agent-skill-router",
-  "api-writer",
-  "code-documentation",
   "code-review",
-  "doc-template-writer",
   "implementation-plan",
-  "service-writer",
-  "test-design-review",
 ]);
 
 // Extract all _knowledge/ paths referenced in a SKILL.md body.

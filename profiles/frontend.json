@@ -1,18 +1,12 @@
 {
   "name": "frontend",
-  "description": "Frontend-focused local skills for product, React, UX-adjacent review, tests, docs, and implementation planning.",
+  "description": "Frontend visual direction, product scope, implementation planning, and code/API/test review.",
   "skills": [
     "agent-skill-router",
     "dribbble-design",
-    "api-review",
     "code-review",
-    "critical-thinking",
-    "design-principles-review",
     "implementation-plan",
-    "product-communication",
-    "product-competitive-thinking",
-    "test-design-review",
-    "upskilling-research"
+    "product-competitive-thinking"
   ],
   "external": []
 }

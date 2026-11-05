@@ -116,7 +116,6 @@ if (command === "check") {
     "scripts/test-install-skills.mjs",
     "scripts/test-github-install.mjs",
     "scripts/test-repository-map.mjs",
-    "scripts/test-work-impact-tracker.mjs",
     "scripts/evaluate-skills.mjs",
     "scripts/verify-sources.mjs",
   ]) {

@@ -5,7 +5,7 @@ description: "Evaluate startup product bets, MVP scope, onboarding, pricing, or 
 
 # Product Competitive Thinking
 
-Use this skill for product scope and strategy decisions. Routine UI fixes do not need a product memo. Add `critical-thinking` only when a specific disputed assumption needs challenge.
+Use this skill for product scope and strategy decisions. Routine UI fixes do not need a product memo. Challenge disputed assumptions with concrete evidence and the smallest useful alternative.
 
 When the task needs deeper product judgment, read `../_knowledge/product/startup-pm.md` when installed or `../../knowledge/product/startup-pm.md` in this repository. If current competitor facts matter, verify them instead of relying on memory.
 

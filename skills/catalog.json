@@ -1,5 +1,5 @@
 {
-  "count": 29,
+  "count": 14,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -18,51 +18,11 @@
       "allowImplicitInvocation": true
     },
     {
-      "name": "api-review",
-      "description": "Review API contracts for compatibility, auth, pagination, idempotency, and error semantics. Use for proposed interfaces or contract changes, rather than handler implementation.",
-      "displayName": "API Review",
-      "shortDescription": "Review API contracts and behavior",
-      "defaultPrompt": "Use $api-review to review API contracts, behavior, and compatibility.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "api-writer",
-      "description": "Implement route handlers and controllers for an established API contract, including input validation, authorization, error mapping, and response serialization.",
-      "displayName": "API Writer",
-      "shortDescription": "Implement API handlers and contracts",
-      "defaultPrompt": "Use $api-writer to implement API handlers and contracts.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "code-documentation",
-      "description": "Write or review README content, API documentation, architecture notes, or operational instructions. Use when documentation is a requested deliverable or behavior changes make existing docs stale.",
-      "displayName": "Code Documentation",
-      "shortDescription": "Create and review code documentation",
-      "defaultPrompt": "Use $code-documentation to create or review useful code documentation.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "code-review",
-      "description": "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change.",
+      "description": "Review code, API contracts, and tests for concrete bugs, compatibility failures, and false confidence. Use for diffs, PRs, proposed contracts, or dedicated test reviews.",
       "displayName": "Code Review",
       "shortDescription": "Review or grill changes for production risk",
       "defaultPrompt": "Use $code-review to review or adversarially grill these changes and lead with findings.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "commit-pr-writer",
-      "description": "Draft commit messages, PR descriptions, or release notes from verified diffs and test results. Use when delivery text is requested; do not commit or publish implicitly.",
-      "displayName": "Commit PR Writer",
-      "shortDescription": "Write commit messages and PR text",
-      "defaultPrompt": "Use $commit-pr-writer to create commit messages and PR descriptions from changes.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "critical-thinking",
-      "description": "Challenge a proposed engineering approach when evidence suggests unsafe tradeoffs, speculative complexity, or conflicting constraints. Skip routine implementation with no disputed design decision.",
-      "displayName": "Critical Thinking",
-      "shortDescription": "Challenge weak designs before agreeing",
-      "defaultPrompt": "Use $critical-thinking to challenge assumptions and reject anti-pattern designs when needed.",
       "allowImplicitInvocation": true
     },
     {
@@ -79,22 +39,6 @@
       "displayName": "Decision Memory",
       "shortDescription": "Record and retrieve engineering decisions",
       "defaultPrompt": "Use $decision-memory to record or retrieve the relevant engineering decision.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "design-principles-review",
-      "description": "Review abstraction quality, dependency direction, and module ownership in an architecture or refactor. Use for disputed boundaries or unnecessary complexity, rather than routine edits.",
-      "displayName": "Design Principles Review",
-      "shortDescription": "Check SOLID YAGNI and design risks",
-      "defaultPrompt": "Use $design-principles-review to review design principles, abstractions, and maintainability.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "doc-template-writer",
-      "description": "Create a fill-in Markdown PRD, project brief, RFC, or engineering design template from the bundled assets. Use when the user wants a template, rather than a completed strategy.",
-      "displayName": "Doc Template Writer",
-      "shortDescription": "Create product and engineering doc templates",
-      "defaultPrompt": "Use $doc-template-writer to create a focused Markdown document template.",
       "allowImplicitInvocation": true
     },
     {
@@ -138,27 +82,11 @@
       "allowImplicitInvocation": true
     },
     {
-      "name": "macos-reminder",
-      "description": "Schedule local macOS notifications with the bundled launchd script. Use for reminder requests with a message and due time; clarify missing or ambiguous timing.",
-      "displayName": "macOS Reminder",
-      "shortDescription": "Schedule local macOS notifications",
-      "defaultPrompt": "Use $macos-reminder to schedule a local macOS reminder notification.",
-      "allowImplicitInvocation": true
-    },
-    {
       "name": "observability-design",
       "description": "Design or audit service logs, metrics, traces, SLOs, dashboards, and alerts. Use for instrumentation changes, telemetry gaps, logging noise, or actionable paging.",
       "displayName": "Observability Design",
       "shortDescription": "Design logs, metrics, traces, and alerts",
       "defaultPrompt": "Use $observability-design to add appropriate structured logs and telemetry to this service.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "product-communication",
-      "description": "Draft stakeholder or customer messages that communicate disagreement, tradeoffs, status, or decisions respectfully and firmly. Use for substantive product communication, rather than every short reply.",
-      "displayName": "Product Communication",
-      "shortDescription": "Write firm kind product messages",
-      "defaultPrompt": "Use $product-communication to draft or send respectful, firm product communication.",
       "allowImplicitInvocation": true
     },
     {
@@ -183,54 +111,6 @@
       "displayName": "Security Review",
       "shortDescription": "Find exploitable security and privacy risks",
       "defaultPrompt": "Use $security-review to review this change for concrete security and privacy vulnerabilities.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "self-amending-skill",
-      "description": "Maintain skills, triggers, routing, and supporting validation when requested or when usage reveals a concrete failure. Use for evidence-backed skill changes, rather than unrelated feature work.",
-      "displayName": "Self-Amending Skill",
-      "shortDescription": "Safely improve the skill system",
-      "defaultPrompt": "Use $self-amending-skill to update skills based on concrete usage evidence.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "service-writer",
-      "description": "Implement business workflows with transaction, permission, retry, and external side-effect boundaries. Use for application orchestration that needs explicit failure handling.",
-      "displayName": "Service Writer",
-      "shortDescription": "Write focused service-layer code",
-      "defaultPrompt": "Use $service-writer to implement focused service-layer behavior.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "test-design-review",
-      "description": "Review test adequacy, false confidence, mocks, flakiness, and missing risk coverage. Use when test strategy is uncertain or a test review is requested, rather than every test edit.",
-      "displayName": "Test Design Review",
-      "shortDescription": "Design and stress-review tests",
-      "defaultPrompt": "Use $test-design-review to design tests or review test quality and coverage.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "upskilling-research",
-      "description": "Curate verified learning resources and a practical learning path. Use when the user asks to study a domain, upskill, or find current technical reading and talks.",
-      "displayName": "Upskilling Research",
-      "shortDescription": "Curate fresh learning resources",
-      "defaultPrompt": "Use $upskilling-research to research fresh learning resources and create a focused upskilling plan.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "work-impact-tracker",
-      "description": "Record evidence-backed accomplishments or generate appraisal summaries using the bundled private local worklog. Use for brag documents, work-impact capture, and performance reviews.",
-      "displayName": "Work Impact Tracker",
-      "shortDescription": "Track work and prepare appraisal summaries",
-      "defaultPrompt": "Use $work-impact-tracker to record my work or summarize my impact for an appraisal.",
-      "allowImplicitInvocation": true
-    },
-    {
-      "name": "wtf-check",
-      "description": "Reset work when there is observable thrash, repeated failure without new evidence, scope drift, or a contradiction with the active goal. Use for a concrete course correction, rather than routine uncertainty.",
-      "displayName": "WTF Check",
-      "shortDescription": "Interrupt drift and reset direction",
-      "defaultPrompt": "Use $wtf-check to challenge drift, thrash, overbuilding, and reset to the smallest useful next move.",
       "allowImplicitInvocation": true
     }
   ]

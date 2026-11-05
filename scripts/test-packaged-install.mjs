@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { access, lstat, mkdir, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { access, lstat, mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -21,6 +21,17 @@ try {
   const catalog = JSON.parse(await readFile(path.join(packageRoot, "skills", "catalog.json"), "utf8"));
   const expected = catalog.skills.map(({ name }) => name).sort();
   assert.equal(catalog.count, expected.length);
+
+  const bundles = path.join(root, "bundles");
+  await mkdir(bundles);
+  await writeFile(path.join(bundles, "marketplace-manifest.json"), JSON.stringify({ skills: [{ name: "retired-fixture" }] }));
+  await writeFile(path.join(bundles, "retired-fixture.zip"), "Previously generated archive");
+  await writeFile(path.join(bundles, "custom-backup.zip"), "Unrelated archive");
+  run(process.execPath, [path.join(packageRoot, "scripts", "package-claude.mjs"), "--out", bundles], packageRoot);
+  await assert.rejects(access(path.join(bundles, "retired-fixture.zip")), { code: "ENOENT" });
+  assert.equal(await readFile(path.join(bundles, "custom-backup.zip"), "utf8"), "Unrelated archive");
+  const manifest = JSON.parse(await readFile(path.join(bundles, "marketplace-manifest.json"), "utf8"));
+  assert.deepEqual(manifest.skills.map(({ name }) => name).sort(), expected);
 
   // Run the shipped checks, not source-tree imports, from an unrelated working directory.
   run(process.execPath, [cli, "check"]);
@@ -49,7 +60,6 @@ try {
     await access(path.join(linked, name, "SKILL.md"));
   }
   run(process.execPath, [path.join(target, "decision-memory", "scripts", "decision-memory.mjs"), "init", "--path", project]);
-  run(process.execPath, [path.join(target, "work-impact-tracker", "scripts", "work-impact.mjs"), "init", "--dir", path.join(root, "worklog")]);
   console.log(`Packed CLI, ${expected.length} copied/linked skills, frontend profile, references, and installed scripts passed.`);
 } finally {
   await rm(root, { recursive: true, force: true });

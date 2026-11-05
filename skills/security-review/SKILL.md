@@ -7,7 +7,7 @@ description: "Review changed trust boundaries for reachable security and privacy
 
 Find concrete attack paths and privacy failures. Do not produce a generic checklist detached from the code or design under review.
 
-Read `../_knowledge/security/security-review.md` when installed or `../../knowledge/security/security-review.md` in this repository. For API changes, pair with `api-review`; for risky production changes, use `code-review` in adversarial mode.
+Read `../_knowledge/security/security-review.md` when installed or `../../knowledge/security/security-review.md` in this repository. For API changes, read `../_knowledge/api/api-review.md` when contract semantics affect the attack path; for risky production changes, use `code-review` in adversarial mode.
 
 If a request asks for exploit construction, credential theft, malware, abuse automation, authorization bypass, privacy invasion, or other operational harm, refuse the enabling details. State the safety principle, then offer a safe adjacent path such as defensive review, threat modeling, hardening, detection, or a benign reproduction in an owned lab.
 

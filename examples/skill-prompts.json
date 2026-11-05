@@ -5,29 +5,13 @@
     "implicit": true
   },
   {
-    "expectedSkill": "api-review",
+    "expectedSkill": "code-review",
     "prompt": "Review this new endpoint contract for pagination, error shape, status codes, and backwards compatibility.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "api-writer",
-    "prompt": "Implement the route handler, request validation, response body, and error mapping for a new users endpoint.",
-    "companionSkills": [
-      "api-review"
-    ],
     "implicit": true
   },
   {
     "expectedSkill": "code-review",
     "prompt": "Grill this migration and service change like it is about to ship to production.",
-    "companionSkills": [
-      "critical-thinking"
-    ],
-    "implicit": true
-  },
-  {
-    "expectedSkill": "code-documentation",
-    "prompt": "Add useful documentation for this public helper and update the README with the setup command.",
     "implicit": true
   },
   {
@@ -38,27 +22,6 @@
   {
     "expectedSkill": "code-review",
     "prompt": "Before I merge, check whether this implementation is actually complete, validated, and free of blocking behavior regressions.",
-    "companionSkills": [
-      "test-design-review"
-    ],
-    "implicit": true
-  },
-  {
-    "expectedSkill": "commit-pr-writer",
-    "prompt": "Write a commit message and PR description from the staged changes, including tests and risk.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "critical-thinking",
-    "prompt": "Before we build this abstraction layer, challenge whether this design is actually necessary.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "wtf-check",
-    "prompt": "WTF check me: I keep adding new skill ideas and switching directions before finishing the release. What the hell am I doing?",
-    "companionSkills": [
-      "critical-thinking"
-    ],
     "implicit": true
   },
   {
@@ -72,21 +35,6 @@
     "implicit": true
   },
   {
-    "expectedSkill": "doc-template-writer",
-    "prompt": "Create a Markdown product doc template for improving team onboarding so I can fill it in quickly.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "doc-template-writer",
-    "prompt": "Create an engineering design doc template for the new payment retry system.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "design-principles-review",
-    "prompt": "Review this refactor for SOLID, YAGNI, dependency direction, coupling, and abstraction quality.",
-    "implicit": true
-  },
-  {
     "expectedSkill": "implementation-plan",
     "prompt": "Create a scoped implementation plan with validation steps for this billing migration.",
     "implicit": true
@@ -94,9 +42,6 @@
   {
     "expectedSkill": "incident-response",
     "prompt": "Production checkout is returning 500s since the last deploy; triage the logs, form hypotheses, and decide whether to rollback or hotfix.",
-    "companionSkills": [
-      "product-communication"
-    ],
     "implicit": true
   },
   {
@@ -110,34 +55,17 @@
     "implicit": true
   },
   {
-    "expectedSkill": "macos-reminder",
-    "prompt": "/remember I need to send email to product manager at 10 pm tonight",
-    "implicit": true
-  },
-  {
     "expectedSkill": "agent-skill-router",
-    "prompt": "Split this feature into service, API, utility, and test implementation passes.",
+    "prompt": "Choose specialized workflows to review this webhook contract and its tenant isolation boundary.",
+    "implicit": true,
     "companionSkills": [
-      "service-writer",
-      "api-writer"
-    ],
-    "implicit": true
-  },
-  {
-    "expectedSkill": "product-communication",
-    "prompt": "Draft a respectful but firm Slack reply explaining why we should narrow this feature before committing.",
-    "companionSkills": [
-      "critical-thinking",
-      "product-competitive-thinking"
-    ],
-    "implicit": true
+      "code-review",
+      "security-review"
+    ]
   },
   {
     "expectedSkill": "product-competitive-thinking",
     "prompt": "Evaluate this roadmap request from a startup PM and competitor point of view before we build it.",
-    "companionSkills": [
-      "critical-thinking"
-    ],
     "implicit": true
   },
   {
@@ -151,46 +79,21 @@
     "implicit": true
   },
   {
-    "expectedSkill": "self-amending-skill",
-    "prompt": "The router missed a recurring skill trigger during real usage; update the skill system safely.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "self-amending-skill",
-    "prompt": "Tighten the existing skills so they have precise completion checks and deterministic validation without adding a new judge skill.",
-    "implicit": true
-  },
-  {
     "expectedSkill": "security-review",
     "prompt": "Review this multi-tenant webhook endpoint for authorization bypasses, signature replay, secret exposure, and attacker-controlled inputs.",
     "companionSkills": [
-      "api-review"
+      "code-review"
     ],
     "implicit": true
   },
   {
-    "expectedSkill": "service-writer",
-    "prompt": "Implement the service-layer workflow, transaction boundary, permissions, and domain errors for invites.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "test-design-review",
+    "expectedSkill": "code-review",
     "prompt": "Review these tests for false confidence, weak mocks, flaky behavior, and missing edge cases.",
     "implicit": true
   },
   {
-    "expectedSkill": "test-design-review",
+    "expectedSkill": "code-review",
     "prompt": "Check whether these tests actually prove the work is done or only exercise the happy path.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "upskilling-research",
-    "prompt": "I want to upskill myself in Kubernetes; find recent blogs, papers, docs, and videos and make me a 30-day learning plan.",
-    "implicit": true
-  },
-  {
-    "expectedSkill": "work-impact-tracker",
-    "prompt": "Record what I accomplished this week and generate an evidence-backed summary I can use in my year-end appraisal.",
     "implicit": true
   },
   {

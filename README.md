@@ -89,14 +89,6 @@ Production checkout is returning 500s after the last deploy. Triage whether we s
 ```
 
 ```text
-I want to upskill myself in Kubernetes; find recent blogs, papers, docs, and videos and make me a 30-day plan.
-```
-
-```text
-/remember I need to send email to product manager at 10 pm tonight
-```
-
-```text
 Search our prior decisions before changing payment retry behavior.
 ```
 
@@ -113,7 +105,7 @@ Use dribbble-design to suggest three directions for this dashboard. Explain the 
 For explicit testing, name a skill:
 
 ```text
-Use the critical-thinking skill to challenge this design before we implement it.
+Use code-review to challenge this design against the existing architecture and concrete failure cases.
 ```
 
 ```text
@@ -127,17 +119,12 @@ Keep the answer concise and include only the result, validation, and material ri
 | Frontend visual direction | `dribbble-design` |
 | Agent systems and graphs | `harness-engineering`, `agentic-engineering`, `graph-engineering` |
 | Routing and workflow | `agent-skill-router`, `repository-map`, `implementation-plan` |
-| Critical judgment | `critical-thinking`, `wtf-check` |
-| Product and communication | `product-competitive-thinking`, `product-communication` |
-| Learning and growth | `upskilling-research` |
+| Product decisions | `product-competitive-thinking` |
 | Reliability and operations | `incident-response`, `observability-design`, `security-review` |
-| Personal productivity | `macos-reminder` |
-| Implementation writers | `service-writer`, `api-writer` |
-| Review and quality | `code-review`, `api-review`, `database-schema-design`, `design-principles-review`, `test-design-review` |
-| Documentation and delivery | `code-documentation`, `commit-pr-writer` |
-| Context and maintenance | `decision-memory`, `self-amending-skill` |
+| Review and data design | `code-review`, `database-schema-design` |
+| Engineering decisions | `decision-memory` |
 
-The [2026-11-05 review](docs/skill-review-2026-11-05.md) records the cleanup rationale and migration limits. The [agent and graph engineering update](docs/agent-engineering-2026-11-05.md) adds three specialized skills based on current primary sources.
+The [skill review](docs/skill-review-2026-11-05.md) records both cleanup passes and migration limits. The current catalog has 14 engineering skills; routine thinking, implementation, and writing use shared engineering defaults. The [agent and graph engineering update](docs/agent-engineering-2026-11-05.md) adds three specialized skills based on current primary sources.
 
 ## Skill Highlights
 
@@ -148,21 +135,14 @@ The [2026-11-05 review](docs/skill-review-2026-11-05.md) records the cleanup rat
 - `graph-engineering`: designs grounded knowledge/dependency graphs and GraphRAG with provenance, temporal facts, and baseline evaluation.
 
 - `agent-skill-router`: chooses and combines skills proactively.
-- `critical-thinking`: challenges weak designs and says no to anti-patterns.
-- `wtf-check`: interrupts human or AI drift, thrash, over-scoping, and context switching with a blunt reset question.
 - `product-competitive-thinking`: reviews work through product, startup, user, and competitor lenses.
-- `product-communication`: writes respectful but firm Slack, email, issue, PR, and stakeholder messages.
-- `upskilling-research`: finds fresh blogs, papers, docs, talks, courses, and videos and turns them into a learning path.
 - `database-schema-design`: designs tables, entities, migrations, indexes, constraints, and retention.
-- `api-review`: reviews API contracts, auth behavior, pagination, compatibility, and error shapes.
 - `code-review`: performs normal reviews and adversarial grills for risky production changes.
 - `incident-response`: triages outages, rollback/hotfix decisions, severity, handoff, and post-mortems.
 - `repository-map`: discovers repository stack, commands, entry points, operational files, and a per-file CSV map (purpose/role plus optional symbols).
 - `decision-memory`: records and retrieves engineering decisions, rationale, rejected alternatives, and evidence.
 - `security-review`: finds exploitable security and privacy risks with concrete attack paths and fixes.
-- `macos-reminder`: schedules local macOS notification reminders from `/remember` style prompts.
 - `observability-design`: designs logs, metrics, traces, SLOs, dashboards, and alerts.
-- `self-amending-skill`: improves the skill system safely from real usage evidence.
 
 ## Knowledge Packs
 
@@ -235,7 +215,7 @@ npx -y @anuragsarkar97/ai-agent-skills@latest decision-memory search --path . --
 Install selected skills:
 
 ```bash
-npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --skills agent-skill-router,critical-thinking --write --force
+npx -y @anuragsarkar97/ai-agent-skills@latest install --agent codex --skills agent-skill-router,code-review --write --force
 ```
 
 Install the frontend-focused local profile:
@@ -339,7 +319,7 @@ npm run skills:package-claude
 Create selected Claude bundles:
 
 ```bash
-npm run skills:package-claude -- --skills agent-skill-router,critical-thinking
+npm run skills:package-claude -- --skills agent-skill-router,code-review
 ```
 
 Create an npm tarball locally:

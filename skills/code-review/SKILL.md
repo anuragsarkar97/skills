@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: "Review diffs, PRs, or worktrees for concrete bugs and regressions. Use adversarial review for risky production paths or when the user asks to grill a change."
+description: "Review code, API contracts, and tests for concrete bugs, compatibility failures, and false confidence. Use for diffs, PRs, proposed contracts, or dedicated test reviews."
 ---
 
 # Code Review
@@ -14,7 +14,14 @@ When a review touches a specialized risk area, load only the matching shared ref
 1. Inspect the changed files and nearby code before forming conclusions.
 2. Check whether the change preserves public contracts, data migrations, error handling, accessibility, security boundaries, and performance expectations relevant to the touched area.
 3. Verify test coverage for the changed behavior. Treat missing tests as a finding when risk is meaningful.
-4. Keep summaries secondary to findings.
+4. Check whether changed behavior leaves stale documentation and whether new abstractions have a concrete caller or proven need. Use the architecture reference for disputed boundaries.
+5. Keep summaries secondary to findings.
+
+## API and Test Review
+
+For contract reviews, read `../_knowledge/api/api-review.md` when installed or `../../knowledge/api/api-review.md` in this repository. Check consumers, compatibility, auth, request/response schemas, pagination, idempotency, and errors. Flag concrete breaking requests or responses rather than implementation style.
+
+For test adequacy, read `../_knowledge/testing/testing-strategy.md` when installed or `../../knowledge/testing/testing-strategy.md` in this repository. Check that assertions fail for the intended defect, mocks do not replace the behavior being claimed, meaningful failures are covered, and time/network/shared state cannot make tests flaky. Recommend the smallest test that proves the risk.
 
 ## Adversarial Mode
 

@@ -9,7 +9,7 @@ Select by the outcome and risk, not every technology mentioned. Ordinary coding,
 
 ## Selection
 
-- Honor an explicitly requested skill. Otherwise use one primary workflow when it adds task-specific value; using no additional skill is valid.
+- Honor an explicitly requested skill when it is available. Do not assume every skill in this source catalog is installed in a partial profile. Otherwise use one primary workflow when it adds task-specific value; using no additional skill is valid.
 - Add a second skill only for a distinct unresolved risk or deliverable. A cross-layer edit does not require a chain of writer and reviewer invocations.
 - Read the relevant files directly when their location is known. Generate maps and decision ledgers only when the task benefits from those artifacts.
 - Do not manufacture a plan, product strategy review, commit message, or approval checkpoint for every change.
@@ -23,29 +23,14 @@ Select by the outcome and risk, not every technology mentioned. Ordinary coding,
 - `graph-engineering`: knowledge/dependency graphs, temporal facts, and GraphRAG retrieval; not execution graphs or chart drawing.
 
 - `implementation-plan`: requested plans or changes with sequencing, migration, or rollout dependencies.
-- `self-amending-skill`: requested skill maintenance or a concrete skill-system failure.
-- `wtf-check`: observable thrash, scope drift, or contradictions with the goal.
-- `critical-thinking`: a disputed approach with concrete safety or complexity concerns.
 - `product-competitive-thinking`: product bets, MVP scope, pricing, onboarding, or competitive strategy decisions.
-- `product-communication`: substantive stakeholder or customer decision messages.
-- `upskilling-research`: learning paths and current resource curation.
-- `work-impact-tracker`: evidence-backed accomplishments and appraisal summaries.
-- `macos-reminder`: local macOS reminder scheduling.
 - `repository-map`: broad repository discovery when direct file search is insufficient.
 - `decision-memory`: recording decisions or revisiting prior rationale.
-- `service-writer`: business orchestration with transaction or side-effect boundaries.
-- `api-writer`: API boundary implementation for an established contract.
 - `incident-response`: active production degradation or post-mortems.
 - `observability-design`: instrumentation, telemetry audits, SLOs, or alerts.
 - `security-review`: changed trust boundaries or explicit security review.
-- `code-review`: requested code review or a concrete regression concern.
+- `code-review`: code, API contract, test adequacy, or regression review.
 - `database-schema-design`: durable data shape, indexes, constraints, or migration rollout.
-- `api-review`: contract design or compatibility review.
-- `commit-pr-writer`: requested commit, PR, changelog, or release text.
-- `code-documentation`: requested documentation or existing docs made stale by a change.
-- `doc-template-writer`: fill-in PRD, RFC, or engineering document templates.
-- `test-design-review`: uncertain test adequacy, weak mocks, coverage gaps, or flaky tests.
-- `design-principles-review`: architecture or refactor boundary and abstraction reviews.
 
 ## Knowledge Routing
 

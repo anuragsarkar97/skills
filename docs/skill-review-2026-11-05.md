@@ -62,3 +62,45 @@ Run `npm test` for the full local gate. It includes skill validation, audit, pro
 The installer preserves existing skill folders and shared knowledge unless `--force` is supplied, and preserves removed skills by default. Review local edits before forcing an upgrade. The optional `--remove-stale` flag removes managed installs outside the selected skill set, including dangling links into the current source skills directory. Preview it without `--write` first. It removes all deselected managed skills, not only the six retired names; do not combine a partial profile with cleanup unless that is intended. Inspect local customizations before cleanup, because ownership markers do not prove files are unmodified. Unmarked folders and links outside the current source skills directory are preserved. No global installation was modified during this review. Explicit selection of a retired skill name will no longer work in a fresh install; use the replacements above.
 
 No npm release, remote push, production action, or live model benchmark is part of this change. Reconsider retention or removal after representative tasks demonstrate a concrete regression or unnecessary overhead. Domain knowledge packs were preserved; their framework and cloud guidance was not comprehensively refreshed against upstream releases in this review.
+
+## Second consolidation — 2026-11-06
+
+After adding specialized agent, graph, and design workflows, reviewed the remaining generic skills again. Removed seven overlapping instruction sets, reducing the active catalog from 29 to 22. This is a maintenance judgment based on their content and overlap, not a measured claim about task success or latency.
+
+| Removed skill | Reason and replacement |
+|---|---|
+| `critical-thinking` | Generic decision/challenge protocol duplicated planning, product evaluation, and code review. Evidence-backed pushback remains an engineering default. |
+| `wtf-check` | Generic drift correction added a separate mode and scripted output. Shared defaults retain a concise reset when work stops serving the goal. |
+| `design-principles-review` | Boundary and abstraction checks duplicated code review and the retained architecture knowledge pack. |
+| `api-writer` | Handler-writing checklist overlapped ordinary implementation and API contract review. Validation, authorization, and error handling remain required at boundaries. |
+| `service-writer` | Business orchestration checklist overlapped ordinary implementation, domain reviews, and stack references. Transaction and side-effect checks remain in shared defaults. |
+| `code-documentation` | Generic documentation-writing guidance did not supply unique tooling or templates. Code review checks stale docs; document templates remain available. |
+| `commit-pr-writer` | Diff-based delivery writing is a normal agent capability. Shared defaults retain evidence-grounded descriptions and explicit action authorization. |
+
+The source catalog, router, frontend profile, prompt fixtures, evaluation requirements, and knowledge index are updated together. Useful architecture, API, security, testing, and communication references remain available without loading a separate generic skill.
+
+Earlier sections are historical snapshots. For current migrations, both the original six retired names and these seven names may remain in existing installs. No global installed folders are changed by this repository edit. Review the cleanup options and local customizations before removing them; a fresh install contains only the current catalog. These changes are not automatically committed or pushed.
+
+## Core engineering catalog — 2026-11-06
+
+Following the request for roughly 10–15 skills, reduced the current catalog from 22 to 14. The final set is:
+
+- Routing and repository work: `agent-skill-router`, `repository-map`, `implementation-plan`, `decision-memory`.
+- Product and frontend direction: `product-competitive-thinking`, `dribbble-design`.
+- Agent and graph systems: `harness-engineering`, `agentic-engineering`, `graph-engineering`.
+- Quality and operations: `code-review`, `security-review`, `database-schema-design`, `incident-response`, `observability-design`.
+
+Removed eight additional entrypoints:
+
+| Removed skill | Scope decision |
+|---|---|
+| `macos-reminder` | Personal notifications do not belong in the core engineering catalog. Bundled scheduler removed; existing user reminders are untouched. |
+| `work-impact-tracker` | Personal appraisal/worklog tooling is outside the core scope. Removed its source script and tests; existing user worklogs are untouched. |
+| `upskilling-research` | Learning-resource curation is a normal research task rather than a core repository workflow. |
+| `doc-template-writer` | Document template generation is outside the focused engineering set. |
+| `product-communication` | Standalone message writing does not need another skill. The communication reference remains for incident and decision context. |
+| `test-design-review` | Merged test adequacy, false-confidence, and flakiness checks into `code-review`; testing references remain. |
+| `api-review` | Merged contract review into `code-review`; security review can read the retained API reference directly. |
+| `self-amending-skill` | Skill maintenance follows the repository's existing canonical-file, metadata, audit, catalog, graph, and test instructions. No separate installed mode is needed. |
+
+Updated the frontend profile, fixtures, CLI check commands, script tests, and bundle verification along with the removals. API and test-review examples now route to `code-review`. Shared domain references remain available on demand. Removing repository tools does not cancel local reminders or delete personal records and does not prune global installed folders.
