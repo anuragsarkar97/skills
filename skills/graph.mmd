@@ -1,5 +1,6 @@
 graph TD
   agent_skill_router["agent-skill-router"] --> agentic_engineering["agentic-engineering"]
+  agent_skill_router["agent-skill-router"] --> ai_work_estimation["ai-work-estimation"]
   agent_skill_router["agent-skill-router"] --> code_review["code-review"]
   agent_skill_router["agent-skill-router"] --> database_schema_design["database-schema-design"]
   agent_skill_router["agent-skill-router"] --> decision_memory["decision-memory"]
@@ -14,5 +15,6 @@ graph TD
   agent_skill_router["agent-skill-router"] --> security_review["security-review"]
   agentic_engineering["agentic-engineering"] --> harness_engineering["harness-engineering"]
   graph_engineering["graph-engineering"] --> agentic_engineering["agentic-engineering"]
+  implementation_plan["implementation-plan"] --> ai_work_estimation["ai-work-estimation"]
   observability_design["observability-design"] --> incident_response["incident-response"]
   security_review["security-review"] --> code_review["code-review"]

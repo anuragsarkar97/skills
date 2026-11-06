@@ -118,15 +118,17 @@ Keep the answer concise and include only the result, validation, and material ri
 |---|---|
 | Frontend visual direction | `dribbble-design` |
 | Agent systems and graphs | `harness-engineering`, `agentic-engineering`, `graph-engineering` |
-| Routing and workflow | `agent-skill-router`, `repository-map`, `implementation-plan` |
+| Routing and workflow | `agent-skill-router`, `repository-map`, `implementation-plan`, `ai-work-estimation` |
 | Product decisions | `product-competitive-thinking` |
 | Reliability and operations | `incident-response`, `observability-design`, `security-review` |
 | Review and data design | `code-review`, `database-schema-design` |
 | Engineering decisions | `decision-memory` |
 
-The [skill review](docs/skill-review-2026-11-05.md) records both cleanup passes and migration limits. The current catalog has 14 engineering skills; routine thinking, implementation, and writing use shared engineering defaults. The [agent and graph engineering update](docs/agent-engineering-2026-11-05.md) adds three specialized skills based on current primary sources.
+The [skill review](docs/skill-review-2026-11-05.md) records both cleanup passes and migration limits. The current catalog has 15 engineering skills; routine thinking, implementation, and writing use shared engineering defaults. The [agent and graph engineering update](docs/agent-engineering-2026-11-05.md) adds three specialized skills based on current primary sources.
 
 ## Skill Highlights
+
+- `ai-work-estimation`: estimates AI-assisted tasks and handoffs in minutes and added/deleted line ranges, separating validation and external waits.
 
 - `dribbble-design`: researches visual inspiration and translates it into frontend directions, hierarchy, typography, and practical UI changes.
 

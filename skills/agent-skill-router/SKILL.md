@@ -16,6 +16,8 @@ Select by the outcome and risk, not every technology mentioned. Ordinary coding,
 
 ## Routing Rules
 
+- `ai-work-estimation`: AI-assisted effort estimates, plans with estimates, estimated task breakdowns, and work handoffs; default to minutes and added/deleted line ranges.
+
 - `dribbble-design`: frontend visual directions, Dribbble-style inspiration, reference analysis, moodboards, or visual UI critique; not backend design principles.
 
 - `harness-engineering`: coding-agent environments, completion graders, reproducibility, and measured harness improvements.

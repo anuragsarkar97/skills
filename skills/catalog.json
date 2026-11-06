@@ -1,5 +1,5 @@
 {
-  "count": 14,
+  "count": 15,
   "skills": [
     {
       "name": "agent-skill-router",
@@ -15,6 +15,14 @@
       "displayName": "Agentic Engineering",
       "shortDescription": "Engineer reliable tool-using agent workflows",
       "defaultPrompt": "Use $agentic-engineering to design the smallest reliable tool-using workflow with explicit state, permissions, budgets, and recovery.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "name": "ai-work-estimation",
+      "description": "Estimate AI-assisted engineering work in minutes and added/deleted line ranges. Use for effort estimates, plans with estimates, task breakdowns, and work handoffs; not as a coding speed guarantee.",
+      "displayName": "AI Work Estimation",
+      "shortDescription": "Estimate AI work in minutes and changed lines",
+      "defaultPrompt": "Use $ai-work-estimation to estimate this AI-assisted task or handoff in minutes and added/deleted line ranges, including validation, assumptions, and external waits.",
       "allowImplicitInvocation": true
     },
     {

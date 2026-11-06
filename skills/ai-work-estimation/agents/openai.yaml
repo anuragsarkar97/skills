@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Work Estimation"
+  short_description: "Estimate AI work in minutes and changed lines"
+  default_prompt: "Use $ai-work-estimation to estimate this AI-assisted task or handoff in minutes and added/deleted line ranges, including validation, assumptions, and external waits."
+
+policy:
+  allow_implicit_invocation: true

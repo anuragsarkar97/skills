@@ -7,6 +7,7 @@ const examples = JSON.parse(await readFile("examples/skill-prompts.json", "utf8"
 const exampleNames = new Set(examples.map((example) => example.expectedSkill));
 const issues = [];
 const completionCheckSkills = new Set([
+  "ai-work-estimation",
   "dribbble-design",
   "harness-engineering",
   "agentic-engineering",

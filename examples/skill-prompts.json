@@ -155,5 +155,25 @@
     "expectedSkill": "dribbble-design",
     "prompt": "Use these supplied UI references to define an editorial onboarding direction that preserves our existing components, focus states, and error handling.",
     "implicit": true
+  },
+  {
+    "expectedSkill": "ai-work-estimation",
+    "prompt": "Estimate how long you need to implement this endpoint with AI, including tests, in minutes and expected added and deleted lines.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "ai-work-estimation",
+    "prompt": "Prepare a work handoff with verified changes, remaining tasks, minute estimates, expected LOC changes, blockers, and the next command to run.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "ai-work-estimation",
+    "prompt": "Plan and estimate this refactor for an AI coding agent; separate active work from slow CI queues and approval waits, and show change-size ranges.",
+    "implicit": true
+  },
+  {
+    "expectedSkill": "ai-work-estimation",
+    "prompt": "We have not inspected the legacy integration yet. Give a bounded discovery estimate and identify what remains unknown before estimating implementation.",
+    "implicit": true
   }
 ]

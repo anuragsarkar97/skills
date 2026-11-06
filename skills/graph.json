@@ -1,5 +1,5 @@
 {
-  "count": 14,
+  "count": 15,
   "nodes": [
     {
       "id": "agent-skill-router",
@@ -11,6 +11,12 @@
       "id": "agentic-engineering",
       "displayName": "Agentic Engineering",
       "description": "Build and review tool-using agents and durable agent workflows. Use for control flow, tool contracts, memory, recovery, budgets, and delegation decisions; not ordinary AI-assisted coding.",
+      "allowImplicitInvocation": true
+    },
+    {
+      "id": "ai-work-estimation",
+      "displayName": "AI Work Estimation",
+      "description": "Estimate AI-assisted engineering work in minutes and added/deleted line ranges. Use for effort estimates, plans with estimates, task breakdowns, and work handoffs; not as a coding speed guarantee.",
       "allowImplicitInvocation": true
     },
     {
@@ -94,6 +100,11 @@
     },
     {
       "from": "agent-skill-router",
+      "to": "ai-work-estimation",
+      "reason": "mentions"
+    },
+    {
+      "from": "agent-skill-router",
       "to": "code-review",
       "reason": "mentions"
     },
@@ -160,6 +171,11 @@
     {
       "from": "graph-engineering",
       "to": "agentic-engineering",
+      "reason": "mentions"
+    },
+    {
+      "from": "implementation-plan",
+      "to": "ai-work-estimation",
       "reason": "mentions"
     },
     {

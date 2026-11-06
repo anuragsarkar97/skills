@@ -40,6 +40,8 @@ Flag the following when present — they require extra scrutiny before implement
 - **Data backfills**: large write operations that may conflict with concurrent reads or exceed transaction limits.
 - **Third-party dependencies**: new packages, version upgrades, or external API changes with unclear reliability.
 
+When a plan includes effort estimates or a work handoff, apply `ai-work-estimation` if installed: use minutes and expected added/deleted line ranges, include validation, and separate external waits. Do not substitute conventional days or weeks for an AI-assisted estimate.
+
 ## Plan Shape
 
 Prefer short ordered steps. Each step should state:

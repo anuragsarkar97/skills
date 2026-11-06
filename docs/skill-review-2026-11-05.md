@@ -104,3 +104,7 @@ Removed eight additional entrypoints:
 | `self-amending-skill` | Skill maintenance follows the repository's existing canonical-file, metadata, audit, catalog, graph, and test instructions. No separate installed mode is needed. |
 
 Updated the frontend profile, fixtures, CLI check commands, script tests, and bundle verification along with the removals. API and test-review examples now route to `code-review`. Shared domain references remain available on demand. Removing repository tools does not cancel local reminders or delete personal records and does not prune global installed folders.
+
+## Explicit AI estimation preference — 2026-11-06
+
+Added `ai-work-estimation` at the user's request, taking the focused catalog from 14 to 15. It routes estimates and work handoffs to minute ranges and expected added/deleted lines, with validation, external waits, assumptions, and measured-versus-forecast distinctions. Planning links to it conditionally; ordinary implementation does not require an estimate.
